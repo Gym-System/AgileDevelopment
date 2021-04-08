@@ -1,5 +1,6 @@
 package ControlClass;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -53,10 +54,13 @@ public class loginController {
     }
 
     @FXML
-    void login_button_submit(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("哈哈哈哈哈哈点了");
-        alert.show();
+    void login_button_submit(ActionEvent event) throws IOException {
+        System.out.println(login_usename.getText());
+
+        Stage stage = (Stage) login_button.getScene().getWindow();
+        new APP().jump(stage,"12");
+
+
     }
 
     @FXML
@@ -69,4 +73,9 @@ public class loginController {
 
     }
 
+    @FXML
+    public void getUsername(ActionEvent actionEvent) {
+
+
+    }
 }
