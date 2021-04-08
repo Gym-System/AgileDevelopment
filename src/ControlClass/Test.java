@@ -1,16 +1,21 @@
 package ControlClass;
 
 import EntityClass.*;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.io.FileUtils;
 
-import com.google.gson.*;
-
+import com.csvreader.CsvReader;
+import com.csvreader.CsvWriter;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class Test {
     public static void main(String[] args) {
@@ -133,19 +138,37 @@ public class Test {
         }
         System.out.println(recVideo);
 
-        String json = null;
-        ObjectMapper mapper = new ObjectMapper();
+        File outFile = new File("person.csv");
         try {
-            json = mapper.writeValueAsString(person);
-            json = "{\"" + person.getUserName() + "\":" + json + "}";
-            System.out.println(json);
-        } catch (JsonProcessingException e) {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outFile));
+            CsvWriter cwriter = new CsvWriter(writer,',');
+            for(int i=0; i<5; i++) {
+                cwriter.writeRecord(person.toStrArray());
+            }
+            cwriter.close();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
+        File inFile = new File("person.csv");
         try {
-            FileUtils.writeStringToFile(new File("person.json"), json);
+            String[] inString;
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader creader = new CsvReader(reader, ',');
+            while(creader.readRecord()){
+                inString = creader.getValues();
+                Person person2 = new Person(inString[0], inString[1], inString[2], inString[3], inString[4],
+                        new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(inString[5]));
+                System.out.println(person2);
+            }
+            creader.close();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
             e.printStackTrace();
         }
     }

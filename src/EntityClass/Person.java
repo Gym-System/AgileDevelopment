@@ -69,6 +69,11 @@ public class Person {
         DoB = doB;
     }
 
+    public String[] toStrArray() {
+        String text = "" + userName + "," + password + "," + email + "," + gender + "," + telNo + "," + DoB;
+        return text.split(",");
+    }
+
     @Override
     public String toString() {
         return "Person{" +

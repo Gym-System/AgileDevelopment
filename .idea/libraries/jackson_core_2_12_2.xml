@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="org.apache.commons.io">
+  <library name="jackson-core-2.12.2">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/org.apache.commons.io.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-core-2.12.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
