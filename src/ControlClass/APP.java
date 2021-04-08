@@ -14,7 +14,7 @@ public class APP extends javafx.application.Application{
 //        pane.getChildren().add(new ImageView(image));
 
 
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, 1350, 807);
         stage.setScene(scene);
         stage.show();
     }

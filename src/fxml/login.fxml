@@ -7,41 +7,41 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.08" prefWidth="1034.24" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControlClass.loginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="807.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControlClass.loginController">
    <children>
-      <ImageView fx:id="user_image" fitHeight="56.0" fitWidth="60.0" layoutX="325.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="user_image" fitHeight="56.0" fitWidth="60.0" layoutX="477.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resource/login.png" />
          </image>
       </ImageView>
-      <Label layoutX="405.0" layoutY="33.0" text="LOGIN">
+      <Label layoutX="561.0" layoutY="63.0" text="LOGIN">
          <font>
             <Font name="Arial Rounded MT Bold" size="70.0" />
          </font>
       </Label>
-      <TextField fx:id="login_usename" layoutX="455.0" layoutY="203.0" opacity="0.7" prefHeight="55.0" prefWidth="296.0" text="User name">
+      <TextField fx:id="login_usename" layoutX="599.0" layoutY="255.0" opacity="0.7" prefHeight="55.0" prefWidth="296.0" text="User name">
          <font>
             <Font name="Arial Rounded MT Bold" size="25.0" />
          </font>
       </TextField>
-      <ImageView fx:id="lock_image" fitHeight="58.0" fitWidth="56.0" layoutX="326.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="lock_image" fitHeight="58.0" fitWidth="56.0" layoutX="477.0" layoutY="361.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resource/lock.png" />
          </image>
       </ImageView>
-      <Hyperlink fx:id="forget_password" layoutX="308.0" layoutY="419.0" onAction="#forget_password_click" text="Forget your password?">
+      <Hyperlink fx:id="forget_password" layoutX="477.0" layoutY="482.0" onAction="#forget_password_click" text="Forget your password?">
          <font>
             <Font size="20.0" />
          </font></Hyperlink>
-      <Hyperlink fx:id="no_account" layoutX="306.0" layoutY="463.0" onAction="#no_account_click" text="Do not have an account?">
+      <Hyperlink fx:id="no_account" layoutX="475.0" layoutY="532.0" onAction="#no_account_click" text="Do not have an account?">
          <font>
             <Font size="20.0" />
          </font></Hyperlink>
-      <Button fx:id="login_button" layoutX="633.0" layoutY="425.0" mnemonicParsing="false" onAction="#login_button_submit" prefHeight="63.0" prefWidth="119.0" text="Login">
+      <Button fx:id="login_button" layoutX="811.0" layoutY="501.0" mnemonicParsing="false" onAction="#login_button_submit" prefHeight="63.0" prefWidth="119.0" text="Login">
          <font>
             <Font name="Arial Rounded MT Bold" size="26.0" />
          </font>
       </Button>
-      <PasswordField fx:id="login_password" layoutX="456.0" layoutY="316.0" opacity="0.7" prefHeight="57.0" prefWidth="295.0" />
+      <PasswordField fx:id="login_password" layoutX="600.0" layoutY="361.0" opacity="0.7" prefHeight="57.0" prefWidth="295.0" />
    </children>
 </AnchorPane>
