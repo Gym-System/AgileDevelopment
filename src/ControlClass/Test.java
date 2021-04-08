@@ -1,20 +1,19 @@
 package ControlClass;
 
-import EntityClass.*;
-
+import EntityClass.DAO.impl.PersonDAOImpl;
+import EntityClass.VO.*;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 public class Test {
@@ -32,6 +31,7 @@ public class Test {
         }
         System.out.println(person);
 
+        /*
         User user = null;
         try {
             user = new User("kaiyi",
@@ -137,39 +137,28 @@ public class Test {
             e.printStackTrace();
         }
         System.out.println(recVideo);
+        */
 
-        File outFile = new File("person.csv");
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(outFile));
-            CsvWriter cwriter = new CsvWriter(writer,',');
-            for(int i=0; i<5; i++) {
-                cwriter.writeRecord(person.toStrArray());
-            }
-            cwriter.close();
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        PersonDAOImpl personDAO = new PersonDAOImpl();
 
-        File inFile = new File("person.csv");
-        try {
-            String[] inString;
-            BufferedReader reader = new BufferedReader(new FileReader(inFile));
-            CsvReader creader = new CsvReader(reader, ',');
-            while(creader.readRecord()){
-                inString = creader.getValues();
-                Person person2 = new Person(inString[0], inString[1], inString[2], inString[3], inString[4],
-                        new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(inString[5]));
-                System.out.println(person2);
-            }
-            creader.close();
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        Person person1 = personDAO.changePersonEmail("kaiyi", "z.kaiyi@se18.qmul.ac.uk");
+        System.out.println(person1);
+
+        Person person2 = personDAO.changePersonTeleNo("kaiyi", "18910421646");
+        System.out.println(person2);
+
+        /*
+        Boolean flag = personDAO.insertPerson(person);
+        System.out.println(flag);
+
+        Boolean flag = personDAO.deletePerson("kaiyi");
+        System.out.println(flag);
+
+        Person person1 = personDAO.changePersonPassword("kaiyi", "1234");
+        System.out.println(person1);
+
+        Person person1 = personDAO.queryByUserName("kaiyi");
+        System.out.println(person1);
+         */
     }
 }

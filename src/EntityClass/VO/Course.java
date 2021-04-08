@@ -1,4 +1,4 @@
-package EntityClass;
+package EntityClass.VO;
 
 import java.util.Arrays;
 

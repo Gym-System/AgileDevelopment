@@ -1,4 +1,4 @@
-package EntityClass;
+package EntityClass.VO;
 
 public class PhyData {
     private final String userName;
