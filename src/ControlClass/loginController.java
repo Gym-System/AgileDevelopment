@@ -55,7 +55,7 @@ public class loginController {
     @FXML
     void login_button_submit(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("哈哈哈哈哈哈点了");
+        alert.setContentText("Complete login!");
         alert.show();
     }
 

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="807.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControlClass.registerController">
+   <children>
+      <Label alignment="CENTER" prefHeight="145.0" prefWidth="1350.0" text="REGISTER">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="70.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="220.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resource/login.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="220.0" layoutY="320.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resource/gender.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="220.0" layoutY="445.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resource/birth.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="220.0" layoutY="570.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resource/telephone.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="729.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resource/email.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="729.0" layoutY="320.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resource/lock.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="729.0" layoutY="445.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resource/lock.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="name_register" layoutX="307.0" layoutY="201.0" prefHeight="48.0" prefWidth="329.0" promptText="User name" />
+      <RadioButton fx:id="male_register" layoutX="314.0" layoutY="334.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="102.0" text="Male">
+         <toggleGroup>
+            <ToggleGroup fx:id="gender" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="female_register" layoutX="469.0" layoutY="334.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="151.0" text="Female" toggleGroup="$gender" />
+      <DatePicker fx:id="birthdate_register" layoutX="307.0" layoutY="451.0" prefHeight="48.0" prefWidth="329.0" promptText="Select your birth date" />
+      <TextField fx:id="telephone_number" layoutX="307.0" layoutY="576.0" prefHeight="48.0" prefWidth="329.0" promptText="Telephone number" />
+      <TextField fx:id="name_register11" layoutX="813.0" layoutY="201.0" promptText="Email address" />
+      <PasswordField fx:id="password_register" layoutX="813.0" layoutY="326.0" promptText="Password" />
+      <PasswordField fx:id="confirmpassword_register" layoutX="813.0" layoutY="451.0" promptText="Confirm password" />
+      <Button fx:id="register_button" layoutX="862.0" layoutY="663.0" mnemonicParsing="false" onAction="#register_button_submit" prefHeight="72.0" prefWidth="162.0" text="Register">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font></Button>
+      <CheckBox fx:id="accept_register" layoutX="789.0" layoutY="584.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="199.0" text="I accept " />
+      <Hyperlink fx:id="condition_register" layoutX="926.0" layoutY="579.0" text="this" underline="true" />
+      <Hyperlink fx:id="haveaccount_register" layoutX="280.0" layoutY="663.0" text="Already have an account?" />
+      <Label layoutX="987.0" layoutY="584.0" text="condition." />
+   </children>
+</AnchorPane>
