@@ -43,5 +43,9 @@
          </font>
       </Button>
       <PasswordField fx:id="login_password" layoutX="456.0" layoutY="316.0" opacity="0.7" prefHeight="57.0" prefWidth="295.0" />
+      <Label fx:id="username1" layoutX="451.0" layoutY="261.0" prefHeight="20.0" prefWidth="303.0" text="The username can not be null" textFill="#f50535" visible="false" />
+      <Label fx:id="password1" layoutX="451.0" layoutY="380.0" prefHeight="20.0" prefWidth="303.0" text="The password can not be null" textFill="#f50535" visible="false" />
+      <Label fx:id="password2" layoutX="451.0" layoutY="380.0" prefHeight="20.0" prefWidth="303.0" text="Please enter the correct password" textFill="#f50535" visible="false" />
+      <Label fx:id="username2" layoutX="451.0" layoutY="261.0" prefHeight="20.0" prefWidth="303.0" text="The username doesn't exist" textFill="#f50535" visible="false" />
    </children>
 </AnchorPane>
