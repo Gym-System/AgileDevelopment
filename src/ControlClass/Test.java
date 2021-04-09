@@ -3,6 +3,7 @@ package ControlClass;
 import EntityClass.DAO.PersonDAO;
 import EntityClass.DAO.UserDAO;
 import EntityClass.DAO.impl.PersonDAOImpl;
+import EntityClass.DAO.impl.PreUserDAOImpl;
 import EntityClass.DAO.impl.UserDAOImpl;
 import EntityClass.VO.*;
 import com.csvreader.CsvReader;
@@ -34,7 +35,6 @@ public class Test {
             e.printStackTrace();
         }
         System.out.println(person);
-        */
 
         User user = null;
         try {
@@ -49,7 +49,20 @@ public class Test {
         }
         System.out.println(user);
 
-        /*
+        PremierUser premierUser = null;
+        try {
+            premierUser = new PremierUser("kaiyi",
+                    "123",
+                    "zhaokaiyi@bupt.edu.cn",
+                    "Male",
+                    "18810282618",
+                    new SimpleDateFormat("yyyy-MM-dd").parse("1999-11-25"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        System.out.println(premierUser);
+        */
+
         Staff staff = null;
         try {
             staff = new Staff("kaiyi",
@@ -64,6 +77,7 @@ public class Test {
         }
         System.out.println(staff);
 
+        /*
         Trainer trainer = null;
         try {
             trainer = new Trainer("kaiyi",
@@ -91,20 +105,9 @@ public class Test {
             e.printStackTrace();
         }
         System.out.println(manager);
+        */
 
-        PremierUser premierUser = null;
-        try {
-            premierUser = new PremierUser("kaiyi",
-                    "123",
-                    "zhaokaiyi@bupt.edu.cn",
-                    "Male",
-                    "18810282618",
-                    new SimpleDateFormat("yyyy-MM-dd").parse("1999-11-25"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        System.out.println(premierUser);
-
+        /*
         PhyData phyData = new PhyData("kaiyi",
                     186.0,
                     83.4,
@@ -143,8 +146,9 @@ public class Test {
         }
         System.out.println(recVideo);
         */
-        PersonDAO personDAO = new PersonDAOImpl();
+
         /*
+        PersonDAO personDAO = new PersonDAOImpl();
         Boolean flag = personDAO.insertPerson(person);
         System.out.println(flag);
 
@@ -187,6 +191,34 @@ public class Test {
 
         user1 = userDAO.queryByUserName("kaiyi");
         System.out.println(user1);
+         */
+
+        /*
+        PreUserDAOImpl preUserDAO = new PreUserDAOImpl();
+
+        Boolean flag = preUserDAO.insertPreUser(premierUser);
+        System.out.println(flag);
+
+        Boolean flag = preUserDAO.deletePreUser("kaiyi");
+        System.out.println(flag);
+
+        User premierUser1 = preUserDAO.changePreUserPassword("kaiyi", "1234");
+        System.out.println(premierUser1);
+
+        premierUser1 = preUserDAO.changePreUserEmail("kaiyi", "z.kaiyi@se18.qmul.ac.uk");
+        System.out.println(premierUser1);
+
+        premierUser1 = preUserDAO.changePreUserTeleNo("kaiyi", "18910421646");
+        System.out.println(premierUser1);
+
+        premierUser1 = preUserDAO.changePreUserBalance("kaiyi", 100.00);
+        System.out.println(premierUser1);
+
+        premierUser1 = preUserDAO.queryByUserName("kaiyi");
+        System.out.println(premierUser1);
+
+        premierUser1 = preUserDAO.changePreUserType("kaiyi", 1);
+        System.out.println(premierUser1);
          */
     }
 }

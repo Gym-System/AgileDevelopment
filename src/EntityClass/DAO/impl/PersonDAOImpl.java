@@ -2,6 +2,7 @@ package EntityClass.DAO.impl;
 
 import EntityClass.DAO.PersonDAO;
 import EntityClass.VO.Person;
+import EntityClass.VO.PremierUser;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
 
@@ -14,31 +15,21 @@ import java.util.Locale;
 
 public class PersonDAOImpl implements PersonDAO {
     private Person person = null;
+    private String fileName = "person.csv";
 
     // insert
     @Override
     public Boolean insertPerson(Person person) {
-        boolean flag = false;
-        File outFile = new File("person.csv");
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(outFile, true));
-            CsvWriter csvWriter = new CsvWriter(writer,',');
-            csvWriter.writeRecord(person.toStrArray());
-            csvWriter.close();
-            flag = true;
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        return flag;
+        return insertInfo(fileName, person.toStrArray());
     }
 
     // delete
     @Override
     public Boolean deletePerson(String userName) {
         Boolean flag = false;
-        File inFile = new File("person.csv");
+        File inFile = new File(fileName);
         try {
-            String[] record = null;
+            String[] record;
             ArrayList<String[]> records = new ArrayList<>();
             BufferedReader reader = new BufferedReader(new FileReader(inFile));
             CsvReader csvReader = new CsvReader(reader, ',');
@@ -51,14 +42,7 @@ public class PersonDAOImpl implements PersonDAO {
                 records.add(record);
             }
             csvReader.close();
-
-            File outFile = new File("person.csv");
-            BufferedWriter writer = new BufferedWriter(new FileWriter(outFile));
-            CsvWriter csvWriter = new CsvWriter(writer,',');
-            for (Iterator<String[]> iterator = records.iterator(); iterator.hasNext();) {
-                csvWriter.writeRecord(iterator.next());
-            }
-            csvWriter.close();
+            PersonDAOImpl.recordToCsv(records, fileName);
             flag = true;
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -69,7 +53,7 @@ public class PersonDAOImpl implements PersonDAO {
     // update
     @Override
     public Person changePersonPassword(String userName, String password) {
-        File inFile = new File("person.csv");
+        File inFile = new File(fileName);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -85,14 +69,7 @@ public class PersonDAOImpl implements PersonDAO {
                 records.add(record);
             }
             csvReader.close();
-
-            File outFile = new File("person.csv");
-            BufferedWriter writer = new BufferedWriter(new FileWriter(outFile));
-            CsvWriter csvWriter = new CsvWriter(writer,',');
-            for (Iterator<String[]> iterator = records.iterator(); iterator.hasNext();) {
-                csvWriter.writeRecord(iterator.next());
-            }
-            csvWriter.close();
+            recordToCsv(records, fileName);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -101,7 +78,7 @@ public class PersonDAOImpl implements PersonDAO {
 
     @Override
     public Person changePersonEmail(String userName, String email) {
-        File inFile = new File("person.csv");
+        File inFile = new File(fileName);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -117,14 +94,7 @@ public class PersonDAOImpl implements PersonDAO {
                 records.add(record);
             }
             csvReader.close();
-
-            File outFile = new File("person.csv");
-            BufferedWriter writer = new BufferedWriter(new FileWriter(outFile));
-            CsvWriter csvWriter = new CsvWriter(writer,',');
-            for (Iterator<String[]> iterator = records.iterator(); iterator.hasNext();) {
-                csvWriter.writeRecord(iterator.next());
-            }
-            csvWriter.close();
+            recordToCsv(records, fileName);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -133,7 +103,7 @@ public class PersonDAOImpl implements PersonDAO {
 
     @Override
     public Person changePersonTeleNo(String userName, String teleNo) {
-        File inFile = new File("person.csv");
+        File inFile = new File(fileName);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -149,14 +119,7 @@ public class PersonDAOImpl implements PersonDAO {
                 records.add(record);
             }
             csvReader.close();
-
-            File outFile = new File("person.csv");
-            BufferedWriter writer = new BufferedWriter(new FileWriter(outFile));
-            CsvWriter csvWriter = new CsvWriter(writer,',');
-            for (Iterator<String[]> iterator = records.iterator(); iterator.hasNext();) {
-                csvWriter.writeRecord(iterator.next());
-            }
-            csvWriter.close();
+            recordToCsv(records, fileName);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -166,16 +129,16 @@ public class PersonDAOImpl implements PersonDAO {
     // select
     @Override
     public Person queryByUserName(String userName) {
-        File inFile = new File("person.csv");
+        File inFile = new File(fileName);
         try {
-            String[] inString;
+            String[] record;
             BufferedReader reader = new BufferedReader(new FileReader(inFile));
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
-                inString = csvReader.getValues();
-                if(userName.equals(inString[0])) {
-                    person = new Person(inString[0], inString[1], inString[2], inString[3], inString[4],
-                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(inString[5]));
+                record = csvReader.getValues();
+                if(userName.equals(record[0])) {
+                    person = new Person(record[0], record[1], record[2], record[3], record[4],
+                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]));
                 }
             }
             csvReader.close();
@@ -183,5 +146,31 @@ public class PersonDAOImpl implements PersonDAO {
             ex.printStackTrace();
         }
         return person;
+    }
+
+    // help function
+    static Boolean insertInfo(String fileName, String[] strings) {
+        boolean flag = false;
+        File outFile = new File(fileName);
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outFile, true));
+            CsvWriter csvWriter = new CsvWriter(writer,',');
+            csvWriter.writeRecord(strings);
+            csvWriter.close();
+            flag = true;
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return flag;
+    }
+
+    static void recordToCsv(ArrayList<String[]> records, String fileName) throws IOException {
+        File outFile = new File(fileName);
+        BufferedWriter writer = new BufferedWriter(new FileWriter(outFile));
+        CsvWriter csvWriter = new CsvWriter(writer,',');
+        for (Iterator<String[]> iterator = records.iterator(); iterator.hasNext();) {
+            csvWriter.writeRecord(iterator.next());
+        }
+        csvWriter.close();
     }
 }

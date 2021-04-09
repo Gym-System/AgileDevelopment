@@ -1,7 +1,7 @@
 package EntityClass.DAO.impl;
 
-import EntityClass.DAO.UserDAO;
-import EntityClass.VO.User;
+import EntityClass.DAO.PreUserDAO;
+import EntityClass.VO.PremierUser;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
 
@@ -14,23 +14,22 @@ import java.util.Locale;
 
 import static EntityClass.DAO.impl.PersonDAOImpl.insertInfo;
 
-public class UserDAOImpl implements UserDAO {
-    private User user = null;
-    private String fileName = "user.csv";
-
+public class PreUserDAOImpl implements PreUserDAO {
+    PremierUser premierUser = null;
+    String fileName = "preUser.csv";
     // insert
     @Override
-    public Boolean insertUser(User user) {
-        return insertInfo(fileName, user.toStrArray());
+    public Boolean insertPreUser(PremierUser premierUser) {
+        return insertInfo(fileName, premierUser.toStrArray());
     }
 
     // delete
     @Override
-    public Boolean deleteUser(String userName) {
+    public Boolean deletePreUser(String userName) {
         boolean flag = false;
         File inFile = new File(fileName);
         try {
-            String[] record = null;
+            String[] record;
             ArrayList<String[]> records = new ArrayList<>();
             BufferedReader reader = new BufferedReader(new FileReader(inFile));
             CsvReader csvReader = new CsvReader(reader, ',');
@@ -52,10 +51,10 @@ public class UserDAOImpl implements UserDAO {
 
     // update
     @Override
-    public User changeUserPassword(String userName, String password) {
+    public PremierUser changePreUserPassword(String userName, String password) {
         File inFile = new File(fileName);
         try {
-            String[] record = null;
+            String[] record;
             ArrayList<String[]> records = new ArrayList<>();
             BufferedReader reader = new BufferedReader(new FileReader(inFile));
             CsvReader csvReader = new CsvReader(reader, ',');
@@ -63,24 +62,25 @@ public class UserDAOImpl implements UserDAO {
                 record = csvReader.getRawRecord().split(",");
                 if(userName.equals(record[0])) {
                     record[1] = password;
-                    user = new User(record[0], record[1], record[2], record[3], record[4],
+                    premierUser = new PremierUser(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            Double.parseDouble(record[6]));
+                            Double.parseDouble(record[6]), Integer.parseInt(record[7]));
                 }
                 records.add(record);
             }
+            csvReader.close();
             PersonDAOImpl.recordToCsv(records, fileName);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return user;
+        return premierUser;
     }
 
     @Override
-    public User changeUserEmail(String userName, String email) {
+    public PremierUser changePreUserEmail(String userName, String email) {
         File inFile = new File(fileName);
         try {
-            String[] record = null;
+            String[] record;
             ArrayList<String[]> records = new ArrayList<>();
             BufferedReader reader = new BufferedReader(new FileReader(inFile));
             CsvReader csvReader = new CsvReader(reader, ',');
@@ -88,24 +88,25 @@ public class UserDAOImpl implements UserDAO {
                 record = csvReader.getRawRecord().split(",");
                 if(userName.equals(record[0])) {
                     record[2] = email;
-                    user = new User(record[0], record[1], record[2], record[3], record[4],
+                    premierUser = new PremierUser(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            Double.parseDouble(record[6]));
+                            Double.parseDouble(record[6]), Integer.parseInt(record[7]));
                 }
                 records.add(record);
             }
+            csvReader.close();
             PersonDAOImpl.recordToCsv(records, fileName);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return user;
+        return premierUser;
     }
 
     @Override
-    public User changeUserTeleNo(String userName, String teleNo) {
+    public PremierUser changePreUserTeleNo(String userName, String teleNo) {
         File inFile = new File(fileName);
         try {
-            String[] record = null;
+            String[] record;
             ArrayList<String[]> records = new ArrayList<>();
             BufferedReader reader = new BufferedReader(new FileReader(inFile));
             CsvReader csvReader = new CsvReader(reader, ',');
@@ -113,24 +114,25 @@ public class UserDAOImpl implements UserDAO {
                 record = csvReader.getRawRecord().split(",");
                 if(userName.equals(record[0])) {
                     record[4] = teleNo;
-                    user = new User(record[0], record[1], record[2], record[3], record[4],
+                    premierUser = new PremierUser(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            Double.parseDouble(record[6]));
+                            Double.parseDouble(record[6]), Integer.parseInt(record[7]));
                 }
                 records.add(record);
             }
+            csvReader.close();
             PersonDAOImpl.recordToCsv(records, fileName);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return user;
+        return premierUser;
     }
 
     @Override
-    public User changeUserBalance(String userName, Double balance) {
+    public PremierUser changePreUserBalance(String userName, Double balance) {
         File inFile = new File(fileName);
         try {
-            String[] record = null;
+            String[] record;
             ArrayList<String[]> records = new ArrayList<>();
             BufferedReader reader = new BufferedReader(new FileReader(inFile));
             CsvReader csvReader = new CsvReader(reader, ',');
@@ -138,22 +140,49 @@ public class UserDAOImpl implements UserDAO {
                 record = csvReader.getRawRecord().split(",");
                 if(userName.equals(record[0])) {
                     record[6] = balance.toString();
-                    user = new User(record[0], record[1], record[2], record[3], record[4],
+                    premierUser = new PremierUser(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            Double.parseDouble(record[6]));
+                            Double.parseDouble(record[6]), Integer.parseInt(record[7]));
                 }
                 records.add(record);
             }
+            csvReader.close();
             PersonDAOImpl.recordToCsv(records, fileName);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return user;
+        return premierUser;
+    }
+
+    @Override
+    public PremierUser changePreUserType(String userName, int userType) {
+        File inFile = new File(fileName);
+        try {
+            String[] record;
+            ArrayList<String[]> records = new ArrayList<>();
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getRawRecord().split(",");
+                if(userName.equals(record[0])) {
+                    record[7] = String.valueOf(userType);
+                    premierUser = new PremierUser(record[0], record[1], record[2], record[3], record[4],
+                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                            Double.parseDouble(record[6]), Integer.parseInt(record[7]));
+                }
+                records.add(record);
+            }
+            csvReader.close();
+            PersonDAOImpl.recordToCsv(records, fileName);
+        } catch (IOException | ParseException ex) {
+            ex.printStackTrace();
+        }
+        return premierUser;
     }
 
     // select
     @Override
-    public User queryByUserName(String userName) {
+    public PremierUser queryByUserName(String userName) {
         File inFile = new File(fileName);
         try {
             String[] record;
@@ -162,15 +191,15 @@ public class UserDAOImpl implements UserDAO {
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
                 if(userName.equals(record[0])) {
-                    user = new User(record[0], record[1], record[2], record[3], record[4],
+                    premierUser = new PremierUser(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            Double.parseDouble(record[6]));
+                            Double.parseDouble(record[6]), Integer.parseInt(record[7]));
                 }
             }
             csvReader.close();
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return user;
+        return premierUser;
     }
 }
