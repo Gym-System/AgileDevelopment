@@ -33,6 +33,9 @@ public class manageTrainerController {
     private Label id3_mt;
 
     @FXML
+    private Label add_id_mt;
+
+    @FXML
     private Button button_delete_mt;
 
     @FXML
@@ -240,6 +243,11 @@ public class manageTrainerController {
     }
 
     @FXML
+    void click_add_id_mt(ActionEvent event) {
+
+    }
+
+    @FXML
     void click_find_mt(ActionEvent event) {
 
     }
@@ -265,6 +273,7 @@ public class manageTrainerController {
         assert regu_mt != null : "fx:id=\"regu_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
         assert text_find_mt != null : "fx:id=\"text_find_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
         assert id3_mt != null : "fx:id=\"id3_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
+        assert add_id_mt != null : "fx:id=\"add_id_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
         assert button_delete_mt != null : "fx:id=\"button_delete_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
         assert trainer_hyplink_mt != null : "fx:id=\"trainer_hyplink_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
         assert add_email_mt != null : "fx:id=\"add_email_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
