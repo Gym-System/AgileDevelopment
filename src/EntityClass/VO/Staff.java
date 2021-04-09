@@ -25,7 +25,7 @@ public class Staff extends Person {
     @Override
     public String[] toStrArray() {
         String text = "" + super.getUserName() + "," + super.getPassword() + "," + super.getEmail() + "," + super.getGender() + "," +
-                super.getTelNo() + "," + getDoB()  + "," + companyName;
+                super.getTelNo() + "," + super.getDoB()  + "," + companyName;
         return text.split(",");
     }
 

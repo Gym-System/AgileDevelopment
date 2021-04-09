@@ -1,26 +1,10 @@
 package ControlClass;
 
-import EntityClass.DAO.PersonDAO;
-import EntityClass.DAO.StaffDAO;
-import EntityClass.DAO.UserDAO;
-import EntityClass.DAO.impl.PersonDAOImpl;
-import EntityClass.DAO.impl.PreUserDAOImpl;
-import EntityClass.DAO.impl.StaffDAOImpl;
-import EntityClass.DAO.impl.UserDAOImpl;
+import EntityClass.DAO.impl.*;
 import EntityClass.VO.*;
-import com.csvreader.CsvReader;
-import com.csvreader.CsvWriter;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Locale;
 
 public class Test {
     public static void main(String[] args) {
@@ -63,7 +47,6 @@ public class Test {
             e.printStackTrace();
         }
         System.out.println(premierUser);
-        */
 
         Staff staff = null;
         try {
@@ -78,8 +61,8 @@ public class Test {
             e.printStackTrace();
         }
         System.out.println(staff);
+        */
 
-        /*
         Trainer trainer = null;
         try {
             trainer = new Trainer("kaiyi",
@@ -94,6 +77,7 @@ public class Test {
         }
         System.out.println(trainer);
 
+        /*
         Manager manager = null;
         try {
             manager = new Manager("kaiyi",
@@ -244,5 +228,47 @@ public class Test {
         Staff staff1 = staffDAO.queryByUserName("kaiyi");
         System.out.println(staff1);
         */
+
+        TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
+
+        Boolean flag = trainerDAO.insertTrainer(trainer);
+        System.out.println(flag);
+
+        Trainer trainer1 = trainerDAO.changeTrainerPassword("kaiyi", "1234");
+        System.out.println(trainer1);
+
+        trainer1 = trainerDAO.changeTrainerEmail("kaiyi", "z.kaiyi@se18.qmul.ac.uk");
+        System.out.println(trainer1);
+
+        trainer1 = trainerDAO.changeTrainerTeleNo("kaiyi", "18910421646");
+        System.out.println(trainer1);
+
+        trainer1 = trainerDAO.changeTrainSalary("kaiyi", 10000.0);
+        System.out.println(trainer1);
+
+        /*
+        TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
+
+        Boolean flag = trainerDAO.insertTrainer(trainer);
+        System.out.println(flag);
+
+        Boolean flag = trainerDAO.deleteTrainer("kaiyi");
+        System.out.println(flag);
+
+        Trainer trainer1 = trainerDAO.changeTrainerPassword("kaiyi", "1234");
+        System.out.println(trainer1);
+
+        trainer1 = trainerDAO.changeTrainerEmail("kaiyi", "z.kaiyi@se18.qmul.ac.uk");
+        System.out.println(trainer1);
+
+        trainer1 = trainerDAO.changeTrainerTeleNo("kaiyi", "18910421646");
+        System.out.println(trainer1);
+
+        trainer1 = trainerDAO.changeTrainSalary("kaiyi", 10000.0);
+        System.out.println(trainer1);
+
+        trainer1 = trainerDAO.queryByUserName("kaiyi");
+        System.out.println(trainer1);
+         */
     }
 }
