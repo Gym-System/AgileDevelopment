@@ -1,6 +1,9 @@
 package ControlClass;
 
+import EntityClass.DAO.PersonDAO;
+import EntityClass.DAO.UserDAO;
 import EntityClass.DAO.impl.PersonDAOImpl;
+import EntityClass.DAO.impl.UserDAOImpl;
 import EntityClass.VO.*;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
@@ -18,6 +21,7 @@ import java.util.Locale;
 
 public class Test {
     public static void main(String[] args) {
+        /*
         Person person = null;
         try {
             person = new Person("kaiyi",
@@ -30,8 +34,8 @@ public class Test {
             e.printStackTrace();
         }
         System.out.println(person);
+        */
 
-        /*
         User user = null;
         try {
             user = new User("kaiyi",
@@ -45,6 +49,7 @@ public class Test {
         }
         System.out.println(user);
 
+        /*
         Staff staff = null;
         try {
             staff = new Staff("kaiyi",
@@ -138,15 +143,7 @@ public class Test {
         }
         System.out.println(recVideo);
         */
-
-        PersonDAOImpl personDAO = new PersonDAOImpl();
-
-        Person person1 = personDAO.changePersonEmail("kaiyi", "z.kaiyi@se18.qmul.ac.uk");
-        System.out.println(person1);
-
-        Person person2 = personDAO.changePersonTeleNo("kaiyi", "18910421646");
-        System.out.println(person2);
-
+        PersonDAO personDAO = new PersonDAOImpl();
         /*
         Boolean flag = personDAO.insertPerson(person);
         System.out.println(flag);
@@ -157,8 +154,39 @@ public class Test {
         Person person1 = personDAO.changePersonPassword("kaiyi", "1234");
         System.out.println(person1);
 
+        Person person1 = personDAO.changePersonEmail("kaiyi", "z.kaiyi@se18.qmul.ac.uk");
+        System.out.println(person1);
+
+        Person person2 = personDAO.changePersonTeleNo("kaiyi", "18910421646");
+        System.out.println(person2);
+
         Person person1 = personDAO.queryByUserName("kaiyi");
         System.out.println(person1);
+         */
+
+        /*
+        UserDAOImpl userDAO = new UserDAOImpl();
+
+        Boolean flag = userDAO.insertUser(user);
+        System.out.println(flag);
+
+        Boolean flag = userDAO.deleteUser("kaiyi");
+        System.out.println(flag);
+
+        User user1 = userDAO.changeUserPassword("kaiyi", "1234");
+        System.out.println(user1);
+
+        user1 = userDAO.changeUserEmail("kaiyi", "z.kaiyi@se18.qmul.ac.uk");
+        System.out.println(user1);
+
+        user1 = userDAO.changeUserTeleNo("kaiyi", "18910421646");
+        System.out.println(user1);
+
+        user1 = userDAO.changeUserBalance("kaiyi", 100.00);
+        System.out.println(user1);
+
+        user1 = userDAO.queryByUserName("kaiyi");
+        System.out.println(user1);
          */
     }
 }
