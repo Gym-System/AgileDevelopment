@@ -62,7 +62,7 @@
                         </Hyperlink>
                         <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
                            <image>
-                              <Image url="@../resource/login.png" />
+                              <Image url="@../resource/manager_Profile.png" />
                            </image>
                         </ImageView>
                         <Hyperlink fx:id="out_hyplink_mt" onMouseClicked="#click_out_hyplink_mt" text="Log Out" GridPane.columnIndex="1" GridPane.rowIndex="7">
@@ -70,6 +70,31 @@
                               <Font name="Baskerville Old Face" size="36.0" />
                            </font>
                         </Hyperlink>
+                        <ImageView fitHeight="60.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../resource/manager_User.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="60.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../resource/manager_Trainer.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="60.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
+                           <image>
+                              <Image url="@../resource/manager_Income.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="60.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
+                           <image>
+                              <Image url="@../resource/manager_Regulation.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="60.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="7">
+                           <image>
+                              <Image url="@../resource/manager_LogOut.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </GridPane>
                </children>
