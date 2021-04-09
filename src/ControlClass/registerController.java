@@ -1,11 +1,18 @@
 package ControlClass;
 
+import java.awt.*;
+import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-import javafx.event.ActionEvent;
+import EntityClass.VO.Person;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class registerController {
 
@@ -55,18 +62,35 @@ public class registerController {
     private Hyperlink haveaccount_register;
 
     @FXML
-    void register_button_submit(ActionEvent event) {
+    void register_button_submit(MouseEvent event) {
+        String Flag = "True";
+
+        if (email_address.getText().matches("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$")){
+            System.out.println("Your email address pattern is correct");
+        } else {
+            System.out.println("Your email address pattern is wrong");
+        }
+        if (password_register.getText().matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$")){
+            System.out.println("Your password pattern is correct");
+        } else {
+            System.out.println("Your password pattern is wrong");
+        }
+        if (birthdate_register.getValue().isAfter(LocalDate.now())){
+            Flag = "False";
+            System.out.println(birthdate_register.getValue());
+        }
+//        Person person = new Person(name_register,confirmpassword_register,email_address,male_register,telephone_number,birthdate_register);
+    }
+
+    @FXML
+    void this_condition(MouseEvent event) {
 
     }
 
     @FXML
-    void this_condition(ActionEvent event) {
-
-    }
-
-    @FXML
-    void have_account(ActionEvent event) {
-
+    void have_account(MouseEvent event) throws IOException {
+        Stage stage = (Stage) haveaccount_register.getScene().getWindow();
+        new APP().jump(stage,"login");
     }
 
     @FXML
