@@ -78,9 +78,6 @@ public class loginController {
             }
 
         }
-
-
-
     }
 
     @FXML
@@ -95,7 +92,6 @@ public class loginController {
 
     @FXML
     public void getUsername(ActionEvent actionEvent) {
-
 
     }
 }

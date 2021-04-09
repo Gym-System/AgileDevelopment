@@ -26,28 +26,7 @@ public class PersonDAOImpl implements PersonDAO {
     // delete
     @Override
     public Boolean deletePerson(String userName) {
-        Boolean flag = false;
-        File inFile = new File(fileName);
-        try {
-            String[] record;
-            ArrayList<String[]> records = new ArrayList<>();
-            BufferedReader reader = new BufferedReader(new FileReader(inFile));
-            CsvReader csvReader = new CsvReader(reader, ',');
-            while(csvReader.readRecord()){
-                record = csvReader.getRawRecord().split(",");
-                if(userName.equals(record[0])) {
-                    continue;
-                }
-                assert records != null;
-                records.add(record);
-            }
-            csvReader.close();
-            PersonDAOImpl.recordToCsv(records, fileName);
-            flag = true;
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        return flag;
+        return deleteInfo(userName, fileName);
     }
 
     // update
@@ -172,5 +151,30 @@ public class PersonDAOImpl implements PersonDAO {
             csvWriter.writeRecord(iterator.next());
         }
         csvWriter.close();
+    }
+
+    static Boolean deleteInfo(String userName, String fileName) {
+        Boolean flag = false;
+        File inFile = new File(fileName);
+        try {
+            String[] record;
+            ArrayList<String[]> records = new ArrayList<>();
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getRawRecord().split(",");
+                if(userName.equals(record[0])) {
+                    continue;
+                }
+                assert records != null;
+                records.add(record);
+            }
+            csvReader.close();
+            recordToCsv(records, fileName);
+            flag = true;
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return flag;
     }
 }

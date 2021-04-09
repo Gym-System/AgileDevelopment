@@ -23,6 +23,13 @@ public class Staff extends Person {
     }
 
     @Override
+    public String[] toStrArray() {
+        String text = "" + super.getUserName() + "," + super.getPassword() + "," + super.getEmail() + "," + super.getGender() + "," +
+                super.getTelNo() + "," + getDoB()  + "," + companyName;
+        return text.split(",");
+    }
+
+    @Override
     public String toString() {
         return "Staff{" +
                 "companyName='" + companyName + '\'' +

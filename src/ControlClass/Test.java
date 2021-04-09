@@ -1,9 +1,11 @@
 package ControlClass;
 
 import EntityClass.DAO.PersonDAO;
+import EntityClass.DAO.StaffDAO;
 import EntityClass.DAO.UserDAO;
 import EntityClass.DAO.impl.PersonDAOImpl;
 import EntityClass.DAO.impl.PreUserDAOImpl;
+import EntityClass.DAO.impl.StaffDAOImpl;
 import EntityClass.DAO.impl.UserDAOImpl;
 import EntityClass.VO.*;
 import com.csvreader.CsvReader;
@@ -220,5 +222,27 @@ public class Test {
         premierUser1 = preUserDAO.changePreUserType("kaiyi", 1);
         System.out.println(premierUser1);
          */
+
+        /*
+        StaffDAO staffDAO = new StaffDAOImpl();
+
+        Boolean flag = staffDAO.insertStaff(staff);
+        System.out.println(flag);
+
+        Boolean flag = staffDAO.deleteStaff("kaiyi");
+        System.out.println(flag);
+
+        Staff staff1 = staffDAO.changeStaffPassword("kaiyi", "1234");
+        System.out.println(staff1);
+
+        Staff staff1 = staffDAO.changeStaffEmail("kaiyi", "z.kaiyi@se18.qmul.ac.uk");
+        System.out.println(staff1);
+
+        Staff staff1 = staffDAO.changeStaffTeleNo("kaiyi", "18910421646");
+        System.out.println(staff1);
+
+        Staff staff1 = staffDAO.queryByUserName("kaiyi");
+        System.out.println(staff1);
+        */
     }
 }

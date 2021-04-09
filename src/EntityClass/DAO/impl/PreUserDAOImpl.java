@@ -3,15 +3,14 @@ package EntityClass.DAO.impl;
 import EntityClass.DAO.PreUserDAO;
 import EntityClass.VO.PremierUser;
 import com.csvreader.CsvReader;
-import com.csvreader.CsvWriter;
 
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Locale;
 
+import static EntityClass.DAO.impl.PersonDAOImpl.deleteInfo;
 import static EntityClass.DAO.impl.PersonDAOImpl.insertInfo;
 
 public class PreUserDAOImpl implements PreUserDAO {
@@ -26,27 +25,7 @@ public class PreUserDAOImpl implements PreUserDAO {
     // delete
     @Override
     public Boolean deletePreUser(String userName) {
-        boolean flag = false;
-        File inFile = new File(fileName);
-        try {
-            String[] record;
-            ArrayList<String[]> records = new ArrayList<>();
-            BufferedReader reader = new BufferedReader(new FileReader(inFile));
-            CsvReader csvReader = new CsvReader(reader, ',');
-            while(csvReader.readRecord()){
-                record = csvReader.getRawRecord().split(",");
-                if(userName.equals(record[0])) {
-                    continue;
-                }
-                assert records != null;
-                records.add(record);
-            }
-            PersonDAOImpl.recordToCsv(records, fileName);
-            flag = true;
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        return flag;
+        return deleteInfo(userName, fileName);
     }
 
     // update
