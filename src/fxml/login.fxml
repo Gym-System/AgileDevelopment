@@ -19,7 +19,7 @@
             <Font name="Arial Rounded MT Bold" size="70.0" />
          </font>
       </Label>
-      <TextField fx:id="login_usename" layoutX="455.0" layoutY="203.0" opacity="0.7" prefHeight="55.0" prefWidth="296.0" text="User name" onAction="#getUsername">
+      <TextField fx:id="login_usename" layoutX="455.0" layoutY="203.0" opacity="0.7" prefHeight="55.0" prefWidth="296.0" text="User name">
          <font>
             <Font name="Arial Rounded MT Bold" size="25.0" />
          </font>
