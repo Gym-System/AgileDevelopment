@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import EntityClass.DAO.UserDAO;
+import EntityClass.DAO.impl.UserDAOImpl;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -57,6 +59,7 @@ public class loginController {
 
     @FXML
     void login_button_submit(ActionEvent event) throws IOException {
+        UserDAOImpl userDAO = new UserDAOImpl();
         if(login_usename.getText().equals("")){
             JOptionPane.showMessageDialog(null, "The username cannot be empty", "Username is null", JOptionPane.ERROR_MESSAGE);
         }
@@ -64,8 +67,8 @@ public class loginController {
             JOptionPane.showMessageDialog(null, "The password cannot be empty", "Password is null", JOptionPane.ERROR_MESSAGE);
         }
         else {
-            //True_password=function()  #get from Kaiyi Zhao
-            if(login_password.getText().equals("123456"))
+            String True_password= userDAO.queryByUserName(login_usename.getText()).getPassword(); //get from UserDAO
+            if(login_password.getText().equals(True_password))
             {
                 Stage stage = (Stage) login_button.getScene().getWindow();
                 new APP().jump(stage,"12");
