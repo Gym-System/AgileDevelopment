@@ -14,6 +14,8 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+
 public class loginController {
 
     @FXML
@@ -44,21 +46,36 @@ public class loginController {
     private TextField login_usename;
 
     @FXML
-    void forget_password_click(ActionEvent event) {
-
+    void forget_password_click(ActionEvent event){
     }
 
     @FXML
-    void no_account_click(ActionEvent event) {
-
+    void no_account_click(ActionEvent event) throws IOException{
+        Stage stage = (Stage) login_button.getScene().getWindow();
+        new APP().jump(stage,"register");
     }
 
     @FXML
     void login_button_submit(ActionEvent event) throws IOException {
-        System.out.println(login_usename.getText());
+        if(login_usename.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "The username cannot be empty", "Username is null", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(login_password.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "The password cannot be empty", "Password is null", JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            //True_password=function()  #get from Kaiyi Zhao
+            if(login_password.getText().equals("123456"))
+            {
+                Stage stage = (Stage) login_button.getScene().getWindow();
+                new APP().jump(stage,"12");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Please enter the correct password", "Password is wrong", JOptionPane.ERROR_MESSAGE);
+            }
 
-        Stage stage = (Stage) login_button.getScene().getWindow();
-        new APP().jump(stage,"12");
+        }
+
 
 
     }
