@@ -23,6 +23,9 @@ public class registerController {
     private URL location;
 
     @FXML
+    private Label username_label;
+
+    @FXML
     private TextField name_register;
 
     @FXML
