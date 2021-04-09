@@ -3,15 +3,21 @@ package ControlClass;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import EntityClass.DAO.impl.UserDAOImpl;
 import EntityClass.VO.Person;
+import EntityClass.VO.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class registerController {
@@ -65,24 +71,93 @@ public class registerController {
     private Hyperlink haveaccount_register;
 
     @FXML
-    void register_button_submit(MouseEvent event) {
+    private Label email_label;
+
+    @FXML
+    private Label gender_label;
+
+    @FXML
+    private Label confirm_label;
+
+    @FXML
+    private Label birth_label;
+
+    @FXML
+    private Label password_label;
+
+    @FXML
+    private Label TelNo_label;
+
+    @FXML
+    private Label userName_label;
+
+    @FXML
+    void register_button_submit(MouseEvent event) throws ParseException, IOException {
         String Flag = "True";
 
-        if (email_address.getText().matches("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$")){
-            System.out.println("Your email address pattern is correct");
-        } else {
-            System.out.println("Your email address pattern is wrong");
+        UserDAOImpl userDAO = new UserDAOImpl();
+
+        if (!(userDAO.queryByUserName(name_register.getText()) == null)){
+            new APP().jump((Stage) userName_label.getScene().getWindow(),"login");
         }
-        if (password_register.getText().matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$")){
-            System.out.println("Your password pattern is correct");
-        } else {
-            System.out.println("Your password pattern is wrong");
-        }
-        if (birthdate_register.getValue().isAfter(LocalDate.now())){
+        if (name_register.getText().equals("")) {
+            userName_label.setVisible(true);
             Flag = "False";
-            System.out.println(birthdate_register.getValue());
+        } else {
+            userName_label.setVisible(false);
         }
-//        Person person = new Person(name_register,confirmpassword_register,email_address,male_register,telephone_number,birthdate_register);
+        if (!email_address.getText().matches("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$") || email_address.getText().equals("")){
+            email_label.setVisible(true);
+
+            Flag = "False";
+        } else {
+            email_label.setVisible(false);
+        }
+        if (!(male_register.isSelected() || female_register.isSelected())){
+            gender_label.setVisible(true);
+        }else {
+            gender_label.setVisible(false);
+        }
+        if (!password_register.getText().matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$") || password_register.getText().equals("")) {
+        password_label.setVisible(true);
+        Flag = "False";
+        } else {
+            password_label.setVisible(false);
+        }
+        if(!password_register.getText().equals(confirmpassword_register.getText()) || confirmpassword_register.getText().equals("")){
+        confirm_label.setVisible(true);
+        Flag = "False";
+        } else {
+            confirm_label.setVisible(false);
+        }
+        if(birthdate_register.getValue() == null ) {
+        birth_label.setVisible(true);
+        Flag = "False";
+
+        } else {
+            if (!birthdate_register.getValue().isBefore(LocalDate.now())) {
+                birth_label.setVisible(true);
+                Flag = "False";
+            }else {
+                birth_label.setVisible(false);
+            }
+        }
+        if (!telephone_number.getText().matches("^(1[0-9])\\d{9}$") || telephone_number.getText().equals("")) {
+            TelNo_label.setVisible(true);
+            Flag = "False";
+        } else {
+            TelNo_label.setVisible(false);
+        }
+
+        if (Flag.equals("True")){
+            User user = new User(name_register.getText(),password_register.getText(),email_address.getText(),male_register.getText(),telephone_number.getText(),
+                    new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf(birthdate_register.getValue())));
+            userDAO.insertUser(user);
+            System.out.println("User is created");
+            new APP().jump((Stage) userName_label.getScene().getWindow(),"login");
+        }
+
+
     }
 
     @FXML
