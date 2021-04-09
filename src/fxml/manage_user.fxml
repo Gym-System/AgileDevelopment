@@ -39,32 +39,32 @@
                               <Rectangle2D />
                            </viewport>
                         </ImageView>
-                        <Hyperlink text="User" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Hyperlink fx:id="user_hyplink_mu" onInputMethodTextChanged="#click_user_hyplink_mu" onMouseClicked="#click_user_hyplink_mu" text="User" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="Baskerville Old Face" size="36.0" />
                            </font>
                         </Hyperlink>
-                        <Hyperlink text="Trainer" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Hyperlink fx:id="trainer_hyplink_mu" onMouseClicked="#click_trainer_hyplink_mu" text="Trainer" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font name="Baskerville Old Face" size="36.0" />
                            </font>
                         </Hyperlink>
-                        <Hyperlink text="Income" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Hyperlink fx:id="income_hyplink_mu" onMouseClicked="#click_income_hyplink_mu" text="Income" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
                               <Font name="Baskerville Old Face" size="36.0" />
                            </font>
                         </Hyperlink>
-                        <Hyperlink text="Regulation" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <Hyperlink fx:id="regu_mu" onMouseClicked="#click_regu_hyplink_mu" text="Regulation" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
                               <Font name="Baskerville Old Face" size="36.0" />
                            </font>
                         </Hyperlink>
                         <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
                            <image>
-                              <Image url="@../imgs/user_profile_default1.jpg" />
+                              <Image url="@../resource/login.png" />
                            </image>
                         </ImageView>
-                        <Hyperlink text="Log Out" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                        <Hyperlink fx:id="out_hyplink_mu" onMouseClicked="#click_out_hyplink_mu" text="Log Out" GridPane.columnIndex="1" GridPane.rowIndex="7">
                            <font>
                               <Font name="Baskerville Old Face" size="36.0" />
                            </font>
@@ -75,18 +75,99 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TableView layoutX="66.0" layoutY="148.0" prefHeight="401.0" prefWidth="901.0">
-                    <columns>
-                      <TableColumn prefWidth="94.0" />
-                      <TableColumn minWidth="0.0" prefWidth="241.0" text="User name" />
-                        <TableColumn minWidth="0.0" prefWidth="295.0" text="Email address" />
-                        <TableColumn prefWidth="341.0" text="Password" />
-                    </columns>
-                  </TableView>
-                  <TextField layoutX="60.0" layoutY="53.0" prefHeight="56.0" prefWidth="332.0" />
-                  <Button layoutX="392.0" layoutY="53.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="89.0" text="Find" />
-                  <Button layoutX="576.0" layoutY="53.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="110.0" text="Edit" />
-                  <Button layoutX="750.0" layoutY="53.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="110.0" text="Save" />
+                  <GridPane layoutX="60.0" layoutY="147.0" prefHeight="424.0" prefWidth="870.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" prefWidth="1.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="130.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label fx:id="name_mu" text="User name" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="email_mu" text="Email address" GridPane.columnIndex="2">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="password_mu" text="Password" GridPane.columnIndex="3">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <CheckBox fx:id="box1_mu" mnemonicParsing="false" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="60.0" />
+                           </GridPane.margin>
+                        </CheckBox>
+                        <Label fx:id="name1_mu" onMouseClicked="#click_name1_mu" text="Lemon" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="email1_mu" onMouseClicked="#click_email1_mu" text="L.hh@111.com" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Label fx:id="password1_mu" onMouseClicked="#click_password1_mu" text="Lgreat666" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <CheckBox fx:id="box2_mu" mnemonicParsing="false" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="60.0" />
+                           </GridPane.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="box3_mu" mnemonicParsing="false" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets left="60.0" />
+                           </GridPane.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="box4_mu" mnemonicParsing="false" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets left="60.0" />
+                           </GridPane.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="box5_mu" mnemonicParsing="false" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets left="60.0" />
+                           </GridPane.margin>
+                        </CheckBox>
+                        <Label fx:id="name2_mu" onMouseClicked="#click_name2_mu" text="Holly" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="email2_mu" onMouseClicked="#click_email2_mu" text="HHHSim@3.com" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Label fx:id="name3_mu" onMouseClicked="#click_name3_mu" text="Sara" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="name4_mu" onMouseClicked="#click_name4_mu" text="Linc" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="name5_mu" onMouseClicked="#click_name5_mu" text="Micaul" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label fx:id="email3_mu" onMouseClicked="#click_email3_mu" text="hello@67.com" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <Label fx:id="email4_mu" onMouseClicked="#click_email4_mu" text="Lunu@12.com" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <Label fx:id="email5_mu" onMouseClicked="#click_email5_mu" text="Mixisn@de.com" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                        <Label fx:id="password2_mu" onMouseClicked="#click_password2_mu" text="Hnew88on" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <Label fx:id="password3_mu" onMouseClicked="#click_password3_mu" text="Hvtb77h" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                        <Label fx:id="password4_mu" onMouseClicked="#click_password4_mu" text="VGH6uj" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                        <Label fx:id="password5_mu" onMouseClicked="#click_password5_mu" text="Min37cA" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                     </children>
+                  </GridPane>
+                  <TextField fx:id="text_find_mu" layoutX="60.0" layoutY="53.0" prefHeight="56.0" prefWidth="332.0" />
+                  <Button fx:id="button_find_mu" layoutX="392.0" layoutY="53.0" mnemonicParsing="false" onMouseClicked="#click_find_mu" prefHeight="56.0" prefWidth="89.0" text="Find" />
+                  <Button fx:id="button_edit_mu" layoutX="576.0" layoutY="53.0" mnemonicParsing="false" onMouseClicked="#click_edit_mu" prefHeight="56.0" prefWidth="110.0" text="Edit" />
+                  <Button fx:id="button_delete_mu" layoutX="750.0" layoutY="53.0" mnemonicParsing="false" onMouseClicked="#click_delete_mu" prefHeight="56.0" prefWidth="110.0" text="Delete" />
+                  <Pagination fx:id="turn_page" layoutX="388.0" layoutY="601.0" maxPageIndicatorCount="7" onMouseClicked="#click_turn_page" pageCount="100" prefHeight="100.0" prefWidth="660.0" />
+                  <Separator layoutX="100.0" layoutY="220.0" prefHeight="0.0" prefWidth="800.0" />
+                  <Separator layoutX="100.0" layoutY="290.0" prefHeight="0.0" prefWidth="800.0" />
+                  <Separator layoutX="100.0" layoutY="360.0" prefHeight="0.0" prefWidth="800.0" />
+                  <Separator layoutX="100.0" layoutY="430.0" prefHeight="0.0" prefWidth="800.0" />
+                  <Separator layoutX="100.0" layoutY="500.0" prefHeight="0.0" prefWidth="800.0" />
+                  <Separator layoutX="100.0" layoutY="570.0" prefHeight="0.0" prefWidth="800.0" />
                </children></AnchorPane>
         </items>
       </SplitPane>
