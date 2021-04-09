@@ -13,12 +13,23 @@ public class User extends Person {
         super(userName, password, email, gender, telNo, doB);
     }
 
+    public User(String userName, String password, String email, String gender, String telNo, Date doB, double balance) {
+        super(userName, password, email, gender, telNo, doB);
+        this.balance = balance;
+    }
+
     public double getBalance() {
         return balance;
     }
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public String[] toStrArray() {
+        String text = "" + super.getUserName() + "," + super.getPassword() + "," + super.getEmail() + "," +
+                super.getGender() + "," + super.getTelNo() + "," + super.getDoB() + "," + balance;
+        return text.split(",");
     }
 
     @Override
