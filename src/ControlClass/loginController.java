@@ -3,15 +3,10 @@ package ControlClass;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
 public class loginController {
 
@@ -65,8 +60,9 @@ public class loginController {
         assert forget_password != null : "fx:id=\"forget_password\" was not injected: check your FXML file 'login.fxml'.";
         assert login_button != null : "fx:id=\"login_button\" was not injected: check your FXML file 'login.fxml'.";
         assert login_password != null : "fx:id=\"login_password\" was not injected: check your FXML file 'login.fxml'.";
+        assert user_image != null : "fx:id=\"user_image\" was not injected: check your FXML file 'login.fxml'.";
+        assert lock_image != null : "fx:id=\"lock_image\" was not injected: check your FXML file 'login.fxml'.";
         assert login_usename != null : "fx:id=\"login_usename\" was not injected: check your FXML file 'login.fxml'.";
 
     }
-
 }

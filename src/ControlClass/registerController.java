@@ -43,7 +43,7 @@ public class registerController {
     private DatePicker birthdate_register;
 
     @FXML
-    private TextField name_register11;
+    private TextField email_address;
 
     @FXML
     private RadioButton male_register;
@@ -56,9 +56,17 @@ public class registerController {
 
     @FXML
     void register_button_submit(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("Complete registration!");
-        alert.show();
+
+    }
+
+    @FXML
+    void this_condition(ActionEvent event) {
+
+    }
+
+    @FXML
+    void have_account(ActionEvent event) {
+
     }
 
     @FXML
@@ -72,7 +80,7 @@ public class registerController {
         assert female_register != null : "fx:id=\"female_register\" was not injected: check your FXML file 'register.fxml'.";
         assert register_button != null : "fx:id=\"register_button\" was not injected: check your FXML file 'register.fxml'.";
         assert birthdate_register != null : "fx:id=\"birthdate_register\" was not injected: check your FXML file 'register.fxml'.";
-        assert name_register11 != null : "fx:id=\"name_register11\" was not injected: check your FXML file 'register.fxml'.";
+        assert email_address != null : "fx:id=\"email_address\" was not injected: check your FXML file 'register.fxml'.";
         assert male_register != null : "fx:id=\"male_register\" was not injected: check your FXML file 'register.fxml'.";
         assert accept_register != null : "fx:id=\"accept_register\" was not injected: check your FXML file 'register.fxml'.";
         assert haveaccount_register != null : "fx:id=\"haveaccount_register\" was not injected: check your FXML file 'register.fxml'.";
