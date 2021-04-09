@@ -92,6 +92,9 @@ public class registerController {
     private Label userName_label;
 
     @FXML
+    private Label accept_label;
+
+    @FXML
     void register_button_submit(MouseEvent event) throws ParseException, IOException {
         String Flag = "True";
 
@@ -147,6 +150,11 @@ public class registerController {
             Flag = "False";
         } else {
             TelNo_label.setVisible(false);
+        }
+        if (!accept_register.isSelected()){
+            accept_label.setVisible(true);
+        } else {
+            accept_label.setVisible(false);
         }
 
         if (Flag.equals("True")){

@@ -77,5 +77,6 @@
       <Label fx:id="gender_label" layoutX="314.0" layoutY="370.0" prefHeight="20.0" prefWidth="329.0" text="You should choose your gender" textFill="#f50535" visible="false" />
       <Label fx:id="email_label" layoutX="813.0" layoutY="255.0" prefHeight="20.0" prefWidth="342.0" text="Pattern should be: xxxxx@xxxx.xxx" textFill="#f50535" visible="false" />
       <Label fx:id="userName_label" layoutX="308.0" layoutY="255.0" prefHeight="20.0" prefWidth="342.0" text="Username shouldn't be null" textFill="#f50535" visible="false" />
+      <Label fx:id="accept_label" layoutX="791.0" layoutY="614.0" prefHeight="20.0" prefWidth="342.0" text="You choose 'I accept'" textFill="#f50535" visible="false" />
    </children>
 </AnchorPane>
