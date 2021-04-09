@@ -8,9 +8,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="807.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControlClass.registerController">
+<AnchorPane fx:id="telNo_label" prefHeight="807.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControlClass.registerController">
    <children>
-      <Label alignment="CENTER" prefHeight="145.0" prefWidth="1350.0" text="REGISTER">
+      <Label fx:id="username_label" alignment="CENTER" prefHeight="145.0" prefWidth="1350.0" text="REGISTER">
          <font>
             <Font name="Arial Rounded MT Bold" size="70.0" />
          </font>
@@ -70,5 +70,13 @@
       <Hyperlink fx:id="condition_register" layoutX="926.0" layoutY="584.0" onMouseClicked="#this_condition" text="this" underline="true" />
       <Hyperlink fx:id="haveaccount_register" layoutX="280.0" layoutY="663.0" onMouseClicked="#have_account" text="Already have an account?" />
       <Label layoutX="987.0" layoutY="584.0" text="condition." />
+      <Label fx:id="password_label" layoutX="813.0" layoutY="380.0" prefHeight="41.0" prefWidth="409.0" text="Passwords should be at least an 8-digit combination&#10;of uppercase and lowercase letters and numbers" textFill="#f50535" visible="false" />
+      <Label fx:id="confirm_label" layoutX="813.0" layoutY="505.0" prefHeight="41.0" prefWidth="342.0" text="Confirm password should be same as Password&#10;and obey pattern" textFill="#f50535" visible="false" />
+      <Label fx:id="birth_label" layoutX="307.0" layoutY="505.0" prefHeight="20.0" prefWidth="329.0" text="Your birth date should be earlier than today" textFill="#f50535" visible="false" />
+      <Label fx:id="TelNo_label" layoutX="307.0" layoutY="630.0" prefHeight="20.0" prefWidth="329.0" text="TeloNO pattern:11 digits begin with 1" textFill="#f50535" visible="false" />
+      <Label fx:id="gender_label" layoutX="314.0" layoutY="370.0" prefHeight="20.0" prefWidth="329.0" text="You should choose your gender" textFill="#f50535" visible="false" />
+      <Label fx:id="email_label" layoutX="813.0" layoutY="255.0" prefHeight="20.0" prefWidth="342.0" text="Pattern should be: xxxxx@xxxx.xxx" textFill="#f50535" visible="false" />
+      <Label fx:id="userName_label" layoutX="308.0" layoutY="255.0" prefHeight="20.0" prefWidth="342.0" text="Username shouldn't be null" textFill="#f50535" visible="false" />
+      <Label fx:id="accept_label" layoutX="791.0" layoutY="614.0" prefHeight="20.0" prefWidth="342.0" text="You choose 'I accept'" textFill="#f50535" visible="false" />
    </children>
 </AnchorPane>
