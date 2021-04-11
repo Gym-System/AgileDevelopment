@@ -17,7 +17,7 @@ import static EntityClass.DAO.impl.PersonDAOImpl.*;
 
 public class StaffDAOImpl implements StaffDAO {
     private Staff staff = null;
-    private String fileName = "staff.csv";
+    private final String fileName = "staff.csv";
 
     // insert
     @Override

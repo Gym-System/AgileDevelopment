@@ -5,15 +5,15 @@ public class PhyData {
     private double height;
     private double weight;
     private int experience;
-    private String major;
+    private String interest;
     private double BFR;
 
-    public PhyData(String userName, double height, double weight, int experience, String major, double BFR) {
+    public PhyData(String userName, double height, double weight, int experience, String interest, double BFR) {
         this.userName = userName;
         this.height = height;
         this.weight = weight;
         this.experience = experience;
-        this.major = major;
+        this.interest = interest;
         this.BFR = BFR;
     }
 
@@ -45,12 +45,12 @@ public class PhyData {
         this.experience = experience;
     }
 
-    public String getMajor() {
-        return major;
+    public String getInterest() {
+        return interest;
     }
 
-    public void setMajor(String major) {
-        this.major = major;
+    public void setInterest(String interest) {
+        this.interest = interest;
     }
 
     public double getBFR() {
@@ -61,6 +61,12 @@ public class PhyData {
         this.BFR = BFR;
     }
 
+    public String[] toStrArray() {
+        String text = "" + userName + "," + height + "," + weight + "," + experience + "," +
+                interest + "," + BFR;
+        return text.split(",");
+    }
+
     @Override
     public String toString() {
         return "PhyData{" +
@@ -68,7 +74,7 @@ public class PhyData {
                 ", height=" + height +
                 ", weight=" + weight +
                 ", experience=" + experience +
-                ", major='" + major + '\'' +
+                ", major='" + interest + '\'' +
                 ", BFR=" + BFR +
                 '}';
     }

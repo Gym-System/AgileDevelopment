@@ -21,7 +21,7 @@ import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
 
 public class LiveSessionDAOImpl implements LiveSessionDAO {
     private LiveSession liveSession;
-    private String fileName = "liveSession.csv";
+    private final String fileName = "liveSession.csv";
 
     // insert
     @Override

@@ -18,7 +18,7 @@ import static EntityClass.DAO.impl.PersonDAOImpl.*;
 
 public class TrainerDAOImpl implements TrainerDAO {
     private Trainer trainer = null;
-    private String fileName = "trainer.csv";
+    private final String fileName = "trainer.csv";
 
     @Override
     public Boolean insertTrainer(Trainer trainer) {

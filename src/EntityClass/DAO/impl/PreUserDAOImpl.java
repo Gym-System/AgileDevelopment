@@ -15,7 +15,7 @@ import static EntityClass.DAO.impl.PersonDAOImpl.insertInfo;
 
 public class PreUserDAOImpl implements PreUserDAO {
     PremierUser premierUser = null;
-    String fileName = "preUser.csv";
+    final String fileName = "preUser.csv";
     // insert
     @Override
     public Boolean insertPreUser(PremierUser premierUser) {

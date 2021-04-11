@@ -19,7 +19,7 @@ import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
 
 public class RecVideoDAOImpl implements RecVideoDAO {
     private RecVideo recVideo = null;
-    private String fileName = "recVideo.csv";
+    private final String fileName = "recVideo.csv";
 
     // insert
     @Override

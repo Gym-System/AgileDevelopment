@@ -15,7 +15,7 @@ import java.util.Locale;
 
 public class PersonDAOImpl implements PersonDAO {
     private Person person = null;
-    private String fileName = "person.csv";
+    private final String fileName = "person.csv";
 
     // insert
     @Override

@@ -15,7 +15,7 @@ import static EntityClass.DAO.impl.PersonDAOImpl.insertInfo;
 
 public class UserDAOImpl implements UserDAO {
     private User user = null;
-    private String fileName = "user.csv";
+    private final String fileName = "user.csv";
 
     // insert
     @Override

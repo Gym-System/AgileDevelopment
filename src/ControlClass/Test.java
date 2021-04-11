@@ -4,10 +4,6 @@ import EntityClass.DAO.impl.*;
 import EntityClass.VO.*;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
 
 public class Test {
     public static void main(String[] args) throws ParseException {
@@ -92,16 +88,6 @@ public class Test {
             e.printStackTrace();
         }
         System.out.println(manager);
-        */
-
-        /*
-        PhyData phyData = new PhyData("kaiyi",
-                    186.0,
-                    83.4,
-                    3,
-                    "Strength",
-                    20.0);
-        System.out.println(phyData);
 
         Course course = new Course("Strength", "live", 30.0);
         System.out.println(course);
@@ -130,6 +116,14 @@ public class Test {
         }
         System.out.println(liveSession);
         */
+
+        PhyData phyData = new PhyData("kaiyi",
+                186.0,
+                83.4,
+                3,
+                "Strength",
+                20.0);
+        System.out.println(phyData);
 
         /*
         PersonDAO personDAO = new PersonDAOImpl();
@@ -358,5 +352,33 @@ public class Test {
             System.out.println(liveSession1);
         }
         */
+
+        /*
+        PhyDataDAOImpl phyDataDAO= new PhyDataDAOImpl();
+
+        Boolean flag = phyDataDAO.insertPhyData(phyData);
+        System.out.println(flag);
+
+        flag = phyDataDAO.deletePhyData(phyData.getUserName());
+        System.out.println(flag);
+
+        PhyData phyData1 = phyDataDAO.changePhyDataHeight(phyData.getUserName(), 190.0);
+        System.out.println(phyData1);
+
+        phyData1 = phyDataDAO.changePhyDataWeight(phyData.getUserName(), 80.0);
+        System.out.println(phyData1);
+
+        phyData1 = phyDataDAO.changePhyDataExperience(phyData.getUserName(), 5);
+        System.out.println(phyData1);
+
+        phyData1 = phyDataDAO.changePhyDataInterest(phyData.getUserName(), "Boxing");
+        System.out.println(phyData1);
+
+        phyData1 = phyDataDAO.changePhyDataBFR(phyData.getUserName(), 18.0);
+        System.out.println(phyData1);
+
+        phyData1 = phyDataDAO.queryByUserName(phyData.getUserName());
+        System.out.println(phyData1);
+         */
     }
 }

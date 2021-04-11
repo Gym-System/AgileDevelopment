@@ -15,7 +15,7 @@ import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
 
 public class CourseDAOImpl implements CourseDAO {
     private Course course = null;
-    private String fileName = "course.csv";
+    private final String fileName = "course.csv";
 
     // insert
     @Override
