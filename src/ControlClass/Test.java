@@ -61,7 +61,6 @@ public class Test {
             e.printStackTrace();
         }
         System.out.println(staff);
-        */
 
         Trainer trainer = null;
         try {
@@ -76,8 +75,9 @@ public class Test {
             e.printStackTrace();
         }
         System.out.println(trainer);
+        */
 
-        /*
+
         Manager manager = null;
         try {
             manager = new Manager("kaiyi",
@@ -91,7 +91,7 @@ public class Test {
             e.printStackTrace();
         }
         System.out.println(manager);
-        */
+
 
         /*
         PhyData phyData = new PhyData("kaiyi",
@@ -229,23 +229,6 @@ public class Test {
         System.out.println(staff1);
         */
 
-        TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
-
-        Boolean flag = trainerDAO.insertTrainer(trainer);
-        System.out.println(flag);
-
-        Trainer trainer1 = trainerDAO.changeTrainerPassword("kaiyi", "1234");
-        System.out.println(trainer1);
-
-        trainer1 = trainerDAO.changeTrainerEmail("kaiyi", "z.kaiyi@se18.qmul.ac.uk");
-        System.out.println(trainer1);
-
-        trainer1 = trainerDAO.changeTrainerTeleNo("kaiyi", "18910421646");
-        System.out.println(trainer1);
-
-        trainer1 = trainerDAO.changeTrainSalary("kaiyi", 10000.0);
-        System.out.println(trainer1);
-
         /*
         TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
 
@@ -269,6 +252,31 @@ public class Test {
 
         trainer1 = trainerDAO.queryByUserName("kaiyi");
         System.out.println(trainer1);
+         */
+
+        /*
+        ManagerDAOImpl managerDAO = new ManagerDAOImpl();
+
+        Boolean flag = managerDAO.insertManager(manager);
+        System.out.println(flag);
+
+        Boolean flag = managerDAO.deleteManager("kaiyi");
+        System.out.println(flag);
+
+        Manager manager1 = managerDAO.changeManagerPassword("kaiyi", "1234");
+        System.out.println(manager1);
+
+        manager1 = managerDAO.changeManagerEmail("kaiyi", "z.kaiyi@se18.qmul.ac.uk");
+        System.out.println(manager1);
+
+        manager1 = managerDAO.changeManagerTeleNo("kaiyi", "18910421646");
+        System.out.println(manager1);
+
+        manager1 = managerDAO.changeManagerType("kaiyi", 1);
+        System.out.println(manager1);
+
+        manager1 = managerDAO.queryByUserName("kaiyi");
+        System.out.println(manager1);
          */
     }
 }
