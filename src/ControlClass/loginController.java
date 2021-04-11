@@ -48,6 +48,18 @@ public class loginController {
     private TextField login_usename;
 
     @FXML
+    private Label password2;
+
+    @FXML
+    private Label password1;
+
+    @FXML
+    private Label username1;
+
+    @FXML
+    private Label username2;
+
+    @FXML
     void forget_password_click(ActionEvent event){
     }
 
@@ -60,22 +72,44 @@ public class loginController {
     @FXML
     void login_button_submit(ActionEvent event) throws IOException {
         UserDAOImpl userDAO = new UserDAOImpl();
+
+        boolean flag = true;
         if(login_usename.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "The username cannot be empty", "Username is null", JOptionPane.ERROR_MESSAGE);
+            username1.setVisible(true);
+            username2.setVisible(false);
+            flag=false;
         }
-        else if(login_password.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "The password cannot be empty", "Password is null", JOptionPane.ERROR_MESSAGE);
+        else{
+            username1.setVisible(false);
+            username2.setVisible(false);
         }
-        else {
-            String True_password= userDAO.queryByUserName(login_usename.getText()).getPassword(); //get from UserDAO
-            if(login_password.getText().equals(True_password))
-            {
-                Stage stage = (Stage) login_button.getScene().getWindow();
-                new APP().jump(stage,"12");
+        if(login_password.getText().equals("")){
+            password1.setVisible(true);
+            password2.setVisible(false);
+            flag=false;
+        }
+        else{
+            password1.setVisible(false);
+        }
+        if(flag) {
+            if(userDAO.queryByUserName(login_usename.getText())==null){
+                username2.setVisible(true);
+                username1.setVisible(false);
             }
             else{
-                JOptionPane.showMessageDialog(null, "Please enter the correct password", "Password is wrong", JOptionPane.ERROR_MESSAGE);
+                String True_password= userDAO.queryByUserName(login_usename.getText()).getPassword(); //get from UserDAO
+                if(login_password.getText().equals(True_password))
+                {
+                    Stage stage = (Stage) login_button.getScene().getWindow();
+                    new APP().jump(stage,"12");
+                }
+                else{
+                    password1.setVisible(false);
+                    password2.setVisible(true);
+
+                }
             }
+
 
         }
     }
