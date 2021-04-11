@@ -16,23 +16,24 @@ import static EntityClass.DAO.impl.PersonDAOImpl.*;
 public class PhyDataDAOImpl implements PhyDataDAO {
     private PhyData phyData;
     private String fileName = "phyData.csv";
+    private String filePath = PersonDAOImpl.fileFolder + fileName;
 
     // insert
     @Override
     public Boolean insertPhyData(PhyData phyData) {
-        return insertInfo(fileName, phyData.toStrArray());
+        return insertInfo(filePath, phyData.toStrArray());
     }
 
     // delete
     @Override
     public Boolean deletePhyData(String userName) {
-        return deleteInfo(userName, fileName);
+        return deleteInfo(userName, filePath);
     }
 
     // update
     @Override
     public PhyData changePhyDataHeight(String userName, double height) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -48,7 +49,7 @@ public class PhyDataDAOImpl implements PhyDataDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -57,7 +58,7 @@ public class PhyDataDAOImpl implements PhyDataDAO {
 
     @Override
     public PhyData changePhyDataWeight(String userName, double weight) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -73,7 +74,7 @@ public class PhyDataDAOImpl implements PhyDataDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -82,7 +83,7 @@ public class PhyDataDAOImpl implements PhyDataDAO {
 
     @Override
     public PhyData changePhyDataExperience(String userName, int experience) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -98,7 +99,7 @@ public class PhyDataDAOImpl implements PhyDataDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -107,7 +108,7 @@ public class PhyDataDAOImpl implements PhyDataDAO {
 
     @Override
     public PhyData changePhyDataInterest(String userName, String interest) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -123,7 +124,7 @@ public class PhyDataDAOImpl implements PhyDataDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -132,7 +133,7 @@ public class PhyDataDAOImpl implements PhyDataDAO {
 
     @Override
     public PhyData changePhyDataBFR(String userName, double BRF) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -148,7 +149,7 @@ public class PhyDataDAOImpl implements PhyDataDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -158,7 +159,7 @@ public class PhyDataDAOImpl implements PhyDataDAO {
     // select
     @Override
     public PhyData queryByUserName(String userName) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record;
             BufferedReader reader = new BufferedReader(new FileReader(inFile));

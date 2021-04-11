@@ -16,23 +16,24 @@ import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
 public class CourseDAOImpl implements CourseDAO {
     private Course course = null;
     private final String fileName = "course.csv";
+    private String filePath = PersonDAOImpl.fileFolder + fileName;
 
     // insert
     @Override
     public Boolean insertCourse(Course course) {
-        return insertInfo(fileName, course.toStrArray());
+        return insertInfo(filePath, course.toStrArray());
     }
 
     // delete
     @Override
     public Boolean deleteCourse(long courseId) {
-        return deleteInfo(courseId, fileName);
+        return deleteInfo(courseId, filePath);
     }
 
     // update
     @Override
     public Course changeCourseGift(long courseId, int gift) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -48,7 +49,7 @@ public class CourseDAOImpl implements CourseDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -57,7 +58,7 @@ public class CourseDAOImpl implements CourseDAO {
 
     @Override
     public Course changeCourseStar(long courseId, double star) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -73,7 +74,7 @@ public class CourseDAOImpl implements CourseDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -84,7 +85,7 @@ public class CourseDAOImpl implements CourseDAO {
     @Override
     public ArrayList<Course> queryBySubject(String subject) {
         ArrayList<Course> courses = new ArrayList<>();
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record;
             BufferedReader reader = new BufferedReader(new FileReader(inFile));

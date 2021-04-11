@@ -116,11 +116,7 @@ public class registerController {
         } else {
             email_label.setVisible(false);
         }
-        if (!(male_register.isSelected() || female_register.isSelected())){
-            gender_label.setVisible(true);
-        }else {
-            gender_label.setVisible(false);
-        }
+        gender_label.setVisible(!(male_register.isSelected() || female_register.isSelected()));
         if (!password_register.getText().matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$") || password_register.getText().equals("")) {
         password_label.setVisible(true);
         Flag = "False";
@@ -151,11 +147,7 @@ public class registerController {
         } else {
             TelNo_label.setVisible(false);
         }
-        if (!accept_register.isSelected()){
-            accept_label.setVisible(true);
-        } else {
-            accept_label.setVisible(false);
-        }
+        accept_label.setVisible(!accept_register.isSelected());
 
         if (Flag.equals("True")){
             User user = new User(name_register.getText(),password_register.getText(),email_address.getText(),male_register.getText(),telephone_number.getText(),

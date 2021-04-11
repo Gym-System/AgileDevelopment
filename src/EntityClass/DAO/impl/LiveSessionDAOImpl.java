@@ -22,23 +22,24 @@ import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
 public class LiveSessionDAOImpl implements LiveSessionDAO {
     private LiveSession liveSession;
     private final String fileName = "liveSession.csv";
+    private String filePath = PersonDAOImpl.fileFolder + fileName;
 
     // insert
     @Override
     public Boolean insertLiveSession(LiveSession liveSession) {
-        return insertInfo(fileName, liveSession.toStrArray());
+        return insertInfo(filePath, liveSession.toStrArray());
     }
 
     // delete
     @Override
     public Boolean deleteLiveSession(long courseId) {
-        return deleteInfo(courseId, fileName);
+        return deleteInfo(courseId, filePath);
     }
 
     // update
     @Override
     public LiveSession changeLiveSessionGift(long courseId, int gift) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -56,7 +57,7 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -65,7 +66,7 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
 
     @Override
     public LiveSession changeLiveSessionStar(long courseId, double star) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -83,7 +84,7 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -92,7 +93,7 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
 
     @Override
     public LiveSession changeLiveSessionStartTime(long courseId, String startTime) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -110,7 +111,7 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -121,7 +122,7 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
     @Override
     public ArrayList<LiveSession> queryByTrainerName(String trainerName) {
         ArrayList<LiveSession> liveSessions = new ArrayList<>();
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record;
             BufferedReader reader = new BufferedReader(new FileReader(inFile));
@@ -146,7 +147,7 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
     @Override
     public ArrayList<LiveSession> queryByUserName(String userName) {
         ArrayList<LiveSession> liveSessions = new ArrayList<>();
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record;
             BufferedReader reader = new BufferedReader(new FileReader(inFile));

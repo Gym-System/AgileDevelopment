@@ -16,6 +16,7 @@ import static EntityClass.DAO.impl.PersonDAOImpl.insertInfo;
 public class UserDAOImpl implements UserDAO {
     private User user = null;
     private final String fileName = "user.csv";
+    private String filePath = PersonDAOImpl.fileFolder + fileName;
 
     // insert
     @Override
@@ -32,7 +33,7 @@ public class UserDAOImpl implements UserDAO {
     // update
     @Override
     public User changeUserPassword(String userName, String password) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -48,7 +49,7 @@ public class UserDAOImpl implements UserDAO {
                 }
                 records.add(record);
             }
-            PersonDAOImpl.recordToCsv(records, fileName);
+            PersonDAOImpl.recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -57,7 +58,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User changeUserEmail(String userName, String email) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -73,7 +74,7 @@ public class UserDAOImpl implements UserDAO {
                 }
                 records.add(record);
             }
-            PersonDAOImpl.recordToCsv(records, fileName);
+            PersonDAOImpl.recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -82,7 +83,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User changeUserTeleNo(String userName, String teleNo) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -98,7 +99,7 @@ public class UserDAOImpl implements UserDAO {
                 }
                 records.add(record);
             }
-            PersonDAOImpl.recordToCsv(records, fileName);
+            PersonDAOImpl.recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -107,7 +108,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User changeUserBalance(String userName, Double balance) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -123,7 +124,7 @@ public class UserDAOImpl implements UserDAO {
                 }
                 records.add(record);
             }
-            PersonDAOImpl.recordToCsv(records, fileName);
+            PersonDAOImpl.recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -133,7 +134,7 @@ public class UserDAOImpl implements UserDAO {
     // select
     @Override
     public User queryByUserName(String userName) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record;
             BufferedReader reader = new BufferedReader(new FileReader(inFile));

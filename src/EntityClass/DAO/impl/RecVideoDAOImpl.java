@@ -20,23 +20,24 @@ import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
 public class RecVideoDAOImpl implements RecVideoDAO {
     private RecVideo recVideo = null;
     private final String fileName = "recVideo.csv";
+    private String filePath = PersonDAOImpl.fileFolder + fileName;
 
     // insert
     @Override
     public Boolean insertRecVideo(RecVideo recVideo) {
-        return insertInfo(fileName, recVideo.toStrArray());
+        return insertInfo(filePath, recVideo.toStrArray());
     }
 
     // delete
     @Override
     public Boolean deleteRecVideo(long courseId) {
-        return deleteInfo(courseId, fileName);
+        return deleteInfo(courseId, filePath);
     }
 
     // update
     @Override
     public RecVideo changeRecVideoGift(long courseId, int gift) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -54,7 +55,7 @@ public class RecVideoDAOImpl implements RecVideoDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -63,7 +64,7 @@ public class RecVideoDAOImpl implements RecVideoDAO {
 
     @Override
     public RecVideo changeRecVideoStar(long courseId, double star) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -81,7 +82,7 @@ public class RecVideoDAOImpl implements RecVideoDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -90,7 +91,7 @@ public class RecVideoDAOImpl implements RecVideoDAO {
 
     @Override
     public RecVideo changeRecVideoViewTime(long courseId, int viewTime) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -108,7 +109,7 @@ public class RecVideoDAOImpl implements RecVideoDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -119,7 +120,7 @@ public class RecVideoDAOImpl implements RecVideoDAO {
     @Override
     public ArrayList<RecVideo> queryByTrainerName(String trainerName) {
         ArrayList<RecVideo> recVideos = new ArrayList<>();
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record;
             BufferedReader reader = new BufferedReader(new FileReader(inFile));
@@ -144,7 +145,7 @@ public class RecVideoDAOImpl implements RecVideoDAO {
     @Override
     public ArrayList<RecVideo> queryBySubject(String subject) {
         ArrayList<RecVideo> recVideos = new ArrayList<>();
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record;
             BufferedReader reader = new BufferedReader(new FileReader(inFile));

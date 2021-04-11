@@ -19,20 +19,21 @@ import static EntityClass.DAO.impl.PersonDAOImpl.*;
 public class TrainerDAOImpl implements TrainerDAO {
     private Trainer trainer = null;
     private final String fileName = "trainer.csv";
+    private String filePath = PersonDAOImpl.fileFolder + fileName;
 
     @Override
     public Boolean insertTrainer(Trainer trainer) {
-        return insertInfo(fileName, trainer.toStrArray());
+        return insertInfo(filePath, trainer.toStrArray());
     }
 
     @Override
     public Boolean deleteTrainer(String userName) {
-        return deleteInfo(userName, fileName);
+        return deleteInfo(userName, filePath);
     }
 
     @Override
     public Trainer changeTrainerPassword(String userName, String password) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -49,7 +50,7 @@ public class TrainerDAOImpl implements TrainerDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -58,7 +59,7 @@ public class TrainerDAOImpl implements TrainerDAO {
 
     @Override
     public Trainer changeTrainerEmail(String userName, String email) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -75,7 +76,7 @@ public class TrainerDAOImpl implements TrainerDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -84,7 +85,7 @@ public class TrainerDAOImpl implements TrainerDAO {
 
     @Override
     public Trainer changeTrainerTeleNo(String userName, String teleNo) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -101,7 +102,7 @@ public class TrainerDAOImpl implements TrainerDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -110,7 +111,7 @@ public class TrainerDAOImpl implements TrainerDAO {
 
     @Override
     public Trainer changeTrainSalary(String userName, double salary) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -127,7 +128,7 @@ public class TrainerDAOImpl implements TrainerDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -136,7 +137,7 @@ public class TrainerDAOImpl implements TrainerDAO {
 
     @Override
     public Trainer queryByUserName(String userName) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record;
             BufferedReader reader = new BufferedReader(new FileReader(inFile));

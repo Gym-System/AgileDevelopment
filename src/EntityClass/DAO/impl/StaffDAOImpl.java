@@ -18,21 +18,22 @@ import static EntityClass.DAO.impl.PersonDAOImpl.*;
 public class StaffDAOImpl implements StaffDAO {
     private Staff staff = null;
     private final String fileName = "staff.csv";
+    private String filePath = PersonDAOImpl.fileFolder + fileName;
 
     // insert
     @Override
     public Boolean insertStaff(Staff staff) {
-        return insertInfo(fileName, staff.toStrArray());
+        return insertInfo(filePath, staff.toStrArray());
     }
 
     @Override
     public Boolean deleteStaff(String userName) {
-        return deleteInfo(userName, fileName);
+        return deleteInfo(userName, filePath);
     }
 
     @Override
     public Staff changeStaffPassword(String userName, String password) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -49,7 +50,7 @@ public class StaffDAOImpl implements StaffDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -58,7 +59,7 @@ public class StaffDAOImpl implements StaffDAO {
 
     @Override
     public Staff changeStaffEmail(String userName, String email) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -75,7 +76,7 @@ public class StaffDAOImpl implements StaffDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -84,7 +85,7 @@ public class StaffDAOImpl implements StaffDAO {
 
     @Override
     public Staff changeStaffTeleNo(String userName, String teleNo) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -101,7 +102,7 @@ public class StaffDAOImpl implements StaffDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -110,7 +111,7 @@ public class StaffDAOImpl implements StaffDAO {
 
     @Override
     public Staff queryByUserName(String userName) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record;
             BufferedReader reader = new BufferedReader(new FileReader(inFile));

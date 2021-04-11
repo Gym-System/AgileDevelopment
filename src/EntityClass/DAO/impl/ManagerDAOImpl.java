@@ -18,23 +18,24 @@ import static EntityClass.DAO.impl.PersonDAOImpl.*;
 public class ManagerDAOImpl implements ManagerDAO {
     private Manager manager = null;
     private final String fileName = "manager.csv";
+    private String filePath = PersonDAOImpl.fileFolder + fileName;
 
     // insert
     @Override
     public Boolean insertManager(Manager manager) {
-        return insertInfo(fileName, manager.toStrArray());
+        return insertInfo(filePath, manager.toStrArray());
     }
 
     // delete
     @Override
     public Boolean deleteManager(String userName) {
-        return deleteInfo(userName, fileName);
+        return deleteInfo(userName, filePath);
     }
 
     // update
     @Override
     public Manager changeManagerPassword(String userName, String password) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -60,7 +61,7 @@ public class ManagerDAOImpl implements ManagerDAO {
 
     @Override
     public Manager changeManagerEmail(String userName, String email) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -77,7 +78,7 @@ public class ManagerDAOImpl implements ManagerDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -86,7 +87,7 @@ public class ManagerDAOImpl implements ManagerDAO {
 
     @Override
     public Manager changeManagerTeleNo(String userName, String teleNo) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -103,7 +104,7 @@ public class ManagerDAOImpl implements ManagerDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -112,7 +113,7 @@ public class ManagerDAOImpl implements ManagerDAO {
 
     @Override
     public Manager changeManagerType(String userName, int managerType) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -129,7 +130,7 @@ public class ManagerDAOImpl implements ManagerDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -139,7 +140,7 @@ public class ManagerDAOImpl implements ManagerDAO {
     // select
     @Override
     public Manager queryByUserName(String userName) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record;
             BufferedReader reader = new BufferedReader(new FileReader(inFile));

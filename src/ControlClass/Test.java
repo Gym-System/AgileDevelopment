@@ -1,5 +1,6 @@
 package ControlClass;
 
+import EntityClass.DAO.PersonDAO;
 import EntityClass.DAO.impl.*;
 import EntityClass.VO.*;
 
@@ -115,7 +116,6 @@ public class Test {
             e.printStackTrace();
         }
         System.out.println(liveSession);
-        */
 
         PhyData phyData = new PhyData("kaiyi",
                 186.0,
@@ -124,9 +124,11 @@ public class Test {
                 "Strength",
                 20.0);
         System.out.println(phyData);
+        */
 
         /*
         PersonDAO personDAO = new PersonDAOImpl();
+
         Boolean flag = personDAO.insertPerson(person);
         System.out.println(flag);
 
