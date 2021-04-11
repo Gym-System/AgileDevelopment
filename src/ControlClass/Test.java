@@ -117,16 +117,14 @@ public class Test {
                 30,
                 "kaiyi");
         System.out.println(recVideo);
-        */
 
-        /*
+        LiveSession liveSession = null;
         try {
-             liveSession = new LiveSession("kaiyi1",
-                    "kaiyi2",
-                    new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2021-04-02 17:15:00"),
-                    "Strength",
-                    "Live",
-                    30.0);
+            liveSession = new LiveSession("Hiit",
+                    30,
+                    new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2021-05-01 17:15:00"),
+                    "kaiyi1",
+                    "kaiyi2");
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -330,5 +328,35 @@ public class Test {
             System.out.println(recVideo1);
         }
          */
+
+        /*
+        LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
+
+        Boolean flag = liveSessionDAO.insertLiveSession(liveSession);
+        System.out.println(flag);
+
+        flag = liveSessionDAO.deleteLiveSession(liveSession.getCourseId());
+        System.out.println(flag);
+
+        LiveSession liveSession1 = liveSessionDAO.changeLiveSessionGift(liveSession.getCourseId(), 10);
+        System.out.println(liveSession1);
+
+        liveSession1 = liveSessionDAO.changeLiveSessionStar(liveSession.getCourseId(), 5.0);
+        System.out.println(liveSession1);
+
+        liveSession1 = liveSessionDAO.changeLiveSessionStartTime(liveSession.getCourseId(), "2021-05-01 17:30:00");
+        System.out.println(liveSession1);
+
+        ArrayList<LiveSession> liveSessions;
+        liveSessions = liveSessionDAO.queryByTrainerName("kaiyi1");
+        for(LiveSession liveSession1:liveSessions) {
+            System.out.println(liveSession1);
+        }
+
+        liveSessions = liveSessionDAO.queryByUserName("kaiyi2");
+        for(LiveSession liveSession1:liveSessions) {
+            System.out.println(liveSession1);
+        }
+        */
     }
 }

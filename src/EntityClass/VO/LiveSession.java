@@ -9,9 +9,9 @@ public class LiveSession extends Course {
 
     public LiveSession(String subject, int length, Date startTime, String trainerName, String userName) {
         super(subject, length);
+        this.startTime = startTime;
         this.trainerName = trainerName;
         this.userName = userName;
-        this.startTime = startTime;
     }
 
     public LiveSession(long courseId, String subject, int length, int gift, double star, Date startTime, String trainerName, String userName) {
@@ -39,8 +39,8 @@ public class LiveSession extends Course {
 
     @Override
     public String[] toStrArray() {
-        String text = "" + super.getSubject() + "," + "," + super.getLength() + "," + super.getGift() + "," +
-                super.getStar() + "," + trainerName + "," + trainerName + "," + userName;
+        String text = "" + super.getCourseId() + "," + super.getSubject() +  "," + super.getLength() + "," + super.getGift() + "," +
+                super.getStar() + "," + startTime + "," + trainerName + "," + userName;
         return text.split(",");
     }
 
