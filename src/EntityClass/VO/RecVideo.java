@@ -1,16 +1,23 @@
 package EntityClass.VO;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class RecVideo extends Course {
     private final String trainerName;
     private Date uploadedTime;
     private int viewTime = 0;
 
-    public RecVideo(String subject, int length, String trainerName, Date uploadedTime) {
+    public RecVideo(String subject, int length, String trainerName) {
         super(subject, length);
         this.trainerName = trainerName;
-        this.uploadedTime = uploadedTime;
+        try {
+            this.setUploadedTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     public RecVideo(long courseId, String subject, int length, int gift, double star, String trainerName, Date uploadedTime, int viewTime) {
@@ -28,8 +35,9 @@ public class RecVideo extends Course {
         return uploadedTime;
     }
 
-    public void setUploadedTime(Date uploadedTime) {
-        this.uploadedTime = uploadedTime;
+    public void setUploadedTime() throws ParseException {
+        this.uploadedTime = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
+                new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(new Date()));
     }
 
     public int getViewTime() {
@@ -42,7 +50,7 @@ public class RecVideo extends Course {
 
     @Override
     public String[] toStrArray() {
-        String text = "" + super.getSubject() + "," + super.getLength() + "," + super.getGift() + "," +
+        String text = "" + super.getCourseId() + "," + super.getSubject() + "," + super.getLength() + "," + super.getGift() + "," +
                 super.getStar() + "," + trainerName + "," + uploadedTime + "," + viewTime;
         return text.split(",");
     }

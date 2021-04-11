@@ -36,7 +36,7 @@ public class Course {
         return subject;
     }
 
-    public double getLength() {
+    public int getLength() {
         return length;
     }
 

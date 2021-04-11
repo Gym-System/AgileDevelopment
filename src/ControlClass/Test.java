@@ -5,10 +5,12 @@ import EntityClass.VO.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 public class Test {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         /*
         Person person = null;
         try {
@@ -105,10 +107,17 @@ public class Test {
         System.out.println(course);
 
         LiveSession liveSession = null;
-        */
 
         Course course = new Course("Hiit", 30);
         System.out.println(course);
+
+        RecVideo recVideo;
+
+        recVideo = new RecVideo("Hiit",
+                30,
+                "kaiyi");
+        System.out.println(recVideo);
+        */
 
         /*
         try {
@@ -122,19 +131,6 @@ public class Test {
             e.printStackTrace();
         }
         System.out.println(liveSession);
-
-        RecVideo recVideo = null;
-
-        try {
-            recVideo = new RecVideo("kaiyi1",
-                    new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2021-04-02 17:15:00"),
-                    "Strength",
-                    "Live",
-                    30.0);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        System.out.println(recVideo);
         */
 
         /*
@@ -283,17 +279,6 @@ public class Test {
         System.out.println(manager1);
          */
 
-        CourseDAOImpl courseDAO = new CourseDAOImpl();
-
-        Boolean flag = courseDAO.insertCourse(course);
-        System.out.println(flag);
-
-        Course course1 = courseDAO.changeCourseGift(course.getCourseId(), 10);
-        System.out.println(course1);
-
-        course1 = courseDAO.changeCourseStar(course.getCourseId(), 5.0);
-        System.out.println(course1);
-
         /*
         CourseDAOImpl courseDAO = new CourseDAOImpl();
 
@@ -302,6 +287,48 @@ public class Test {
 
         Boolean flag = courseDAO.deleteCourse(course.setCourseId());
         System.out.println(flag);
+
+        Course course1 = courseDAO.changeCourseGift(course.getCourseId(), 10);
+        System.out.println(course1);
+
+        course1 = courseDAO.changeCourseStar(course.getCourseId(), 5.0);
+        System.out.println(course1);
+
+        ArrayList<Course> courses;
+        courses = courseDAO.queryBySubject("Hiit");
+        for(Course course:courses) {
+            System.out.println(course);
+        }
+        */
+
+        /*
+        RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
+
+        Boolean flag = recVideoDAO.insertRecVideo(recVideo);
+        System.out.println(flag);
+
+        flag = recVideoDAO.deleteRecVideo(recVideo.getCourseId());
+        System.out.println(flag);
+
+        RecVideo recVideo1 = recVideoDAO.changeRecVideoGift(recVideo.getCourseId(), 10);
+        System.out.println(recVideo1);
+
+        recVideo1 = recVideoDAO.changeRecVideoStar(recVideo.getCourseId(), 5.0);
+        System.out.println(recVideo1);
+
+        recVideo1 = recVideoDAO.changeRecVideoViewTime(recVideo.getCourseId(), 1);
+        System.out.println(recVideo1);
+
+        ArrayList<RecVideo> recVideos;
+        recVideos = recVideoDAO.queryBySubject("Hiit");
+        for(RecVideo recVideo1:recVideos) {
+            System.out.println(recVideo1);
+        }
+
+        recVideos = recVideoDAO.queryByTrainerName("kaiyi");
+        for(RecVideo recVideo1:recVideos) {
+            System.out.println(recVideo1);
+        }
          */
     }
 }
