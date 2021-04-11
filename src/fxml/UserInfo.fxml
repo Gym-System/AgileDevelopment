@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="807.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="807.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControlClass.userInfoController">
    <children>
       <SplitPane dividerPositions="0.2229" layoutX="244.0" layoutY="202.0" prefHeight="807.0" prefWidth="1350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.3">
         <items>
@@ -165,42 +165,42 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="Amy" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <Label fx:id="name" text="Amy" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="1" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <Label fx:id="ID" text="1" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="F" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <Label fx:id="gender" text="F" GridPane.columnIndex="1" GridPane.rowIndex="6">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="1980" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                        <Label fx:id="birthday" text="1980" GridPane.columnIndex="1" GridPane.rowIndex="8">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="London" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                        <Label fx:id="city" text="London" GridPane.columnIndex="1" GridPane.rowIndex="9">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="amy@12.com" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                        <Label fx:id="email" text="amy@12.com" GridPane.columnIndex="1" GridPane.rowIndex="10">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="0" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                        <Label fx:id="level" text="0" GridPane.columnIndex="1" GridPane.rowIndex="13">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="100" GridPane.columnIndex="1" GridPane.rowIndex="14">
+                        <Label fx:id="balance" text="100" GridPane.columnIndex="1" GridPane.rowIndex="14">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
@@ -247,12 +247,12 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="65.0 kg" GridPane.rowIndex="3">
+                        <Label fx:id="weight" text="65.0 kg" GridPane.rowIndex="3">
                            <font>
                               <Font name="Century" size="36.0" />
                            </font>
                         </Label>
-                        <Label text="175.0 cm" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Label fx:id="height" text="175.0 cm" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
                               <Font name="Century" size="36.0" />
                            </font>
@@ -262,7 +262,7 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="21.2" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <Label fx:id="bmi" text="21.2" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
@@ -311,7 +311,7 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="17330 min" GridPane.rowIndex="3">
+                        <Label fx:id="totalTime" text="17330 min" GridPane.rowIndex="3">
                            <font>
                               <Font name="Century" size="36.0" />
                            </font>
@@ -321,7 +321,7 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label prefHeight="28.0" prefWidth="224.0" text="100" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <Label fx:id="energy" prefHeight="28.0" prefWidth="224.0" text="100" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>

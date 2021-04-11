@@ -58,7 +58,7 @@ public class loginController {
 
     @FXML
     private Label username2;
-
+//    public static passValue model = new passValue();
     @FXML
     void forget_password_click(ActionEvent event){
     }
@@ -72,8 +72,8 @@ public class loginController {
     @FXML
     void login_button_submit(ActionEvent event) throws IOException {
         UserDAOImpl userDAO = new UserDAOImpl();
-
         boolean flag = true;
+        passValue.setValue(login_usename.getText());
         if(login_usename.getText().equals("")){
             username1.setVisible(true);
             username2.setVisible(false);
@@ -101,7 +101,7 @@ public class loginController {
                 if(login_password.getText().equals(True_password))
                 {
                     Stage stage = (Stage) login_button.getScene().getWindow();
-                    new APP().jump(stage,"12");
+                    new APP().jump(stage,"UserInfo");
                 }
                 else{
                     password1.setVisible(false);
