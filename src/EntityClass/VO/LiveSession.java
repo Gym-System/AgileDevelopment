@@ -7,11 +7,18 @@ public class LiveSession extends Course {
     private final String trainerName;
     private final String userName;
 
-    public LiveSession(String trainerName, String userName, Date startTime, String subject, String type, double length) {
-        super(subject, type, length);
+    public LiveSession(String subject, int length, Date startTime, String trainerName, String userName) {
+        super(subject, length);
         this.trainerName = trainerName;
         this.userName = userName;
         this.startTime = startTime;
+    }
+
+    public LiveSession(long courseId, String subject, int length, int gift, double star, Date startTime, String trainerName, String userName) {
+        super(courseId, subject, length, gift, star);
+        this.startTime = startTime;
+        this.trainerName = trainerName;
+        this.userName = userName;
     }
 
     public Date getStartTime() {
@@ -28,6 +35,13 @@ public class LiveSession extends Course {
 
     public String getUserName() {
         return userName;
+    }
+
+    @Override
+    public String[] toStrArray() {
+        String text = "" + super.getSubject() + "," + "," + super.getLength() + "," + super.getGift() + "," +
+                super.getStar() + "," + trainerName + "," + trainerName + "," + userName;
+        return text.split(",");
     }
 
     @Override

@@ -7,10 +7,17 @@ public class RecVideo extends Course {
     private Date uploadedTime;
     private int viewTime = 0;
 
-    public RecVideo(String trainerName, Date uploadedTime, String subject, String type, double length) {
-        super(subject, type, length);
+    public RecVideo(String subject, int length, String trainerName, Date uploadedTime) {
+        super(subject, length);
         this.trainerName = trainerName;
         this.uploadedTime = uploadedTime;
+    }
+
+    public RecVideo(long courseId, String subject, int length, int gift, double star, String trainerName, Date uploadedTime, int viewTime) {
+        super(courseId, subject, length, gift, star);
+        this.trainerName = trainerName;
+        this.uploadedTime = uploadedTime;
+        this.viewTime = viewTime;
     }
 
     public String getUserName() {
@@ -31,6 +38,13 @@ public class RecVideo extends Course {
 
     public void setViewTime(int viewTime) {
         this.viewTime = viewTime;
+    }
+
+    @Override
+    public String[] toStrArray() {
+        String text = "" + super.getSubject() + "," + super.getLength() + "," + super.getGift() + "," +
+                super.getStar() + "," + trainerName + "," + uploadedTime + "," + viewTime;
+        return text.split(",");
     }
 
     @Override

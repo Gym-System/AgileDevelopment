@@ -5,6 +5,7 @@ import EntityClass.VO.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Test {
     public static void main(String[] args) {
@@ -75,8 +76,6 @@ public class Test {
             e.printStackTrace();
         }
         System.out.println(trainer);
-        */
-
 
         Manager manager = null;
         try {
@@ -91,7 +90,7 @@ public class Test {
             e.printStackTrace();
         }
         System.out.println(manager);
-
+        */
 
         /*
         PhyData phyData = new PhyData("kaiyi",
@@ -106,7 +105,12 @@ public class Test {
         System.out.println(course);
 
         LiveSession liveSession = null;
+        */
 
+        Course course = new Course("Hiit", 30);
+        System.out.println(course);
+
+        /*
         try {
              liveSession = new LiveSession("kaiyi1",
                     "kaiyi2",
@@ -277,6 +281,27 @@ public class Test {
 
         manager1 = managerDAO.queryByUserName("kaiyi");
         System.out.println(manager1);
+         */
+
+        CourseDAOImpl courseDAO = new CourseDAOImpl();
+
+        Boolean flag = courseDAO.insertCourse(course);
+        System.out.println(flag);
+
+        Course course1 = courseDAO.changeCourseGift(course.getCourseId(), 10);
+        System.out.println(course1);
+
+        course1 = courseDAO.changeCourseStar(course.getCourseId(), 5.0);
+        System.out.println(course1);
+
+        /*
+        CourseDAOImpl courseDAO = new CourseDAOImpl();
+
+        Boolean flag = courseDAO.insertCourse(course);
+        System.out.println(flag);
+
+        Boolean flag = courseDAO.deleteCourse(course.setCourseId());
+        System.out.println(flag);
          */
     }
 }
