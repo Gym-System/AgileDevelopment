@@ -457,7 +457,7 @@ public class Test {
         }
         System.out.println(user);
 
-        user.watchRecVideo(user.getUserName(), recVideo.getCourseId());
+        user.watchRecVideo(recVideo.getCourseId());
 
         HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
 

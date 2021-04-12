@@ -1,6 +1,7 @@
 package EntityClass.VO;
 
 import EntityClass.DAO.impl.HistoryDataDAOImpl;
+import EntityClass.DAO.impl.RecVideoDAOImpl;
 
 import java.util.Date;
 
@@ -28,18 +29,22 @@ public class User extends Person {
         this.balance = balance;
     }
 
-    public void watchRecVideo(String userName, long courseId) {
+    public void watchRecVideo(long courseId) {
         String type = "recorded";
-        HistoryData historyData = new HistoryData(userName, type, courseId);
+        HistoryData historyData = new HistoryData(super.getUserName(), type, courseId);
         HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
         historyDataDAO.insertHistoryData(historyData);
     }
 
-    public void joinLiveSession(String userName, long courseId) {
+    public void joinLiveSession(long courseId) {
         String type = "live";
-        HistoryData historyData = new HistoryData(userName, type, courseId);
+        HistoryData historyData = new HistoryData(super.getUserName(), type, courseId);
         HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
         historyDataDAO.insertHistoryData(historyData);
+    }
+
+    public void sendGift(double amount, long courseId) {
+        // TODO
     }
 
     public String[] toStrArray() {

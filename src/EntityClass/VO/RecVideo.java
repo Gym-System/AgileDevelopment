@@ -48,6 +48,10 @@ public class RecVideo extends Course {
         this.viewTime = viewTime;
     }
 
+    public void receiveGift() {
+        // TODO
+    }
+
     @Override
     public String[] toStrArray() {
         String text = "" + super.getCourseId() + "," + super.getSubject() + "," + super.getLength() + "," + super.getGift() + "," +

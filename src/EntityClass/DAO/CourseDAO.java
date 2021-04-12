@@ -16,6 +16,7 @@ public interface CourseDAO {
     Course changeCourseStar(long courseId, double star);
 
     // select
+    Course queryByCourseId(long courseId);
     ArrayList<Course> queryBySubject(String subject);
     ArrayList<Course> queryAll();
 }

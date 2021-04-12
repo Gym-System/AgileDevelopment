@@ -17,6 +17,7 @@ public interface RecVideoDAO {
     RecVideo changeRecVideoViewTime(long courseId, int viewTime);
 
     // select
+    RecVideo queryByCourseId(long courseId);
     ArrayList<RecVideo> queryByTrainerName(String trainerName);
     ArrayList<RecVideo> queryBySubject(String subject);
     ArrayList<RecVideo> queryAll();
