@@ -430,5 +430,15 @@ public class Test {
             System.out.println(phyData1);
         }
          */
+
+        LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
+
+        ArrayList<LiveSession> liveSessions;
+        liveSessions = liveSessionDAO.queryByUserName("kaiyi");
+        for(LiveSession liveSession1:liveSessions) {
+            System.out.println(liveSession1);
+        }
+
+        System.out.println(liveSessions);
     }
 }

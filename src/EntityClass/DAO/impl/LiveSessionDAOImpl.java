@@ -134,8 +134,8 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
                             Integer.parseInt(record[3]), Double.parseDouble(record[4]),
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
                             record[6], record[7]);
+                    liveSessions.add(liveSession);
                 }
-                liveSessions.add(liveSession);
             }
             csvReader.close();
         } catch (IOException | ParseException ex) {
@@ -159,8 +159,8 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
                             Integer.parseInt(record[3]), Double.parseDouble(record[4]),
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
                             record[6], record[7]);
+                    liveSessions.add(liveSession);
                 }
-                liveSessions.add(liveSession);
             }
             csvReader.close();
         } catch (IOException | ParseException ex) {
