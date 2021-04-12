@@ -1,8 +1,8 @@
 package EntityClass.DAO.impl;
 
-import EntityClass.DAO.TrainerDAO;
-import EntityClass.VO.Staff;
-import EntityClass.VO.Trainer;
+import EntityClass.DAO.LiveSessionDAO;
+import EntityClass.VO.LiveSession;
+import EntityClass.VO.RecVideo;
 import com.csvreader.CsvReader;
 
 import java.io.BufferedReader;
@@ -12,27 +12,33 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Locale;
 
-import static EntityClass.DAO.impl.PersonDAOImpl.*;
+import static EntityClass.DAO.impl.CourseDAOImpl.deleteInfo;
+import static EntityClass.DAO.impl.PersonDAOImpl.insertInfo;
+import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
 
-public class TrainerDAOImpl implements TrainerDAO {
-    private Trainer trainer = null;
-    private final String fileName = "trainer.csv";
+public class LiveSessionDAOImpl implements LiveSessionDAO {
+    private LiveSession liveSession;
+    private final String fileName = "liveSession.csv";
     private String filePath = PersonDAOImpl.fileFolder + fileName;
 
+    // insert
     @Override
-    public Boolean insertTrainer(Trainer trainer) {
-        return insertInfo(filePath, trainer.toStrArray());
+    public Boolean insertLiveSession(LiveSession liveSession) {
+        return insertInfo(filePath, liveSession.toStrArray());
     }
 
+    // delete
     @Override
-    public Boolean deleteTrainer(String userName) {
-        return deleteInfo(userName, filePath);
+    public Boolean deleteLiveSession(long courseId) {
+        return deleteInfo(courseId, filePath);
     }
 
+    // update
     @Override
-    public Trainer changeTrainerPassword(String userName, String password) {
+    public LiveSession changeLiveSessionGift(long courseId, int gift) {
         File inFile = new File(filePath);
         try {
             String[] record = null;
@@ -41,11 +47,12 @@ public class TrainerDAOImpl implements TrainerDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getRawRecord().split(",");
-                if(userName.equals(record[0])) {
-                    record[1] = password;
-                    trainer = new Trainer(record[0], record[1], record[2], record[3], record[4],
+                if(courseId == Long.parseLong(record[0])) {
+                    record[3] = String.valueOf(gift);
+                    liveSession = new LiveSession(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
+                            Integer.parseInt(record[3]), Double.parseDouble(record[4]),
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6], Double.parseDouble(record[7]));
+                            record[6], record[7]);
                 }
                 records.add(record);
             }
@@ -54,11 +61,11 @@ public class TrainerDAOImpl implements TrainerDAO {
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return trainer;
+        return liveSession;
     }
 
     @Override
-    public Trainer changeTrainerEmail(String userName, String email) {
+    public LiveSession changeLiveSessionStar(long courseId, double star) {
         File inFile = new File(filePath);
         try {
             String[] record = null;
@@ -67,11 +74,12 @@ public class TrainerDAOImpl implements TrainerDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getRawRecord().split(",");
-                if(userName.equals(record[0])) {
-                    record[2] = email;
-                    trainer = new Trainer(record[0], record[1], record[2], record[3], record[4],
+                if(courseId == Long.parseLong(record[0])) {
+                    record[4] = String.valueOf(star);
+                    liveSession = new LiveSession(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
+                            Integer.parseInt(record[3]), Double.parseDouble(record[4]),
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6], Double.parseDouble(record[7]));
+                            record[6], record[7]);
                 }
                 records.add(record);
             }
@@ -80,11 +88,11 @@ public class TrainerDAOImpl implements TrainerDAO {
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return trainer;
+        return liveSession;
     }
 
     @Override
-    public Trainer changeTrainerTeleNo(String userName, String teleNo) {
+    public LiveSession changeLiveSessionStartTime(long courseId, String startTime) {
         File inFile = new File(filePath);
         try {
             String[] record = null;
@@ -93,11 +101,12 @@ public class TrainerDAOImpl implements TrainerDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getRawRecord().split(",");
-                if(userName.equals(record[0])) {
-                    record[4] = teleNo;
-                    trainer = new Trainer(record[0], record[1], record[2], record[3], record[4],
+                if(courseId == Long.parseLong(record[0])) {
+                    record[5] = String.valueOf(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(startTime));
+                    liveSession = new LiveSession(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
+                            Integer.parseInt(record[3]), Double.parseDouble(record[4]),
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6], Double.parseDouble(record[7]));
+                            record[6], record[7]);
                 }
                 records.add(record);
             }
@@ -106,37 +115,13 @@ public class TrainerDAOImpl implements TrainerDAO {
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return trainer;
+        return liveSession;
     }
 
+    // select
     @Override
-    public Trainer changeTrainSalary(String userName, double salary) {
-        File inFile = new File(filePath);
-        try {
-            String[] record = null;
-            ArrayList<String[]> records = new ArrayList<>();
-            BufferedReader reader = new BufferedReader(new FileReader(inFile));
-            CsvReader csvReader = new CsvReader(reader, ',');
-            while(csvReader.readRecord()){
-                record = csvReader.getRawRecord().split(",");
-                if(userName.equals(record[0])) {
-                    record[7] = String.valueOf(salary);
-                    trainer = new Trainer(record[0], record[1], record[2], record[3], record[4],
-                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6], Double.parseDouble(record[7]));
-                }
-                records.add(record);
-            }
-            csvReader.close();
-            recordToCsv(records, filePath);
-        } catch (IOException | ParseException ex) {
-            ex.printStackTrace();
-        }
-        return trainer;
-    }
-
-    @Override
-    public Trainer queryByUserName(String userName) {
+    public ArrayList<LiveSession> queryByTrainerName(String trainerName) {
+        ArrayList<LiveSession> liveSessions = new ArrayList<>();
         File inFile = new File(filePath);
         try {
             String[] record;
@@ -144,16 +129,43 @@ public class TrainerDAOImpl implements TrainerDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
-                if(userName.equals(record[0])) {
-                    trainer = new Trainer(record[0], record[1], record[2], record[3], record[4],
+                if(trainerName.equals(record[6])) {
+                    liveSession = new LiveSession(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
+                            Integer.parseInt(record[3]), Double.parseDouble(record[4]),
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6], Double.parseDouble(record[7]));
+                            record[6], record[7]);
                 }
+                liveSessions.add(liveSession);
             }
             csvReader.close();
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return trainer;
+        return liveSessions;
+    }
+
+    @Override
+    public ArrayList<LiveSession> queryByUserName(String userName) {
+        ArrayList<LiveSession> liveSessions = new ArrayList<>();
+        File inFile = new File(filePath);
+        try {
+            String[] record;
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getValues();
+                if(userName.equals(record[7])) {
+                    liveSession = new LiveSession(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
+                            Integer.parseInt(record[3]), Double.parseDouble(record[4]),
+                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                            record[6], record[7]);
+                }
+                liveSessions.add(liveSession);
+            }
+            csvReader.close();
+        } catch (IOException | ParseException ex) {
+            ex.printStackTrace();
+        }
+        return liveSessions;
     }
 }

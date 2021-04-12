@@ -1,49 +1,43 @@
 package EntityClass.VO;
 
-import java.util.Arrays;
+import java.util.Date;
 
 public class Course {
-    private static int courseId = 0;
-    private String subject;
-    private String type;
-    private double length;
+    private long courseId;
+    private final String subject;
+    private final int length;
     private int gift = 0;
-    private String[] comment = null;
     private double star = 0.0;
 
-    public Course(String subject, String type, double length) {
-        this.courseId += 1;
+    public Course(String subject, int length) {
+        this.setCourseId();
         this.subject = subject;
-        this.type = type;
         this.length = length;
     }
 
-    public static int getCourseId() {
+    public Course(long courseId, String subject, int length, int gift, double star) {
+        this.courseId = courseId;
+        this.subject = subject;
+        this.length = length;
+        this.gift = gift;
+        this.star = star;
+    }
+
+    public long getCourseId() {
         return courseId;
+    }
+
+    public void setCourseId() {
+        Date date = new Date();
+        this.courseId = date.getTime();
     }
 
     public String getSubject() {
         return subject;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public double getLength() {
+    public int getLength() {
         return length;
-    }
-
-    public void setLength(double length) {
-        this.length = length;
     }
 
     public int getGift() {
@@ -54,14 +48,6 @@ public class Course {
         this.gift = gift;
     }
 
-    public String[] getComment() {
-        return comment;
-    }
-
-    public void setComment(String[] comment) {
-        this.comment = comment;
-    }
-
     public double getStar() {
         return star;
     }
@@ -70,14 +56,18 @@ public class Course {
         this.star = star;
     }
 
+    public String[] toStrArray() {
+        String text = "" + courseId  + "," + subject + "," + length + "," + gift + "," + star;
+        return text.split(",");
+    }
+
     @Override
     public String toString() {
         return "Course{" +
-                "subject='" + subject + '\'' +
-                ", type='" + type + '\'' +
+                "courseId=" + courseId +
+                ", subject='" + subject + '\'' +
                 ", length=" + length +
                 ", gift=" + gift +
-                ", comment=" + Arrays.toString(comment) +
                 ", star=" + star +
                 '}';
     }

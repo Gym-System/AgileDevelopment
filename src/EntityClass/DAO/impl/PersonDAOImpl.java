@@ -15,24 +15,26 @@ import java.util.Locale;
 
 public class PersonDAOImpl implements PersonDAO {
     private Person person = null;
-    private String fileName = "person.csv";
+    public static final String fileFolder = "./src/Data/";
+    private final String fileName = "person.csv";
+    private String filePath = fileFolder + fileName;
 
     // insert
     @Override
     public Boolean insertPerson(Person person) {
-        return insertInfo(fileName, person.toStrArray());
+        return insertInfo(filePath, person.toStrArray());
     }
 
     // delete
     @Override
     public Boolean deletePerson(String userName) {
-        return deleteInfo(userName, fileName);
+        return deleteInfo(userName, filePath);
     }
 
     // update
     @Override
     public Person changePersonPassword(String userName, String password) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -48,7 +50,7 @@ public class PersonDAOImpl implements PersonDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -57,7 +59,7 @@ public class PersonDAOImpl implements PersonDAO {
 
     @Override
     public Person changePersonEmail(String userName, String email) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -73,7 +75,7 @@ public class PersonDAOImpl implements PersonDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -82,7 +84,7 @@ public class PersonDAOImpl implements PersonDAO {
 
     @Override
     public Person changePersonTeleNo(String userName, String teleNo) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record = null;
             ArrayList<String[]> records = new ArrayList<>();
@@ -98,7 +100,7 @@ public class PersonDAOImpl implements PersonDAO {
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -108,7 +110,7 @@ public class PersonDAOImpl implements PersonDAO {
     // select
     @Override
     public Person queryByUserName(String userName) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record;
             BufferedReader reader = new BufferedReader(new FileReader(inFile));

@@ -14,24 +14,25 @@ import static EntityClass.DAO.impl.PersonDAOImpl.deleteInfo;
 import static EntityClass.DAO.impl.PersonDAOImpl.insertInfo;
 
 public class PreUserDAOImpl implements PreUserDAO {
-    PremierUser premierUser = null;
-    String fileName = "preUser.csv";
+    private PremierUser premierUser = null;
+    private final String fileName = "preUser.csv";
+    private String filePath = PersonDAOImpl.fileFolder + fileName;
     // insert
     @Override
     public Boolean insertPreUser(PremierUser premierUser) {
-        return insertInfo(fileName, premierUser.toStrArray());
+        return insertInfo(filePath, premierUser.toStrArray());
     }
 
     // delete
     @Override
     public Boolean deletePreUser(String userName) {
-        return deleteInfo(userName, fileName);
+        return deleteInfo(userName, filePath);
     }
 
     // update
     @Override
     public PremierUser changePreUserPassword(String userName, String password) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record;
             ArrayList<String[]> records = new ArrayList<>();
@@ -48,7 +49,7 @@ public class PreUserDAOImpl implements PreUserDAO {
                 records.add(record);
             }
             csvReader.close();
-            PersonDAOImpl.recordToCsv(records, fileName);
+            PersonDAOImpl.recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -57,7 +58,7 @@ public class PreUserDAOImpl implements PreUserDAO {
 
     @Override
     public PremierUser changePreUserEmail(String userName, String email) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record;
             ArrayList<String[]> records = new ArrayList<>();
@@ -74,7 +75,7 @@ public class PreUserDAOImpl implements PreUserDAO {
                 records.add(record);
             }
             csvReader.close();
-            PersonDAOImpl.recordToCsv(records, fileName);
+            PersonDAOImpl.recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -83,7 +84,7 @@ public class PreUserDAOImpl implements PreUserDAO {
 
     @Override
     public PremierUser changePreUserTeleNo(String userName, String teleNo) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record;
             ArrayList<String[]> records = new ArrayList<>();
@@ -100,7 +101,7 @@ public class PreUserDAOImpl implements PreUserDAO {
                 records.add(record);
             }
             csvReader.close();
-            PersonDAOImpl.recordToCsv(records, fileName);
+            PersonDAOImpl.recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -109,7 +110,7 @@ public class PreUserDAOImpl implements PreUserDAO {
 
     @Override
     public PremierUser changePreUserBalance(String userName, Double balance) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record;
             ArrayList<String[]> records = new ArrayList<>();
@@ -126,7 +127,7 @@ public class PreUserDAOImpl implements PreUserDAO {
                 records.add(record);
             }
             csvReader.close();
-            PersonDAOImpl.recordToCsv(records, fileName);
+            PersonDAOImpl.recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -135,7 +136,7 @@ public class PreUserDAOImpl implements PreUserDAO {
 
     @Override
     public PremierUser changePreUserType(String userName, int userType) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record;
             ArrayList<String[]> records = new ArrayList<>();
@@ -152,7 +153,7 @@ public class PreUserDAOImpl implements PreUserDAO {
                 records.add(record);
             }
             csvReader.close();
-            PersonDAOImpl.recordToCsv(records, fileName);
+            PersonDAOImpl.recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
@@ -162,7 +163,7 @@ public class PreUserDAOImpl implements PreUserDAO {
     // select
     @Override
     public PremierUser queryByUserName(String userName) {
-        File inFile = new File(fileName);
+        File inFile = new File(filePath);
         try {
             String[] record;
             BufferedReader reader = new BufferedReader(new FileReader(inFile));
