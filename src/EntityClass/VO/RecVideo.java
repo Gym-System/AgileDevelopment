@@ -9,6 +9,7 @@ public class RecVideo extends Course {
     private final String trainerName;
     private Date uploadedTime;
     private int viewTime = 0;
+    private int rateTime = 0;
 
     public RecVideo(String subject, int length, String trainerName) {
         super(subject, length);
@@ -20,11 +21,12 @@ public class RecVideo extends Course {
         }
     }
 
-    public RecVideo(long courseId, String subject, int length, int gift, double star, String trainerName, Date uploadedTime, int viewTime) {
+    public RecVideo(long courseId, String subject, int length, int gift, double star, String trainerName, Date uploadedTime, int viewTime, int rateTime) {
         super(courseId, subject, length, gift, star);
         this.trainerName = trainerName;
         this.uploadedTime = uploadedTime;
         this.viewTime = viewTime;
+        this.rateTime = rateTime;
     }
 
     public String getUserName() {
@@ -48,14 +50,18 @@ public class RecVideo extends Course {
         this.viewTime = viewTime;
     }
 
-    public void receiveGift() {
-        // TODO
+    public int getRateTime() {
+        return rateTime;
+    }
+
+    public void setRateTime(int rateTime) {
+        this.rateTime = rateTime;
     }
 
     @Override
     public String[] toStrArray() {
         String text = "" + super.getCourseId() + "," + super.getSubject() + "," + super.getLength() + "," + super.getGift() + "," +
-                super.getStar() + "," + trainerName + "," + uploadedTime + "," + viewTime;
+                super.getStar() + "," + trainerName + "," + uploadedTime + "," + viewTime + "," + rateTime;
         return text.split(",");
     }
 
@@ -65,6 +71,7 @@ public class RecVideo extends Course {
                 "trainerName='" + trainerName + '\'' +
                 ", uploadedTime=" + uploadedTime +
                 ", viewTime=" + viewTime +
+                ", rateTime=" + rateTime +
                 "} " + super.toString();
     }
 }

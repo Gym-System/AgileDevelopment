@@ -50,7 +50,7 @@ public class RecVideoDAOImpl implements RecVideoDAO {
                     recVideo = new RecVideo(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
                             Integer.parseInt(record[3]), Double.parseDouble(record[4]), record[5],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[6]),
-                            Integer.parseInt(record[7]));
+                            Integer.parseInt(record[7]), Integer.parseInt(record[8]));
                 }
                 records.add(record);
             }
@@ -77,7 +77,7 @@ public class RecVideoDAOImpl implements RecVideoDAO {
                     recVideo = new RecVideo(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
                             Integer.parseInt(record[3]), Double.parseDouble(record[4]), record[5],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[6]),
-                            Integer.parseInt(record[7]));
+                            Integer.parseInt(record[7]), Integer.parseInt(record[8]));
                 }
                 records.add(record);
             }
@@ -104,7 +104,34 @@ public class RecVideoDAOImpl implements RecVideoDAO {
                     recVideo = new RecVideo(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
                             Integer.parseInt(record[3]), Double.parseDouble(record[4]), record[5],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[6]),
-                            Integer.parseInt(record[7]));
+                            Integer.parseInt(record[7]), Integer.parseInt(record[8]));
+                }
+                records.add(record);
+            }
+            csvReader.close();
+            recordToCsv(records, filePath);
+        } catch (IOException | ParseException ex) {
+            ex.printStackTrace();
+        }
+        return recVideo;
+    }
+
+    @Override
+    public RecVideo changeRecVideoRateTime(long courseId, int rateTime) {
+        File inFile = new File(filePath);
+        try {
+            String[] record = null;
+            ArrayList<String[]> records = new ArrayList<>();
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getRawRecord().split(",");
+                if(courseId == Long.parseLong(record[0])) {
+                    record[8] = String.valueOf(rateTime);
+                    recVideo = new RecVideo(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
+                            Integer.parseInt(record[3]), Double.parseDouble(record[4]), record[5],
+                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[6]),
+                            Integer.parseInt(record[7]), Integer.parseInt(record[8]));
                 }
                 records.add(record);
             }
@@ -130,7 +157,7 @@ public class RecVideoDAOImpl implements RecVideoDAO {
                     recVideo = new RecVideo(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
                             Integer.parseInt(record[3]), Double.parseDouble(record[4]), record[5],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[6]),
-                            Integer.parseInt(record[7]));
+                            Integer.parseInt(record[7]), Integer.parseInt(record[8]));
                     break;
                 }
             }
@@ -155,7 +182,7 @@ public class RecVideoDAOImpl implements RecVideoDAO {
                     recVideo = new RecVideo(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
                             Integer.parseInt(record[3]), Double.parseDouble(record[4]), record[5],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[6]),
-                            Integer.parseInt(record[7]));
+                            Integer.parseInt(record[7]), Integer.parseInt(record[8]));
                     recVideos.add(recVideo);
                 }
             }
@@ -180,7 +207,7 @@ public class RecVideoDAOImpl implements RecVideoDAO {
                     recVideo = new RecVideo(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
                             Integer.parseInt(record[3]), Double.parseDouble(record[4]), record[5],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[6]),
-                            Integer.parseInt(record[7]));
+                            Integer.parseInt(record[7]), Integer.parseInt(record[8]));
                     recVideos.add(recVideo);
                 }
             }
@@ -204,7 +231,7 @@ public class RecVideoDAOImpl implements RecVideoDAO {
                 recVideo = new RecVideo(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
                         Integer.parseInt(record[3]), Double.parseDouble(record[4]), record[5],
                         new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[6]),
-                        Integer.parseInt(record[7]));
+                        Integer.parseInt(record[7]), Integer.parseInt(record[8]));
                 recVideos.add(recVideo);
             }
             csvReader.close();
