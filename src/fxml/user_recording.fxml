@@ -50,7 +50,7 @@
                         </Hyperlink>
                         <Hyperlink fx:id="user_recording_hyper" onMouseClicked="#user_recording_click" text="Recording" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
-                              <Font size="30.0" />
+                              <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
                         </Hyperlink>
                         <Hyperlink fx:id="user_live_hyper" onMouseClicked="#user_live_click" text="Live" GridPane.columnIndex="1" GridPane.rowIndex="3">
