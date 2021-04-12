@@ -106,17 +106,17 @@
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d0d0" height="135.0" layoutX="389.0" layoutY="397.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="244.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d0d0" height="135.0" layoutX="704.0" layoutY="155.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="244.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d0d0" height="135.0" layoutX="704.0" layoutY="397.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="244.0" />
-                  <CheckBox fx:id="user_yoga_check" layoutX="543.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#click_check_yoga" text="Yoga">
+                  <CheckBox fx:id="user_yoga_check" layoutX="543.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#click_check_yoga" text="yoga">
                      <font>
                         <Font name="Comic Sans MS Bold" size="18.0" />
                      </font>
                   </CheckBox>
-                  <CheckBox fx:id="user_strength_check" layoutX="771.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#click_check_strength" text="Strength">
+                  <CheckBox fx:id="user_strength_check" layoutX="771.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#click_check_strength" text="strength">
                      <font>
                         <Font name="Comic Sans MS Bold" size="18.0" />
                      </font>
                   </CheckBox>
-                  <CheckBox fx:id="user_hitt_check" layoutX="658.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#click_check_hitt" text="Hitt">
+                  <CheckBox fx:id="user_hitt_check" layoutX="658.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#click_check_hitt" text="Hiit">
                      <font>
                         <Font name="Comic Sans MS Bold" size="18.0" />
                      </font>
@@ -254,7 +254,7 @@
                         <Font name="Comic Sans MS" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="recCoa_hitt1_label" layoutX="77.0" layoutY="563.0" prefHeight="20.0" prefWidth="122.0" text="Coach: Lee     ">
+                  <Label fx:id="recCoa_hitt2_label" layoutX="77.0" layoutY="563.0" prefHeight="20.0" prefWidth="122.0" text="Coach: Lee     ">
                      <font>
                         <Font name="Comic Sans MS" size="18.0" />
                      </font>
