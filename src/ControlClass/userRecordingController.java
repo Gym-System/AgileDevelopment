@@ -13,7 +13,7 @@ import javafx.scene.control.Pagination;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
-public class userController {
+public class userRecordingController {
 
     @FXML
     private ResourceBundle resources;
