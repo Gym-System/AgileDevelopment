@@ -1,6 +1,5 @@
 package ControlClass;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -9,16 +8,11 @@ import EntityClass.DAO.impl.UserDAOImpl;
 import EntityClass.VO.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.util.Callback;
-
-import javax.swing.*;
 
 public class manageUserController  {
 
@@ -149,6 +143,9 @@ public class manageUserController  {
     @FXML
     private CheckBox box3_mu;
 
+    UserDAOImpl userDAO = new UserDAOImpl();
+    ArrayList<User> users = userDAO.queryAll();
+
     @FXML
     void click_user_hyplink_mu(ActionEvent event) {
 
@@ -250,8 +247,103 @@ public class manageUserController  {
     }
 
     @FXML
-    void click_find_mu(ActionEvent event) {
-        UserDAOImpl userDAO = new UserDAOImpl();
+    void click_find_mu(MouseEvent event) {
+        names[0] = name1_mu;
+        names[1] = name2_mu;
+        names[2] = name3_mu;
+        names[3] = name4_mu;
+        names[4] = name5_mu;
+        emails[0] = email1_mu;
+        emails[1] = email2_mu;
+        emails[2] = email3_mu;
+        emails[3] = email4_mu;
+        emails[4] = email5_mu;
+        passwords[0] = password1_mu;
+        passwords[1] = password2_mu;
+        passwords[2] = password3_mu;
+        passwords[3] = password4_mu;
+        passwords[4] = password5_mu;
+        //What if nothing is entered and all user information is returned
+        if (text_find_mu.getText().equals("")){
+            System.out.println("1111111111");
+            turn_page.setPageFactory(new Callback<Integer, Node>() {
+                @Override
+                public Node call(Integer param) {
+                    VBox box = new VBox();
+                    int limit = 5;
+                    if (param.intValue() == users.size() / 5) {
+                        limit = users.size() % 5;
+                    }
+
+                    if (param.intValue() < limit) {
+                        for (int i = 0; i < limit; i++) {
+                            names[i].setText(users.get(5 * param.intValue() + i).getUserName());
+                            emails[i].setText(users.get(5 * param.intValue() + i).getEmail());
+                            passwords[i].setText(users.get(5 * param.intValue() + i).getPassword());
+                        }
+
+                    } else {
+                        for (int i = limit; i < 5; i++) {
+                            names[i].setText("");
+                            emails[i].setText("");
+                            passwords[i].setText("");
+                        }
+
+                    }
+                    return box;
+                }});
+        }
+        //If the user name is not found, no message is returned
+        if (!userDAO.queryByUserName(text_find_mu.getText()).getUserName().equals(text_find_mu.getText()) && !text_find_mu.getText().equals("")){
+            System.out.println("not same");
+            turn_page.setPageFactory(new Callback<Integer, Node>() {
+                @Override
+                public Node call(Integer param) {
+                    VBox box = new VBox();
+                    for (int i = 0; i < 5; i++) {
+
+                        names[i].setText("");
+                        emails[i].setText("");
+                        passwords[i].setText("");
+                    }
+                    return box;
+                }
+            });
+        }
+        //If a user name is queried, the user information is returned
+        if (!text_find_mu.getText().equals("") && userDAO.queryByUserName(text_find_mu.getText()).getUserName().equals(text_find_mu.getText())){
+            turn_page.setPageFactory(new Callback<Integer, Node>() {
+                @Override
+                public Node call(Integer param) {
+                    VBox box = new VBox();
+                    int limit = 5;
+                    if (param.intValue() == 1 / 5) {
+                        limit = 1 % 5;
+                    }
+
+                    if (param.intValue() < limit) {
+                        for (int i = 0; i < limit; i++) {
+                            names[i].setText(userDAO.queryByUserName(text_find_mu.getText()).getUserName());
+                            emails[i].setText(userDAO.queryByUserName(text_find_mu.getText()).getEmail());
+                            passwords[i].setText(userDAO.queryByUserName(text_find_mu.getText()).getPassword());
+                        }
+                        for (int i = limit; i < 5; i++) {
+                            names[i].setText("");
+                            emails[i].setText("");
+                            passwords[i].setText("");
+                        }
+                    }
+//                else {
+//
+//
+//                }
+                    return box;
+                }
+
+
+            });
+        }
+
 
     }
 
@@ -267,24 +359,7 @@ public class manageUserController  {
 
     @FXML
     void click_turn_page(ActionEvent event) {
-//        turn_page.currentPageIndexProperty();
-        turn_page.setPageFactory(new Callback<Integer, Node>() {
-            @Override
-            public Node call(Integer param) {
-                System.out.println("当前的页面索引 = " + param.intValue());
-                VBox box = new VBox(5);
-                for (int i = param.intValue(); i<param.intValue() + 5 ; i++) {
-                    VBox element = new VBox();
-                    Label text = new Label("用户" + i);
-                    element.getChildren().addAll(text);
-                    box.getChildren().addAll(element);
-                }
 
-
-                Node node = null;
-                return box;
-            }
-        });
     }
 
     @FXML
@@ -324,7 +399,7 @@ public class manageUserController  {
         assert box3_mu != null : "fx:id=\"box3_mu\" was not injected: check your FXML file 'manage_user.fxml'.";
 
 
-        UserDAOImpl userDAO = new UserDAOImpl();
+//        UserDAOImpl userDAO = new UserDAOImpl();
         ArrayList<User> users = userDAO.queryAll();
         turn_page.setPageCount((int) Math.ceil(users.size()/5.0));
         for (User user:users){
