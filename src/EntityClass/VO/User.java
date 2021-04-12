@@ -1,6 +1,8 @@
 package EntityClass.VO;
 
 import EntityClass.DAO.impl.HistoryDataDAOImpl;
+import EntityClass.DAO.impl.RecVideoDAOImpl;
+import EntityClass.DAO.impl.UserDAOImpl;
 
 import java.util.Date;
 
@@ -28,18 +30,44 @@ public class User extends Person {
         this.balance = balance;
     }
 
-    public void watchRecVideo(String userName, long courseId) {
+    public void watchRecVideo(long courseId) {
         String type = "recorded";
-        HistoryData historyData = new HistoryData(userName, type, courseId);
+        HistoryData historyData = new HistoryData(super.getUserName(), type, courseId);
+        HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
+        historyDataDAO.insertHistoryData(historyData);
+
+        RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
+        RecVideo recVideo = recVideoDAO.queryByCourseId(courseId);
+        int viewTime = recVideo.getViewTime();
+        recVideoDAO.changeRecVideoViewTime(courseId, viewTime + 1);
+    }
+
+    public void joinLiveSession(long courseId) {
+        String type = "live";
+        HistoryData historyData = new HistoryData(super.getUserName(), type, courseId);
         HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
         historyDataDAO.insertHistoryData(historyData);
     }
 
-    public void joinLiveSession(String userName, long courseId) {
-        String type = "live";
-        HistoryData historyData = new HistoryData(userName, type, courseId);
-        HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
-        historyDataDAO.insertHistoryData(historyData);
+    public void sendGift(int amount, long courseId) {
+        RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
+        RecVideo recVideo = recVideoDAO.queryByCourseId(courseId);
+        int gift = recVideo.getGift() + amount;
+        recVideoDAO.changeRecVideoGift(courseId, gift);
+
+        UserDAOImpl userDAO = new UserDAOImpl();
+        balance -= amount;
+        userDAO.changeUserBalance(getUserName(), balance);
+    }
+
+    public void rateRecVideo(int rate, long courseId) {
+        RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
+        RecVideo recVideo = recVideoDAO.queryByCourseId(courseId);
+        double star = recVideo.getStar();
+        int rateTime = recVideo.getRateTime();
+        star = (star * rateTime + rate) / (rateTime + 1);
+        recVideoDAO.changeRecVideoStar(courseId, star);
+        recVideoDAO.changeRecVideoRateTime(courseId, rateTime + 1);
     }
 
     public String[] toStrArray() {
