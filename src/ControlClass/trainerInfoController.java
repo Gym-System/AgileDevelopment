@@ -1,11 +1,12 @@
 package ControlClass;
 
-import java.awt.event.ActionEvent;
 import java.net.URL;
-        import java.util.ResourceBundle;
-        import javafx.fxml.FXML;
-        import javafx.scene.control.Hyperlink;
-        import javafx.scene.image.ImageView;
+import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.image.ImageView;
 
 public class trainerInfoController {
 
