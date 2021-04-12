@@ -34,32 +34,32 @@
                               <Rectangle2D />
                            </viewport>
                         </ImageView>
-                        <Hyperlink text="Portrait" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Hyperlink fx:id="trainerInfo_portrait" onAction="#trainerInfo_portrait_click" text="Portrait" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="Baskerville Old Face" size="36.0" />
                            </font>
                         </Hyperlink>
-                        <Hyperlink text="Upload" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Hyperlink fx:id="trainerInfo_upload" onAction="#trainerInfo_upload_click" text="Upload" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font name="Baskerville Old Face" size="36.0" />
                            </font>
                         </Hyperlink>
-                        <Hyperlink text="Live" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Hyperlink fx:id="trainerInfo_live" onAction="#trainerInfo_live_click" text="Live" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
                               <Font name="Baskerville Old Face" size="36.0" />
                            </font>
                         </Hyperlink>
-                        <Hyperlink text="Calendar" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <Hyperlink fx:id="trainerInfo_calendar" onAction="#trainerInfo_calendar_click" text="Calendar" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
                               <Font name="Baskerville Old Face" size="36.0" />
                            </font>
                         </Hyperlink>
-                        <Hyperlink text="History" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <Hyperlink fx:id="trainerInfo_history" onAction="#trainerInfo_history_click" text="History" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <font>
                               <Font name="Baskerville Old Face" size="36.0" />
                            </font>
                         </Hyperlink>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
+                        <ImageView fx:id="trainerInfo_info" fitHeight="150.0" fitWidth="200.0" layoutX="10.0" onMouseClicked="#trainerInfo_info_click" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
                            <image>
                               <Image url="@../resource/trainer_Profile.png" />
                            </image>
@@ -179,7 +179,7 @@
                               <Font name="Baskerville Old Face" size="36.0" />
                            </font>
                         </Label>
-                        <Hyperlink alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="34.0" prefWidth="212.0" text="Modify" GridPane.columnIndex="1">
+                        <Hyperlink fx:id="trainerInfo_modify" alignment="CENTER_RIGHT" contentDisplay="RIGHT" onAction="#trainerInfo_modify_click" prefHeight="34.0" prefWidth="212.0" text="Modify" GridPane.columnIndex="1">
                            <font>
                               <Font name="Baskerville Old Face" size="20.0" />
                            </font>
@@ -258,7 +258,7 @@
                               <Font name="Baskerville Old Face" size="36.0" />
                            </font>
                         </Label>
-                        <Hyperlink alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="34.0" prefWidth="212.0" text="Details" GridPane.columnIndex="1">
+                        <Hyperlink fx:id="trainerInfo_details" alignment="CENTER_RIGHT" contentDisplay="RIGHT" onAction="#trainerInfo_details_click" prefHeight="34.0" prefWidth="212.0" text="Details" GridPane.columnIndex="1">
                            <font>
                               <Font name="Baskerville Old Face" size="20.0" />
                            </font>
