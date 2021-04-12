@@ -82,9 +82,6 @@ public class userController {
     private Label recDur_strength1_label;
 
     @FXML
-    private Label recCoa_hitt2_label;
-
-    @FXML
     private CheckBox user_yoga_check;
 
     @FXML
@@ -193,6 +190,7 @@ public class userController {
 
     }
 
+
     @FXML
     void click_check_yoga(ActionEvent event) {
 
@@ -260,7 +258,6 @@ public class userController {
         assert user_live_hyper != null : "fx:id=\"user_live_hyper\" was not injected: check your FXML file 'user_recording.fxml'.";
         assert user_profile_pic != null : "fx:id=\"user_profile_pic\" was not injected: check your FXML file 'user_recording.fxml'.";
         assert recDur_strength1_label != null : "fx:id=\"recDur_strength1_label\" was not injected: check your FXML file 'user_recording.fxml'.";
-        assert recCoa_hitt2_label != null : "fx:id=\"recCoa_hitt2_label\" was not injected: check your FXML file 'user_recording.fxml'.";
         assert user_yoga_check != null : "fx:id=\"user_yoga_check\" was not injected: check your FXML file 'user_recording.fxml'.";
         assert recName_hitt1_label != null : "fx:id=\"recName_hitt1_label\" was not injected: check your FXML file 'user_recording.fxml'.";
         assert user_recording_hyper != null : "fx:id=\"user_recording_hyper\" was not injected: check your FXML file 'user_recording.fxml'.";
