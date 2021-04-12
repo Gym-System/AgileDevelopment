@@ -95,7 +95,28 @@ public class CourseDAOImpl implements CourseDAO {
                 if(subject.equals(record[1])) {
                     course = new Course(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
                             Integer.parseInt(record[3]), Double.parseDouble(record[4]));
+                    courses.add(course);
                 }
+            }
+            csvReader.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return courses;
+    }
+
+    @Override
+    public ArrayList<Course> queryAll() {
+        ArrayList<Course> courses = new ArrayList<>();
+        File inFile = new File(filePath);
+        try {
+            String[] record;
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getValues();
+                course = new Course(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
+                        Integer.parseInt(record[3]), Double.parseDouble(record[4]));
                 courses.add(course);
             }
             csvReader.close();
@@ -129,26 +150,5 @@ public class CourseDAOImpl implements CourseDAO {
             ex.printStackTrace();
         }
         return flag;
-    }
-
-    @Override
-    public ArrayList<Course> queryAll() {
-        ArrayList<Course> courses = new ArrayList<>();
-        File inFile = new File(filePath);
-        try {
-            String[] record;
-            BufferedReader reader = new BufferedReader(new FileReader(inFile));
-            CsvReader csvReader = new CsvReader(reader, ',');
-            while(csvReader.readRecord()){
-                record = csvReader.getValues();
-                course = new Course(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
-                        Integer.parseInt(record[3]), Double.parseDouble(record[4]));
-                courses.add(course);
-            }
-            csvReader.close();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        return courses;
     }
 }

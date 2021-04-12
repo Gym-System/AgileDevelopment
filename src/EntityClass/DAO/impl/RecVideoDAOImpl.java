@@ -132,8 +132,8 @@ public class RecVideoDAOImpl implements RecVideoDAO {
                             Integer.parseInt(record[3]), Double.parseDouble(record[4]), record[5],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[6]),
                             Integer.parseInt(record[7]));
+                    recVideos.add(recVideo);
                 }
-                recVideos.add(recVideo);
             }
             csvReader.close();
         } catch (IOException | ParseException ex) {
@@ -157,8 +157,8 @@ public class RecVideoDAOImpl implements RecVideoDAO {
                             Integer.parseInt(record[3]), Double.parseDouble(record[4]), record[5],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[6]),
                             Integer.parseInt(record[7]));
+                    recVideos.add(recVideo);
                 }
-                recVideos.add(recVideo);
             }
             csvReader.close();
         } catch (IOException | ParseException ex) {
