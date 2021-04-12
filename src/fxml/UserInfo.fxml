@@ -130,22 +130,12 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="ID:" GridPane.rowIndex="5">
-                           <font>
-                              <Font name="Baskerville Old Face" size="24.0" />
-                           </font>
-                        </Label>
                         <Label text="Gender:" GridPane.rowIndex="6">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
                         <Label text="Birthday:" GridPane.rowIndex="8">
-                           <font>
-                              <Font name="Baskerville Old Face" size="24.0" />
-                           </font>
-                        </Label>
-                        <Label text="City:" GridPane.rowIndex="9">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
@@ -170,22 +160,12 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label fx:id="ID" text="1" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                           <font>
-                              <Font name="Baskerville Old Face" size="24.0" />
-                           </font>
-                        </Label>
                         <Label fx:id="gender" text="F" GridPane.columnIndex="1" GridPane.rowIndex="6">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
                         <Label fx:id="birthday" text="1980" GridPane.columnIndex="1" GridPane.rowIndex="8">
-                           <font>
-                              <Font name="Baskerville Old Face" size="24.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="city" text="London" GridPane.columnIndex="1" GridPane.rowIndex="9">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
@@ -314,16 +294,6 @@
                         <Label fx:id="totalTime" text="17330 min" GridPane.rowIndex="3">
                            <font>
                               <Font name="Century" size="36.0" />
-                           </font>
-                        </Label>
-                        <Label text="Kcal burnt this week:" GridPane.rowIndex="5">
-                           <font>
-                              <Font name="Baskerville Old Face" size="24.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="energy" prefHeight="28.0" prefWidth="224.0" text="100" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                           <font>
-                              <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
                      </children>
