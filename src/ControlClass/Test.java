@@ -429,16 +429,41 @@ public class Test {
         for(PhyData phyData1:phyDatas) {
             System.out.println(phyData1);
         }
-         */
+        */
 
-        LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
+        RecVideo recVideo = new RecVideo("Hiit",
+                30,
+                "kaiyi");
+        System.out.println(recVideo);
 
-        ArrayList<LiveSession> liveSessions;
-        liveSessions = liveSessionDAO.queryByUserName("kaiyi");
-        for(LiveSession liveSession1:liveSessions) {
-            System.out.println(liveSession1);
+        RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
+
+        Boolean flag = recVideoDAO.insertRecVideo(recVideo);
+        System.out.println(flag);
+
+        HistoryData historyData = new HistoryData("kaiyi", "recorded", recVideo.getCourseId());
+        System.out.println(historyData);
+
+        User user = null;
+        try {
+            user = new User("kaiyi",
+                    "123",
+                    "zhaokaiyi@bupt.edu.cn",
+                    "Male",
+                    "18810282618",
+                    new SimpleDateFormat("yyyy-MM-dd").parse("1999-11-25"));
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
+        System.out.println(user);
 
-        System.out.println(liveSessions);
+        user.watchRecVideo(user.getUserName(), recVideo.getCourseId());
+
+        HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
+
+        ArrayList<HistoryData> historyDatas = historyDataDAO.queryByUserName(user.getUserName());
+        for(HistoryData historyData1:historyDatas) {
+            System.out.println(historyData1);
+        }
     }
 }
