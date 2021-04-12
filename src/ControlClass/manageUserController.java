@@ -248,6 +248,7 @@ public class manageUserController  {
 
     @FXML
     void click_find_mu(MouseEvent event) {
+
         names[0] = name1_mu;
         names[1] = name2_mu;
         names[2] = name3_mu;
@@ -265,7 +266,7 @@ public class manageUserController  {
         passwords[4] = password5_mu;
         //What if nothing is entered and all user information is returned
         if (text_find_mu.getText().equals("")){
-            System.out.println("1111111111");
+            turn_page.setPageCount((int) Math.ceil(users.size()/5.0));
             turn_page.setPageFactory(new Callback<Integer, Node>() {
                 @Override
                 public Node call(Integer param) {
@@ -283,6 +284,11 @@ public class manageUserController  {
                         }
 
                     } else {
+                        for (int i =0; i <limit; i++){
+                            names[i].setText(users.get(5 * param.intValue() + i).getUserName());
+                            emails[i].setText(users.get(5 * param.intValue() + i).getEmail());
+                            passwords[i].setText(users.get(5 * param.intValue() + i).getPassword());
+                        }
                         for (int i = limit; i < 5; i++) {
                             names[i].setText("");
                             emails[i].setText("");
@@ -296,6 +302,7 @@ public class manageUserController  {
         //If the user name is not found, no message is returned
         if (!userDAO.queryByUserName(text_find_mu.getText()).getUserName().equals(text_find_mu.getText()) && !text_find_mu.getText().equals("")){
             System.out.println("not same");
+            turn_page.setPageCount(1);
             turn_page.setPageFactory(new Callback<Integer, Node>() {
                 @Override
                 public Node call(Integer param) {
@@ -312,6 +319,7 @@ public class manageUserController  {
         }
         //If a user name is queried, the user information is returned
         if (!text_find_mu.getText().equals("") && userDAO.queryByUserName(text_find_mu.getText()).getUserName().equals(text_find_mu.getText())){
+            turn_page.setPageCount(1);
             turn_page.setPageFactory(new Callback<Integer, Node>() {
                 @Override
                 public Node call(Integer param) {
@@ -439,6 +447,11 @@ public class manageUserController  {
                     }
 
                 } else {
+                    for (int i =0; i <limit; i++){
+                        names[i].setText(users.get(5 * param.intValue() + i).getUserName());
+                        emails[i].setText(users.get(5 * param.intValue() + i).getEmail());
+                        passwords[i].setText(users.get(5 * param.intValue() + i).getPassword());
+                    }
                     for (int i = limit; i<5; i++){
                         names[i].setText("");
                         emails[i].setText("");
