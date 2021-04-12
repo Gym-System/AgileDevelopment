@@ -78,15 +78,15 @@ public class userInfoController {
         ArrayList<LiveSession> liveSessions = liveSessionDAO.queryByUserName("aaa");
         int time1 = 0;
         System.out.println(liveSessions);
-//        if(liveSessions.isEmpty()) {
-//            totalTime.setText(String.valueOf(time1));
-//        }
-//        else{
-//            for(LiveSession liveSession1:liveSessions) {
-//                time1=time1+liveSession1.getLength();
-//            }
-//            totalTime.setText(String.valueOf(time1));
-//        }
+        if(liveSessions.isEmpty()) {
+            totalTime.setText(String.valueOf(time1)+" min");
+        }
+        else{
+            for(LiveSession liveSession1:liveSessions) {
+                time1=time1+liveSession1.getLength();
+            }
+            totalTime.setText(String.valueOf(time1)+" min");
+        }
 
 
 
