@@ -35,6 +35,7 @@ public class manageUserController  {
     Label[] names = new Label[5];
     Label[] emails = new Label[5];
     Label[] passwords = new Label[5];
+    CheckBox[] checkBoxes = new CheckBox[5];
 
 
 
@@ -276,7 +277,7 @@ public class manageUserController  {
                         limit = users.size() % 5;
                     }
 
-                    if (param.intValue() < limit) {
+                    if (param.intValue() < users.size() /5) {
                         for (int i = 0; i < limit; i++) {
                             names[i].setText(users.get(5 * param.intValue() + i).getUserName());
                             emails[i].setText(users.get(5 * param.intValue() + i).getEmail());
@@ -361,7 +362,18 @@ public class manageUserController  {
     }
 
     @FXML
-    void click_delete_mu(ActionEvent event) {
+    void click_delete_mu(MouseEvent event) {
+        checkBoxes[0] = box1_mu;
+        checkBoxes[1] = box2_mu;
+        checkBoxes[2] = box3_mu;
+        checkBoxes[3] = box4_mu;
+        checkBoxes[4] = box5_mu;
+        for (int i = 0; i<5; i++){
+            System.out.println(checkBoxes[i].isSelected() + "no." +i);
+        }
+//        System.out.println(box1_mu.isSelected());       //true when is selected
+        System.out.println(turn_page.getCurrentPageIndex());
+
 
     }
 
@@ -439,7 +451,7 @@ public class manageUserController  {
                     limit = users.size()%5;
                 }
 
-                if(param.intValue() < limit){
+                if(param.intValue() < users.size()/5){
                     for (int i =0; i <limit; i++){
                         names[i].setText(users.get(5 * param.intValue() + i).getUserName());
                         emails[i].setText(users.get(5 * param.intValue() + i).getEmail());
