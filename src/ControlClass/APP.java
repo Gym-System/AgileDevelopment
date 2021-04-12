@@ -10,7 +10,7 @@ import java.io.IOException;
 public class APP extends javafx.application.Application{
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/register.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/manage_user.fxml"));
         Scene scene = new Scene(root, 1350, 807);
         stage.setScene(scene);
         stage.show();

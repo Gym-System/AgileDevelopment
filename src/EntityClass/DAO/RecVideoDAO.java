@@ -15,9 +15,11 @@ public interface RecVideoDAO {
     RecVideo changeRecVideoGift(long courseId, int gift);
     RecVideo changeRecVideoStar(long courseId, double star);
     RecVideo changeRecVideoViewTime(long courseId, int viewTime);
+    RecVideo changeRecVideoRateTime(long courseId, int rateTime);
 
     // select
+    RecVideo queryByCourseId(long courseId);
     ArrayList<RecVideo> queryByTrainerName(String trainerName);
     ArrayList<RecVideo> queryBySubject(String subject);
-
+    ArrayList<RecVideo> queryAll();
 }

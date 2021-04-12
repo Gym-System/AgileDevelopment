@@ -1,7 +1,6 @@
 package EntityClass.DAO.impl;
 
 import EntityClass.DAO.TrainerDAO;
-import EntityClass.VO.Staff;
 import EntityClass.VO.Trainer;
 import com.csvreader.CsvReader;
 
@@ -9,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -155,5 +155,27 @@ public class TrainerDAOImpl implements TrainerDAO {
             ex.printStackTrace();
         }
         return trainer;
+    }
+
+    @Override
+    public ArrayList<Trainer> queryAll() {
+        File inFile = new File(filePath);
+        ArrayList<Trainer> trainers = new ArrayList<>();
+        try {
+            String[] record;
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getValues();
+                trainer = new Trainer(record[0], record[1], record[2], record[3], record[4],
+                        new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                        record[6], Double.parseDouble(record[7]));
+                trainers.add(trainer);
+            }
+            csvReader.close();
+        } catch (IOException | ParseException ex) {
+            ex.printStackTrace();
+        }
+        return trainers;
     }
 }

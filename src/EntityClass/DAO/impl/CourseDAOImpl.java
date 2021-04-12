@@ -83,6 +83,28 @@ public class CourseDAOImpl implements CourseDAO {
 
     // select
     @Override
+    public Course queryByCourseId(long courseId) {
+        File inFile = new File(filePath);
+        try {
+            String[] record;
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getValues();
+                if(courseId == Long.parseLong(record[0])) {
+                    course = new Course(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
+                            Integer.parseInt(record[3]), Double.parseDouble(record[4]));
+                    break;
+                }
+            }
+            csvReader.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return course;
+    }
+
+    @Override
     public ArrayList<Course> queryBySubject(String subject) {
         ArrayList<Course> courses = new ArrayList<>();
         File inFile = new File(filePath);
@@ -95,7 +117,28 @@ public class CourseDAOImpl implements CourseDAO {
                 if(subject.equals(record[1])) {
                     course = new Course(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
                             Integer.parseInt(record[3]), Double.parseDouble(record[4]));
+                    courses.add(course);
                 }
+            }
+            csvReader.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return courses;
+    }
+
+    @Override
+    public ArrayList<Course> queryAll() {
+        ArrayList<Course> courses = new ArrayList<>();
+        File inFile = new File(filePath);
+        try {
+            String[] record;
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getValues();
+                course = new Course(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
+                        Integer.parseInt(record[3]), Double.parseDouble(record[4]));
                 courses.add(course);
             }
             csvReader.close();

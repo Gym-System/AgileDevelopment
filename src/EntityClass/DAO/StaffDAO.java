@@ -2,6 +2,8 @@ package EntityClass.DAO;
 
 import EntityClass.VO.Staff;
 
+import java.util.ArrayList;
+
 public interface StaffDAO {
     // insert
     Boolean insertStaff(Staff staff);
@@ -16,4 +18,5 @@ public interface StaffDAO {
 
     // select
     Staff queryByUserName(String userName);
+    ArrayList<Staff> queryAll();
 }

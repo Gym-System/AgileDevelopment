@@ -21,13 +21,13 @@ public class UserDAOImpl implements UserDAO {
     // insert
     @Override
     public Boolean insertUser(User user) {
-        return insertInfo(fileName, user.toStrArray());
+        return insertInfo(filePath, user.toStrArray());
     }
 
     // delete
     @Override
     public Boolean deleteUser(String userName) {
-        return deleteInfo(userName, fileName);
+        return deleteInfo(userName, filePath);
     }
 
     // update
@@ -152,5 +152,27 @@ public class UserDAOImpl implements UserDAO {
             ex.printStackTrace();
         }
         return user;
+    }
+
+    @Override
+    public ArrayList<User> queryAll() {
+        File inFile = new File(filePath);
+        ArrayList<User> users = new ArrayList<>();
+        try {
+            String[] record;
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getValues();
+                user = new User(record[0], record[1], record[2], record[3], record[4],
+                        new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                        Double.parseDouble(record[6]));
+                users.add(user);
+            }
+            csvReader.close();
+        } catch (IOException | ParseException ex) {
+            ex.printStackTrace();
+        }
+        return users;
     }
 }

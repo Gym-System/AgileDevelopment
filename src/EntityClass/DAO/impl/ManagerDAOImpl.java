@@ -159,4 +159,26 @@ public class ManagerDAOImpl implements ManagerDAO {
         }
         return manager;
     }
+
+    @Override
+    public ArrayList<Manager> queryAll() {
+        File inFile = new File(filePath);
+        ArrayList<Manager> managers = new ArrayList<>();
+        try {
+            String[] record;
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getValues();
+                manager = new Manager(record[0], record[1], record[2], record[3], record[4],
+                        new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                        record[6], Integer.parseInt(record[7]));
+                managers.add(manager);
+            }
+            csvReader.close();
+        } catch (IOException | ParseException ex) {
+            ex.printStackTrace();
+        }
+        return managers;
+    }
 }

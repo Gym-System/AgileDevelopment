@@ -3,6 +3,8 @@ package EntityClass.DAO;
 import EntityClass.VO.PremierUser;
 import EntityClass.VO.User;
 
+import java.util.ArrayList;
+
 public interface PreUserDAO {
     // insert
     Boolean insertPreUser(PremierUser premierUser);
@@ -19,4 +21,5 @@ public interface PreUserDAO {
 
     // select
     PremierUser queryByUserName(String userName);
+    ArrayList<PremierUser> queryAll();
 }

@@ -18,6 +18,8 @@ public interface LiveSessionDAO {
     LiveSession changeLiveSessionStartTime(long courseId, String startTime);
 
     // select
+    LiveSession queryByCourseId(long courseId);
     ArrayList<LiveSession> queryByTrainerName(String trainerName);
     ArrayList<LiveSession> queryByUserName(String userName);
+    ArrayList<LiveSession> queryAll();
 }

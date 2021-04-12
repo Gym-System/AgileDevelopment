@@ -130,4 +130,26 @@ public class StaffDAOImpl implements StaffDAO {
         }
         return staff;
     }
+
+    @Override
+    public ArrayList<Staff> queryAll() {
+        File inFile = new File(filePath);
+        ArrayList<Staff> staffs = new ArrayList<>();
+        try {
+            String[] record;
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getValues();
+                staff = new Staff(record[0], record[1], record[2], record[3], record[4],
+                        new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                        record[6]);
+                staffs.add(staff);
+            }
+            csvReader.close();
+        } catch (IOException | ParseException ex) {
+            ex.printStackTrace();
+        }
+        return staffs;
+    }
 }
