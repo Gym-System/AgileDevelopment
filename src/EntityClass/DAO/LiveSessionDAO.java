@@ -20,4 +20,5 @@ public interface LiveSessionDAO {
     // select
     ArrayList<LiveSession> queryByTrainerName(String trainerName);
     ArrayList<LiveSession> queryByUserName(String userName);
+    ArrayList<LiveSession> queryAll();
 }

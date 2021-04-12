@@ -19,5 +19,5 @@ public interface RecVideoDAO {
     // select
     ArrayList<RecVideo> queryByTrainerName(String trainerName);
     ArrayList<RecVideo> queryBySubject(String subject);
-
+    ArrayList<RecVideo> queryAll();
 }

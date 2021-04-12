@@ -2,6 +2,8 @@ package EntityClass.DAO;
 
 import EntityClass.VO.Person;
 
+import java.util.ArrayList;
+
 public interface PersonDAO {
     // insert
     Boolean insertPerson(Person person);
@@ -16,5 +18,5 @@ public interface PersonDAO {
 
     // select
     Person queryByUserName(String userName);
-
+    ArrayList<Person> queryAll();
 }
