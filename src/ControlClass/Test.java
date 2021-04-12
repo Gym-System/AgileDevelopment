@@ -1,10 +1,14 @@
 package ControlClass;
 
 import EntityClass.DAO.PersonDAO;
+import EntityClass.DAO.PreUserDAO;
+import EntityClass.DAO.StaffDAO;
 import EntityClass.DAO.impl.*;
 import EntityClass.VO.*;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class Test {
     public static void main(String[] args) throws ParseException {
@@ -90,11 +94,6 @@ public class Test {
         }
         System.out.println(manager);
 
-        Course course = new Course("Strength", "live", 30.0);
-        System.out.println(course);
-
-        LiveSession liveSession = null;
-
         Course course = new Course("Hiit", 30);
         System.out.println(course);
 
@@ -146,6 +145,10 @@ public class Test {
 
         Person person1 = personDAO.queryByUserName("kaiyi");
         System.out.println(person1);
+
+        ArrayList<Person> people = personDAO.queryAll();
+        for(Person person1:people) {
+            System.out.println(person1);
          */
 
         /*
@@ -171,6 +174,11 @@ public class Test {
 
         user1 = userDAO.queryByUserName("kaiyi");
         System.out.println(user1);
+
+        ArrayList<User> users = userDAO.queryAll();
+        for(User user1:users) {
+            System.out.println(user1);
+        }
          */
 
         /*
@@ -199,6 +207,11 @@ public class Test {
 
         premierUser1 = preUserDAO.changePreUserType("kaiyi", 1);
         System.out.println(premierUser1);
+
+        ArrayList<PremierUser> premierUsers = preUserDAO.queryAll();
+        for(PremierUser premierUser1:premierUsers) {
+            System.out.println(premierUser1);
+        }
          */
 
         /*
@@ -221,6 +234,11 @@ public class Test {
 
         Staff staff1 = staffDAO.queryByUserName("kaiyi");
         System.out.println(staff1);
+
+        ArrayList<Staff> staffs = staffDAO.queryAll();
+        for(Staff staff1:staffs) {
+            System.out.println(staff1);
+        }
         */
 
         /*
@@ -246,6 +264,11 @@ public class Test {
 
         trainer1 = trainerDAO.queryByUserName("kaiyi");
         System.out.println(trainer1);
+
+        ArrayList<Trainer> trainers = trainerDAO.queryAll();
+        for(Trainer trainer1:trainers) {
+            System.out.println(trainer1);
+        }
          */
 
         /*
@@ -271,6 +294,11 @@ public class Test {
 
         manager1 = managerDAO.queryByUserName("kaiyi");
         System.out.println(manager1);
+
+        ArrayList<Manager> managers = managerDAO.queryAll();
+        for(Manager manager1:managers) {
+            System.out.println(manager1);
+        }
          */
 
         /*
@@ -291,6 +319,11 @@ public class Test {
         ArrayList<Course> courses;
         courses = courseDAO.queryBySubject("Hiit");
         for(Course course:courses) {
+            System.out.println(course);
+        }
+
+        ArrayList<Course> courses = courseDAO.queryAll();
+        for(Course course1:courses) {
             System.out.println(course);
         }
         */
@@ -320,6 +353,11 @@ public class Test {
         }
 
         recVideos = recVideoDAO.queryByTrainerName("kaiyi");
+        for(RecVideo recVideo1:recVideos) {
+            System.out.println(recVideo1);
+        }
+
+        ArrayList<RecVideo> recVideos = recVideoDAO.queryAll();
         for(RecVideo recVideo1:recVideos) {
             System.out.println(recVideo1);
         }
@@ -353,6 +391,11 @@ public class Test {
         for(LiveSession liveSession1:liveSessions) {
             System.out.println(liveSession1);
         }
+
+        ArrayList<LiveSession> liveSessions = liveSessionDAO.queryAll();
+        for(LiveSession liveSession1:liveSessions) {
+            System.out.println(liveSession1);
+        }
         */
 
         /*
@@ -381,6 +424,11 @@ public class Test {
 
         phyData1 = phyDataDAO.queryByUserName(phyData.getUserName());
         System.out.println(phyData1);
+
+        ArrayList<PhyData> phyDatas = phyDataDAO.queryAll();
+        for(PhyData phyData1:phyDatas) {
+            System.out.println(phyData1);
+        }
          */
     }
 }

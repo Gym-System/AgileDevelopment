@@ -177,4 +177,25 @@ public class PhyDataDAOImpl implements PhyDataDAO {
         }
         return phyData;
     }
+
+    @Override
+    public ArrayList<PhyData> queryAll() {
+        File inFile = new File(filePath);
+        ArrayList<PhyData> phyDatas = new ArrayList<>();
+        try {
+            String[] record;
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getValues();
+                phyData = new PhyData(record[0], Double.parseDouble(record[1]), Double.parseDouble(record[2]),
+                        Integer.parseInt(record[3]), record[4], Double.parseDouble(record[5]));
+                phyDatas.add(phyData);
+            }
+            csvReader.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return phyDatas;
+    }
 }

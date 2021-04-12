@@ -2,6 +2,8 @@ package EntityClass.DAO;
 
 import EntityClass.VO.PhyData;
 
+import java.util.ArrayList;
+
 public interface PhyDataDAO {
     // insert
     Boolean insertPhyData(PhyData phyData);
@@ -18,4 +20,5 @@ public interface PhyDataDAO {
 
     // select
     PhyData queryByUserName(String userName);
+    ArrayList<PhyData> queryAll();
 }

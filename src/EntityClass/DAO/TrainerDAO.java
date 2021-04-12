@@ -2,6 +2,8 @@ package EntityClass.DAO;
 
 import EntityClass.VO.Trainer;
 
+import java.util.ArrayList;
+
 public interface TrainerDAO {
     // insert
     Boolean insertTrainer(Trainer trainer);
@@ -17,4 +19,5 @@ public interface TrainerDAO {
 
     // select
     Trainer queryByUserName(String userName);
+    ArrayList<Trainer> queryAll();
 }

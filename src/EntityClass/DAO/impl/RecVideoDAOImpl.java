@@ -166,4 +166,27 @@ public class RecVideoDAOImpl implements RecVideoDAO {
         }
         return recVideos;
     }
+
+    @Override
+    public ArrayList<RecVideo> queryAll() {
+        ArrayList<RecVideo> recVideos = new ArrayList<>();
+        File inFile = new File(filePath);
+        try {
+            String[] record;
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getValues();
+                recVideo = new RecVideo(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
+                        Integer.parseInt(record[3]), Double.parseDouble(record[4]), record[5],
+                        new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[6]),
+                        Integer.parseInt(record[7]));
+                recVideos.add(recVideo);
+            }
+            csvReader.close();
+        } catch (IOException | ParseException ex) {
+            ex.printStackTrace();
+        }
+        return recVideos;
+    }
 }

@@ -129,6 +129,27 @@ public class PersonDAOImpl implements PersonDAO {
         return person;
     }
 
+    @Override
+    public ArrayList<Person> queryAll() {
+        File inFile = new File(filePath);
+        ArrayList<Person> people = new ArrayList<>();
+        try {
+            String[] record;
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getValues();
+                person = new Person(record[0], record[1], record[2], record[3], record[4],
+                        new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]));
+                people.add(person);
+            }
+            csvReader.close();
+        } catch (IOException | ParseException ex) {
+            ex.printStackTrace();
+        }
+        return people;
+    }
+
     // help function
     static Boolean insertInfo(String fileName, String[] strings) {
         boolean flag = false;

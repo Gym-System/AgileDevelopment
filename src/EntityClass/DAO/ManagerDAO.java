@@ -2,6 +2,8 @@ package EntityClass.DAO;
 
 import EntityClass.VO.Manager;
 
+import java.util.ArrayList;
+
 public interface ManagerDAO {
     // insert
     Boolean insertManager(Manager manager);
@@ -17,4 +19,5 @@ public interface ManagerDAO {
 
     // select
     Manager queryByUserName(String userName);
+    ArrayList<Manager> queryAll();
 }

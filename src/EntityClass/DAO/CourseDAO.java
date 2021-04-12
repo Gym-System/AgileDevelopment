@@ -17,4 +17,5 @@ public interface CourseDAO {
 
     // select
     ArrayList<Course> queryBySubject(String subject);
+    ArrayList<Course> queryAll();
 }
