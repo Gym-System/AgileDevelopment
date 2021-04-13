@@ -61,6 +61,11 @@ public class PhyData {
         this.BFR = BFR;
     }
 
+    public double calBMI() {
+        double BMI = weight / Math.pow(height/100, 2);
+        return calBMI();
+    }
+
     public String[] toStrArray() {
         String text = "" + userName + "," + height + "," + weight + "," + experience + "," +
                 interest + "," + BFR;
