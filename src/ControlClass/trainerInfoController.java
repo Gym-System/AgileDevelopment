@@ -163,7 +163,6 @@ public class trainerInfoController {
         trainer_stars.add(trainer_star2);
         trainer_stars.add(trainer_star3);
         trainer_stars.add(trainer_star4);
-        System.out.println(live);
         for(i=0;i<=3;i++){
             if(trainer_courses.get(i)==null){
                 break;
