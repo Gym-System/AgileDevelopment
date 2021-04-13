@@ -259,7 +259,7 @@
                         <Font name="Comic Sans MS" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="recCoa_hitt2_label" layoutX="710.0" layoutY="323.0" prefHeight="20.0" prefWidth="122.0" text="Coach: Lee     ">
+                  <Label fx:id="recCoa_hitt1_label" layoutX="710.0" layoutY="323.0" prefHeight="20.0" prefWidth="122.0" text="Coach: Lee     ">
                      <font>
                         <Font name="Comic Sans MS" size="18.0" />
                      </font>

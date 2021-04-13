@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="807.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="807.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControlClass.trainerInfoController">
    <children>
       <SplitPane dividerPositions="0.2229" layoutX="244.0" layoutY="202.0" prefHeight="807.0" prefWidth="1350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.3">
         <items>
@@ -150,22 +150,22 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="Andy" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <Label fx:id="trainer_name" text="Andy" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="1" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <Label fx:id="trainer_id" text="1" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="M" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <Label fx:id="trainer_gender" text="M" GridPane.columnIndex="1" GridPane.rowIndex="6">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="andy@34.com" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                        <Label fx:id="trainer_email" text="andy@34.com" GridPane.columnIndex="1" GridPane.rowIndex="8">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
@@ -190,7 +190,7 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="Strength" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                        <Label fx:id="trainer_major" text="Strength" GridPane.columnIndex="1" GridPane.rowIndex="7">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
@@ -200,7 +200,7 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="65.0 kg" GridPane.rowIndex="12">
+                        <Label fx:id="trainer_weight" text="65.0 kg" GridPane.rowIndex="12">
                            <font>
                               <Font name="Century" size="36.0" />
                            </font>
@@ -210,12 +210,12 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="175.0 cm" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                        <Label fx:id="trainer_height" text="175.0 cm" GridPane.columnIndex="1" GridPane.rowIndex="12">
                            <font>
                               <Font name="Century" size="36.0" />
                            </font>
                         </Label>
-                        <Label prefHeight="28.0" prefWidth="203.0" text="8" GridPane.rowIndex="14">
+                        <Label fx:id="trainer_experience" prefHeight="28.0" prefWidth="203.0" text="8" GridPane.rowIndex="14">
                            <font>
                               <Font name="Century" size="36.0" />
                            </font>

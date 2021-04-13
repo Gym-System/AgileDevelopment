@@ -1,25 +1,32 @@
 package ControlClass;
 import EntityClass.DAO.LiveSessionDAO;
-import EntityClass.DAO.UserDAO;
 import EntityClass.DAO.impl.*;
+import EntityClass.VO.HistoryData;
 import EntityClass.VO.LiveSession;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Timer;
 
 public class userInfoController {
+
+    @FXML
+    private ImageView userInfo_info;
 
     @FXML
     private Label birthday;
 
     @FXML
-    private Label gender;
+    private Hyperlink userInfo_live;
 
     @FXML
-    private Label city;
+    private Label gender;
 
     @FXML
     private Label level;
@@ -31,16 +38,28 @@ public class userInfoController {
     private Label weight;
 
     @FXML
+    private Hyperlink userInfo_history;
+
+    @FXML
+    private Hyperlink userInfo_calendar;
+
+    @FXML
     private Label balance;
+
+    @FXML
+    private Hyperlink userInfo_favorates;
+
+    @FXML
+    private Hyperlink userInfo_recording;
 
     @FXML
     private Label name;
 
     @FXML
-    private Label ID;
+    private Label email;
 
     @FXML
-    private Label email;
+    private Hyperlink userInfo_modify;
 
     @FXML
     private Label height;
@@ -48,8 +67,8 @@ public class userInfoController {
     @FXML
     private Label bmi;
 
-    @FXML
-    private Label energy;
+    
+
 
     @FXML
     void initialize() {
@@ -75,21 +94,50 @@ public class userInfoController {
         height.setText(Double.toString(phyDataDAO.queryByUserName(username).getHeight())+" cm");
         double result=(10000*phyDataDAO.queryByUserName(username).getWeight())/(phyDataDAO.queryByUserName(username).getHeight()*phyDataDAO.queryByUserName(username).getHeight());
         bmi.setText(Double.toString(result));
-        ArrayList<LiveSession> liveSessions = liveSessionDAO.queryByUserName("aaa");
+        ArrayList<LiveSession> liveSessions = liveSessionDAO.queryByUserName(username);
         int time1 = 0;
-        System.out.println(liveSessions);
+        int time2 = 0;
         if(liveSessions.isEmpty()) {
-            totalTime.setText(String.valueOf(time1)+" min");
+            time1=0;
         }
         else{
             for(LiveSession liveSession1:liveSessions) {
                 time1=time1+liveSession1.getLength();
             }
-            totalTime.setText(String.valueOf(time1)+" min");
         }
 
+        HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
+        ArrayList<HistoryData> HISTORY = historyDataDAO.queryByUserName(username);
+        time2 = userDAO.queryByUserName(username).exerciseTime(HISTORY);
+        totalTime.setText(Integer.toString(time1+time2)+" min");
 
 
+
+
+
+
+
+    }
+
+    public void userInfo_live_click(javafx.event.ActionEvent actionEvent) {
+    }
+
+    public void userInfo_favorates_click(ActionEvent actionEvent) {
+    }
+
+    public void userInfo_modify_click(ActionEvent actionEvent) {
+    }
+
+    public void userInfo_recording_click(ActionEvent actionEvent) {
+    }
+
+    public void userInfo_calendar_click(ActionEvent actionEvent) {
+    }
+
+    public void userInfo_history_click(ActionEvent actionEvent) {
+    }
+
+    public void userInfo_info_click(MouseEvent mouseEvent) {
     }
 }
 

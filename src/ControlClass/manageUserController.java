@@ -49,9 +49,6 @@ public class manageUserController  {
     private Label email1_mu;
 
     @FXML
-    private Button button_edit_mu;
-
-    @FXML
     private TextField text_find_mu;
 
     @FXML
@@ -173,81 +170,6 @@ public class manageUserController  {
     }
 
     @FXML
-    void click_name1_mu(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_email1_mu(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_password1_mu(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_name2_mu(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_email2_mu(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_name3_mu(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_name4_mu(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_name5_mu(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_email3_mu(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_email4_mu(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_email5_mu(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_password2_mu(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_password3_mu(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_password4_mu(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_password5_mu(ActionEvent event) {
-
-    }
-
-    @FXML
     void click_find_mu(MouseEvent event) {
 
         names[0] = name1_mu;
@@ -356,10 +278,6 @@ public class manageUserController  {
 
     }
 
-    @FXML
-    void click_edit_mu(ActionEvent event) {
-
-    }
 
     @FXML
     void click_delete_mu(MouseEvent event) {
@@ -385,7 +303,6 @@ public class manageUserController  {
     @FXML
     void initialize() {
         assert email1_mu != null : "fx:id=\"email1_mu\" was not injected: check your FXML file 'manage_user.fxml'.";
-        assert button_edit_mu != null : "fx:id=\"button_edit_mu\" was not injected: check your FXML file 'manage_user.fxml'.";
         assert text_find_mu != null : "fx:id=\"text_find_mu\" was not injected: check your FXML file 'manage_user.fxml'.";
         assert trainer_hyplink_mu != null : "fx:id=\"trainer_hyplink_mu\" was not injected: check your FXML file 'manage_user.fxml'.";
         assert email3_mu != null : "fx:id=\"email3_mu\" was not injected: check your FXML file 'manage_user.fxml'.";
