@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -71,7 +72,7 @@ public class userInfoController {
 
 
     @FXML
-    void initialize() {
+    void initialize() throws ParseException {
         String username = passValue.getValue();
         UserDAOImpl userDAO = new UserDAOImpl();
         PhyDataDAOImpl phyDataDAO = new PhyDataDAOImpl();
@@ -108,7 +109,7 @@ public class userInfoController {
 
         HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
         ArrayList<HistoryData> HISTORY = historyDataDAO.queryByUserName(username);
-        time2 = userDAO.queryByUserName(username).exerciseTime(HISTORY);
+        time2 = userDAO.queryByUserName(username).getExerciseTime(null,null,null);
         totalTime.setText(Integer.toString(time1+time2)+" min");
 
 
