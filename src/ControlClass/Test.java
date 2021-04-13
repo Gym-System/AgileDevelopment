@@ -470,5 +470,23 @@ public class Test {
             System.out.println(historyData1);
         }
          */
+
+        User user = null;
+        try {
+            user = new User("kaiyi",
+                    "123",
+                    "zhaokaiyi@bupt.edu.cn",
+                    "Male",
+                    "18810282618",
+                    new SimpleDateFormat("yyyy-MM-dd").parse("1999-11-25"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(user.getExerciseTime("day", null, null));
+        System.out.println(user.getExerciseTime("day", null, "live"));
+        System.out.println(user.getExerciseTime("day", null, "recorded"));
+        System.out.println(user.getExerciseTime("day", "Strength", null));
+        System.out.println(user.getExerciseTime("day", "Hiit", null));
     }
 }
