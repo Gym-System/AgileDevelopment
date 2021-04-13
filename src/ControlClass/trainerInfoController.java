@@ -164,18 +164,17 @@ public class trainerInfoController {
         trainer_stars.add(trainer_star3);
         trainer_stars.add(trainer_star4);
         System.out.println(live);
-//        for(i=0;i<=3;i++){
-//            if(trainer_courses.get(i)==null){
-//                break;
-//            }
-//            else{
-//                System.out.println(live.get(i).getSubject());
-//                System.out.println(live.get(i).getStar());
-//            }
-//
-//            //trainer_courses.get(i).setText(live.get(i).getSubject());
-//            //trainer_stars.get(i).setText(Double.toString(live.get(i).getStar()));
-//        }
+        for(i=0;i<=3;i++){
+            if(trainer_courses.get(i)==null){
+                break;
+            }
+            else{
+                trainer_courses.get(i).setText(live.get(i).getSubject());
+                trainer_stars.get(i).setText(Double.toString(live.get(i).getStar()));
+            }
+
+
+        }
 
     }
 }
