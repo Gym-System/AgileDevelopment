@@ -7,10 +7,7 @@ import EntityClass.DAO.impl.UserDAOImpl;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
 public class User extends Person {
     private double balance = 0.0;
@@ -76,10 +73,11 @@ public class User extends Person {
         recVideoDAO.changeRecVideoRateTime(courseId, rateTime + 1);
     }
 
-    public int exerciseTime(String timeType) throws ParseException {
+    public int getExerciseTime(String timeType, String subject, String courseType) throws ParseException {
         int time = 0;
         HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
         ArrayList<HistoryData> historyDatas = historyDataDAO.queryByUserName(getUserName());
+        ArrayList<HistoryData> historyDatas1 = new ArrayList<>();
 
         LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
         RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
@@ -90,10 +88,24 @@ public class User extends Person {
         LiveSession liveSession;
         RecVideo recVideo;
 
-        Date date1, date2;
+        if(timeType != null) {
+            Date date1, date2;
 
-        if(timeType.equals("day")) {
-            calendar.add(Calendar.DATE,-1);
+            switch(timeType) {
+                case "day":
+                    calendar.add(Calendar.DATE,-1);
+                    break;
+                case "week":
+                    calendar.add(Calendar.DATE,-7);
+                    break;
+                case "month":
+                    calendar.add(Calendar.MONTH,-1);
+                    break;
+                case "year":
+                    calendar.add(Calendar.MONTH,-12);
+                    break;
+            }
+
             date2 = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
                     new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
 
@@ -106,74 +118,67 @@ public class User extends Person {
                     recVideo = recVideoDAO.queryByCourseId(historyData.getCourseId());
                     date1 = recVideo.getUploadedTime();
                 }
-                if(date1.before(date2)) {
-                    historyDatas.remove(historyData);
+                if(date1.after(date2)) {
+                    historyDatas1.add(historyData);
                 }
             }
+            historyDatas.clear();
+            for(HistoryData historyData:historyDatas1) {
+                historyDatas.add(historyData);
+            }
+            historyDatas1.clear();
         }
-        else if(timeType.equals("week")) {
-            calendar.add(Calendar.DATE,-7);
-            date2 = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
-                    new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
 
+        if(subject != null) {
             for(HistoryData historyData:historyDatas) {
-                if(historyData.getType().equals("live")) {
+                if (historyData.getType().equals("live")) {
                     liveSession = liveSessionDAO.queryByCourseId(historyData.getCourseId());
-                    date1 = liveSession.getStartTime();
-                }
-                else {
+                    if (liveSession.getSubject().equals(subject)) {
+                        historyDatas1.add(historyData);
+                    }
+                } else {
                     recVideo = recVideoDAO.queryByCourseId(historyData.getCourseId());
-                    date1 = recVideo.getUploadedTime();
-                }
-                if(date1.before(date2)) {
-                    historyDatas.remove(historyData);
+                    if (recVideo.getSubject().equals(subject)) {
+                        historyDatas1.add(historyData);
+                    }
                 }
             }
+            historyDatas.clear();
+            for(HistoryData historyData:historyDatas1) {
+                historyDatas.add(historyData);
+            }
+            historyDatas1.clear();
         }
-        else if(timeType.equals("month")) {
-            calendar.add(Calendar.MONTH,-1);
-            date2 = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
-                    new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
 
-            for(HistoryData historyData:historyDatas) {
-                if(historyData.getType().equals("live")) {
-                    liveSession = liveSessionDAO.queryByCourseId(historyData.getCourseId());
-                    date1 = liveSession.getStartTime();
-                }
-                else {
-                    recVideo = recVideoDAO.queryByCourseId(historyData.getCourseId());
-                    date1 = recVideo.getUploadedTime();
-                }
-                if(date1.before(date2)) {
-                    historyDatas.remove(historyData);
+        if(courseType != null) {
+            if(courseType.equals("live")) {
+                for(HistoryData historyData:historyDatas) {
+                    if(historyData.getType().equals("live")) {
+                        historyDatas1.add(historyData);
+                    }
                 }
             }
+            else {
+                for(HistoryData historyData:historyDatas) {
+                    if(historyData.getType().equals("recorded")) {
+                        historyDatas1.add(historyData);
+                    }
+                }
+            }
+            historyDatas.clear();
+            for(HistoryData historyData:historyDatas1) {
+                historyDatas.add(historyData);
+            }
+            historyDatas1.clear();
         }
-        else if(timeType.equals("year")) {
-            calendar.add(Calendar.MONTH,-12);
-            date2 = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
-                    new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
 
-            for(HistoryData historyData:historyDatas) {
-                if(historyData.getType().equals("live")) {
-                    liveSession = liveSessionDAO.queryByCourseId(historyData.getCourseId());
-                    date1 = liveSession.getStartTime();
-                }
-                else {
-                    recVideo = recVideoDAO.queryByCourseId(historyData.getCourseId());
-                    date1 = recVideo.getUploadedTime();
-                }
-                if(date1.before(date2)) {
-                    historyDatas.remove(historyData);
-                }
-            }
-        }
-        time = exerciseTime(historyDatas);
+        time = calExerciseTime(historyDatas);
 
         return time;
     }
 
-    public int exerciseTime(ArrayList<HistoryData> historyDatas) {
+    // helper function
+    public int calExerciseTime(ArrayList<HistoryData> historyDatas) {
         int time = 0;
         LiveSession liveSession;
         RecVideo recVideo;
