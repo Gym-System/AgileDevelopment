@@ -1,5 +1,8 @@
 package EntityClass.VO;
 
+import EntityClass.DAO.impl.TrainerDAOImpl;
+import EntityClass.DAO.impl.UserDAOImpl;
+
 import java.util.Date;
 
 public class Manager extends Staff {
@@ -24,6 +27,21 @@ public class Manager extends Staff {
 
     public void setManagerType(int managerType) {
         this.managerType = managerType;
+    }
+
+    public boolean deleteUserInfo(String userName) {
+        UserDAOImpl userDAO = new UserDAOImpl();
+        return userDAO.deleteUser(userName);
+    }
+
+    public boolean deleteTrainerInfo(String userName) {
+        TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
+        return trainerDAO.deleteTrainer(userName);
+    }
+
+    public Trainer changeTrainerSalary(String userName, double salary) {
+        TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
+        return trainerDAO.changeTrainSalary(userName, salary);
     }
 
     @Override
