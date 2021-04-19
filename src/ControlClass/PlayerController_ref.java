@@ -49,7 +49,7 @@ public class PlayerController_ref {
 
 
     //控件素材图片
-    private String playIcon  = getClass().getResource("../resource/play.png").toString();
+    private String playIcon  = getClass().getResource("resource/play.png").toString();
     private String pauseIcon  = getClass().getResource("resource/pause.png").toString();
     private String stopIcon  = getClass().getResource("resource/stop.png").toString();
     private String volOffIcon  = getClass().getResource("resource/volume_off.png").toString();
