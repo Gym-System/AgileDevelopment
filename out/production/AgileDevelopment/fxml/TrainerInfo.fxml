@@ -130,11 +130,6 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="ID:" GridPane.rowIndex="5">
-                           <font>
-                              <Font name="Baskerville Old Face" size="24.0" />
-                           </font>
-                        </Label>
                         <Label text="Gender:" GridPane.rowIndex="6">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
@@ -151,11 +146,6 @@
                            </font>
                         </Label>
                         <Label fx:id="trainer_name" text="Andy" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                           <font>
-                              <Font name="Baskerville Old Face" size="24.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="trainer_id" text="1" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
@@ -264,29 +254,24 @@
                            </font>
                         </Hyperlink>
                         <Separator prefHeight="0.0" prefWidth="400.0" GridPane.rowIndex="1" />
-                        <Label text="Cources" GridPane.rowIndex="2">
+                        <Label text="Courses" GridPane.rowIndex="2">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="24.0" prefWidth="233.0" text="Yoga" GridPane.rowIndex="3">
+                        <Label fx:id="trainer_course1" alignment="CENTER" prefHeight="24.0" prefWidth="233.0" GridPane.rowIndex="3">
                            <font>
                               <Font name="Baskerville Old Face" size="20.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="24.0" prefWidth="263.0" text="HIIT" GridPane.rowIndex="4">
+                        <Label fx:id="trainer_course2" alignment="CENTER" prefHeight="24.0" prefWidth="263.0" GridPane.rowIndex="4">
                            <font>
                               <Font name="Baskerville Old Face" size="20.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="24.0" prefWidth="271.0" text="Strength" GridPane.rowIndex="5">
+                        <Label fx:id="trainer_course3" alignment="CENTER" prefHeight="24.0" prefWidth="271.0" GridPane.rowIndex="5">
                            <font>
                               <Font name="Baskerville Old Face" size="20.0" />
-                           </font>
-                        </Label>
-                        <Label text="Comments" GridPane.rowIndex="7">
-                           <font>
-                              <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
                         <Label GridPane.rowIndex="8">
@@ -294,24 +279,17 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\@TomFelton: Very nice coach, Master in YOGA! Thank you Andy." wrappingWidth="400.240234375" GridPane.rowIndex="8">
+                        <Label fx:id="trainer_star1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="trainer_star2" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="trainer_star3" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label fx:id="trainer_course4" alignment="CENTER" prefHeight="24.0" prefWidth="271.0" GridPane.rowIndex="6">
                            <font>
                               <Font name="Baskerville Old Face" size="20.0" />
                            </font>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\@RubertGrint: Thanks dude, help me a lot in Yoga. Con't wait to take next lesson and see ya! " wrappingWidth="400.240234375" GridPane.rowIndex="10">
-                           <font>
-                              <Font name="Baskerville Old Face" size="20.0" />
-                           </font>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="......" wrappingWidth="400.240234375" GridPane.rowIndex="11">
-                           <font>
-                              <Font name="Baskerville Old Face" size="20.0" />
-                           </font>
-                        </Text>
-                        <Label text="marks" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label text="4" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label text="3" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        </Label>
+                        <Label text="3" />
+                        <Label fx:id="trainer_star4" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label fx:id="trainer_star11" text="stars" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                   <Separator layoutX="468.0" layoutY="40.0" orientation="VERTICAL" prefHeight="620.0" prefWidth="0.0" />
