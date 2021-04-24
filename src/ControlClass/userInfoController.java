@@ -140,5 +140,8 @@ public class userInfoController {
 
     public void userInfo_info_click(MouseEvent mouseEvent) {
     }
+
+    public void userinfo_vip_click(ActionEvent actionEvent) {
+    }
 }
 
