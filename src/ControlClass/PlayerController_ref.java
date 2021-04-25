@@ -7,9 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
+import javafx.scene.control.*;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -37,39 +35,164 @@ import java.sql.SQLOutput;
  */
 public class PlayerController_ref {
 
-    @FXML Button playBT;
-    @FXML Button stopBT;
-    @FXML Button maxBT;
-    @FXML Button volumeBT;
-    @FXML Label timeLB;
-    @FXML Slider processSD;
-    @FXML Slider volumeSD;
-    @FXML MediaView mediaView;
-    @FXML VBox controlBar;
-    @FXML BorderPane mediaPane;
+//    @FXML Button playBT;
+//    @FXML Button stopBT;
+//    @FXML Button maxBT;
+//    @FXML Button volumeBT;
+//    @FXML Label timeLB;
+//    @FXML Slider processSD;
+//    @FXML Slider volumeSD;
+//    @FXML MediaView mediaView;
+//    @FXML VBox controlBar;
+//    @FXML BorderPane mediaPane;
     @FXML AnchorPane  anchorPane;
-    //控件素材图片
-    private String playIcon  = getClass().getResource("/resource/play.png").toString();
-    private String pauseIcon  = getClass().getResource("/resource/pause.png").toString();
-    private String stopIcon  = getClass().getResource("/resource/stop.png").toString();
-    private String volOffIcon  = getClass().getResource("/resource/volume_off.png").toString();
-    private String volOnIcon  = getClass().getResource("/resource/volume_On.png").toString();
-    private String maxIcon  = getClass().getResource("/resource/max.png").toString();
-    private MediaPlayer mediaPlayer;
-    private Media media;
-    private String url;     //资源的url地址
-    private boolean popup;   //窗口弹出方式
-    private Scene scene ;  //父类窗口
+    @FXML
+    private Button stopBT;
 
-    private boolean atEndOfMedia = false;    //记录视频是否处播放到结束
-    private final boolean repeat = false;   //记录视频是否重复播放
-    private double volumeValue;      //储存静音操作前的音量数据
-    private Duration duration ;        //记录视频持续时间
-    private int mediaHeight;        //视频资源的尺寸
-    private int mediaWidth;
+    @FXML
+    private ImageView add_favorite_image;
 
-    private int currentHeight;    //当前整个播放器的尺寸
-    private int currentWidth;
+    @FXML
+    private ImageView recommend_image3_urs11;
+
+    @FXML
+    private Hyperlink user_calendar_hyper;
+
+    @FXML
+    private VBox controlBar;
+
+    @FXML
+    private ImageView user_image_urs;
+
+    @FXML
+    private Label recommend_type1_urs;
+
+    @FXML
+    private ImageView logo;
+
+    @FXML
+    private Label user_com3_urs;
+
+    @FXML
+    private Button maxBT;
+
+    @FXML
+    private Hyperlink user_live_hyper;
+
+    @FXML
+    private ImageView user_profile_pic;
+
+    @FXML
+    private Label recommend_dur3_urs11;
+
+    @FXML
+    private Button send_flower_urs;
+
+    @FXML
+    private Label recommend_dur2_urs1;
+
+    @FXML
+    private Label user_name2_urs;
+
+    @FXML
+    private Label user_com2_urs;
+
+    @FXML
+    private Label user_name1_urs;
+
+    @FXML
+    private Label user_com1_urs;
+
+    @FXML
+    private ImageView recommend_image1_urs;
+
+    @FXML
+    private Hyperlink user_facorites_hyper;
+
+    @FXML
+    private Label recommend_type2_urs1;
+
+    @FXML
+    private ImageView recommend_image2_urs1;
+
+    @FXML
+    private Label user_name3_urs;
+
+    @FXML
+    private Button playBT;
+
+    @FXML
+    private Button send_comment_urs;
+
+    @FXML
+    private MediaView mediaView;
+
+    @FXML
+    private Hyperlink recommend_hyper1_urs;
+
+    @FXML
+    private Slider processSD;
+
+    @FXML
+    private ImageView user_image3_urs;
+
+    @FXML
+    private TextArea user_comment_urs;
+
+    @FXML
+    private Label recommend_coach1_urs;
+
+    @FXML
+    private Label recommend_type3_urs11;
+
+    @FXML
+    private Hyperlink user_logout_hyper;
+
+    @FXML
+    private BorderPane controlBorderPane;
+
+    @FXML
+    private Button volumeBT;
+
+    @FXML
+    private Hyperlink user_recording_hyper;
+
+    @FXML
+    private Hyperlink recommend_hyper2_urs1;
+
+    @FXML
+    private Label recommend_coach2_urs1;
+
+    @FXML
+    private ImageView user_image1_urs;
+
+    @FXML
+    private Slider volumeSD;
+
+    @FXML
+    private TextField flower_num_urs;
+
+    @FXML
+    private Label recommend_dur1_urs;
+
+    @FXML
+    private Label timeLB;
+
+    @FXML
+    private Hyperlink recommend_hyper3_urs11;
+
+    @FXML
+    private ImageView user_image2_urs;
+
+    @FXML
+    private Hyperlink user_history_hyper;
+
+    @FXML
+    private Label recommend_coach3_urs11;
+
+    @FXML
+    private BorderPane mediaPane;
+
     @FXML
     void user_favorites_click(ActionEvent event) {
 
@@ -99,6 +222,60 @@ public class PlayerController_ref {
     void user_logout_click(ActionEvent event) {
 
     }
+
+    @FXML
+    void click_enter_recom_recording1(ActionEvent event) {
+
+    }
+
+    @FXML
+    void click_enter_recom_recording2(ActionEvent event) {
+
+    }
+
+    @FXML
+    void click_enter_recom_recording3(ActionEvent event) {
+
+    }
+
+    @FXML
+    void click_send_flower(ActionEvent event) {
+
+    }
+
+    @FXML
+    void click_send_comment(ActionEvent event) {
+
+    }
+
+    @FXML
+    void click_add_favorite_image(ActionEvent event) {
+
+    }
+
+    //控件素材图片
+    private String playIcon  = getClass().getResource("/resource/play.png").toString();
+    private String pauseIcon  = getClass().getResource("/resource/pause.png").toString();
+    private String stopIcon  = getClass().getResource("/resource/stop.png").toString();
+    private String volOffIcon  = getClass().getResource("/resource/volume_off.png").toString();
+    private String volOnIcon  = getClass().getResource("/resource/volume_On.png").toString();
+    private String maxIcon  = getClass().getResource("/resource/max.png").toString();
+    private MediaPlayer mediaPlayer;
+    private Media media;
+    private String url;     //资源的url地址
+    private boolean popup;   //窗口弹出方式
+    private Scene scene ;  //父类窗口
+
+    private boolean atEndOfMedia = false;    //记录视频是否处播放到结束
+    private final boolean repeat = false;   //记录视频是否重复播放
+    private double volumeValue;      //储存静音操作前的音量数据
+    private Duration duration ;        //记录视频持续时间
+    private int mediaHeight;        //视频资源的尺寸
+    private int mediaWidth;
+
+    private int currentHeight;    //当前整个播放器的尺寸
+    private int currentWidth;
+
     public void setScene(Scene scene){
         this.scene = scene;
     }

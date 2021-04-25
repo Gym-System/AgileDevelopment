@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.web.*?>
 <?import javafx.scene.media.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.paint.*?>
@@ -80,68 +81,292 @@
                               <Font name="Comic Sans MS Bold Italic" size="30.0" />
                            </font>
                         </Hyperlink>
+                        <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../resource/user_Favorates.png" />
+                           </image>
+                           <GridPane.margin>
+                              <Insets left="15.0" />
+                           </GridPane.margin>
+                        </ImageView>
+                        <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../resource/user_Recording.png" />
+                           </image>
+                           <GridPane.margin>
+                              <Insets left="15.0" />
+                           </GridPane.margin>
+                        </ImageView>
+                        <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
+                           <image>
+                              <Image url="@../resource/user_Live.png" />
+                           </image>
+                           <GridPane.margin>
+                              <Insets left="15.0" />
+                           </GridPane.margin>
+                        </ImageView>
+                        <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
+                           <image>
+                              <Image url="@../resource/user_Calendar.png" />
+                           </image>
+                           <GridPane.margin>
+                              <Insets left="15.0" />
+                           </GridPane.margin>
+                        </ImageView>
+                        <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="5">
+                           <image>
+                              <Image url="@../resource/user_History.png" />
+                           </image>
+                           <GridPane.margin>
+                              <Insets left="15.0" />
+                           </GridPane.margin>
+                        </ImageView>
+                        <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="7">
+                           <image>
+                              <Image url="@../resource/manager_LogOut.png" />
+                           </image>
+                           <GridPane.margin>
+                              <Insets left="15.0" />
+                           </GridPane.margin>
+                        </ImageView>
                      </children>
                   </GridPane>
                </children>
            </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <BorderPane fx:id="mediaPane" layoutX="20.0" layoutY="30.0">
-                     <center>
-                        <MediaView fx:id="mediaView" fitHeight="400.0" fitWidth="600.0" nodeOrientation="INHERIT" />
-                     </center>
-                  </BorderPane>
-                  <VBox fx:id="controlBar" alignment="BOTTOM_CENTER" layoutX="20.0" layoutY="437.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: #636363;">
-                     <children>
-                        <Slider fx:id="processSD" prefHeight="20.0" prefWidth="201.0" style="-fx-background-color: #4b4b4b;" VBox.vgrow="ALWAYS">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </Slider>
-                        <BorderPane fx:id="controlBorderPane" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="600.0">
-                           <center>
-                              <HBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
+                  <ScrollPane prefHeight="733.0" prefWidth="1043.0">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2000.0" prefWidth="1043.0">
+                           <children>
+                              <BorderPane fx:id="mediaPane" layoutX="28.0" layoutY="36.0">
+                                 <center>
+                                    <MediaView fx:id="mediaView" fitHeight="400.0" fitWidth="600.0" nodeOrientation="INHERIT">
+                                       <BorderPane.margin>
+                                          <Insets />
+                                       </BorderPane.margin>
+                                    </MediaView>
+                                 </center>
+                              </BorderPane>
+                              <VBox fx:id="controlBar" alignment="BOTTOM_CENTER" layoutX="38.0" layoutY="436.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: #636363;">
                                  <children>
-                                    <Button fx:id="playBT" mnemonicParsing="false" prefHeight="48.0" prefWidth="62.0" style="-fx-background-color: #636363;" HBox.hgrow="ALWAYS" />
-                                    <Button fx:id="stopBT" mnemonicParsing="false" prefHeight="48.0" prefWidth="100.0" style="-fx-background-color: #636363;" HBox.hgrow="ALWAYS" />
+                                    <Slider fx:id="processSD" prefHeight="20.0" prefWidth="201.0" style="-fx-background-color: #4b4b4b;" VBox.vgrow="ALWAYS">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Slider>
+                                    <BorderPane fx:id="controlBorderPane" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="600.0">
+                                       <center>
+                                          <HBox alignment="CENTER" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Button fx:id="playBT" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #636363;" HBox.hgrow="ALWAYS" />
+                                                <Button fx:id="stopBT" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #636363;" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                       </center>
+                                       <left>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="130.0" spacing="20.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Label fx:id="timeLB" text="Time" textFill="#dadada" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                             <BorderPane.margin>
+                                                <Insets left="30.0" />
+                                             </BorderPane.margin>
+                                          </HBox>
+                                       </left>
+                                       <right>
+                                          <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" prefHeight="50.0" prefWidth="250.0" spacing="10.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Button fx:id="volumeBT" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #636363;" HBox.hgrow="ALWAYS">
+                                                   <HBox.margin>
+                                                      <Insets right="-10.0" />
+                                                   </HBox.margin>
+                                                </Button>
+                                                <Slider fx:id="volumeSD" minHeight="-Infinity" prefHeight="28.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                                   <HBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </HBox.margin>
+                                                </Slider>
+                                                <Button fx:id="maxBT" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #636363;" HBox.hgrow="ALWAYS">
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </Button>
+                                             </children>
+                                             <padding>
+                                                <Insets right="20.0" />
+                                             </padding>
+                                          </HBox>
+                                       </right>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </BorderPane>
                                  </children>
-                              </HBox>
-                           </center>
-                           <left>
-                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="171.0" spacing="20.0" BorderPane.alignment="CENTER">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </VBox>
+                              <AnchorPane layoutX="686.0" layoutY="21.0" prefHeight="1197.0" prefWidth="300.0">
                                  <children>
-                                    <Button fx:id="maxBT" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #636363;" HBox.hgrow="ALWAYS">
-                                       <HBox.margin>
-                                          <Insets left="-10.0" />
-                                       </HBox.margin>
-                                    </Button>
-                                    <Label fx:id="timeLB" text="Time" textFill="#dadada" HBox.hgrow="ALWAYS" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebebeb" height="216.0" layoutX="18.0" layoutY="599.0" stroke="#94717142" strokeType="INSIDE" strokeWidth="5.0" width="268.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebebeb" height="216.0" layoutX="16.0" layoutY="327.0" stroke="#94717142" strokeType="INSIDE" strokeWidth="5.0" width="268.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebebeb" height="216.0" layoutX="14.0" layoutY="59.0" stroke="#94717142" strokeType="INSIDE" strokeWidth="5.0" width="268.0" />
+                                    <Label layoutX="81.0" layoutY="14.0" text="Recommend">
+                                       <font>
+                                          <Font name="System Bold" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="recommend_dur1_urs" layoutX="133.0" layoutY="207.0" text="Duration: 36:00">
+                                       <font>
+                                          <Font name="Comic Sans MS" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="recommend_coach1_urs" layoutX="31.0" layoutY="240.0" prefHeight="20.0" prefWidth="122.0" text="Coach: Lee     ">
+                                       <font>
+                                          <Font name="Comic Sans MS" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="recommend_type1_urs" layoutX="31.0" layoutY="205.0" prefHeight="28.0" prefWidth="75.0" text="Yoga     ">
+                                       <font>
+                                          <Font name="Comic Sans MS" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Hyperlink fx:id="recommend_hyper1_urs" layoutX="206.0" layoutY="236.0" onMouseClicked="#click_enter_recom_recording1" text="Enter">
+                                       <font>
+                                          <Font name="Comic Sans MS Bold Italic" size="18.0" />
+                                       </font>
+                                    </Hyperlink>
+                                    <ImageView fx:id="recommend_image1_urs" fitHeight="135.0" fitWidth="221.0" layoutX="38.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resource/yoga1.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="recommend_image2_urs1" fitHeight="135.0" fitWidth="221.0" layoutX="40.0" layoutY="343.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resource/yoga1.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <Hyperlink fx:id="recommend_hyper2_urs1" layoutX="208.0" layoutY="504.0" onMouseClicked="#click_enter_recom_recording2" text="Enter">
+                                       <font>
+                                          <Font name="Comic Sans MS Bold Italic" size="18.0" />
+                                       </font>
+                                    </Hyperlink>
+                                    <Label fx:id="recommend_type2_urs1" layoutX="33.0" layoutY="473.0" prefHeight="28.0" prefWidth="75.0" text="Yoga     ">
+                                       <font>
+                                          <Font name="Comic Sans MS" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="recommend_coach2_urs1" layoutX="33.0" layoutY="508.0" prefHeight="20.0" prefWidth="122.0" text="Coach: Niu     ">
+                                       <font>
+                                          <Font name="Comic Sans MS" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="recommend_dur2_urs1" layoutX="135.0" layoutY="475.0" text="Duration: 42:00">
+                                       <font>
+                                          <Font name="Comic Sans MS" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="recommend_dur3_urs11" layoutX="137.0" layoutY="747.0" text="Duration: 42:00">
+                                       <font>
+                                          <Font name="Comic Sans MS" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="recommend_coach3_urs11" layoutX="35.0" layoutY="780.0" prefHeight="20.0" prefWidth="122.0" text="Coach: Niu     ">
+                                       <font>
+                                          <Font name="Comic Sans MS" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="recommend_type3_urs11" layoutX="35.0" layoutY="745.0" prefHeight="28.0" prefWidth="75.0" text="Yoga     ">
+                                       <font>
+                                          <Font name="Comic Sans MS" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Hyperlink fx:id="recommend_hyper3_urs11" layoutX="210.0" layoutY="776.0" onMouseClicked="#click_enter_recom_recording3" text="Enter">
+                                       <font>
+                                          <Font name="Comic Sans MS Bold Italic" size="18.0" />
+                                       </font>
+                                    </Hyperlink>
+                                    <ImageView fx:id="recommend_image3_urs11" fitHeight="135.0" fitWidth="221.0" layoutX="42.0" layoutY="615.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resource/yoga1.jpg" />
+                                       </image>
+                                    </ImageView>
                                  </children>
-                                 <BorderPane.margin>
-                                    <Insets left="30.0" />
-                                 </BorderPane.margin>
-                              </HBox>
-                           </left>
-                           <right>
-                              <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
+                              </AnchorPane>
+                              <Label layoutX="62.0" layoutY="529.0" text="Send flowers">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="47.0" fitWidth="44.0" layoutX="257.0" layoutY="523.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resource/flower.png" />
+                                 </image>
+                              </ImageView>
+                              <TextField fx:id="flower_num_urs" layoutX="327.0" layoutY="521.0" prefHeight="48.0" prefWidth="152.0" promptText="1" />
+                              <Button fx:id="send_flower_urs" layoutX="522.0" layoutY="521.0" mnemonicParsing="false" onMouseClicked="#click_send_flower" text="send" />
+                              <AnchorPane layoutX="46.0" layoutY="577.0" prefHeight="556.0" prefWidth="584.0">
                                  <children>
-                                    <Button fx:id="volumeBT" mnemonicParsing="false" prefHeight="48.0" prefWidth="0.0" style="-fx-background-color: #636363;" HBox.hgrow="ALWAYS" />
-                                    <Slider fx:id="volumeSD" minHeight="-Infinity" prefHeight="28.0" prefWidth="236.0" HBox.hgrow="ALWAYS" />
+                                    <Label text="Comment">
+                                       <font>
+                                          <Font name="System Bold" size="30.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fx:id="user_image_urs" fitHeight="54.0" fitWidth="86.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resource/user_Profile.jpg" />
+                                       </image></ImageView>
+                                    <TextArea fx:id="user_comment_urs" layoutX="65.0" layoutY="56.0" prefHeight="119.0" prefWidth="511.0" promptText="Want to say something?" />
+                                    <Button fx:id="send_comment_urs" layoutX="459.0" layoutY="119.0" mnemonicParsing="false" onMouseClicked="#click_send_comment" opacity="0.6" text="Send" />
+                                    <Label layoutY="199.0" text="All Comments">
+                                       <font>
+                                          <Font name="System Bold" size="26.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fx:id="user_image1_urs" fitHeight="73.0" fitWidth="75.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resource/user_Profile.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="user_com1_urs" layoutX="85.0" layoutY="288.0" text="This is really helpful!" />
+                                    <Label fx:id="user_name1_urs" layoutX="85.0" layoutY="247.0" text="Addy">
+                                       <font>
+                                          <Font name="System Bold" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="user_name2_urs" layoutX="87.0" layoutY="365.0" text="Cindy">
+                                       <font>
+                                          <Font name="System Bold" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="user_com2_urs" layoutX="87.0" layoutY="406.0" text="The coach is very patient." />
+                                    <ImageView fx:id="user_image2_urs" fitHeight="73.0" fitWidth="75.0" layoutX="2.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resource/user_Profile.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="user_image3_urs" fitHeight="73.0" fitWidth="75.0" layoutX="2.0" layoutY="483.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../resource/user_Profile.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="user_com3_urs" layoutX="89.0" layoutY="524.0" text="I will practice everyday." />
+                                    <Label fx:id="user_name3_urs" layoutX="89.0" layoutY="483.0" text="Nann">
+                                       <font>
+                                          <Font name="System Bold" size="24.0" />
+                                       </font>
+                                    </Label>
                                  </children>
-                                 <padding>
-                                    <Insets right="30.0" />
-                                 </padding>
-                              </HBox>
-                           </right>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </BorderPane>
-                     </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </VBox>
+                              </AnchorPane>
+                              <ImageView fx:id="add_favorite_image" fitHeight="59.0" fitWidth="75.0" layoutX="566.0" layoutY="40.0" onMouseClicked="#click_add_favorite_image" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resource/user_Favorates.png" />
+                                 </image></ImageView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
                </children>
           </AnchorPane>
         </items>

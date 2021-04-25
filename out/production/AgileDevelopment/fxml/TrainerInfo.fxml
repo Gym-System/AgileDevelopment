@@ -34,7 +34,7 @@
                               <Rectangle2D />
                            </viewport>
                         </ImageView>
-                        <Hyperlink fx:id="trainerInfo_portrait" onAction="#trainerInfo_portrait_click" text="Portrait" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Hyperlink fx:id="trainerInfo_portrait" onMouseClicked="#trainerInfo_portrait_click" text="Portrait" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="Baskerville Old Face" size="36.0" />
                            </font>
@@ -95,7 +95,7 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <GridPane layoutX="78.0" layoutY="40.0" prefHeight="677.0" prefWidth="400.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="40.0">
+                  <GridPane layoutX="78.0" layoutY="40.0" prefHeight="365.0" prefWidth="400.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="40.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -114,10 +114,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
                         <Label text="Profile:" GridPane.rowIndex="2">
@@ -125,7 +121,7 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="Name:" GridPane.rowIndex="4">
+                        <Label text="Name:" GridPane.rowIndex="5">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
@@ -135,17 +131,12 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="Basic data:" GridPane.rowIndex="10">
+                        <Label text="Email:" GridPane.rowIndex="9">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="Email:" GridPane.rowIndex="8">
-                           <font>
-                              <Font name="Baskerville Old Face" size="24.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="trainer_name" text="Andy" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <Label fx:id="trainer_name" text="Andy" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
@@ -155,15 +146,11 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label fx:id="trainer_email" text="andy@34.com" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                        <Label fx:id="trainer_email" text="andy@34.com" GridPane.columnIndex="1" GridPane.rowIndex="9">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <image>
-                              <Image url="@../resource/trainer_Profile.png" />
-                           </image></ImageView>
                         <Label text="My Account">
                            <font>
                               <Font name="Baskerville Old Face" size="36.0" />
@@ -185,44 +172,34 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="Weight" GridPane.rowIndex="11">
+                        <Label fx:id="trainer_tel" text="13312345678" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                           <font>
+                              <Font name="Century" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="28.0" prefWidth="130.0" text="Salary:" GridPane.rowIndex="10">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label fx:id="trainer_weight" text="65.0 kg" GridPane.rowIndex="12">
+                        <Label fx:id="trainer_salary" text="1000" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                           <font>
+                              <Font name="Century" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="trainer_experience" prefHeight="28.0" prefWidth="203.0" text="10" GridPane.rowIndex="11">
                            <font>
                               <Font name="Century" size="36.0" />
                            </font>
                         </Label>
-                        <Label text="Height" GridPane.columnIndex="1" GridPane.rowIndex="11">
-                           <font>
-                              <Font name="Baskerville Old Face" size="24.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="trainer_height" text="175.0 cm" GridPane.columnIndex="1" GridPane.rowIndex="12">
-                           <font>
-                              <Font name="Century" size="36.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="trainer_experience" prefHeight="28.0" prefWidth="203.0" text="8" GridPane.rowIndex="14">
-                           <font>
-                              <Font name="Century" size="36.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="224.0" text=" years " GridPane.rowIndex="15">
-                           <font>
-                              <Font name="Baskerville Old Face" size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" prefHeight="28.0" prefWidth="210.0" text="coaching experience" GridPane.columnIndex="1" GridPane.rowIndex="15">
+                        <Label prefHeight="28.0" prefWidth="127.0" text="Tel:" GridPane.rowIndex="8">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
                      </children>
                   </GridPane>
-                  <GridPane layoutX="530.0" layoutY="40.0" prefHeight="677.0" prefWidth="400.0">
+                  <GridPane layoutX="530.0" layoutY="40.0" prefHeight="289.0" prefWidth="400.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="420.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -235,11 +212,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
@@ -274,11 +246,6 @@
                               <Font name="Baskerville Old Face" size="20.0" />
                            </font>
                         </Label>
-                        <Label GridPane.rowIndex="8">
-                           <font>
-                              <Font name="Baskerville Old Face" size="24.0" />
-                           </font>
-                        </Label>
                         <Label fx:id="trainer_star1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label fx:id="trainer_star2" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <Label fx:id="trainer_star3" GridPane.columnIndex="1" GridPane.rowIndex="5" />
@@ -287,12 +254,70 @@
                               <Font name="Baskerville Old Face" size="20.0" />
                            </font>
                         </Label>
-                        <Label text="3" />
                         <Label fx:id="trainer_star4" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <Label fx:id="trainer_star11" text="stars" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="trainer_star11" prefHeight="28.0" prefWidth="64.0" text="Stars" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Baskerville Old Face" size="24.0" />
+                           </font></Label>
                      </children>
                   </GridPane>
                   <Separator layoutX="468.0" layoutY="40.0" orientation="VERTICAL" prefHeight="620.0" prefWidth="0.0" />
+                  <Label layoutX="377.0" layoutY="660.0" prefHeight="28.0" prefWidth="253.0" text="years coaching experience" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="350.0">
+                     <font>
+                        <Font name="Baskerville Old Face" size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="397.0" layoutY="469.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="80.0">
+                     <image>
+                        <Image url="@../resource/trainer_Profile.png" />
+                     </image>
+                  </ImageView>
+                  <GridPane layoutX="88.0" layoutY="30.0" prefHeight="463.0" prefWidth="400.0" AnchorPane.leftAnchor="550.0" AnchorPane.topAnchor="30.0">
+                     <children>
+                        <Label prefHeight="28.0" prefWidth="454.0" text="Label:" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Baskerville Old Face" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label text="My Portrait">
+                           <font>
+                              <Font name="Baskerville Old Face" size="36.0" />
+                           </font>
+                        </Label>
+                        <Separator prefHeight="0.0" prefWidth="400.0" GridPane.rowIndex="1" />
+                        <TextField fx:id="trainerInfo_label" onAction="#trainerInfo_label_click" prefHeight="88.0" prefWidth="400.0" GridPane.rowIndex="3" />
+                        <Label text="CV:" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Baskerville Old Face" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label text="Photo Wall:" GridPane.rowIndex="12">
+                           <font>
+                              <Font name="Baskerville Old Face" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label text="Please seperate each label with &quot;&quot;" textFill="RED" GridPane.rowIndex="4" />
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+                  <TextArea fx:id="trainerInfo_cv" layoutX="550.0" layoutY="243.0" onDragDetected="#trainerInfo_cv_click" prefHeight="187.0" prefWidth="400.0" />
                </children></AnchorPane>
         </items>
       </SplitPane>
