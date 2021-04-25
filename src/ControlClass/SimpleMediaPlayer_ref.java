@@ -46,7 +46,7 @@ public class SimpleMediaPlayer_ref extends AnchorPane {
     //构造函数私有，实例保存在静态域，只向外部提供静态调用
     private SimpleMediaPlayer_ref(String mediaUrl){
         try {
-            FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("player.fxml"));
+            FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("user_recording_specific.fxml"));
             Parent root = fxmlloader.load();   //将fxml节点添加到根节点中
             controller = fxmlloader.getController();
             this.getChildren().add(root);   //主类节点加入根节点

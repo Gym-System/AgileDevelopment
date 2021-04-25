@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.media.MediaView?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="807.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControlClass.userFavoritesController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="807.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControlClass.PlayerController_ref">
    <children>
       <ImageView fx:id="logo" fitHeight="73.0" fitWidth="294.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -86,27 +86,35 @@
            </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <BorderPane fx:id="mediaPane">
+                  <BorderPane fx:id="mediaPane" layoutX="20.0" layoutY="30.0">
                      <center>
-                        <MediaView fx:id="mediaView" fitHeight="530.0" fitWidth="800.0" nodeOrientation="INHERIT" />
+                        <MediaView fx:id="mediaView" fitHeight="400.0" fitWidth="600.0" nodeOrientation="INHERIT" />
                      </center>
                   </BorderPane>
-                  <VBox fx:id="controlBar" alignment="BOTTOM_CENTER" layoutY="530.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="70.0" style="-fx-background-color: #636363;">
+                  <VBox fx:id="controlBar" alignment="BOTTOM_CENTER" layoutX="20.0" layoutY="437.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: #636363;">
                      <children>
-                        <Slider fx:id="processSD" prefHeight="28.0" prefWidth="201.0" style="-fx-background-color: #4b4b4b;" VBox.vgrow="ALWAYS" />
-                        <BorderPane fx:id="controlBorderPane" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0">
+                        <Slider fx:id="processSD" prefHeight="20.0" prefWidth="201.0" style="-fx-background-color: #4b4b4b;" VBox.vgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Slider>
+                        <BorderPane fx:id="controlBorderPane" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="600.0">
                            <center>
                               <HBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <Button fx:id="playBT" mnemonicParsing="false" style="-fx-background-color: #636363;" HBox.hgrow="ALWAYS" />
+                                    <Button fx:id="playBT" mnemonicParsing="false" prefHeight="48.0" prefWidth="62.0" style="-fx-background-color: #636363;" HBox.hgrow="ALWAYS" />
                                     <Button fx:id="stopBT" mnemonicParsing="false" prefHeight="48.0" prefWidth="100.0" style="-fx-background-color: #636363;" HBox.hgrow="ALWAYS" />
                                  </children>
                               </HBox>
                            </center>
                            <left>
-                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="424.0" spacing="20.0" BorderPane.alignment="CENTER">
+                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="171.0" spacing="20.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <Button fx:id="maxBT" mnemonicParsing="false" style="-fx-background-color: #636363;" HBox.hgrow="ALWAYS" />
+                                    <Button fx:id="maxBT" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #636363;" HBox.hgrow="ALWAYS">
+                                       <HBox.margin>
+                                          <Insets left="-10.0" />
+                                       </HBox.margin>
+                                    </Button>
                                     <Label fx:id="timeLB" text="Time" textFill="#dadada" HBox.hgrow="ALWAYS" />
                                  </children>
                                  <BorderPane.margin>
@@ -115,16 +123,19 @@
                               </HBox>
                            </left>
                            <right>
-                              <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
+                              <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <Button fx:id="volumeBT" mnemonicParsing="false" style="-fx-background-color: #636363;" HBox.hgrow="ALWAYS" />
-                                    <Slider fx:id="volumeSD" minHeight="-Infinity" prefWidth="150.0" HBox.hgrow="ALWAYS" />
+                                    <Button fx:id="volumeBT" mnemonicParsing="false" prefHeight="48.0" prefWidth="0.0" style="-fx-background-color: #636363;" HBox.hgrow="ALWAYS" />
+                                    <Slider fx:id="volumeSD" minHeight="-Infinity" prefHeight="28.0" prefWidth="236.0" HBox.hgrow="ALWAYS" />
                                  </children>
                                  <padding>
                                     <Insets right="30.0" />
                                  </padding>
                               </HBox>
                            </right>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
                         </BorderPane>
                      </children>
                      <opaqueInsets>

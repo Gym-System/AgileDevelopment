@@ -24,6 +24,8 @@ import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.sql.SQLOutput;
+
 
 /**
  * create by Intellij IDEA
@@ -46,16 +48,13 @@ public class PlayerController_ref {
     @FXML VBox controlBar;
     @FXML BorderPane mediaPane;
     @FXML AnchorPane  anchorPane;
-
-
     //控件素材图片
-    private String playIcon  = getClass().getResource("resource/play.png").toString();
-    private String pauseIcon  = getClass().getResource("resource/pause.png").toString();
-    private String stopIcon  = getClass().getResource("resource/stop.png").toString();
-    private String volOffIcon  = getClass().getResource("resource/volume_off.png").toString();
-    private String volOnIcon  = getClass().getResource("resource/volume_On.png").toString();
-    private String maxIcon  = getClass().getResource("resource/max.png").toString();
-
+    private String playIcon  = getClass().getResource("/resource/play.png").toString();
+    private String pauseIcon  = getClass().getResource("/resource/pause.png").toString();
+    private String stopIcon  = getClass().getResource("/resource/stop.png").toString();
+    private String volOffIcon  = getClass().getResource("/resource/volume_off.png").toString();
+    private String volOnIcon  = getClass().getResource("/resource/volume_On.png").toString();
+    private String maxIcon  = getClass().getResource("/resource/max.png").toString();
     private MediaPlayer mediaPlayer;
     private Media media;
     private String url;     //资源的url地址
@@ -71,7 +70,35 @@ public class PlayerController_ref {
 
     private int currentHeight;    //当前整个播放器的尺寸
     private int currentWidth;
+    @FXML
+    void user_favorites_click(ActionEvent event) {
 
+    }
+
+    @FXML
+    void user_recording_click(ActionEvent event) {
+
+    }
+
+    @FXML
+    void user_live_click(ActionEvent event) {
+
+    }
+
+    @FXML
+    void user_calendar_click(ActionEvent event) {
+
+    }
+
+    @FXML
+    void user_history_click(ActionEvent event) {
+
+    }
+
+    @FXML
+    void user_logout_click(ActionEvent event) {
+
+    }
     public void setScene(Scene scene){
         this.scene = scene;
     }
