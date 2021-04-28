@@ -109,7 +109,7 @@ public class userInfoController {
 
         HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
         ArrayList<HistoryData> HISTORY = historyDataDAO.queryByUserName(username);
-        time2 = userDAO.queryByUserName(username).getExerciseTime("day",null,null);
+        time2 = userDAO.queryByUserName(username).getExerciseTime(null,null,null);
         totalTime.setText(Integer.toString(time1+time2)+" min");
 
 

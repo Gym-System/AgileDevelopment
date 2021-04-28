@@ -1,5 +1,6 @@
 package ControlClass;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -20,6 +21,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class userRecordingController implements Initializable {
@@ -164,8 +166,9 @@ public class userRecordingController implements Initializable {
     ArrayList<RecVideo> recVideos = recVideoDAO.queryAll();
 
     @FXML
-    void user_favorites_click(ActionEvent event) {
-
+    void user_favorites_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_facorites_hyper.getScene().getWindow();
+        new APP().jump(stage, "user_recording_specific");
     }
 
     @FXML
@@ -590,87 +593,83 @@ public class userRecordingController implements Initializable {
     }
 
     @FXML
-    void click_enterrec1(ActionEvent event) {
+    void click_enterrec1(ActionEvent event) throws IOException {
 
     }
 
     @FXML
-    void click_enterrec2(ActionEvent event) {
+    void click_enterrec2(ActionEvent event) throws IOException {
 
     }
 
     @FXML
-    void click_enterrec3(ActionEvent event) {
+    void click_enterrec3(ActionEvent event) throws IOException {
 
     }
 
     @FXML
-    void click_enterrec4(ActionEvent event) {
+    void click_enterrec4(ActionEvent event) throws IOException {
 
     }
 
     @FXML
-    void click_enterrec5(ActionEvent event) {
+    void click_enterrec5(ActionEvent event) throws IOException {
 
     }
 
     @FXML
-    void click_enterrec6(ActionEvent event) {
+    void click_enterrec6(ActionEvent event) throws IOException {
 
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        show();
-    }
+        assert recName_yoga1_label1 != null : "fx:id=\"recName_yoga1_label1\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert recDur_yoga2_label != null : "fx:id=\"recDur_yoga2_label\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert recName_hitt2_label != null : "fx:id=\"recName_hitt2_label\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert turn_page != null : "fx:id=\"turn_page\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert user_recPic_hitt2 != null : "fx:id=\"user_recPic_hitt2\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert user_recPic_yoga1 != null : "fx:id=\"user_recPic_yoga1\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert user_calendar_hyper != null : "fx:id=\"user_calendar_hyper\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert user_recPic_yoga2 != null : "fx:id=\"user_recPic_yoga2\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert recEnter_yoga1_hyper1 != null : "fx:id=\"recEnter_yoga1_hyper1\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert recEnter_yoga2_hyper1 != null : "fx:id=\"recEnter_yoga2_hyper1\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert recDur_hitt2_label != null : "fx:id=\"recDur_hitt2_label\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert recName_yoga2_label != null : "fx:id=\"recName_yoga2_label\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert user_logout_hyper != null : "fx:id=\"user_logout_hyper\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert recCoa_strenght2_label != null : "fx:id=\"recCoa_strenght2_label\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert logo != null : "fx:id=\"logo\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert recCoa_yoga1_label != null : "fx:id=\"recCoa_yoga1_label\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert user_recPic_strength1 != null : "fx:id=\"user_recPic_strength1\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert user_live_hyper != null : "fx:id=\"user_live_hyper\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert user_profile_pic != null : "fx:id=\"user_profile_pic\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert recDur_strength1_label != null : "fx:id=\"recDur_strength1_label\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert user_yoga_check != null : "fx:id=\"user_yoga_check\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert recName_hitt1_label != null : "fx:id=\"recName_hitt1_label\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert user_recording_hyper != null : "fx:id=\"user_recording_hyper\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert user_recEnter_hyper31 != null : "fx:id=\"user_recEnter_hyper31\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert recName_strength2_label != null : "fx:id=\"recName_strength2_label\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert user_recPic_strength2 != null : "fx:id=\"user_recPic_strength2\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert user_recEnter_hyper4 != null : "fx:id=\"user_recEnter_hyper4\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert recCoa_hitt1_label != null : "fx:id=\"recCoa_hitt1_label\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert recDur_strength2_label != null : "fx:id=\"recDur_strength2_label\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert user_hitt_check != null : "fx:id=\"user_hitt_check\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert user_find_button != null : "fx:id=\"user_find_button\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert recDur_yoga1_label != null : "fx:id=\"recDur_yoga1_label\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert user_facorites_hyper != null : "fx:id=\"user_facorites_hyper\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert user_history_hyper != null : "fx:id=\"user_history_hyper\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert user_find_text != null : "fx:id=\"user_find_text\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert user_strength_check != null : "fx:id=\"user_strength_check\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert recCoa_strenght1_label != null : "fx:id=\"recCoa_strenght1_label\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert recCoa_yoga2_label != null : "fx:id=\"recCoa_yoga2_label\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert user_recPic_hitt1 != null : "fx:id=\"user_recPic_hitt1\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert user_recEnter_hyper5111 != null : "fx:id=\"user_recEnter_hyper5111\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert recDur_hitt1_label != null : "fx:id=\"recDur_hitt1_label\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert recName_strength1_label != null : "fx:id=\"recName_strength1_label\" was not injected: check your FXML file 'user_recording.fxml'.";
+        assert user_recEnter_hyper611 != null : "fx:id=\"user_recEnter_hyper611\" was not injected: check your FXML file 'user_recording.fxml'.";
 
-//    @FXML
-//    void initialize() {
-//        assert recName_yoga1_label1 != null : "fx:id=\"recName_yoga1_label1\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert recDur_yoga2_label != null : "fx:id=\"recDur_yoga2_label\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert recName_hitt2_label != null : "fx:id=\"recName_hitt2_label\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert turn_page != null : "fx:id=\"turn_page\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert user_recPic_hitt2 != null : "fx:id=\"user_recPic_hitt2\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert user_recPic_yoga1 != null : "fx:id=\"user_recPic_yoga1\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert user_calendar_hyper != null : "fx:id=\"user_calendar_hyper\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert user_recPic_yoga2 != null : "fx:id=\"user_recPic_yoga2\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert recEnter_yoga1_hyper1 != null : "fx:id=\"recEnter_yoga1_hyper1\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert recEnter_yoga2_hyper1 != null : "fx:id=\"recEnter_yoga2_hyper1\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert recDur_hitt2_label != null : "fx:id=\"recDur_hitt2_label\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert recName_yoga2_label != null : "fx:id=\"recName_yoga2_label\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert user_logout_hyper != null : "fx:id=\"user_logout_hyper\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert recCoa_strenght2_label != null : "fx:id=\"recCoa_strenght2_label\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert logo != null : "fx:id=\"logo\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert recCoa_yoga1_label != null : "fx:id=\"recCoa_yoga1_label\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert user_recPic_strength1 != null : "fx:id=\"user_recPic_strength1\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert user_live_hyper != null : "fx:id=\"user_live_hyper\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert user_profile_pic != null : "fx:id=\"user_profile_pic\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert recDur_strength1_label != null : "fx:id=\"recDur_strength1_label\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert user_yoga_check != null : "fx:id=\"user_yoga_check\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert recName_hitt1_label != null : "fx:id=\"recName_hitt1_label\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert user_recording_hyper != null : "fx:id=\"user_recording_hyper\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert user_recEnter_hyper31 != null : "fx:id=\"user_recEnter_hyper31\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert recName_strength2_label != null : "fx:id=\"recName_strength2_label\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert user_recPic_strength2 != null : "fx:id=\"user_recPic_strength2\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert user_recEnter_hyper4 != null : "fx:id=\"user_recEnter_hyper4\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert recCoa_hitt1_label != null : "fx:id=\"recCoa_hitt1_label\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert recDur_strength2_label != null : "fx:id=\"recDur_strength2_label\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert user_hitt_check != null : "fx:id=\"user_hitt_check\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert user_find_button != null : "fx:id=\"user_find_button\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert recDur_yoga1_label != null : "fx:id=\"recDur_yoga1_label\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert user_facorites_hyper != null : "fx:id=\"user_facorites_hyper\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert user_history_hyper != null : "fx:id=\"user_history_hyper\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert user_find_text != null : "fx:id=\"user_find_text\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert user_strength_check != null : "fx:id=\"user_strength_check\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert recCoa_strenght1_label != null : "fx:id=\"recCoa_strenght1_label\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert recCoa_yoga2_label != null : "fx:id=\"recCoa_yoga2_label\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert user_recPic_hitt1 != null : "fx:id=\"user_recPic_hitt1\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert user_recEnter_hyper5111 != null : "fx:id=\"user_recEnter_hyper5111\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert recDur_hitt1_label != null : "fx:id=\"recDur_hitt1_label\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert recName_strength1_label != null : "fx:id=\"recName_strength1_label\" was not injected: check your FXML file 'user_recording.fxml'.";
-//        assert user_recEnter_hyper611 != null : "fx:id=\"user_recEnter_hyper611\" was not injected: check your FXML file 'user_recording.fxml'.";
-//
-//    }
+       show();
+    }
 
     public void show(){
 

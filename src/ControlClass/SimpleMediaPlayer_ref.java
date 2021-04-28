@@ -46,7 +46,7 @@ public class SimpleMediaPlayer_ref extends AnchorPane {
     //构造函数私有，实例保存在静态域，只向外部提供静态调用
     private SimpleMediaPlayer_ref(String mediaUrl){
         try {
-            FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("user_recording_specific.fxml"));
+            FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("../fxml/user_recording_video.fxml"));
             Parent root = fxmlloader.load();   //将fxml节点添加到根节点中
             controller = fxmlloader.getController();
             this.getChildren().add(root);   //主类节点加入根节点
@@ -68,11 +68,11 @@ public class SimpleMediaPlayer_ref extends AnchorPane {
 
     //实例化调用:默认大小500*400
     public static SimpleMediaPlayer_ref newInstance(String mediaUrl){
-        return newInstance(mediaUrl,600,400);
+        return newInstance(mediaUrl,650,520);
     }
     public static SimpleMediaPlayer_ref newInstance(String mediaUrl, int width, int height){
         simpleMediaPlayer = new SimpleMediaPlayer_ref(mediaUrl);
-        simpleMediaPlayer.getController().start(mediaUrl,false,width,height);   //非窗口化启动播放器控件
+        simpleMediaPlayer.getController().Anotherstart(mediaUrl,false,width,height);   //非窗口化启动播放器控件
         return simpleMediaPlayer;
     }
 
@@ -82,7 +82,7 @@ public class SimpleMediaPlayer_ref extends AnchorPane {
     }
     public static SimpleMediaPlayer_ref popup(String mediaUrl, int width, int height){
        simpleMediaPlayer = new SimpleMediaPlayer_ref(mediaUrl);
-        simpleMediaPlayer.getController().start(mediaUrl,true,width,height);
+        simpleMediaPlayer.getController().Anotherstart(mediaUrl,true,width,height);
         Scene scene = new Scene(simpleMediaPlayer,width,height);
         simpleMediaPlayer.getController().setScene(scene);
 

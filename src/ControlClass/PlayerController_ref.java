@@ -1,11 +1,16 @@
 package ControlClass;
 
+import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
+import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.ColorAdjust;
@@ -15,14 +20,19 @@ import javafx.scene.input.InputEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.fxml.Initializable;
 
+import java.io.File;
+import java.net.URL;
 import java.sql.SQLOutput;
+import java.util.ResourceBundle;
 
 
 /**
@@ -33,7 +43,7 @@ import java.sql.SQLOutput;
  * Date: 2017/1/20 14:22
  * Description:
  */
-public class PlayerController_ref {
+public class PlayerController_ref implements Initializable {
 
 //    @FXML Button playBT;
 //    @FXML Button stopBT;
@@ -45,7 +55,15 @@ public class PlayerController_ref {
 //    @FXML MediaView mediaView;
 //    @FXML VBox controlBar;
 //    @FXML BorderPane mediaPane;
-    @FXML AnchorPane  anchorPane;
+    @FXML
+    private AnchorPane bigAnchorPane;
+
+    @FXML
+    private AnchorPane Biggest;
+
+    @FXML
+    private AnchorPane medium;
+
     @FXML
     private Button stopBT;
 
@@ -193,6 +211,7 @@ public class PlayerController_ref {
     @FXML
     private BorderPane mediaPane;
 
+
     @FXML
     void user_favorites_click(ActionEvent event) {
 
@@ -275,25 +294,22 @@ public class PlayerController_ref {
 
     private int currentHeight;    //当前整个播放器的尺寸
     private int currentWidth;
-
+    private  Stage primaryStage=null;
     public void setScene(Scene scene){
         this.scene = scene;
     }
 
 
-    //程序初始化：设置按钮图标
-    public void initialize(){
-        //设置各控件图标
-        setIcon(playBT,playIcon,25);
-        setIcon(stopBT,stopIcon,25);
-        setIcon(volumeBT,volOnIcon,15);
-        setIcon(maxBT,maxIcon,25);
-
-    }
     //程序启动项，传入必要参数
-    public void start(String url,boolean popup,int width,int height){
+    public void Anotherstart(String url, boolean popup, int width, int height){
+
         this.url = url;
         this.popup = popup;
+
+        File file = new File("src/resource/WeChat_20210427231911.mp4");
+        url = file.toURI().toString();
+        System.out.println(url);
+
 
         //MediaView设置
         media = new Media(url);
@@ -324,7 +340,6 @@ public class PlayerController_ref {
             public void run() {
                 duration = mediaPlayer.getMedia().getDuration();
                 volumeValue = mediaPlayer.getVolume();
-
                 mediaHeight = media.getHeight();
                 mediaWidth = media.getWidth();
 
@@ -604,9 +619,9 @@ public class PlayerController_ref {
     }
     //UI控件自适应大小
     private void setUISuitable(){
-        anchorPane.setPrefSize(currentWidth,currentHeight);
-        anchorPane.setBottomAnchor(controlBar, 0.0);    //设置控制条位置
-        anchorPane.setTopAnchor(mediaPane,((double)currentHeight  - (double)currentWidth *(double)mediaHeight / (double)mediaWidth - 50)/2);  //设置视频面板位置
+//        bigAnchorPane.setPrefSize(currentWidth,currentHeight);
+//        bigAnchorPane.setBottomAnchor(controlBar, 0.0);    //设置控制条位置
+//        bigAnchorPane.setTopAnchor(mediaPane,((double)currentHeight  - (double)currentWidth *(double)mediaHeight / (double)mediaWidth - 50)/2);  //设置视频面板位置
         mediaView.setFitWidth(currentWidth);       //设置MediaView尺寸
         mediaView.setFitHeight((double)currentWidth*(double)mediaHeight / (double)mediaHeight);
         controlBar.setPrefWidth(currentWidth);  //设置工具条宽度
@@ -619,4 +634,138 @@ public class PlayerController_ref {
     }
 
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        setIcon(playBT,playIcon,25);
+        setIcon(stopBT,stopIcon,25);
+        setIcon(volumeBT,volOnIcon,15);
+        setIcon(maxBT,maxIcon,25);
+        //SimpleMediaPlayer_ref.newInstance("aa");
+
+
+//        Parent root = FXMLLoader.load(getClass().getResource("../fxml/user_recording_video.fxml"));
+//        rootVBox.getChildren().setAll(root);
+
+//        Stage primaryStage = (Stage) playBT.getScene().getWindow();
+//        primaryStage.setTitle("Test Meida");
+//        Group root = new Group();
+//        BorderPane pane = new BorderPane();
+//
+//        root.getChildren().add(pane);
+//        HBox hbox = new HBox();
+//        hbox.setAlignment(Pos.CENTER);
+//        pane.setBottom(hbox);
+//        Button popup = new Button("Popup");
+//        Button popup2 = new Button("Popup small");
+//        hbox.getChildren().addAll(popup,popup2);
+//
+//        SimpleMediaPlayer_ref player = SimpleMediaPlayer_ref.newInstance(getClass().getResource("/resource/WeChat_20210427231911.mp4").toString());
+//        pane.setCenter(player);
+//        pane.setAlignment(player,Pos.CENTER);
+//
+//
+//        popup.setOnAction((ActionEvent e)->{
+//            SimpleMediaPlayer_ref.popup(getClass().getResource("/resource/WeChat_20210427231911.mp4").toString());
+//        });
+//        popup2.setOnAction((ActionEvent e)->{
+//            SimpleMediaPlayer_ref.popup(getClass().getResource("/resource/WeChat_20210427231911.mp4").toString(),550,400);
+//        });
+//
+//
+//        primaryStage.setScene(new Scene(root, 600, 500));
+//        primaryStage.show();
+    }
+
+    public void playvideo(MouseEvent mouseEvent) {
+        primaryStage = (Stage) playBT.getScene().getWindow();
+        primaryStage.setTitle("Test Media");
+        Group root = new Group();
+        BorderPane pane = new BorderPane();
+
+        root.getChildren().add(pane);
+        HBox hbox = new HBox();
+        hbox.setAlignment(Pos.BASELINE_CENTER);
+        pane.setCenter(hbox);
+
+
+        //测试嵌入式调用
+        SimpleMediaPlayer_ref player = SimpleMediaPlayer_ref.newInstance(getClass().getResource("/resource/WeChat_20210427231911.mp4").toString());
+        pane.setCenter(player);
+        pane.setAlignment(player,Pos.CENTER);
+
+
+
+        primaryStage.setScene(new Scene(root, 1500, 1000));
+        primaryStage.show();
+    }
+
+//
+//
+//    public void Anotherstart(){
+//        Stage primaryStage = (Stage) playBT.getScene().getWindow();
+//
+//        primaryStage.setTitle("Test Meida");
+//        Group root = new Group();
+//        BorderPane pane = new BorderPane();
+//
+//        root.getChildren().add(pane);
+//        HBox hbox = new HBox();
+//        hbox.setAlignment(Pos.CENTER);
+//        pane.setBottom(hbox);
+//        Button popup = new Button("Popup");
+//        Button popup2 = new Button("Popup small");
+//        hbox.getChildren().addAll(popup,popup2);
+//
+//        SimpleMediaPlayer_ref player = SimpleMediaPlayer_ref.newInstance(getClass().getResource("/resource/WeChat_20210427231911.mp4").toString());
+//        pane.setCenter(player);
+//        pane.setAlignment(player,Pos.CENTER);
+//
+//
+//        popup.setOnAction((ActionEvent e)->{
+//            SimpleMediaPlayer_ref.popup(getClass().getResource("/resource/WeChat_20210427231911.mp4").toString());
+//        });
+//        popup2.setOnAction((ActionEvent e)->{
+//            SimpleMediaPlayer_ref.popup(getClass().getResource("/resource/WeChat_20210427231911.mp4").toString(),550,400);
+//        });
+//
+//
+//        primaryStage.setScene(new Scene(root, 600, 500));
+//        primaryStage.show();
+//    }
+
+//    @Override
+//    public void start(Stage primaryStage) throws Exception {
+//        setIcon(playBT,playIcon,25);
+//        setIcon(stopBT,stopIcon,25);
+//        setIcon(volumeBT,volOnIcon,15);
+//        setIcon(maxBT,maxIcon,25);
+//        System.out.println("hhhhhhhhhhhh");
+//        primaryStage.setTitle("Test Meida");
+//        Group root = new Group();
+//        BorderPane pane = new BorderPane();
+//
+//        root.getChildren().add(pane);
+//        HBox hbox = new HBox();
+//        hbox.setAlignment(Pos.CENTER);
+//        pane.setBottom(hbox);
+//        Button popup = new Button("Popup");
+//        Button popup2 = new Button("Popup small");
+//        hbox.getChildren().addAll(popup,popup2);
+//
+//        SimpleMediaPlayer_ref player = SimpleMediaPlayer_ref.newInstance(getClass().getResource("/resource/WeChat_20210427231911.mp4").toString());
+//        pane.setCenter(player);
+//        pane.setAlignment(player,Pos.CENTER);
+//
+//
+//        popup.setOnAction((ActionEvent e)->{
+//            SimpleMediaPlayer_ref.popup(getClass().getResource("/resource/WeChat_20210427231911.mp4").toString());
+//        });
+//        popup2.setOnAction((ActionEvent e)->{
+//            SimpleMediaPlayer_ref.popup(getClass().getResource("/resource/WeChat_20210427231911.mp4").toString(),550,400);
+//        });
+//
+//
+//        primaryStage.setScene(new Scene(root, 600, 500));
+//        primaryStage.show();
+//    }
 }
