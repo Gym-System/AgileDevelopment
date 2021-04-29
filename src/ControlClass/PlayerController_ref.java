@@ -211,6 +211,8 @@ public class PlayerController_ref implements Initializable {
     @FXML
     private BorderPane mediaPane;
 
+    @FXML
+    private Button collectBT;
 
     @FXML
     void user_favorites_click(ActionEvent event) {
@@ -239,6 +241,11 @@ public class PlayerController_ref implements Initializable {
 
     @FXML
     void user_logout_click(ActionEvent event) {
+
+    }
+
+    @FXML
+    void add_collect(ActionEvent event) {
 
     }
 
