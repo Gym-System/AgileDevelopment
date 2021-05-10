@@ -139,7 +139,7 @@
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2000.0" prefWidth="1043.0">
                                     <children>
-                                        <BorderPane fx:id="mediaPane" layoutX="38.0" layoutY="76.0">
+                                        <BorderPane fx:id="mediaPane" layoutX="38.0" layoutY="90.0">
                                             <center>
                                                 <MediaView fx:id="mediaView" fitHeight="400.0" fitWidth="600.0" nodeOrientation="INHERIT">
                                                     <BorderPane.margin>
@@ -148,7 +148,7 @@
                                                 </MediaView>
                                             </center>
                                         </BorderPane>
-                                        <VBox fx:id="controlBar" alignment="BOTTOM_CENTER" layoutX="38.0" layoutY="436.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: #636363;">
+                                        <VBox fx:id="controlBar" alignment="BOTTOM_CENTER" layoutX="38.0" layoutY="450.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: #636363;">
                                             <children>
                                                 <Slider fx:id="processSD" prefHeight="20.0" prefWidth="201.0" style="-fx-background-color: #4b4b4b;" VBox.vgrow="ALWAYS">
                                                     <VBox.margin>
@@ -168,8 +168,20 @@
                                                         <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="190.0" spacing="20.0" BorderPane.alignment="CENTER">
                                                             <children>
                                                                 <Label fx:id="timeLB" text="Time" textFill="#dadada" HBox.hgrow="ALWAYS" />
-                                                <Button fx:id="importBT" mnemonicParsing="false" onMouseClicked="#playvideo" opacity="0.1" />
-                                                <Button fx:id="collectBT" mnemonicParsing="false" onMouseClicked="#add_collect" text="collect" />
+                                                <Button fx:id="importBT" mnemonicParsing="false" onMouseClicked="#playvideo" opacity="0.05">
+                                                   <padding>
+                                                      <Insets bottom="3.0" left="6.0" right="6.0" top="-10.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="-10.0" right="-10.0" />
+                                                   </HBox.margin></Button>
+                                                <Button fx:id="collectBT" mnemonicParsing="false" onMouseClicked="#add_collect" opacity="0.9" text="☆">
+                                                   <font>
+                                                      <Font name="System Bold" size="24.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="1.0" left="5.0" right="5.0" top="1.0" />
+                                                   </padding></Button>
                                                             </children>
                                                             <BorderPane.margin>
                                                                 <Insets left="30.0" />
@@ -209,12 +221,12 @@
                                                 <Insets />
                                             </opaqueInsets>
                                         </VBox>
-                                        <AnchorPane layoutX="686.0" layoutY="21.0" prefHeight="1197.0" prefWidth="300.0">
+                                        <AnchorPane layoutX="700.0" layoutY="21.0" prefHeight="1197.0" prefWidth="300.0">
                                             <children>
                                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebebeb" height="216.0" layoutX="18.0" layoutY="599.0" stroke="#94717142" strokeType="INSIDE" strokeWidth="5.0" width="268.0" />
                                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebebeb" height="216.0" layoutX="16.0" layoutY="327.0" stroke="#94717142" strokeType="INSIDE" strokeWidth="5.0" width="268.0" />
                                                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebebeb" height="216.0" layoutX="14.0" layoutY="59.0" stroke="#94717142" strokeType="INSIDE" strokeWidth="5.0" width="268.0" />
-                                                <Label layoutX="81.0" layoutY="14.0" text="Recommend">
+                                                <Label layoutX="77.0" layoutY="16.0" text="Recommend">
                                                     <font>
                                                         <Font name="System Bold" size="24.0" />
                                                     </font>
@@ -296,18 +308,17 @@
                                                 </ImageView>
                                             </children>
                                         </AnchorPane>
-                                        <Label layoutX="62.0" layoutY="529.0" text="Send flowers">
-                                            <font>
-                                                <Font name="System Bold" size="24.0" />
-                                            </font>
-                                        </Label>
-                                        <ImageView fitHeight="47.0" fitWidth="44.0" layoutX="257.0" layoutY="523.0" pickOnBounds="true" preserveRatio="true">
+                                        <Label layoutX="46.0" layoutY="535.0" text="Send flowers">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font></Label>
+                                        <ImageView fitHeight="47.0" fitWidth="44.0" layoutX="225.0" layoutY="528.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@../resource/flower.png" />
                                             </image>
                                         </ImageView>
-                                        <TextField fx:id="flower_num_urs" layoutX="327.0" layoutY="521.0" prefHeight="48.0" prefWidth="152.0" promptText="1" />
-                                        <Button fx:id="send_flower_urs" layoutX="522.0" layoutY="521.0" mnemonicParsing="false" onMouseClicked="#click_send_flower" text="send" />
+                                        <TextField fx:id="flower_num_urs" layoutX="290.0" layoutY="533.0" prefHeight="30.0" prefWidth="152.0" promptText="1" />
+                                        <Button fx:id="send_flower_urs" layoutX="478.0" layoutY="535.0" mnemonicParsing="false" onMouseClicked="#click_send_flower" text="send" />
                                         <AnchorPane layoutX="46.0" layoutY="577.0" prefHeight="556.0" prefWidth="584.0">
                                             <children>
                                                 <Label text="Comment">
@@ -320,7 +331,7 @@
                                                         <Image url="@../resource/user_Profile.jpg" />
                                                     </image></ImageView>
                                                 <TextArea fx:id="user_comment_urs" layoutX="65.0" layoutY="56.0" prefHeight="119.0" prefWidth="511.0" promptText="Want to say something?" />
-                                                <Button fx:id="send_comment_urs" layoutX="459.0" layoutY="119.0" mnemonicParsing="false" onMouseClicked="#click_send_comment" opacity="0.6" text="Send" />
+                                                <Button fx:id="send_comment_urs" layoutX="459.0" layoutY="130.0" mnemonicParsing="false" onMouseClicked="#click_send_comment" opacity="0.6" text="Send" />
                                                 <Label layoutY="199.0" text="All Comments">
                                                     <font>
                                                         <Font name="System Bold" size="26.0" />
@@ -361,6 +372,21 @@
                                                 </Label>
                                             </children>
                                         </AnchorPane>
+                              <Label fx:id="video_title" layoutX="38.0" layoutY="34.0" text="Yoga - Coach: Sara">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="video_view_times" layoutX="38.0" layoutY="66.0" opacity="0.5" text="400">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="72.0" layoutY="66.0" opacity="0.5" text="views">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
                                     </children>
                                 </AnchorPane>
                             </content>

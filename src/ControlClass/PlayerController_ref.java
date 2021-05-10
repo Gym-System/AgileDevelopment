@@ -215,6 +215,12 @@ public class PlayerController_ref implements Initializable {
     private Button collectBT;
 
     @FXML
+    private Label video_view_times;
+
+    @FXML
+    private Label video_title;
+
+    @FXML
     void user_favorites_click(ActionEvent event) {
 
     }
@@ -702,7 +708,8 @@ public class PlayerController_ref implements Initializable {
 
 
 
-        primaryStage.setScene(new Scene(root, 1500, 1000));
+        //primaryStage.setScene(new Scene(root, 1500, 1000));
+        primaryStage.setScene(new Scene(root, 1350, 807));
         primaryStage.show();
     }
 
