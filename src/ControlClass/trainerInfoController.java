@@ -8,8 +8,10 @@ import EntityClass.DAO.impl.LiveSessionDAOImpl;
 import EntityClass.DAO.impl.PhyDataDAOImpl;
 import EntityClass.DAO.impl.TrainerDAOImpl;
 import EntityClass.VO.LiveSession;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -17,11 +19,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
+
 public class trainerInfoController {
 
     private ArrayList<Label> trainer_courses = new ArrayList<>();
 
-    private ArrayList<Label> trainer_stars= new ArrayList<>();
+    private ArrayList<Label> trainer_stars = new ArrayList<>();
 
     @FXML
     private ResourceBundle resources;
@@ -55,6 +58,9 @@ public class trainerInfoController {
 
     @FXML
     private TextField trainerInfo_label;
+
+    @FXML
+    private Button trainerInfo_photoWall_add;
 
     @FXML
     private Label trainer_name;
@@ -106,7 +112,62 @@ public class trainerInfoController {
 
     @FXML
     private Label trainer_course2;
-    
+
+
+    @FXML
+    void trainerInfo_portrait_click(ActionEvent event) {
+
+    }
+
+    @FXML
+    void trainerInfo_upload_click(ActionEvent event) {
+
+    }
+
+    @FXML
+    void trainerInfo_live_click(ActionEvent event) {
+
+    }
+
+    @FXML
+    void trainerInfo_calendar_click(ActionEvent event) {
+
+    }
+
+    @FXML
+    void trainerInfo_history_click(ActionEvent event) {
+
+    }
+
+    @FXML
+    void trainerInfo_info_click(ActionEvent event) {
+
+    }
+
+    @FXML
+    void trainerInfo_modify_click(ActionEvent event) {
+
+    }
+
+    @FXML
+    void trainerInfo_details_click(ActionEvent event) {
+
+    }
+
+    @FXML
+    void trainerInfo_label_click(ActionEvent event) {
+
+    }
+
+    @FXML
+    void trainerInfo_cv_click(ActionEvent event) {
+
+    }
+
+    @FXML
+    void trainerInfo_photoWall_add_click(ActionEvent event) {
+
+    }
 
     @FXML
     void initialize() {
@@ -119,6 +180,7 @@ public class trainerInfoController {
         assert trainerInfo_live != null : "fx:id=\"trainerInfo_live\" was not injected: check your FXML file 'TrainerInfo.fxml'.";
         assert trainerInfo_cv != null : "fx:id=\"trainerInfo_cv\" was not injected: check your FXML file 'TrainerInfo.fxml'.";
         assert trainerInfo_label != null : "fx:id=\"trainerInfo_label\" was not injected: check your FXML file 'TrainerInfo.fxml'.";
+        assert trainerInfo_photoWall_add != null : "fx:id=\"trainerInfo_photoWall_add\" was not injected: check your FXML file 'TrainerInfo.fxml'.";
         assert trainer_name != null : "fx:id=\"trainer_name\" was not injected: check your FXML file 'TrainerInfo.fxml'.";
         assert trainerInfo_calendar != null : "fx:id=\"trainerInfo_calendar\" was not injected: check your FXML file 'TrainerInfo.fxml'.";
         assert trainerInfo_history != null : "fx:id=\"trainerInfo_history\" was not injected: check your FXML file 'TrainerInfo.fxml'.";
@@ -137,6 +199,7 @@ public class trainerInfoController {
         assert trainer_major != null : "fx:id=\"trainer_major\" was not injected: check your FXML file 'TrainerInfo.fxml'.";
         assert trainer_course2 != null : "fx:id=\"trainer_course2\" was not injected: check your FXML file 'TrainerInfo.fxml'.";
 
+
         String trainername = passValue.getValue();
         TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
         PhyDataDAOImpl phyDataDAO = new PhyDataDAOImpl();
@@ -145,7 +208,7 @@ public class trainerInfoController {
         trainer_major.setText(phyDataDAO.queryByUserName(trainername).getInterest());
         trainer_email.setText(trainerDAO.queryByUserName(trainername).getEmail());
         trainer_experience.setText(Integer.toString(phyDataDAO.queryByUserName(trainername).getExperience()));
-        int i=1;
+        int i = 1;
         LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
         ArrayList<LiveSession> live = liveSessionDAO.queryByTrainerName("kaiyi1");//接口存在问题
         trainer_courses.add(trainer_course1);
@@ -156,48 +219,15 @@ public class trainerInfoController {
         trainer_stars.add(trainer_star2);
         trainer_stars.add(trainer_star3);
         trainer_stars.add(trainer_star4);
-        for(i=0;i<=3;i++){
-            if(trainer_courses.get(i)==null){
+        for (i = 0; i <= 3; i++) {
+            if (trainer_courses.get(i) == null) {
                 break;
-            }
-            else{
+            } else {
                 trainer_courses.get(i).setText(live.get(i).getSubject());
                 trainer_stars.get(i).setText(Double.toString(live.get(i).getStar()));
             }
 
-
         }
-
-
     }
 
-    public void trainerInfo_portrait_click(MouseEvent mouseEvent) {
-    }
-
-    public void trainerInfo_upload_click(ActionEvent actionEvent) {
-    }
-
-    public void trainerInfo_live_click(ActionEvent actionEvent) {
-    }
-
-    public void trainerInfo_calendar_click(ActionEvent actionEvent) {
-    }
-
-    public void trainerInfo_history_click(ActionEvent actionEvent) {
-    }
-
-    public void trainerInfo_info_click(MouseEvent mouseEvent) {
-    }
-
-    public void trainerInfo_modify_click(ActionEvent actionEvent) {
-    }
-
-    public void trainerInfo_details_click(ActionEvent actionEvent) {
-    }
-
-    public void trainerInfo_label_click(ActionEvent actionEvent) {
-    }
-
-    public void trainerInfo_cv_click(MouseEvent mouseEvent) {
-    }
 }

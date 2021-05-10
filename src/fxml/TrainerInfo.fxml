@@ -318,6 +318,26 @@
                      </rowConstraints>
                   </GridPane>
                   <TextArea fx:id="trainerInfo_cv" layoutX="550.0" layoutY="243.0" onDragDetected="#trainerInfo_cv_click" prefHeight="187.0" prefWidth="400.0" />
+                  <ImageView fitHeight="100.0" fitWidth="156.0" layoutX="736.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="730.0">
+                     <image>
+                        <Image url="@../resource/trainer_Portrait_PhotoWall_1.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="100.0" fitWidth="156.0" layoutX="735.0" layoutY="603.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="730.0">
+                     <image>
+                        <Image url="@../resource/trainer_Portrait_PhotoWall_2.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="197.0" fitWidth="177.0" layoutX="550.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resource/trainer_Portrait_PhotoWall_3.jpg" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="trainerInfo_photoWall_add" layoutX="896.0" layoutY="501.0" mnemonicParsing="false" onAction="#trainerInfo_photoWall_add_click" prefHeight="197.0" prefWidth="54.0" text="➕ ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
                </children></AnchorPane>
         </items>
       </SplitPane>
