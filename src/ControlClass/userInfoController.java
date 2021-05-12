@@ -79,7 +79,7 @@ public class userInfoController {
         RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
         LiveSessionDAO liveSessionDAO = new LiveSessionDAOImpl();
         PreUserDAOImpl preUserDAO = new PreUserDAOImpl();
-        name.setText( userDAO.queryByUserName(username).getUserName());
+        name.setText(username);
         gender.setText(userDAO.queryByUserName(username).getGender());
         java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd ");
         String date = formatter.format(userDAO.queryByUserName(username).getDoB());
@@ -94,7 +94,9 @@ public class userInfoController {
         weight.setText(Double.toString(phyDataDAO.queryByUserName(username).getWeight())+" kg");
         height.setText(Double.toString(phyDataDAO.queryByUserName(username).getHeight())+" cm");
         double result=(10000*phyDataDAO.queryByUserName(username).getWeight())/(phyDataDAO.queryByUserName(username).getHeight()*phyDataDAO.queryByUserName(username).getHeight());
-        bmi.setText(Double.toString(result));
+        int middlevalue = (int)(result*100);
+        double newresult=middlevalue/100.0;
+        bmi.setText(Double.toString(newresult));
         ArrayList<LiveSession> liveSessions = liveSessionDAO.queryByUserName(username);
         int time1 = 0;
         int time2 = 0;
