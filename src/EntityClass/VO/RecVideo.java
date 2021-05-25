@@ -6,14 +6,14 @@ import java.util.Date;
 import java.util.Locale;
 
 public class RecVideo extends Course {
-    private final String trainerName;
     private Date uploadedTime;
     private int viewTime = 0;
     private int rateTime = 0;
+    private final String subject;
 
     public RecVideo(String subject, int length, String trainerName) {
-        super(subject, length);
-        this.trainerName = trainerName;
+        super(length, trainerName);
+        this.subject = subject;
         try {
             this.setUploadedTime();
         } catch (ParseException e) {
@@ -22,15 +22,11 @@ public class RecVideo extends Course {
     }
 
     public RecVideo(long courseId, String subject, int length, int gift, double star, String trainerName, Date uploadedTime, int viewTime, int rateTime) {
-        super(courseId, subject, length, gift, star);
-        this.trainerName = trainerName;
+        super(courseId, length, gift, star, trainerName);
+        this.subject = subject;
         this.uploadedTime = uploadedTime;
         this.viewTime = viewTime;
         this.rateTime = rateTime;
-    }
-
-    public String getUserName() {
-        return trainerName;
     }
 
     public Date getUploadedTime() {
@@ -60,18 +56,18 @@ public class RecVideo extends Course {
 
     @Override
     public String[] toStrArray() {
-        String text = "" + super.getCourseId() + "," + super.getSubject() + "," + super.getLength() + "," + super.getGift() + "," +
-                super.getStar() + "," + trainerName + "," + uploadedTime + "," + viewTime + "," + rateTime;
+        String text = "" + super.getCourseId() + "," + subject + "," + super.getLength() + "," + super.getGift() + "," +
+                super.getStar() + "," + super.getTrainerName() + "," + uploadedTime + "," + viewTime + "," + rateTime;
         return text.split(",");
     }
 
     @Override
     public String toString() {
         return "RecVideo{" +
-                "trainerName='" + trainerName + '\'' +
-                ", uploadedTime=" + uploadedTime +
+                "uploadedTime=" + uploadedTime +
                 ", viewTime=" + viewTime +
                 ", rateTime=" + rateTime +
+                ", subject='" + subject + '\'' +
                 "} " + super.toString();
     }
 }

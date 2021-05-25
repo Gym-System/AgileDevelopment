@@ -109,8 +109,7 @@ public class Test {
 
         LiveSession liveSession = null;
         try {
-            liveSession = new LiveSession("Hiit",
-                    30,
+            liveSession = new LiveSession(30,
                     new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2021-05-01 17:15:00"),
                     "kaiyi1",
                     "kaiyi2");
@@ -471,6 +470,7 @@ public class Test {
         }
          */
 
+        /*
         User user = null;
         try {
             user = new User("kaiyi",
@@ -488,5 +488,25 @@ public class Test {
         System.out.println(user.getExerciseTime("day", null, "recorded"));
         System.out.println(user.getExerciseTime("day", "Strength", null));
         System.out.println(user.getExerciseTime("day", "Hiit", null));
+
+         */
+
+        LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
+
+        ArrayList<LiveSession> liveSessions;
+        liveSessions = liveSessionDAO.queryByTrainerName("kaiyi1");
+        for(LiveSession liveSession1:liveSessions) {
+            System.out.println(liveSession1);
+        }
+
+        liveSessions = liveSessionDAO.queryByUserName("kaiyi2");
+        for(LiveSession liveSession1:liveSessions) {
+            System.out.println(liveSession1);
+        }
+
+        liveSessions = liveSessionDAO.queryAll();
+        for(LiveSession liveSession1:liveSessions) {
+            System.out.println(liveSession1);
+        }
     }
 }
