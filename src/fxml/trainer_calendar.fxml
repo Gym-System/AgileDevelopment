@@ -65,7 +65,7 @@
                         </Hyperlink>
                         <ImageView fx:id="trainer_profile_pic" fitHeight="105.0" fitWidth="102.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
                            <image>
-                              <Image url="@../resource/trainer_Profile.jpg" />
+                              <Image url="@../resource/trainer_Profile.png" />
                            </image>
                         </ImageView>
                         <Hyperlink fx:id="trainer_rules_hyper" layoutX="86.0" layoutY="438.0" onMouseClicked="#user_history_click" text="Rules" GridPane.columnIndex="1" GridPane.rowIndex="5">
