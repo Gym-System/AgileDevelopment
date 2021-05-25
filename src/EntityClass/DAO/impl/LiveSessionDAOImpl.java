@@ -46,11 +46,11 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
             while(csvReader.readRecord()){
                 record = csvReader.getRawRecord().split(",");
                 if(courseId == Long.parseLong(record[0])) {
-                    record[2] = String.valueOf(gift);
-                    liveSession = new LiveSession(Long.parseLong(record[0]), Integer.parseInt(record[1]),
-                            Integer.parseInt(record[2]), Double.parseDouble(record[3]),
-                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[4]),
-                            record[5], record[6]);
+                    record[3] = String.valueOf(gift);
+                    liveSession = new LiveSession(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
+                            Integer.parseInt(record[3]), Double.parseDouble(record[4]),
+                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                            record[6], record[7]);
                 }
                 records.add(record);
             }
@@ -73,11 +73,11 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
             while(csvReader.readRecord()){
                 record = csvReader.getRawRecord().split(",");
                 if(courseId == Long.parseLong(record[0])) {
-                    record[3] = String.valueOf(star);
-                    liveSession = new LiveSession(Long.parseLong(record[0]), Integer.parseInt(record[1]),
-                            Integer.parseInt(record[2]), Double.parseDouble(record[3]),
-                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[4]),
-                            record[5], record[6]);
+                    record[4] = String.valueOf(star);
+                    liveSession = new LiveSession(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
+                            Integer.parseInt(record[3]), Double.parseDouble(record[4]),
+                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                            record[6], record[7]);
                 }
                 records.add(record);
             }
@@ -100,11 +100,11 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
             while(csvReader.readRecord()){
                 record = csvReader.getRawRecord().split(",");
                 if(courseId == Long.parseLong(record[0])) {
-                    record[4] = String.valueOf(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(startTime));
-                    liveSession = new LiveSession(Long.parseLong(record[0]), Integer.parseInt(record[1]),
-                            Integer.parseInt(record[2]), Double.parseDouble(record[3]),
-                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[4]),
-                            record[5], record[6]);
+                    record[5] = String.valueOf(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(startTime));
+                    liveSession = new LiveSession(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
+                            Integer.parseInt(record[3]), Double.parseDouble(record[4]),
+                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                            record[6], record[7]);
                 }
                 records.add(record);
             }
@@ -127,10 +127,10 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
                 if(courseId == Long.parseLong(record[0])) {
-                    liveSession = new LiveSession(Long.parseLong(record[0]), Integer.parseInt(record[1]),
-                            Integer.parseInt(record[2]), Double.parseDouble(record[3]),
-                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[4]),
-                            record[5], record[6]);
+                    liveSession = new LiveSession(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
+                            Integer.parseInt(record[3]), Double.parseDouble(record[4]),
+                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                            record[6], record[7]);
                     break;
                 }
             }
@@ -151,11 +151,11 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
-                if(trainerName.equals(record[5])) {
-                    liveSession = new LiveSession(Long.parseLong(record[0]), Integer.parseInt(record[1]),
-                            Integer.parseInt(record[2]), Double.parseDouble(record[3]),
-                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[4]),
-                            record[5], record[6]);
+                if(trainerName.equals(record[6])) {
+                    liveSession = new LiveSession(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
+                            Integer.parseInt(record[3]), Double.parseDouble(record[4]),
+                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                            record[6], record[7]);
                     liveSessions.add(liveSession);
                 }
             }
@@ -176,11 +176,11 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
-                if(userName.equals(record[6])) {
-                    liveSession = new LiveSession(Long.parseLong(record[0]), Integer.parseInt(record[1]),
-                            Integer.parseInt(record[2]), Double.parseDouble(record[3]),
-                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[4]),
-                            record[5], record[6]);
+                if(userName.equals(record[7])) {
+                    liveSession = new LiveSession(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
+                            Integer.parseInt(record[3]), Double.parseDouble(record[4]),
+                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                            record[6], record[7]);
                     liveSessions.add(liveSession);
                 }
             }
@@ -201,10 +201,10 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
-                liveSession = new LiveSession(Long.parseLong(record[0]), Integer.parseInt(record[1]),
-                        Integer.parseInt(record[2]), Double.parseDouble(record[3]),
-                        new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[4]),
-                        record[5], record[6]);
+                liveSession = new LiveSession(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
+                        Integer.parseInt(record[3]), Double.parseDouble(record[4]),
+                        new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                        record[6], record[7]);
                 liveSessions.add(liveSession);
             }
             csvReader.close();

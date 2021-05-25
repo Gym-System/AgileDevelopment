@@ -4,23 +4,23 @@ import java.util.Date;
 
 public class Course {
     private long courseId;
+    private final String subject;
     private final int length;
     private int gift = 0;
     private double star = 0.0;
-    private final String trainerName;
 
-    public Course(int length, String trainerName) {
+    public Course(String subject, int length) {
         this.setCourseId();
+        this.subject = subject;
         this.length = length;
-        this.trainerName = trainerName;
     }
 
-    public Course(long courseId, int length, int gift, double star, String trainerName) {
+    public Course(long courseId, String subject, int length, int gift, double star) {
         this.courseId = courseId;
+        this.subject = subject;
         this.length = length;
         this.gift = gift;
         this.star = star;
-        this.trainerName = trainerName;
     }
 
     public long getCourseId() {
@@ -30,6 +30,10 @@ public class Course {
     public void setCourseId() {
         Date date = new Date();
         this.courseId = date.getTime();
+    }
+
+    public String getSubject() {
+        return subject;
     }
 
     public int getLength() {
@@ -52,12 +56,8 @@ public class Course {
         this.star = star;
     }
 
-    public String getTrainerName() {
-        return trainerName;
-    }
-
     public String[] toStrArray() {
-        String text = "" + courseId  + "," + length + "," + gift + "," + star + "," + trainerName;
+        String text = "" + courseId  + "," + subject + "," + length + "," + gift + "," + star;
         return text.split(",");
     }
 
@@ -65,10 +65,10 @@ public class Course {
     public String toString() {
         return "Course{" +
                 "courseId=" + courseId +
+                ", subject='" + subject + '\'' +
                 ", length=" + length +
                 ", gift=" + gift +
                 ", star=" + star +
-                ", trainerName='" + trainerName + '\'' +
                 '}';
     }
 }

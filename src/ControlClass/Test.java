@@ -109,7 +109,8 @@ public class Test {
 
         LiveSession liveSession = null;
         try {
-            liveSession = new LiveSession(30,
+            liveSession = new LiveSession("Hiit",
+                    30,
                     new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2021-05-01 17:15:00"),
                     "kaiyi1",
                     "kaiyi2");

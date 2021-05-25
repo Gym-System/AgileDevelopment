@@ -3,7 +3,10 @@ package EntityClass.DAO.impl;
 import EntityClass.DAO.HistoryDataDAO;
 import EntityClass.VO.HistoryData;
 import com.csvreader.CsvReader;
+
+
 import static EntityClass.DAO.impl.PersonDAOImpl.insertInfo;
+import static EntityClass.DAO.impl.CourseDAOImpl.deleteInfo;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -20,6 +23,11 @@ public class HistoryDataDAOImpl implements HistoryDataDAO {
     @Override
     public Boolean insertHistoryData(HistoryData historyData) {
         return insertInfo(filePath, historyData.toStrArray());
+    }
+
+    @Override
+    public Boolean deleteHistoryData(Long courseId) {
+        return deleteInfo(courseId, filePath);
     }
 
     @Override
