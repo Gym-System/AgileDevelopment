@@ -81,18 +81,48 @@
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Label layoutX="59.0" layoutY="59.0" prefHeight="39.0" prefWidth="102.0" text="Title:" />
-                  <Label layoutX="59.0" layoutY="121.0" prefHeight="39.0" prefWidth="102.0" text="Type:" />
-                  <Label layoutX="59.0" layoutY="197.0" prefHeight="39.0" prefWidth="102.0" text="Description:" />
-                  <Label layoutX="59.0" layoutY="346.0" prefHeight="39.0" prefWidth="155.0" text="File Submission:" />
-                  <Label layoutX="195.0" layoutY="130.0" prefHeight="29.0" prefWidth="75.0" text="Yoga" />
-                  <Label layoutX="319.0" layoutY="130.0" prefHeight="29.0" prefWidth="85.0" text="Strength" />
-                  <Label layoutX="476.0" layoutY="130.0" prefHeight="29.0" prefWidth="75.0" text="HIIT" />
-                  <TextField layoutX="195.0" layoutY="63.0" prefHeight="45.0" prefWidth="580.0" />
-                  <TextField layoutX="195.0" layoutY="197.0" prefHeight="123.0" prefWidth="589.0" />
-                  <Button layoutX="59.0" layoutY="602.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="125.0" text="Save changes" />
-                  <Button layoutX="263.0" layoutY="602.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="125.0" text="Cancel" />
-                  <Button fx:id="button_upload" layoutX="59.0" layoutY="394.0" mnemonicParsing="false" onMouseClicked="#upload_click" prefHeight="164.0" prefWidth="819.0" text="Upload" />
+                  <Label layoutX="59.0" layoutY="59.0" prefHeight="39.0" prefWidth="102.0" text="Title:">
+                     <font>
+                        <Font name="Baskerville Old Face" size="28.0" />
+                     </font></Label>
+                  <Label layoutX="60.0" layoutY="124.0" prefHeight="39.0" prefWidth="102.0" text="Type:" AnchorPane.leftAnchor="60.0">
+                     <font>
+                        <Font name="Baskerville Old Face" size="28.0" />
+                     </font></Label>
+                  <Label layoutX="59.0" layoutY="197.0" prefHeight="39.0" prefWidth="143.0" text="Description:" AnchorPane.leftAnchor="60.0">
+                     <font>
+                        <Font name="Baskerville Old Face" size="28.0" />
+                     </font></Label>
+                  <Label layoutX="59.0" layoutY="346.0" prefHeight="39.0" prefWidth="195.0" text="File Submission:" AnchorPane.leftAnchor="60.0">
+                     <font>
+                        <Font name="Baskerville Old Face" size="28.0" />
+                     </font></Label>
+                  <Label layoutX="216.0" layoutY="128.0" prefHeight="29.0" prefWidth="75.0" text="Yoga" AnchorPane.leftAnchor="216.0">
+                     <font>
+                        <Font name="Baskerville Old Face" size="24.0" />
+                     </font></Label>
+                  <Label layoutX="340.0" layoutY="128.0" prefHeight="32.0" prefWidth="102.0" text="Strength">
+                     <font>
+                        <Font name="Baskerville Old Face" size="24.0" />
+                     </font></Label>
+                  <Label layoutX="497.0" layoutY="128.0" prefHeight="29.0" prefWidth="75.0" text="HIIT">
+                     <font>
+                        <Font name="Baskerville Old Face" size="24.0" />
+                     </font></Label>
+                  <TextField layoutX="214.0" layoutY="57.0" prefHeight="45.0" prefWidth="589.0" AnchorPane.leftAnchor="214.0" />
+                  <TextField layoutX="214.0" layoutY="200.0" prefHeight="123.0" prefWidth="589.0" AnchorPane.leftAnchor="214.0" />
+                  <Button layoutX="59.0" layoutY="602.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="166.0" text="Save Changes" AnchorPane.leftAnchor="59.0">
+                     <font>
+                        <Font name="Baskerville Old Face" size="24.0" />
+                     </font></Button>
+                  <Button layoutX="254.0" layoutY="602.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="125.0" text="Cancel">
+                     <font>
+                        <Font name="Baskerville Old Face" size="24.0" />
+                     </font></Button>
+                  <Button fx:id="button_upload" layoutX="59.0" layoutY="399.0" mnemonicParsing="false" onMouseClicked="#upload_click" prefHeight="164.0" prefWidth="819.0" text="Upload Files👆👆">
+                     <font>
+                        <Font name="Baskerville Old Face" size="24.0" />
+                     </font></Button>
                </children>
             </AnchorPane>
          </items>
