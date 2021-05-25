@@ -1,6 +1,13 @@
 package EntityClass.VO;
 
+import EntityClass.DAO.impl.LiveSessionDAOImpl;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class Trainer extends Staff {
     private double salary = 0.0;
@@ -46,6 +53,27 @@ public class Trainer extends Staff {
 
     public String[] getCVStrArray() {
         return CV.split(";");
+    }
+
+    public ArrayList<LiveSession> showCalender() throws ParseException {
+        LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
+        ArrayList<LiveSession> liveSessions = liveSessionDAO.queryByTrainerName(getUserName());
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        Date startTime = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
+                new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
+        calendar.add(Calendar.DATE, 7);
+        Date endTime = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
+                new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
+
+        for (LiveSession liveSession:liveSessions) {
+            if(!liveSession.getStartTime().after(startTime) || !liveSession.getStartTime().before(endTime)) {
+                liveSessions.remove(liveSession);
+            }
+        }
+
+        return liveSessions;
     }
 
     @Override

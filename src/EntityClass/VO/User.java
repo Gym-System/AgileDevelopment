@@ -65,6 +65,27 @@ public class User extends Person {
         historyDataDAO.deleteHistoryData(courseId);
     }
 
+    public ArrayList<LiveSession> showCalender() throws ParseException {
+        LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
+        ArrayList<LiveSession> liveSessions = liveSessionDAO.queryByUserName(getUserName());
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        Date startTime = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
+                new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
+        calendar.add(Calendar.DATE, 7);
+        Date endTime = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
+                new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
+
+        for (LiveSession liveSession:liveSessions) {
+            if(!liveSession.getStartTime().after(startTime) || !liveSession.getStartTime().before(endTime)) {
+                liveSessions.remove(liveSession);
+            }
+        }
+
+        return liveSessions;
+    }
+
     public void sendGift(int amount, long courseId) {
         RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
         RecVideo recVideo = recVideoDAO.queryByCourseId(courseId);
