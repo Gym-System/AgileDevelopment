@@ -148,8 +148,8 @@
                      </font></Label>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b5d2eb" height="73.0" layoutX="75.0" layoutY="178.0" stroke="TRANSPARENT" strokeType="INSIDE" width="950.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#99b6ccc8" height="73.0" layoutX="75.0" layoutY="251.0" stroke="TRANSPARENT" strokeType="INSIDE" width="950.0" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="53.0" layoutX="217.0" layoutY="390.0" stroke="#fffbfb" strokeType="INSIDE" width="128.0" />
-                  <Button layoutX="251.0" layoutY="417.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="59.0" text="ENTER">
+                  <Rectangle fx:id="rec32" arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="53.0" layoutX="217.0" layoutY="390.0" stroke="#fffbfb" strokeType="INSIDE" width="128.0" />
+                  <Button fx:id="enter32" layoutX="251.0" layoutY="417.0" mnemonicParsing="false" onMouseClicked="#click_enter32" prefHeight="20.0" prefWidth="59.0" text="ENTER">
                      <font>
                         <Font name="Comic Sans MS Bold Italic" size="10.0" />
                      </font>
@@ -177,35 +177,35 @@
                         <Cursor fx:constant="NW_RESIZE" />
                      </cursor>
                   </Pagination>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="53.0" layoutX="355.0" layoutY="463.0" stroke="#fffbfb" strokeType="INSIDE" width="128.0" />
-                  <Label layoutX="388.0" layoutY="466.0" text="finished" textFill="#7f64ae">
+                  <Rectangle fx:id="rec43" arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="53.0" layoutX="355.0" layoutY="463.0" stroke="#fffbfb" strokeType="INSIDE" width="128.0" />
+                  <Label fx:id="status43" layoutX="388.0" layoutY="466.0" text="finished" textFill="#7f64ae">
                      <font>
                         <Font name="Comic Sans MS Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Button layoutX="390.0" layoutY="490.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="59.0" text="ENTER">
+                  <Button fx:id="enter43" layoutX="390.0" layoutY="490.0" mnemonicParsing="false" onMouseClicked="#click_enter43" prefHeight="20.0" prefWidth="59.0" text="ENTER">
                      <font>
                         <Font name="Comic Sans MS Bold Italic" size="10.0" />
                      </font>
                   </Button>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="53.0" layoutX="487.0" layoutY="261.0" stroke="#fffbfb" strokeType="INSIDE" width="128.0" />
-                  <Button layoutX="522.0" layoutY="288.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="59.0" text="ENTER">
+                  <Rectangle fx:id="rec24" arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="53.0" layoutX="487.0" layoutY="261.0" onMouseClicked="#click_enter24" stroke="#fffbfb" strokeType="INSIDE" width="128.0" />
+                  <Button fx:id="enter24" layoutX="522.0" layoutY="288.0" mnemonicParsing="false" onMouseClicked="#click_enter24" prefHeight="20.0" prefWidth="59.0" text="ENTER">
                      <font>
                         <Font name="Comic Sans MS Bold Italic" size="10.0" />
                      </font>
                   </Button>
-                  <Label layoutX="520.0" layoutY="264.0" text="avaliable" textFill="#4cbf78">
+                  <Label fx:id="status24" layoutX="520.0" layoutY="264.0" text="avaliable" textFill="#4cbf78">
                      <font>
                         <Font name="Comic Sans MS Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="53.0" layoutX="755.0" layoutY="261.0" stroke="#fffbfb" strokeType="INSIDE" width="128.0" />
-                  <Label layoutX="773.0" layoutY="264.0" text="not available" textFill="#e87676">
+                  <Rectangle fx:id="rec26" arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="53.0" layoutX="755.0" layoutY="261.0" stroke="#fffbfb" strokeType="INSIDE" width="128.0" />
+                  <Label fx:id="status26" layoutX="773.0" layoutY="264.0" text="not available" textFill="#e87676">
                      <font>
                         <Font name="Comic Sans MS Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Button layoutX="790.0" layoutY="288.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="59.0" text="ENTER">
+                  <Button fx:id="enter26" layoutX="790.0" layoutY="288.0" mnemonicParsing="false" onMouseClicked="#click_enter26" prefHeight="20.0" prefWidth="59.0" text="ENTER">
                      <font>
                         <Font name="Comic Sans MS Bold Italic" size="10.0" />
                      </font>
@@ -232,13 +232,13 @@
                         <Font name="Comic Sans MS Bold Italic" size="10.0" />
                      </font>
                   </Button>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="53.0" layoutX="83.0" layoutY="188.0" stroke="#fffbfb" strokeType="INSIDE" width="128.0" />
-                  <Button layoutX="118.0" layoutY="215.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="59.0" text="ENTER">
+                  <Rectangle fx:id="rec11" arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="53.0" layoutX="83.0" layoutY="188.0" stroke="#fffbfb" strokeType="INSIDE" width="128.0" />
+                  <Button fx:id="enter11" layoutX="118.0" layoutY="215.0" mnemonicParsing="false" onMouseClicked="#click_enter11" prefHeight="20.0" prefWidth="59.0" text="ENTER">
                      <font>
                         <Font name="Comic Sans MS Bold Italic" size="10.0" />
                      </font>
                   </Button>
-                  <Label layoutX="116.0" layoutY="191.0" text="finished" textFill="#7f64ae">
+                  <Label fx:id="status11" layoutX="116.0" layoutY="191.0" text="finished" textFill="#7f64ae">
                      <font>
                         <Font name="Comic Sans MS Bold" size="15.0" />
                      </font>
@@ -265,45 +265,45 @@
                      </font>
                   </Label>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="53.0" layoutX="1301.0" layoutY="738.0" stroke="#fffbfb" strokeType="INSIDE" width="128.0" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="53.0" layoutX="890.0" layoutY="463.0" stroke="#fffbfb" strokeType="INSIDE" width="128.0" />
-                  <Button layoutX="925.0" layoutY="490.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="59.0" text="ENTER">
+                  <Rectangle fx:id="rec47" arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="53.0" layoutX="890.0" layoutY="463.0" stroke="#fffbfb" strokeType="INSIDE" width="128.0" />
+                  <Button fx:id="enter47" layoutX="925.0" layoutY="490.0" mnemonicParsing="false" onMouseClicked="#click_enter47" prefHeight="20.0" prefWidth="59.0" text="ENTER">
                      <font>
                         <Font name="Comic Sans MS Bold Italic" size="10.0" />
                      </font>
                   </Button>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aec6da" height="73.0" layoutX="888.0" layoutY="728.0" stroke="TRANSPARENT" strokeType="INSIDE" width="950.0" />
-                  <Label layoutX="908.0" layoutY="466.0" text="not available" textFill="#e87676">
+                  <Label fx:id="status47" layoutX="908.0" layoutY="466.0" text="not available" textFill="#e87676">
                      <font>
                         <Font name="Comic Sans MS Bold" size="15.0" />
                      </font>
                   </Label>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aec6da" height="73.0" layoutX="486.0" layoutY="800.0" stroke="TRANSPARENT" strokeType="INSIDE" width="950.0" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="53.0" layoutX="622.0" layoutY="535.0" stroke="#fffbfb" strokeType="INSIDE" width="128.0" />
+                  <Rectangle fx:id="rec55" arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="53.0" layoutX="622.0" layoutY="535.0" stroke="#fffbfb" strokeType="INSIDE" width="128.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aec6da" height="73.0" layoutX="620.0" layoutY="800.0" stroke="TRANSPARENT" strokeType="INSIDE" width="950.0" />
-                  <Label layoutX="641.0" layoutY="538.0" text="not avaliable" textFill="#e87676">
+                  <Label fx:id="status55" layoutX="641.0" layoutY="538.0" text="not avaliable" textFill="#e87676">
                      <font>
                         <Font name="Comic Sans MS Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Button layoutX="657.0" layoutY="562.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="59.0" text="ENTER">
+                  <Button fx:id="enter55" layoutX="657.0" layoutY="562.0" mnemonicParsing="false" onMouseClicked="#click_enter55" prefHeight="20.0" prefWidth="59.0" text="ENTER">
                      <font>
                         <Font name="Comic Sans MS Bold Italic" size="10.0" />
                      </font>
                   </Button>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aec6da" height="73.0" layoutX="755.0" layoutY="800.0" stroke="TRANSPARENT" strokeType="INSIDE" width="950.0" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="53.0" layoutX="891.0" layoutY="535.0" stroke="#fffbfb" strokeType="INSIDE" width="128.0" />
+                  <Rectangle fx:id="rec57" arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="53.0" layoutX="891.0" layoutY="535.0" stroke="#fffbfb" strokeType="INSIDE" width="128.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aec6da" height="73.0" layoutX="889.0" layoutY="800.0" stroke="TRANSPARENT" strokeType="INSIDE" width="950.0" />
-                  <Label layoutX="908.0" layoutY="538.0" text="not available" textFill="#e87676">
+                  <Label fx:id="status57" layoutX="908.0" layoutY="538.0" text="not available" textFill="#e87676">
                      <font>
                         <Font name="Comic Sans MS Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Button layoutX="926.0" layoutY="562.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="59.0" text="ENTER">
+                  <Button fx:id="enter57" layoutX="926.0" layoutY="562.0" mnemonicParsing="false" onMouseClicked="#click_enter57" prefHeight="20.0" prefWidth="59.0" text="ENTER">
                      <font>
                         <Font name="Comic Sans MS Bold Italic" size="10.0" />
                      </font>
                   </Button>
-                  <Label layoutX="249.0" layoutY="393.0" text="finished" textFill="#7f64ae">
+                  <Label fx:id="status32" layoutX="249.0" layoutY="393.0" text="finished" textFill="#7f64ae">
                      <font>
                         <Font name="Comic Sans MS Bold" size="15.0" />
                      </font>
