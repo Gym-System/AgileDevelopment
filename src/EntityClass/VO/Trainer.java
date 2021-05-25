@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class Trainer extends Staff {
     private double salary = 0.0;
+    private String label;
+    private String CV;
 
     public Trainer(String userName, String password, String email) {
         super(userName, password, email);
@@ -24,6 +26,26 @@ public class Trainer extends Staff {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public String getCV() {
+        return CV;
+    }
+
+    public void setCV(String CV) {
+        this.CV = CV;
+    }
+
+    public String[] getCVStrArray() {
+        return CV.split(";");
     }
 
     @Override
