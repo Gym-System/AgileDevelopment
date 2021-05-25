@@ -1,4 +1,6 @@
-<?import javafx.scene.layout.AnchorPane?><?import javafx.scene.control.SplitPane?><?import javafx.scene.layout.GridPane?><?import javafx.scene.layout.ColumnConstraints?><?import javafx.scene.layout.RowConstraints?><?import javafx.scene.image.ImageView?><?import javafx.geometry.Rectangle2D?><?import javafx.scene.control.Hyperlink?><?import javafx.scene.text.Font?><?import javafx.scene.image.Image?><?import javafx.scene.control.ScrollPane?><?import javafx.scene.text.Text?><?import javafx.scene.control.Label?><?import javafx.scene.shape.Rectangle?><?import javafx.scene.control.Pagination?><?import javafx.scene.control.TextArea?><?import javafx.scene.Cursor?>6<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.AnchorPane?><?import javafx.scene.control.SplitPane?><?import javafx.scene.layout.GridPane?><?import javafx.scene.layout.ColumnConstraints?><?import javafx.scene.layout.RowConstraints?><?import javafx.scene.image.ImageView?><?import javafx.geometry.Rectangle2D?><?import javafx.scene.control.Hyperlink?><?import javafx.scene.text.Font?><?import javafx.scene.image.Image?><?import javafx.scene.control.ScrollPane?><?import javafx.scene.text.Text?><?import javafx.scene.control.Label?><?import javafx.scene.shape.Rectangle?><?import javafx.scene.control.Pagination?><?import javafx.scene.control.TextArea?><?import javafx.scene.Cursor?>
+
 
 <?import javafx.scene.*?>
 <?import javafx.scene.media.*?>
@@ -10,7 +12,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="807.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="807.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControlClass.trainerPortraitController">
    <children>
       <SplitPane dividerPositions="0.2229" layoutX="244.0" layoutY="202.0" prefHeight="807.0" prefWidth="1350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.3">
         <items>

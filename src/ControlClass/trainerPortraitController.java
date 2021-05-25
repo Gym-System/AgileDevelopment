@@ -9,7 +9,8 @@ import java.net.URL;
         import javafx.scene.control.Pagination;
         import javafx.scene.control.TextArea;
         import javafx.scene.image.ImageView;
-        import javafx.scene.text.Text;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 
 public class trainerPortraitController {
 
@@ -265,5 +266,47 @@ public class trainerPortraitController {
         assert trainer_portrait_history != null : "fx:id=\"trainer_portrait_history\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert user_recEnter_hyper611 != null : "fx:id=\"user_recEnter_hyper611\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
 
+    }
+
+    public void trainer_portrait_portrait_click(javafx.event.ActionEvent actionEvent) {
+    }
+
+    public void trainer_portrait_upload_click(javafx.event.ActionEvent actionEvent) {
+    }
+
+    public void trainer_portrait_live_click(javafx.event.ActionEvent actionEvent) {
+    }
+
+    public void trainer_portrait_calendar_click(javafx.event.ActionEvent actionEvent) {
+    }
+
+    public void trainer_portrait_history_click(javafx.event.ActionEvent actionEvent) {
+    }
+
+    public void trainer_portrait_info_click(MouseEvent mouseEvent) {
+    }
+
+    public void trainer_portrait_bookLiveSession_click(javafx.event.ActionEvent actionEvent) {
+    }
+
+    public void click_turn_page(MouseEvent mouseEvent) {
+    }
+
+    public void click_enterrec1(MouseEvent mouseEvent) {
+    }
+
+    public void click_enterrec2(MouseEvent mouseEvent) {
+    }
+
+    public void click_enterrec3(MouseEvent mouseEvent) {
+    }
+
+    public void click_enterrec4(MouseEvent mouseEvent) {
+    }
+
+    public void click_enterrec5(MouseEvent mouseEvent) {
+    }
+
+    public void click_enterrec6(MouseEvent mouseEvent) {
     }
 }
