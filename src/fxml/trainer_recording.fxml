@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="807.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControlClass.trainerRecordingController">
+   <children>
+      <ImageView fx:id="logo" fitHeight="73.0" fitWidth="294.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resource/logo.png" />
+         </image>
+      </ImageView>
+      <SplitPane dividerPositions="0.2229" layoutX="244.0" layoutY="202.0" prefHeight="807.0" prefWidth="1350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.3">
+         <items>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <GridPane layoutX="38.0" prefHeight="805.0" prefWidth="297.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                           <viewport>
+                              <Rectangle2D />
+                           </viewport>
+                        </ImageView>
+                        <Hyperlink fx:id="trainer_portrait_hyper" onMouseClicked="#user_favorites_click" text="Portrait" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="30.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink fx:id="trainer_upload_hyper" onMouseClicked="#user_recording_click" text="Upload" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="30.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink fx:id="trainer_live_hyper" onMouseClicked="#user_live_click" text="Live" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="30.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink fx:id="trainer_calendar_hyper" onMouseClicked="#user_calendar_click" text="Calendar" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="30.0" />
+                           </font>
+                        </Hyperlink>
+                        <ImageView fx:id="trainer_profile_pic" fitHeight="105.0" fitWidth="102.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
+                           <image>
+                              <Image url="@../resource/trainer_Profile.png" />
+                           </image>
+                        </ImageView>
+                        <Hyperlink fx:id="trainer_rules_hyper" layoutX="86.0" layoutY="438.0" onMouseClicked="#user_history_click" text="Rules" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="30.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink fx:id="trainer_logout_hyper" onMouseClicked="#user_logout_click" text="Log out" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="30.0" />
+                           </font>
+                        </Hyperlink>
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="10.0" prefWidth="125.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.0" minWidth="10.0" prefWidth="220.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="174.0" minHeight="10.0" prefHeight="131.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Label layoutX="59.0" layoutY="59.0" prefHeight="39.0" prefWidth="102.0" text="Title:" />
+                  <Label layoutX="59.0" layoutY="121.0" prefHeight="39.0" prefWidth="102.0" text="Type:" />
+                  <Label layoutX="59.0" layoutY="197.0" prefHeight="39.0" prefWidth="102.0" text="Description:" />
+                  <Label layoutX="59.0" layoutY="346.0" prefHeight="39.0" prefWidth="155.0" text="File Submission:" />
+                  <Label layoutX="195.0" layoutY="130.0" prefHeight="29.0" prefWidth="75.0" text="Yoga" />
+                  <Label layoutX="319.0" layoutY="130.0" prefHeight="29.0" prefWidth="85.0" text="Strength" />
+                  <Label layoutX="476.0" layoutY="130.0" prefHeight="29.0" prefWidth="75.0" text="HIIT" />
+                  <TextField layoutX="195.0" layoutY="63.0" prefHeight="45.0" prefWidth="580.0" />
+                  <TextField layoutX="195.0" layoutY="197.0" prefHeight="123.0" prefWidth="589.0" />
+                  <Button layoutX="59.0" layoutY="602.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="125.0" text="Save changes" />
+                  <Button layoutX="263.0" layoutY="602.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="125.0" text="Cancel" />
+                  <Button fx:id="button_upload" layoutX="59.0" layoutY="394.0" mnemonicParsing="false" onMouseClicked="#upload_click" prefHeight="164.0" prefWidth="819.0" text="Upload" />
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
