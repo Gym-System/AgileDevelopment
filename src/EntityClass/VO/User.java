@@ -46,7 +46,7 @@ public class User extends Person {
         recVideoDAO.changeRecVideoViewTime(courseId, viewTime + 1);
     }
 
-    public void bookLiveSession(String trainerName,Date startTime) {
+    public void bookLiveSession(String trainerName, Date startTime) {
         LiveSession liveSession = new LiveSession(null, 2, startTime, trainerName, getUserName());
         LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
         liveSessionDAO.insertLiveSession(liveSession);

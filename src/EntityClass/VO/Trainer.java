@@ -1,6 +1,7 @@
 package EntityClass.VO;
 
 import EntityClass.DAO.impl.LiveSessionDAOImpl;
+import EntityClass.DAO.impl.RecVideoDAOImpl;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -74,6 +75,69 @@ public class Trainer extends Staff {
         }
 
         return liveSessions;
+    }
+
+    public int getRecTime() {
+        int recTime = 0;
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        Date now = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
+                new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
+        RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
+        ArrayList<RecVideo> recVideos = recVideoDAO.queryByTrainerName(getUserName());
+        for(RecVideo recVideo:recVideos) {
+            if(now.getYear() == recVideo.getUploadedTime().getYear() && now.getMonth() == recVideo.getUploadedTime().getMonth()) {
+                recTime += recVideo.getLength();
+            }
+        }
+
+        return recTime;
+    }
+
+    public int getLiveTime() {
+        int liveTime = 0;
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        Date now = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
+                new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
+        LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
+        ArrayList<LiveSession> liveSessions = liveSessionDAO.queryByTrainerName(getUserName());
+        for(LiveSession liveSession:liveSessions) {
+            if(now.getYear() == liveSession.getStartTime().getYear() && now.getMonth() == liveSession.getStartTime().getMonth()) {
+                liveTime += liveSession.getLength();
+            }
+        }
+
+        return liveTime;
+    }
+
+    public int getGift() {
+        int gift = 0;
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        Date now = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
+                new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
+        RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
+        ArrayList<RecVideo> recVideos = recVideoDAO.queryByTrainerName(getUserName());
+        for(RecVideo recVideo:recVideos) {
+            if(now.getYear() == recVideo.getUploadedTime().getYear() && now.getMonth() == recVideo.getUploadedTime().getMonth()) {
+                gift += recVideo.getGift();
+            }
+        }
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        Date now = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
+                new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
+        LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
+        ArrayList<LiveSession> liveSessions = liveSessionDAO.queryByTrainerName(getUserName());
+        for(LiveSession liveSession:liveSessions) {
+            if(now.getYear() == liveSession.getStartTime().getYear() && now.getMonth() == liveSession.getStartTime().getMonth()) {
+                gift += liveSession.getGift();
+            }
+        }
+
+        return gift;
     }
 
     @Override
