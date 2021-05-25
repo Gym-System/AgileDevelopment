@@ -84,11 +84,6 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Pagination fx:id="turn_page" layoutX="460.0" layoutY="601.0" onMouseClicked="#click_turn_page" pageCount="100" prefHeight="100.0" prefWidth="660.0">
-                     <cursor>
-                        <Cursor fx:constant="NW_RESIZE" />
-                     </cursor></Pagination>
-                  <DatePicker layoutX="60.0" layoutY="50.0" prefHeight="54.0" prefWidth="401.0" />
                   <Label fx:id="trainer_calendar_time1" layoutX="17.0" layoutY="168.0" prefHeight="20.0" prefWidth="59.0" text="08：00">
                      <font>
                         <Font name="Comic Sans MS Bold" size="15.0" />
@@ -192,38 +187,33 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
+                        <Rectangle fx:id="rec00" arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="36.0" stroke="#fffbfb" strokeType="INSIDE" strokeWidth="0.0" width="136.0" />
                         <Rectangle fx:id="rec23" arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="36.0" stroke="#fffbfb" strokeType="INSIDE" strokeWidth="0.0" width="136.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                         <Rectangle fx:id="rec22" arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="36.0" stroke="#fffbfb" strokeType="INSIDE" strokeWidth="0.0" width="136.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <Rectangle fx:id="rec46" arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="36.0" stroke="#fffbfb" strokeType="INSIDE" strokeWidth="0.0" width="136.0" GridPane.columnIndex="4" GridPane.rowIndex="6" />
                         <Rectangle fx:id="rec47" arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="36.0" stroke="#fffbfb" strokeType="INSIDE" strokeWidth="0.0" width="136.0" GridPane.columnIndex="4" GridPane.rowIndex="7" />
-                        <Rectangle fx:id="rec00" arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="36.0" stroke="#fffbfb" strokeType="INSIDE" strokeWidth="0.0" width="136.0" />
                         <Rectangle fx:id="rec01" arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="36.0" stroke="#fffbfb" strokeType="INSIDE" strokeWidth="0.0" width="136.0" GridPane.rowIndex="1" />
-                        <Button fx:id="enter01" mnemonicParsing="false" onMouseClicked="#click_enter11" prefHeight="20.0" prefWidth="59.0" text="ENTER" GridPane.rowIndex="1">
-                           <font>
-                              <Font name="Comic Sans MS Bold Italic" size="10.0" />
-                           </font>
-                        </Button>
                         <Label fx:id="status00" text="finished" textFill="#7f64ae">
                            <font>
                               <Font name="Comic Sans MS Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="status22" text="avaliable" textFill="#4cbf78" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                        <Label fx:id="status22" text="Live-Debra" textFill="#4cbf78" GridPane.columnIndex="2" GridPane.rowIndex="2">
                            <font>
                               <Font name="Comic Sans MS Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="status46" text="not available" textFill="#e87676" GridPane.columnIndex="4" GridPane.rowIndex="6">
+                        <Label fx:id="status46" text="Live-Rita" textFill="#4cbf78" GridPane.columnIndex="4" GridPane.rowIndex="6">
                            <font>
                               <Font name="Comic Sans MS Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Button fx:id="enter47" mnemonicParsing="false" onMouseClicked="#click_enter26" prefHeight="20.0" prefWidth="59.0" text="ENTER" GridPane.columnIndex="4" GridPane.rowIndex="7">
+                        <Button fx:id="delete47" mnemonicParsing="false" onMouseClicked="#click_enter26" prefHeight="20.0" prefWidth="59.0" text="Delete" GridPane.columnIndex="4" GridPane.rowIndex="7">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="10.0" />
                            </font>
                         </Button>
-                        <Button fx:id="enter23" mnemonicParsing="false" onMouseClicked="#click_enter24" prefHeight="20.0" prefWidth="59.0" text="ENTER" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                        <Button fx:id="delete23" mnemonicParsing="false" onMouseClicked="#click_enter24" prefHeight="20.0" prefWidth="59.0" text="Delete" GridPane.columnIndex="2" GridPane.rowIndex="3">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="10.0" />
                            </font>
@@ -232,6 +222,11 @@
                   </GridPane>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="53.0" layoutX="1435.0" layoutY="662.0" stroke="#fffbfb" strokeType="INSIDE" width="128.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="53.0" layoutX="1434.0" layoutY="536.0" stroke="#fffbfb" strokeType="INSIDE" width="128.0" />
+                  <Label fx:id="trainer_calendar_time41" layoutX="286.0" layoutY="37.0" prefHeight="70.0" prefWidth="471.0" text="MY TIME TABLE" textFill="#977c7c">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="50.0" />
+                     </font>
+                  </Label>
                </children></AnchorPane>
         </items>
       </SplitPane>

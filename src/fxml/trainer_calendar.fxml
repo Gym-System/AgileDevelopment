@@ -89,11 +89,6 @@
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="73.0" layoutX="78.0" layoutY="171.0" stroke="TRANSPARENT" strokeType="INSIDE" width="950.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="73.0" layoutX="78.0" layoutY="242.0" stroke="TRANSPARENT" strokeType="INSIDE" width="950.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebe6c3" height="73.0" layoutX="77.0" layoutY="384.0" stroke="TRANSPARENT" strokeType="INSIDE" width="950.0" />
-                  <Pagination fx:id="turn_page" layoutX="460.0" layoutY="601.0" onMouseClicked="#click_turn_page" pageCount="100" prefHeight="100.0" prefWidth="660.0">
-                     <cursor>
-                        <Cursor fx:constant="NW_RESIZE" />
-                     </cursor></Pagination>
-                  <DatePicker fx:id="find_data_tc" layoutX="60.0" layoutY="50.0" prefHeight="54.0" prefWidth="401.0" />
                   <Label fx:id="trainer_calendar_time1" layoutX="17.0" layoutY="168.0" prefHeight="20.0" prefWidth="59.0" text="08：00">
                      <font>
                         <Font name="Comic Sans MS Bold" size="15.0" />
@@ -527,6 +522,11 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                   </GridPane>
+                  <Label fx:id="trainer_calendar_time21" layoutX="249.0" layoutY="40.0" prefHeight="70.0" prefWidth="606.0" text="Dexter's TIME TABLE" textFill="#977c7c">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="50.0" />
+                     </font>
+                  </Label>
                </children></AnchorPane>
         </items>
       </SplitPane>
