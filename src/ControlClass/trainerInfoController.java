@@ -205,8 +205,10 @@ public class trainerInfoController {
         PhyDataDAOImpl phyDataDAO = new PhyDataDAOImpl();
         trainer_name.setText(trainerDAO.queryByUserName(trainername).getUserName());
         trainer_gender.setText(trainerDAO.queryByUserName(trainername).getGender());
+        trainer_tel.setText(trainerDAO.queryByUserName(trainername).getTelNo());
         trainer_major.setText(phyDataDAO.queryByUserName(trainername).getInterest());
         trainer_email.setText(trainerDAO.queryByUserName(trainername).getEmail());
+        trainer_salary.setText(Double.toString(trainerDAO.queryByUserName(trainername).getSalary()));
         trainer_experience.setText(Integer.toString(phyDataDAO.queryByUserName(trainername).getExperience()));
         int i = 1;
         LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
