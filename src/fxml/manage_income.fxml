@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="807.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControlClass.manageIncomeController">
+   <children>
+      <ImageView fitHeight="73.0" fitWidth="294.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resource/logo.png" />
+         </image>
+      </ImageView>
+      <SplitPane dividerPositions="0.2229" layoutX="244.0" layoutY="202.0" prefHeight="807.0" prefWidth="1350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.3">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <GridPane layoutX="38.0" prefHeight="805.0" prefWidth="297.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="10.0" prefWidth="77.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.0" minWidth="10.0" prefWidth="220.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="174.0" minHeight="10.0" prefHeight="131.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                           <viewport>
+                              <Rectangle2D />
+                           </viewport>
+                        </ImageView>
+                        <Hyperlink fx:id="user_hyplink_mi" onInputMethodTextChanged="#click_user_hyplink_mi" onMouseClicked="#click_user_hyplink_mi" text="User" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Baskerville Old Face" size="36.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink fx:id="trainer_hyplink_mi" onMouseClicked="#click_trainer_hyplink_mi" text="Trainer" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Baskerville Old Face" size="36.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink fx:id="income_hyplink_mi" onMouseClicked="#click_income_hyplink_mi" text="Income" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Baskerville Old Face" size="36.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink fx:id="regu_mi" onMouseClicked="#click_regu_hyplink_mi" text="Regulation" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Baskerville Old Face" size="36.0" />
+                           </font>
+                        </Hyperlink>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
+                           <image>
+                              <Image url="@../resource/manager_Profile.png" />
+                           </image>
+                        </ImageView>
+                        <Hyperlink fx:id="out_hyplink_mi" onMouseClicked="#click_out_hyplink_mi" text="Log Out" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                           <font>
+                              <Font name="Baskerville Old Face" size="36.0" />
+                           </font>
+                        </Hyperlink>
+                        <ImageView fitHeight="60.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../resource/manager_User.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="60.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../resource/manager_Trainer.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="60.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
+                           <image>
+                              <Image url="@../resource/manager_Income.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="60.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
+                           <image>
+                              <Image url="@../resource/manager_Regulation.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="60.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="7">
+                           <image>
+                              <Image url="@../resource/manager_LogOut.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <GridPane layoutX="86.0" layoutY="128.0" prefHeight="424.0" prefWidth="870.0">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="200.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="256.0" minWidth="10.0" prefWidth="150.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="344.0" minWidth="10.0" prefWidth="200.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" prefWidth="150.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" prefWidth="150.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label fx:id="name_mi" text="Trainer name">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="award_mi" text="Award" GridPane.columnIndex="3">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="c_income_mi" text="Income" GridPane.columnIndex="4">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="name1_mi" text="Holly" GridPane.rowIndex="1" />
+                        <Label fx:id="award1_mi" text="0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <Label fx:id="name2_mi" text="Sara" GridPane.rowIndex="2" />
+                        <Label fx:id="name3_mi" text="Linc" GridPane.rowIndex="3" />
+                        <Label fx:id="name4_mi" text="Micaul" GridPane.rowIndex="4" />
+                        <Label fx:id="award2_mi" text="0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <Label fx:id="award3_mi" text="0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                        <Label fx:id="award4_mi" text="0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                        <Label fx:id="c_income1_mi" text="550" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <Label fx:id="c_income2_mi" text="550" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                        <Label fx:id="c_income3_mi" text="550" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                        <Label fx:id="c_income4_mi" text="550" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                        <Label fx:id="live_hour_mi" text="Live hour" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="record_hour_mi" text="recording hour" GridPane.columnIndex="2">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="live_hour1_mi" text="1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="live_hour2_mi" text="1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="live_hour3_mi" text="1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="live_hour4_mi" text="1" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="record_hour1_mi" text="1" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Label fx:id="record_hour2_mi" text="1" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Label fx:id="record_hour3_mi" text="1" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <Label fx:id="record_hour4_mi" text="1" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                     </children>
+                  </GridPane>
+                  <TextField fx:id="text_find_mi" layoutX="91.0" layoutY="53.0" prefHeight="56.0" prefWidth="332.0" />
+                  <Button fx:id="button_find_mi" layoutX="423.0" layoutY="53.0" mnemonicParsing="false" onMouseClicked="#click_find_mi" prefHeight="56.0" prefWidth="89.0" text="Find" />
+                  <Pagination fx:id="turn_page_mi" layoutX="422.0" layoutY="601.0" maxPageIndicatorCount="7" onMouseClicked="#click_turn_page_mi" pageCount="100" prefHeight="100.0" prefWidth="660.0" />
+                  <Separator layoutX="80.0" layoutY="220.0" prefHeight="3.0" prefWidth="862.0" />
+                  <Separator layoutX="80.0" layoutY="305.0" prefHeight="0.0" prefWidth="862.0" />
+                  <Separator layoutX="80.0" layoutY="390.0" prefHeight="0.0" prefWidth="862.0" />
+                  <Separator layoutX="80.0" layoutY="475.0" prefHeight="0.0" prefWidth="862.0" />
+                  <Separator layoutX="80.0" layoutY="560.0" prefHeight="0.0" prefWidth="862.0" />
+                  <Label layoutX="80.0" layoutY="581.0" opacity="0.6" text="* Income = 300*Live/hour + 25-*Recording/hour + award">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="597.0" layoutY="65.0" text="Sorted by" />
+                   <ChoiceBox fx:id="chosice_sort_mi" layoutX="740.0" layoutY="57.0" prefHeight="48.0" prefWidth="212.0" value="income">
+                       <items>
+                           <FXCollections fx:factory="observableArrayList">
+                               <String fx:value="income" />
+                               <String fx:value="trainer name" />
+                               <String fx:value="live" />
+                               <String fx:value="recording" />
+                               <String fx:value="award" />
+                           </FXCollections>
+                       </items>
+                   </ChoiceBox>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

@@ -117,7 +117,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label fx:id="name_mt" text="User name" GridPane.columnIndex="1">
+                        <Label fx:id="name_mt" text="Trainer name" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>

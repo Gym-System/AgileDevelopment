@@ -145,12 +145,12 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="Membership Level:" GridPane.rowIndex="13">
+                        <Label text="Membership Level:" GridPane.rowIndex="12">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="Balance:" GridPane.rowIndex="14">
+                        <Label text="Balance:" GridPane.rowIndex="13">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
@@ -175,12 +175,12 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label fx:id="level" text="0" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                        <Label fx:id="level" text="0" GridPane.columnIndex="1" GridPane.rowIndex="12">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label fx:id="balance" text="100" GridPane.columnIndex="1" GridPane.rowIndex="14">
+                        <Label fx:id="balance" text="100" GridPane.columnIndex="1" GridPane.rowIndex="13">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
@@ -255,7 +255,7 @@
                         <Separator prefHeight="0.0" prefWidth="400.0" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
-                  <GridPane layoutX="530.0" layoutY="379.0" prefHeight="300.0" prefWidth="400.0">
+                  <GridPane layoutX="530.0" layoutY="379.0" prefHeight="300.0" prefWidth="400.0" AnchorPane.topAnchor="379.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -289,6 +289,11 @@
                      </children>
                   </GridPane>
                   <Separator layoutX="468.0" layoutY="40.0" orientation="VERTICAL" prefHeight="620.0" prefWidth="0.0" />
+                  <Hyperlink fx:id="userinfo_vip" layoutX="516.0" layoutY="678.0" onAction="#userinfo_vip_click" prefHeight="38.0" prefWidth="400.0" text="👉 Click to Become a Premium User" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="650.0">
+                     <font>
+                        <Font name="Baskerville Old Face" size="24.0" />
+                     </font>
+                  </Hyperlink>
                </children></AnchorPane>
         </items>
       </SplitPane>

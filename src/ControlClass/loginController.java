@@ -101,7 +101,7 @@ public class loginController {
                 if(login_password.getText().equals(True_password))
                 {
                     Stage stage = (Stage) login_button.getScene().getWindow();
-                    new APP().jump(stage,"TrainerInfo");
+                    new APP().jump(stage,"user_live");
                 }
                 else{
                     password1.setVisible(false);
@@ -116,7 +116,7 @@ public class loginController {
 
     @FXML
     void initialize() {
-        assert no_account != null : "fx:id=\"no_account\" was not injected: check your FXML file 'login.fxml'.";
+        // assert no_account != null : "fx:id=\"no_account\" was not injected: check your FXML file 'login.fxml'.";
         assert forget_password != null : "fx:id=\"forget_password\" was not injected: check your FXML file 'login.fxml'.";
         assert login_button != null : "fx:id=\"login_button\" was not injected: check your FXML file 'login.fxml'.";
         assert login_password != null : "fx:id=\"login_password\" was not injected: check your FXML file 'login.fxml'.";

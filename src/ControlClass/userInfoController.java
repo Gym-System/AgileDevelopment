@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -71,14 +72,14 @@ public class userInfoController {
 
 
     @FXML
-    void initialize() {
+    void initialize() throws ParseException {
         String username = passValue.getValue();
         UserDAOImpl userDAO = new UserDAOImpl();
         PhyDataDAOImpl phyDataDAO = new PhyDataDAOImpl();
         RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
         LiveSessionDAO liveSessionDAO = new LiveSessionDAOImpl();
         PreUserDAOImpl preUserDAO = new PreUserDAOImpl();
-        name.setText( userDAO.queryByUserName(username).getUserName());
+        name.setText(username);
         gender.setText(userDAO.queryByUserName(username).getGender());
         java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd ");
         String date = formatter.format(userDAO.queryByUserName(username).getDoB());
@@ -93,7 +94,9 @@ public class userInfoController {
         weight.setText(Double.toString(phyDataDAO.queryByUserName(username).getWeight())+" kg");
         height.setText(Double.toString(phyDataDAO.queryByUserName(username).getHeight())+" cm");
         double result=(10000*phyDataDAO.queryByUserName(username).getWeight())/(phyDataDAO.queryByUserName(username).getHeight()*phyDataDAO.queryByUserName(username).getHeight());
-        bmi.setText(Double.toString(result));
+        int middlevalue = (int)(result*100);
+        double newresult=middlevalue/100.0;
+        bmi.setText(Double.toString(newresult));
         ArrayList<LiveSession> liveSessions = liveSessionDAO.queryByUserName(username);
         int time1 = 0;
         int time2 = 0;
@@ -108,7 +111,7 @@ public class userInfoController {
 
         HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
         ArrayList<HistoryData> HISTORY = historyDataDAO.queryByUserName(username);
-        time2 = userDAO.queryByUserName(username).exerciseTime(HISTORY);
+        time2 = userDAO.queryByUserName(username).getExerciseTime(null,null,null);
         totalTime.setText(Integer.toString(time1+time2)+" min");
 
 
@@ -138,6 +141,9 @@ public class userInfoController {
     }
 
     public void userInfo_info_click(MouseEvent mouseEvent) {
+    }
+
+    public void userinfo_vip_click(ActionEvent actionEvent) {
     }
 }
 
