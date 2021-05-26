@@ -1,5 +1,6 @@
 package EntityClass.VO;
 
+import EntityClass.DAO.LiveSessionDAO;
 import EntityClass.DAO.impl.HistoryDataDAOImpl;
 import EntityClass.DAO.impl.LiveSessionDAOImpl;
 import EntityClass.DAO.impl.RecVideoDAOImpl;
@@ -45,11 +46,44 @@ public class User extends Person {
         recVideoDAO.changeRecVideoViewTime(courseId, viewTime + 1);
     }
 
-    public void joinLiveSession(long courseId) {
+    public void bookLiveSession(String trainerName, Date startTime) {
+        LiveSession liveSession = new LiveSession(null, 2, startTime, trainerName, getUserName());
+        LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
+        liveSessionDAO.insertLiveSession(liveSession);
+
         String type = "live";
-        HistoryData historyData = new HistoryData(super.getUserName(), type, courseId);
+        HistoryData historyData = new HistoryData(super.getUserName(), type, liveSession.getCourseId());
         HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
         historyDataDAO.insertHistoryData(historyData);
+    }
+
+    public void cancelLiveSession(long courseId) {
+        LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
+        liveSessionDAO.deleteLiveSession(courseId);
+
+        HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
+        historyDataDAO.deleteHistoryData(courseId);
+    }
+
+    public ArrayList<LiveSession> showCalender() throws ParseException {
+        LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
+        ArrayList<LiveSession> liveSessions = liveSessionDAO.queryByUserName(getUserName());
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        Date startTime = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
+                new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
+        calendar.add(Calendar.DATE, 7);
+        Date endTime = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
+                new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
+
+        for (LiveSession liveSession:liveSessions) {
+            if(!liveSession.getStartTime().after(startTime) || !liveSession.getStartTime().before(endTime)) {
+                liveSessions.remove(liveSession);
+            }
+        }
+
+        return liveSessions;
     }
 
     public void sendGift(int amount, long courseId) {
@@ -136,7 +170,8 @@ public class User extends Person {
                     if (liveSession.getSubject().equals(subject)) {
                         historyDatas1.add(historyData);
                     }
-                } else {
+                }
+                else {
                     recVideo = recVideoDAO.queryByCourseId(historyData.getCourseId());
                     if (recVideo.getSubject().equals(subject)) {
                         historyDatas1.add(historyData);

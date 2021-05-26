@@ -41,7 +41,7 @@ public class Manager extends Staff {
 
     public Trainer changeTrainerSalary(String userName, double salary) {
         TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
-        return trainerDAO.changeTrainSalary(userName, salary);
+        return trainerDAO.changeTrainerSalary(userName, salary);
     }
 
     @Override

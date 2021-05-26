@@ -471,6 +471,7 @@ public class Test {
         }
          */
 
+        /*
         User user = null;
         try {
             user = new User("kaiyi",
@@ -488,5 +489,76 @@ public class Test {
         System.out.println(user.getExerciseTime("day", null, "recorded"));
         System.out.println(user.getExerciseTime("day", "Strength", null));
         System.out.println(user.getExerciseTime("day", "Hiit", null));
+
+         */
+        /*
+        LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
+
+        ArrayList<LiveSession> liveSessions;
+        liveSessions = liveSessionDAO.queryByTrainerName("kaiyi1");
+        for(LiveSession liveSession1:liveSessions) {
+            System.out.println(liveSession1);
+        }
+
+        liveSessions = liveSessionDAO.queryByUserName("kaiyi2");
+        for(LiveSession liveSession1:liveSessions) {
+            System.out.println(liveSession1);
+        }
+
+        liveSessions = liveSessionDAO.queryAll();
+        for(LiveSession liveSession1:liveSessions) {
+            System.out.println(liveSession1);
+        }
+         */
+
+        /*
+        Trainer trainer = null;
+        try {
+            trainer = new Trainer("kaiyi",
+                    "123",
+                    "zhaokaiyi@bupt.edu.cn",
+                    "Male",
+                    "18810282618",
+                    new SimpleDateFormat("yyyy-MM-dd").parse("1999-11-25"),
+                    "London Fitness");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        System.out.println(trainer);
+
+        TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
+
+        Boolean flag = trainerDAO.insertTrainer(trainer);
+        System.out.println(flag);
+
+        Trainer trainer1 = trainerDAO.queryByUserName("kaiyi");
+
+        trainerDAO.changeTrainerLabel(trainer1.getUserName(), "23;London;Hiit");
+        trainerDAO.changeTrainerCV(trainer1.getUserName(), "I am couch from London Fitness!");
+
+        trainer1 = trainerDAO.queryByUserName("kaiyi");
+        System.out.println(trainer1);
+         */
+
+        User user = null;
+        try {
+            user = new User("kaiyi",
+                    "123",
+                    "zhaokaiyi@bupt.edu.cn",
+                    "Male",
+                    "18810282618",
+                    new SimpleDateFormat("yyyy-MM-dd").parse("1999-11-25"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        System.out.println(user);
+
+        user.bookLiveSession("kaiyi", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-28T10:00:00"));
+        user.bookLiveSession("kaiyi", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-28T14:00:00"));
+        user.bookLiveSession("kaiyi", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-29T10:00:00"));
+        user.bookLiveSession("kaiyi", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-30T14:00:00"));
+        user.bookLiveSession("kaiyi", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-31T10:00:00"));
+        user.bookLiveSession("kaiyi", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-31T14:00:00"));
+
     }
 }
