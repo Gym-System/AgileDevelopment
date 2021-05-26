@@ -510,21 +510,86 @@ public class trainerCalendarController {
         assert trainer_calendar_2 != null : "fx:id=\"trainer_calendar_Mon\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
 
         Date d=new Date();
-        Date date1=new Date(d.getTime() + 1 * 24 * 60 * 60 * 1000);
-        Date date2=new Date(d.getTime() + 2 * 24 * 60 * 60 * 1000);
-        Date date3=new Date(d.getTime() + 3 * 24 * 60 * 60 * 1000);
-        Date date4=new Date(d.getTime() + 4 * 24 * 60 * 60 * 1000);
-        Date date5=new Date(d.getTime() + 5 * 24 * 60 * 60 * 1000);
-        Date date6=new Date(d.getTime() + 6 * 24 * 60 * 60 * 1000);
-        Date date7=new Date(d.getTime() + 7 * 24 * 60 * 60 * 1000);
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        trainer_calendar_1.setText(df.format(date1));
-        trainer_calendar_2.setText(df.format(date2));
-        trainer_calendar_3.setText(df.format(date3));
-        trainer_calendar_4.setText(df.format(date4));
-        trainer_calendar_5.setText(df.format(date5));
-        trainer_calendar_6.setText(df.format(date6));
-        trainer_calendar_7.setText(df.format(date7));
+        user_calendar_1.setText(df.format(new Date(d.getTime() )));
+        user_calendar_2.setText(df.format(new Date(d.getTime() + 1 * 24 * 60 * 60 * 1000)));
+        user_calendar_3.setText(df.format(new Date(d.getTime() + 2 * 24 * 60 * 60 * 1000)));
+        user_calendar_4.setText(df.format(new Date(d.getTime() + 3 * 24 * 60 * 60 * 1000)));
+        user_calendar_5.setText(df.format(new Date(d.getTime() + 4 * 24 * 60 * 60 * 1000)));
+        user_calendar_6.setText(df.format(new Date(d.getTime() + 5 * 24 * 60 * 60 * 1000)));
+        user_calendar_7.setText(df.format(new Date(d.getTime() + 6 * 24 * 60 * 60 * 1000)));
+        User user;
+        UserDAOImpl UserDAO = new UserDAOImpl();
+        user=UserDAO.queryByUserName("kaiyi");
+        ArrayList<LiveSession> recent = new ArrayList<LiveSession>();
+        recent=user.showCalender();
+        for (LiveSession liveSession:recent) {
+            long courseid=liveSession.getCourseId();
+            System.out.println(liveSession.getStartTime().getHours());
+            int i = 0;
+            if(liveSession.getStartTime().getHours()==8){
+                 i=0;
+            }
+            else if(liveSession.getStartTime().getHours()==10){
+                 i=2;
+            }
+            else if(liveSession.getStartTime().getHours()==12){
+                 i=4;
+            }
+            else if(liveSession.getStartTime().getHours()==14){
+                 i=6;
+            }
+            else if(liveSession.getStartTime().getHours()==16){
+                 i=8;
+            }
+            else if(liveSession.getStartTime().getHours()==18){
+                 i=10;
+            }
+            int j =0;
+            Date date = new Date();
+            Date date2= new Date(date.getTime()+1 * 24 * 60 * 60 * 1000);
+            Date date3= new Date(date.getTime()+2 * 24 * 60 * 60 * 1000);
+            Date date4= new Date(date.getTime()+3 * 24 * 60 * 60 * 1000);
+            Date date5= new Date(date.getTime()+4 * 24 * 60 * 60 * 1000);
+            Date date6= new Date(date.getTime()+5 * 24 * 60 * 60 * 1000);
+            Date date7= new Date(date.getTime()+6 * 24 * 60 * 60 * 1000);
+            if (liveSession.getStartTime().getDay()==date.getDay()){
+                j=0;
+            }
+            if (liveSession.getStartTime().getDay()==date2.getDay()){
+                j=1;
+            }
+            if (liveSession.getStartTime().getDay()==date3.getDay()){
+                j=2;
+            }
+            if (liveSession.getStartTime().getDay()==date4.getDay()){
+                j=3;
+            }
+            if (liveSession.getStartTime().getDay()==date5.getDay()){
+                j=4;
+            }
+            if (liveSession.getStartTime().getDay()==date6.getDay()){
+                j=5;
+            }
+            if (liveSession.getStartTime().getDay()==date7.getDay()){
+                j=6;
+            }
+            Label label = new Label("Alex-live");
+            label.setFont(Font.font("Comic Sans MS",16));
+            label.setTextFill(Color.MEDIUMSEAGREEN);
+            user_grid.add(label,j,i);
+            Button button = new Button("delete");
+            button.setFont(Font.font("Comic Sans MS"));
+            button.setOnMouseClicked(e -> {
+                user.cancelLiveSession(courseid);
+                Stage stage = (Stage) user_history_hyper.getScene().getWindow();
+                try {
+                    new APP().jump(stage,"user_calendar");
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+            });
+            user_grid.add(button,j,(i+1));
 
     }
 }
