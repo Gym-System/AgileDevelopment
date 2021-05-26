@@ -1,10 +1,5 @@
 package ControlClass;
 
-import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,28 +10,13 @@ import javafx.scene.image.ImageView;
 public class trainerCalendarController {
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
     private Label status18;
-
-    @FXML
-    private Button book33;
 
     @FXML
     private Button book39;
 
     @FXML
     private Label status210;
-
-    @FXML
-    private Button book37;
-
-    @FXML
-    private Hyperlink trainer_upload_hyper;
 
     @FXML
     private Label status010;
@@ -57,19 +37,10 @@ public class trainerCalendarController {
     private Label status58;
 
     @FXML
-    private Label trainer_calendar_6;
+    private Label trainer_calendar_Fri;
 
     @FXML
     private Label status16;
-
-    @FXML
-    private Button book411;
-
-    @FXML
-    private Button book211;
-
-    @FXML
-    private Hyperlink trainer_live_hyper;
 
     @FXML
     private Label status50;
@@ -79,9 +50,6 @@ public class trainerCalendarController {
 
     @FXML
     private Button book611;
-
-    @FXML
-    private Hyperlink trainer_rules_hyper;
 
     @FXML
     private ImageView logo;
@@ -99,13 +67,10 @@ public class trainerCalendarController {
     private Button book43;
 
     @FXML
+    private Hyperlink userInfo_live;
+
+    @FXML
     private Button book49;
-
-    @FXML
-    private Hyperlink trainer_logout_hyper;
-
-    @FXML
-    private Button book47;
 
     @FXML
     private Button book03;
@@ -126,22 +91,22 @@ public class trainerCalendarController {
     private Label status68;
 
     @FXML
-    private Label status26;
+    private Hyperlink userInfo_history;
 
     @FXML
-    private Hyperlink trainer_calendar_hyper;
+    private Label status26;
 
     @FXML
     private Label status60;
 
     @FXML
-    private Label trainer_calendar_4;
+    private Hyperlink userInfo_favorates;
+
+    @FXML
+    private Label trainer_calendar_Wed;
 
     @FXML
     private Label status62;
-
-    @FXML
-    private Button book09;
 
     @FXML
     private Label status610;
@@ -153,7 +118,10 @@ public class trainerCalendarController {
     private Label status410;
 
     @FXML
-    private Label trainer_calendar_1;
+    private Label trainer_calendar_Sun;
+
+    @FXML
+    private Label trainer_price;
 
     @FXML
     private Button book13;
@@ -174,7 +142,7 @@ public class trainerCalendarController {
     private Button book59;
 
     @FXML
-    private Label trainer_calendar_7;
+    private Label trainer_calendar_Sat;
 
     @FXML
     private Label status32;
@@ -189,10 +157,10 @@ public class trainerCalendarController {
     private Label status38;
 
     @FXML
-    private Button book51;
+    private Label trainer_calendar_time21;
 
     @FXML
-    private Label trainer_calendar_time21;
+    private Hyperlink userInfo_calendar;
 
     @FXML
     private Button book311;
@@ -207,10 +175,10 @@ public class trainerCalendarController {
     private Label status30;
 
     @FXML
-    private Button book19;
+    private Hyperlink user_logout_hyper;
 
     @FXML
-    private Hyperlink trainer_portrait_hyper;
+    private ImageView userInfo_info;
 
     @FXML
     private Button book23;
@@ -222,10 +190,7 @@ public class trainerCalendarController {
     private Label status06;
 
     @FXML
-    private Label trainer_calendar_5;
-
-    @FXML
-    private Button book21;
+    private Label trainer_calendar_Thu;
 
     @FXML
     private Label status08;
@@ -234,7 +199,7 @@ public class trainerCalendarController {
     private Label trainer_calendar_time1;
 
     @FXML
-    private Label trainer_calendar_3;
+    private Label trainer_calendar_Tue;
 
     @FXML
     private Button book27;
@@ -246,22 +211,13 @@ public class trainerCalendarController {
     private Label trainer_calendar_time3;
 
     @FXML
-    private Button book69;
-
-    @FXML
     private Label status42;
 
     @FXML
     private Label status00;
 
     @FXML
-    private ImageView trainer_profile_pic;
-
-    @FXML
     private Label status46;
-
-    @FXML
-    private Button book63;
 
     @FXML
     private Label status02;
@@ -274,6 +230,9 @@ public class trainerCalendarController {
 
     @FXML
     private Label status40;
+
+    @FXML
+    private Hyperlink userInfo_recording;
 
     @FXML
     private Label trainer_calendar_time4;
@@ -297,30 +256,35 @@ public class trainerCalendarController {
     private Button book29;
 
     @FXML
-    private Label trainer_calendar_2;
+    private Label trainer_calendar_Mon;
 
     @FXML
-    void user_favorites_click(ActionEvent event) {
+    void userInfo_favorates_click(ActionEvent event) {
 
     }
 
     @FXML
-    void user_recording_click(ActionEvent event) {
+    void userInfo_recording_click(ActionEvent event) {
 
     }
 
     @FXML
-    void user_live_click(ActionEvent event) {
+    void userInfo_live_click(ActionEvent event) {
 
     }
 
     @FXML
-    void user_calendar_click(ActionEvent event) {
+    void userInfo_calendar_click(ActionEvent event) {
 
     }
 
     @FXML
-    void user_history_click(ActionEvent event) {
+    void userInfo_history_click(ActionEvent event) {
+
+    }
+
+    @FXML
+    void userInfo_info_click(ActionEvent event) {
 
     }
 
@@ -331,11 +295,6 @@ public class trainerCalendarController {
 
     @FXML
     void click_book01(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_book47(ActionEvent event) {
 
     }
 
@@ -375,11 +334,6 @@ public class trainerCalendarController {
     }
 
     @FXML
-    void click_book09(ActionEvent event) {
-
-    }
-
-    @FXML
     void click_book011(ActionEvent event) {
 
     }
@@ -395,11 +349,6 @@ public class trainerCalendarController {
     }
 
     @FXML
-    void click_book19(ActionEvent event) {
-
-    }
-
-    @FXML
     void click_book111(ActionEvent event) {
 
     }
@@ -410,32 +359,12 @@ public class trainerCalendarController {
     }
 
     @FXML
-    void click_book21(ActionEvent event) {
-
-    }
-
-    @FXML
     void click_book29(ActionEvent event) {
 
     }
 
     @FXML
-    void click_book211(ActionEvent event) {
-
-    }
-
-    @FXML
     void click_book31(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_book33(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_book37(ActionEvent event) {
 
     }
 
@@ -460,16 +389,6 @@ public class trainerCalendarController {
     }
 
     @FXML
-    void click_book411(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_book51(ActionEvent event) {
-
-    }
-
-    @FXML
     void click_book57(ActionEvent event) {
 
     }
@@ -486,16 +405,6 @@ public class trainerCalendarController {
 
     @FXML
     void click_book61(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_book63(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_book69(ActionEvent event) {
 
     }
 
