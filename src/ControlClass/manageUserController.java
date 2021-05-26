@@ -306,6 +306,7 @@ public class manageUserController  {
             if (checkBoxes[i].isSelected()){
                 int index = (pageIndex * 5 + i + 1);
                 System.out.println("第几项 被选中" + index);
+                userDAO.deleteUser(users.get(index-1).getUserName());
                 users.remove(index-1);
                 click_find_mu(event);
                 checkBoxes[i].setSelected(false);

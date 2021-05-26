@@ -1,10 +1,12 @@
 package ControlClass;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
@@ -12,8 +14,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
-public class userFavoritesController {
+public class userFavoritesController implements Initializable {
 
     @FXML
     private ResourceBundle resources;
@@ -103,7 +107,7 @@ public class userFavoritesController {
     private Label favName2_label;
 
     @FXML
-    private Hyperlink user_facorites_hyper;
+    private Hyperlink user_favorites_hyper;
 
     @FXML
     private Hyperlink user_history_hyper;
@@ -124,32 +128,37 @@ public class userFavoritesController {
     private Label favCoa1_label;
 
     @FXML
-    void user_favorites_click(ActionEvent event) {
-
+    void user_favorites_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_favorites_hyper.getScene().getWindow();
+        new APP().jump(stage,"user_favorites");
     }
 
     @FXML
-    void user_recording_click(ActionEvent event) {
-
+    void user_recording_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_recording_hyper.getScene().getWindow();
+        new APP().jump(stage,"user_recording");
     }
 
     @FXML
-    void user_live_click(ActionEvent event) {
-
+    void user_live_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_live_hyper.getScene().getWindow();
+        new APP().jump(stage,"user_live");
     }
 
     @FXML
-    void user_calendar_click(ActionEvent event) {
-
+    void user_calendar_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_calendar_hyper.getScene().getWindow();
+        new APP().jump(stage,"user_calendar");
     }
 
     @FXML
-    void user_history_click(ActionEvent event) {
-
+    void user_history_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_history_hyper.getScene().getWindow();
+        new APP().jump(stage,"user_history");
     }
 
     @FXML
-    void user_logout_click(ActionEvent event) {
+    void user_logout_click(MouseEvent event) {
 
     }
 
@@ -209,42 +218,9 @@ public class userFavoritesController {
 
     }
 
-    @FXML
-    void initialize() {
-        assert favName4_label != null : "fx:id=\"favName4_label\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert favTime3_label != null : "fx:id=\"favTime3_label\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert userFav1_pic != null : "fx:id=\"userFav1_pic\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert turn_page != null : "fx:id=\"turn_page\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert favTime1_label != null : "fx:id=\"favTime1_label\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert user_calendar_hyper != null : "fx:id=\"user_calendar_hyper\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert favName1_label != null : "fx:id=\"favName1_label\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert favCoa2_label != null : "fx:id=\"favCoa2_label\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert favEnter2_hyper != null : "fx:id=\"favEnter2_hyper\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert user_logout_hyper != null : "fx:id=\"user_logout_hyper\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert logo != null : "fx:id=\"logo\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert userFav2_pic != null : "fx:id=\"userFav2_pic\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert user_live_hyper != null : "fx:id=\"user_live_hyper\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert user_profile_pic != null : "fx:id=\"user_profile_pic\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert favName3_label != null : "fx:id=\"favName3_label\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert user_yoga_check != null : "fx:id=\"user_yoga_check\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert user_recording_hyper != null : "fx:id=\"user_recording_hyper\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert favTime2_label != null : "fx:id=\"favTime2_label\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert favEnter4_hyper != null : "fx:id=\"favEnter4_hyper\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert favTime4_label != null : "fx:id=\"favTime4_label\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert userFav3_pic != null : "fx:id=\"userFav3_pic\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert user_hitt_check != null : "fx:id=\"user_hitt_check\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert user_find_button != null : "fx:id=\"user_find_button\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert favCoa4_label != null : "fx:id=\"favCoa4_label\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert favEnter1_hyper != null : "fx:id=\"favEnter1_hyper\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert favCoa3_label != null : "fx:id=\"favCoa3_label\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert favName2_label != null : "fx:id=\"favName2_label\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert user_facorites_hyper != null : "fx:id=\"user_facorites_hyper\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert user_history_hyper != null : "fx:id=\"user_history_hyper\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert user_find_text != null : "fx:id=\"user_find_text\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert user_strength_check != null : "fx:id=\"user_strength_check\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert favEnter3_hyper != null : "fx:id=\"favEnter3_hyper\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert userFav4_pic != null : "fx:id=\"userFav4_pic\" was not injected: check your FXML file 'user_favorites.fxml'.";
-        assert favCoa1_label != null : "fx:id=\"favCoa1_label\" was not injected: check your FXML file 'user_favorites.fxml'.";
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
     }
 }
