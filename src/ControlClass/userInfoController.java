@@ -21,6 +21,9 @@ public class userInfoController {
     private ImageView userInfo_info;
 
     @FXML
+    private Hyperlink user_logout_hyper;
+
+    @FXML
     private Label birthday;
 
     @FXML
