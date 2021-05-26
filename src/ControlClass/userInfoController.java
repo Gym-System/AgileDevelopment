@@ -117,12 +117,6 @@ public class userInfoController {
         time2 = userDAO.queryByUserName(username).getExerciseTime(null,null,null);
         totalTime.setText(Integer.toString(time1+time2)+" min");
 
-
-
-
-
-
-
     }
 
     public void userInfo_live_click(javafx.event.ActionEvent actionEvent) {

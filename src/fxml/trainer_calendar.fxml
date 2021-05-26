@@ -142,31 +142,31 @@
                      <font>
                         <Font name="Comic Sans MS Bold" size="15.0" />
                      </font></Label>
-                  <Label fx:id="trainer_calendar_Sun" layoutX="97.0" layoutY="214.0" prefHeight="20.0" prefWidth="86.0" text="25  Sunday" textAlignment="CENTER">
+                  <Label fx:id="trainer_calendar_1" layoutX="97.0" layoutY="214.0" prefHeight="20.0" prefWidth="86.0" text="25  Sunday" textAlignment="CENTER">
                      <font>
                         <Font name="Comic Sans MS Italic" size="15.0" />
                      </font></Label>
-                  <Label fx:id="trainer_calendar_Mon" layoutX="230.0" layoutY="214.0" prefHeight="20.0" prefWidth="86.0" text="26  Monday" textAlignment="CENTER">
+                  <Label fx:id="trainer_calendar_2" layoutX="230.0" layoutY="214.0" prefHeight="20.0" prefWidth="86.0" text="26  Monday" textAlignment="CENTER">
                      <font>
                         <Font name="Comic Sans MS Italic" size="15.0" />
                      </font></Label>
-                  <Label fx:id="trainer_calendar_Tue" layoutX="360.0" layoutY="214.0" prefHeight="22.0" prefWidth="100.0" text="27  Tuesday" textAlignment="CENTER">
+                  <Label fx:id="trainer_calendar_3" layoutX="360.0" layoutY="214.0" prefHeight="22.0" prefWidth="100.0" text="27  Tuesday" textAlignment="CENTER">
                      <font>
                         <Font name="Comic Sans MS Italic" size="15.0" />
                      </font></Label>
-                  <Label fx:id="trainer_calendar_Wed" layoutX="480.0" layoutY="214.0" prefHeight="20.0" prefWidth="115.0" text="28  Wednesday" textAlignment="CENTER">
+                  <Label fx:id="trainer_calendar_4" layoutX="480.0" layoutY="214.0" prefHeight="20.0" prefWidth="115.0" text="28  Wednesday" textAlignment="CENTER">
                      <font>
                         <Font name="Comic Sans MS Italic" size="15.0" />
                      </font></Label>
-                  <Label fx:id="trainer_calendar_Thu" layoutX="619.0" layoutY="214.0" prefHeight="20.0" prefWidth="100.0" text="29  Thursday" textAlignment="CENTER">
+                  <Label fx:id="trainer_calendar_5" layoutX="619.0" layoutY="214.0" prefHeight="20.0" prefWidth="100.0" text="29  Thursday" textAlignment="CENTER">
                      <font>
                         <Font name="Comic Sans MS Italic" size="15.0" />
                      </font></Label>
-                  <Label fx:id="trainer_calendar_Fri" layoutX="762.0" layoutY="214.0" prefHeight="20.0" prefWidth="86.0" text="30  Friday" textAlignment="CENTER">
+                  <Label fx:id="trainer_calendar_6" layoutX="762.0" layoutY="214.0" prefHeight="20.0" prefWidth="86.0" text="30  Friday" textAlignment="CENTER">
                      <font>
                         <Font name="Comic Sans MS Italic" size="15.0" />
                      </font></Label>
-                  <Label fx:id="trainer_calendar_Sat" layoutX="887.0" layoutY="214.0" prefHeight="20.0" prefWidth="93.0" text="01  Saturday" textAlignment="CENTER">
+                  <Label fx:id="trainer_calendar_7" layoutX="887.0" layoutY="214.0" prefHeight="20.0" prefWidth="93.0" text="01  Saturday" textAlignment="CENTER">
                      <font>
                         <Font name="Comic Sans MS Italic" size="15.0" />
                      </font></Label>

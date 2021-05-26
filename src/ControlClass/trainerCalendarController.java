@@ -1,5 +1,10 @@
 package ControlClass;
 
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,6 +13,12 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
 public class trainerCalendarController {
+
+    @FXML
+    private ResourceBundle resources;
+
+    @FXML
+    private URL location;
 
     @FXML
     private Label status18;
@@ -35,9 +46,6 @@ public class trainerCalendarController {
 
     @FXML
     private Label status58;
-
-    @FXML
-    private Label trainer_calendar_Fri;
 
     @FXML
     private Label status16;
@@ -97,13 +105,28 @@ public class trainerCalendarController {
     private Label status26;
 
     @FXML
+    private Label trainer_calendar_1;
+
+    @FXML
+    private Label trainer_calendar_2;
+
+    @FXML
+    private Label trainer_calendar_3;
+
+    @FXML
+    private Label trainer_calendar_4;
+
+    @FXML
     private Label status60;
+
+    @FXML
+    private Label trainer_calendar_5;
 
     @FXML
     private Hyperlink userInfo_favorates;
 
     @FXML
-    private Label trainer_calendar_Wed;
+    private Label trainer_calendar_6;
 
     @FXML
     private Label status62;
@@ -116,9 +139,6 @@ public class trainerCalendarController {
 
     @FXML
     private Label status410;
-
-    @FXML
-    private Label trainer_calendar_Sun;
 
     @FXML
     private Label trainer_price;
@@ -142,7 +162,7 @@ public class trainerCalendarController {
     private Button book59;
 
     @FXML
-    private Label trainer_calendar_Sat;
+    private Label trainer_calendar_7;
 
     @FXML
     private Label status32;
@@ -190,16 +210,10 @@ public class trainerCalendarController {
     private Label status06;
 
     @FXML
-    private Label trainer_calendar_Thu;
-
-    @FXML
     private Label status08;
 
     @FXML
     private Label trainer_calendar_time1;
-
-    @FXML
-    private Label trainer_calendar_Tue;
 
     @FXML
     private Button book27;
@@ -254,9 +268,6 @@ public class trainerCalendarController {
 
     @FXML
     private Button book29;
-
-    @FXML
-    private Label trainer_calendar_Mon;
 
     @FXML
     void userInfo_favorates_click(ActionEvent event) {
@@ -413,4 +424,107 @@ public class trainerCalendarController {
 
     }
 
+    @FXML
+    void initialize() {
+        assert status18 != null : "fx:id=\"status18\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book39 != null : "fx:id=\"book39\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status210 != null : "fx:id=\"status210\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status010 != null : "fx:id=\"status010\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status10 != null : "fx:id=\"status10\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status12 != null : "fx:id=\"status12\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status56 != null : "fx:id=\"status56\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book31 != null : "fx:id=\"book31\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status58 != null : "fx:id=\"status58\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status16 != null : "fx:id=\"status16\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status50 != null : "fx:id=\"status50\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status52 != null : "fx:id=\"status52\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book611 != null : "fx:id=\"book611\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert logo != null : "fx:id=\"logo\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book011 != null : "fx:id=\"book011\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book01 != null : "fx:id=\"book01\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status28 != null : "fx:id=\"status28\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book43 != null : "fx:id=\"book43\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert userInfo_live != null : "fx:id=\"userInfo_live\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book49 != null : "fx:id=\"book49\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book03 != null : "fx:id=\"book03\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status20 != null : "fx:id=\"status20\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status22 != null : "fx:id=\"status22\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status66 != null : "fx:id=\"status66\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book41 != null : "fx:id=\"book41\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status68 != null : "fx:id=\"status68\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert userInfo_history != null : "fx:id=\"userInfo_history\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status26 != null : "fx:id=\"status26\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert trainer_calendar_1 != null : "fx:id=\"trainer_calendar_1\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert trainer_calendar_2 != null : "fx:id=\"trainer_calendar_2\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert trainer_calendar_3 != null : "fx:id=\"trainer_calendar_3\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert trainer_calendar_4 != null : "fx:id=\"trainer_calendar_4\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status60 != null : "fx:id=\"status60\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert trainer_calendar_5 != null : "fx:id=\"trainer_calendar_5\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert userInfo_favorates != null : "fx:id=\"userInfo_favorates\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert trainer_calendar_6 != null : "fx:id=\"trainer_calendar_6\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status62 != null : "fx:id=\"status62\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status610 != null : "fx:id=\"status610\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book07 != null : "fx:id=\"book07\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status410 != null : "fx:id=\"status410\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert trainer_price != null : "fx:id=\"trainer_price\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book13 != null : "fx:id=\"book13\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book57 != null : "fx:id=\"book57\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book11 != null : "fx:id=\"book11\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book17 != null : "fx:id=\"book17\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status110 != null : "fx:id=\"status110\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book59 != null : "fx:id=\"book59\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert trainer_calendar_7 != null : "fx:id=\"trainer_calendar_7\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status32 != null : "fx:id=\"status32\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book53 != null : "fx:id=\"book53\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status36 != null : "fx:id=\"status36\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status38 != null : "fx:id=\"status38\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert trainer_calendar_time21 != null : "fx:id=\"trainer_calendar_time21\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert userInfo_calendar != null : "fx:id=\"userInfo_calendar\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book311 != null : "fx:id=\"book311\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book111 != null : "fx:id=\"book111\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book511 != null : "fx:id=\"book511\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status30 != null : "fx:id=\"status30\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert user_logout_hyper != null : "fx:id=\"user_logout_hyper\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert userInfo_info != null : "fx:id=\"userInfo_info\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book23 != null : "fx:id=\"book23\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book67 != null : "fx:id=\"book67\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status06 != null : "fx:id=\"status06\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status08 != null : "fx:id=\"status08\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert trainer_calendar_time1 != null : "fx:id=\"trainer_calendar_time1\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book27 != null : "fx:id=\"book27\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert trainer_calendar_time2 != null : "fx:id=\"trainer_calendar_time2\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert trainer_calendar_time3 != null : "fx:id=\"trainer_calendar_time3\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status42 != null : "fx:id=\"status42\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status00 != null : "fx:id=\"status00\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status46 != null : "fx:id=\"status46\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status02 != null : "fx:id=\"status02\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book61 != null : "fx:id=\"book61\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status48 != null : "fx:id=\"status48\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status40 != null : "fx:id=\"status40\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert userInfo_recording != null : "fx:id=\"userInfo_recording\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert trainer_calendar_time4 != null : "fx:id=\"trainer_calendar_time4\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status510 != null : "fx:id=\"status510\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert trainer_calendar_time5 != null : "fx:id=\"trainer_calendar_time5\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert trainer_calendar_time6 != null : "fx:id=\"trainer_calendar_time6\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert status310 != null : "fx:id=\"status310\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert trainer_calendar_time7 != null : "fx:id=\"trainer_calendar_time7\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+        assert book29 != null : "fx:id=\"book29\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
+
+        Date d=new Date();
+        Date date1=new Date(d.getTime() + 1 * 24 * 60 * 60 * 1000);
+        Date date2=new Date(d.getTime() + 2 * 24 * 60 * 60 * 1000);
+        Date date3=new Date(d.getTime() + 3 * 24 * 60 * 60 * 1000);
+        Date date4=new Date(d.getTime() + 4 * 24 * 60 * 60 * 1000);
+        Date date5=new Date(d.getTime() + 5 * 24 * 60 * 60 * 1000);
+        Date date6=new Date(d.getTime() + 6 * 24 * 60 * 60 * 1000);
+        Date date7=new Date(d.getTime() + 7 * 24 * 60 * 60 * 1000);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        trainer_calendar_1.setText(df.format(date1));
+        trainer_calendar_2.setText(df.format(date2));
+        trainer_calendar_3.setText(df.format(date3));
+        trainer_calendar_4.setText(df.format(date4));
+        trainer_calendar_5.setText(df.format(date5));
+        trainer_calendar_6.setText(df.format(date6));
+        trainer_calendar_7.setText(df.format(date7));
+    }
 }
