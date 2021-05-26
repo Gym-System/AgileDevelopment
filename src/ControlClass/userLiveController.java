@@ -26,7 +26,14 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class userLiveController implements Initializable {
+        @FXML
+        private Label cost1;
 
+        @FXML
+        private Label cost2;
+
+        @FXML
+        private Label cost3;
         @FXML
         private Label LiveName_trainer3_label2;
 
