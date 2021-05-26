@@ -64,6 +64,7 @@ public class Trainer extends Staff {
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
+        calendar.add(Calendar.DATE, 1);
         Date startTime = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
                 new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
         calendar.add(Calendar.DATE, 7);
