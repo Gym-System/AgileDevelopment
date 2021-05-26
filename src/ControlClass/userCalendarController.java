@@ -308,13 +308,9 @@ public class userCalendarController {
             Button button = new Button("delete");
             button.setFont(Font.font("Comic Sans MS"));
             button.setOnMouseClicked(e -> {
+                label.setVisible(false);
+                button.setVisible(false);
                 user.cancelLiveSession(courseid);
-                Stage stage = (Stage) user_history_hyper.getScene().getWindow();
-                try {
-                    new APP().jump(stage,"user_calendar");
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                }
             });
             user_grid.add(button,j,(i+1));
 
