@@ -12,8 +12,8 @@ import java.util.Locale;
 
 public class Trainer extends Staff {
     private double salary = 0.0;
-    private String label = null;
-    private String CV = null;
+    private String label = "To be added";
+    private String CV = "To be added";
 
     public Trainer(String userName, String password, String email) {
         super(userName, password, email);
@@ -146,7 +146,7 @@ public class Trainer extends Staff {
     @Override
     public String[] toStrArray() {
         String text = "" + super.getUserName() + "," + super.getPassword() + "," + super.getEmail() + "," + super.getGender() + "," +
-                super.getTelNo() + "," + super.getDoB() + "," + super.getCompanyName() + "," + salary;
+                super.getTelNo() + "," + super.getDoB() + "," + super.getCompanyName() + "," + salary + "," + label + "," + CV;
         return text.split(",");
     }
 
@@ -154,6 +154,8 @@ public class Trainer extends Staff {
     public String toString() {
         return "Trainer{" +
                 "salary=" + salary +
+                ", label='" + label + '\'' +
+                ", CV='" + CV + '\'' +
                 "} " + super.toString();
     }
 }
