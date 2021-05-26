@@ -12,8 +12,8 @@ import java.util.Locale;
 
 public class Trainer extends Staff {
     private double salary = 0.0;
-    private String label;
-    private String CV;
+    private String label = null;
+    private String CV = null;
 
     public Trainer(String userName, String password, String email) {
         super(userName, password, email);
@@ -23,9 +23,11 @@ public class Trainer extends Staff {
         super(userName, password, email, gender, telNo, doB, companyName);
     }
 
-    public Trainer(String userName, String password, String email, String gender, String telNo, Date doB, String companyName, double salary) {
+    public Trainer(String userName, String password, String email, String gender, String telNo, Date doB, String companyName, double salary, String label, String CV) {
         super(userName, password, email, gender, telNo, doB, companyName);
         this.salary = salary;
+        this.label = label;
+        this.CV = CV;
     }
 
     public double getSalary() {
@@ -77,7 +79,7 @@ public class Trainer extends Staff {
         return liveSessions;
     }
 
-    public int getRecTime() {
+    public int getRecTime() throws ParseException {
         int recTime = 0;
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
@@ -94,7 +96,7 @@ public class Trainer extends Staff {
         return recTime;
     }
 
-    public int getLiveTime() {
+    public int getLiveTime() throws ParseException {
         int liveTime = 0;
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
@@ -111,7 +113,7 @@ public class Trainer extends Staff {
         return liveTime;
     }
 
-    public int getGift() {
+    public int getGift() throws ParseException {
         int gift = 0;
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
@@ -125,9 +127,9 @@ public class Trainer extends Staff {
             }
         }
 
-        Calendar calendar = Calendar.getInstance();
+        calendar = Calendar.getInstance();
         calendar.setTime(new Date());
-        Date now = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
+        now = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
                 new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
         LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
         ArrayList<LiveSession> liveSessions = liveSessionDAO.queryByTrainerName(getUserName());

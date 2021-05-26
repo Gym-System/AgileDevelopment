@@ -491,7 +491,7 @@ public class Test {
         System.out.println(user.getExerciseTime("day", "Hiit", null));
 
          */
-
+        /*
         LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
 
         ArrayList<LiveSession> liveSessions;
@@ -509,5 +509,7 @@ public class Test {
         for(LiveSession liveSession1:liveSessions) {
             System.out.println(liveSession1);
         }
+
+         */
     }
 }
