@@ -17,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.paint.Color;
 
@@ -293,6 +294,7 @@ public class trainerPortraitController {
         assert trainer_portrait_history != null : "fx:id=\"trainer_portrait_history\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert user_recEnter_hyper611 != null : "fx:id=\"user_recEnter_hyper611\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         TrainerDAOImpl TrainerDAO = new TrainerDAOImpl();
+        trainer_portrait_name.setText(TrainerDAO.queryByUserName("kaiyi").getUserName());
         String [] str = new String [5];
         str=TrainerDAO.queryByUserName("kaiyi").getLabel();
         int count=0;
@@ -300,6 +302,7 @@ public class trainerPortraitController {
             Label textlabel = new Label();
             textlabel.setText(Trainerlabel);
             textlabel.setBackground(new Background(new BackgroundFill(Color.GRAY,null,null)));
+            textlabel.setFont(Font.font(30));
             label_grid.add(textlabel,count,0);
             count++;
         }

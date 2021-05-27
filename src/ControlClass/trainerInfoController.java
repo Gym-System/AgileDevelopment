@@ -175,10 +175,10 @@ public class trainerInfoController {
     @FXML
     void Info_save(ActionEvent event) {
         System.out.println("Save successfully");
+        String trainername = passValue.getValue();
         TrainerDAOImpl TrainerDAO = new TrainerDAOImpl();
-//        TrainerDAO.queryByUserName("kaiyi").setLabel("aa;bb");
-//        TrainerDAO.queryByUserName("kaiyi").setCV(trainerInfo_cv.getText());
-
+        TrainerDAO.changeTrainerLabel(trainername,trainerInfo_label.getText());
+        TrainerDAO.changeTrainerCV(trainername,trainerInfo_cv.getText());
 
     }
 
@@ -212,8 +212,6 @@ public class trainerInfoController {
         assert trainer_major != null : "fx:id=\"trainer_major\" was not injected: check your FXML file 'TrainerInfo.fxml'.";
         assert trainer_course2 != null : "fx:id=\"trainer_course2\" was not injected: check your FXML file 'TrainerInfo.fxml'.";
         TrainerDAOImpl TrainerDAO = new TrainerDAOImpl();
-        TrainerDAO.queryByUserName("kaiyi").setLabel("aa;bb");
-        TrainerDAO.queryByUserName("kaiyi").setCV("AABB");
 
         String trainername = passValue.getValue();
         TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
