@@ -301,7 +301,7 @@ public class userCalendarController {
             if (liveSession.getStartTime().getDay()==date7.getDay()){
                 j=6;
             }
-            Label label = new Label("Alex-live");
+            Label label = new Label(liveSession.getTrainerName()+"-live");
             label.setFont(Font.font("Comic Sans MS",16));
             label.setTextFill(Color.MEDIUMSEAGREEN);
             user_grid.add(label,j,i);

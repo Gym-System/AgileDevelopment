@@ -1,8 +1,11 @@
 package ControlClass;
 
+import java.awt.*;
+import java.awt.Paint;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import EntityClass.DAO.impl.TrainerDAOImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
@@ -10,7 +13,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.scene.paint.Color;
 
 public class trainerPortraitController {
 
@@ -19,6 +27,9 @@ public class trainerPortraitController {
 
     @FXML
     private URL location;
+
+    @FXML
+    private GridPane label_grid;
 
     @FXML
     private Text trainer_portrait_name;
@@ -281,6 +292,21 @@ public class trainerPortraitController {
         assert trainer_portrait_label1 != null : "fx:id=\"trainer_portrait_label1\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert trainer_portrait_history != null : "fx:id=\"trainer_portrait_history\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert user_recEnter_hyper611 != null : "fx:id=\"user_recEnter_hyper611\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
+        TrainerDAOImpl TrainerDAO = new TrainerDAOImpl();
+        String [] str = new String [5];
+        str=TrainerDAO.queryByUserName("kaiyi").getLabel();
+        int count=0;
+        for (String Trainerlabel:str){
+            Label textlabel = new Label();
+            textlabel.setText(Trainerlabel);
+            textlabel.setBackground(new Background(new BackgroundFill(Color.GRAY,null,null)));
+            label_grid.add(textlabel,count,0);
+            count++;
+        }
+        trainer_portrait_text.setText(TrainerDAO.queryByUserName("kaiyi").getCV());
 
+    }
+
+    public void trainer_portrait_info_click(MouseEvent mouseEvent) {
     }
 }

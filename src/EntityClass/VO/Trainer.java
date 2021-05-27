@@ -38,8 +38,8 @@ public class Trainer extends Staff {
         this.salary = salary;
     }
 
-    public String getLabel() {
-        return label;
+    public String[] getLabel() {
+        return label.split(";");
     }
 
     public void setLabel(String label) {
@@ -54,8 +54,8 @@ public class Trainer extends Staff {
         this.CV = CV;
     }
 
-    public String[] getCVStrArray() {
-        return CV.split(";");
+    public String getCVStrArray() {
+        return CV;
     }
 
     public ArrayList<LiveSession> showCalender() throws ParseException {

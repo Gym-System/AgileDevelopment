@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 
 import EntityClass.DAO.impl.TrainerDAOImpl;
 import EntityClass.VO.Trainer;
-import EntityClass.VO.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -17,6 +16,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
@@ -164,7 +164,7 @@ public class manageIncomeController {
     }
 
     @FXML
-    void click_find_mi(ActionEvent event) {
+    void click_find_mi(MouseEvent event) {
         names[0] = name1_mi;
         names[1] = name2_mi;
         names[2] = name3_mi;
@@ -254,7 +254,7 @@ public class manageIncomeController {
                                 e.printStackTrace();
                             }
                         }
-                        for (int i = limit; i < 5; i++) {
+                        for (int i = limit; i < 4; i++) {
                             names[i].setText("");
                             try {
                                 live_hours[i].setText(Integer.toString(trainers.get(4 * param.intValue() + i).getLiveTime()));
@@ -373,7 +373,7 @@ public class manageIncomeController {
     }
 
     @FXML
-    void click_turn_page_mi(ActionEvent event) {
+    void click_turn_page_mi(MouseEvent event) {
 
     }
 
@@ -449,7 +449,6 @@ public class manageIncomeController {
                 if (param.intValue() == trainers.size()/4) {
                     limit = trainers.size()%4;
                 }
-//休息
                 if(param.intValue() < trainers.size()/4){
                     for (int i =0; i <limit; i++){
                         names[i].setText(trainers.get(4 * param.intValue() + i).getUserName());
