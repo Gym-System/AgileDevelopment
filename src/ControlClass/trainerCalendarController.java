@@ -459,7 +459,6 @@ public class trainerCalendarController {
     }
 
 
-
     @FXML
     void initialize() {
         assert status18 != null : "fx:id=\"status18\" was not injected: check your FXML file 'trainer_calendar.fxml'.";
