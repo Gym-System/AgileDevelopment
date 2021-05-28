@@ -4,19 +4,16 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import EntityClass.DAO.UserDAO;
+import EntityClass.DAO.impl.ManagerDAOImpl;
+import EntityClass.DAO.impl.TrainerDAOImpl;
 import EntityClass.DAO.impl.UserDAOImpl;
-import javafx.application.Application;
+import EntityClass.VO.Manager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
-import javax.swing.*;
 
 public class loginController {
 
@@ -76,68 +73,150 @@ public class loginController {
     }
 
     @FXML
-    void no_account_click(ActionEvent event) throws IOException{
-        Stage stage = (Stage) login_button.getScene().getWindow();
+    void no_account_click(MouseEvent event) throws IOException{
+        Stage stage = (Stage) login_password.getScene().getWindow();
         new APP().jump(stage,"register");
     }
 
     @FXML
     void login_button_submit(ActionEvent event) throws IOException {
-        UserDAOImpl userDAO = new UserDAOImpl();
-        boolean flag = true;
-        passValue.setValue(login_usename.getText());
-        if(login_usename.getText().equals("")){
-            username1.setVisible(true);
-            username2.setVisible(false);
-            flag=false;
-        }
-        else{
-            username1.setVisible(false);
-            username2.setVisible(false);
-        }
-        if(login_password.getText().equals("")){
-            password1.setVisible(true);
-            password2.setVisible(false);
-            flag=false;
-        }
-        else{
-            password1.setVisible(false);
-        }
-        if(flag) {
-            if(userDAO.queryByUserName(login_usename.getText())==null){
-                username2.setVisible(true);
+        if (type_user.isSelected()) {
+            UserDAOImpl userDAO = new UserDAOImpl();
+            boolean flag = true;
+            passValue.setValue(login_usename.getText());
+            if (login_usename.getText().equals("")) {
+                username1.setVisible(true);
+                username2.setVisible(false);
+                flag = false;
+            } else {
                 username1.setVisible(false);
+                username2.setVisible(false);
             }
-            else{
-                String True_password= userDAO.queryByUserName(login_usename.getText()).getPassword(); //get from UserDAO
-                if(login_password.getText().equals(True_password))
-                {
-                    Stage stage = (Stage) login_button.getScene().getWindow();
-                    new APP().jump(stage,"user_trainerPortrait");
-                }
-                else{
-                    password1.setVisible(false);
-                    password2.setVisible(true);
+            if (login_password.getText().equals("")) {
+                password1.setVisible(true);
+                password2.setVisible(false);
+                flag = false;
+            } else {
+                password1.setVisible(false);
+            }
+            if (flag) {
+                if (userDAO.queryByUserName(login_usename.getText()) == null) {
+                    username2.setVisible(true);
+                    username1.setVisible(false);
+                } else {
+                    String True_password = userDAO.queryByUserName(login_usename.getText()).getPassword(); //get from UserDAO
+                    if (login_password.getText().equals(True_password)) {
+                        Stage stage = (Stage) login_button.getScene().getWindow();
+                        new APP().jump(stage, "user_trainerPortrait");
+                    } else {
+                        password1.setVisible(false);
+                        password2.setVisible(true);
 
+                    }
                 }
+
+
             }
+        }
+        else if (type_trainer.isSelected()){
+            TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
+            boolean flag = true;
+            passValue.setValue(login_usename.getText());
+            if (login_usename.getText().equals("")) {
+                username1.setVisible(true);
+                username2.setVisible(false);
+                flag = false;
+            } else {
+                username1.setVisible(false);
+                username2.setVisible(false);
+            }
+            if (login_password.getText().equals("")) {
+                password1.setVisible(true);
+                password2.setVisible(false);
+                flag = false;
+            } else {
+                password1.setVisible(false);
+            }
+            if (flag) {
+                if (trainerDAO.queryByUserName(login_usename.getText()) == null) {
+                    username2.setVisible(true);
+                    username1.setVisible(false);
+                } else {
+                    String True_password = trainerDAO.queryByUserName(login_usename.getText()).getPassword(); //get from UserDAO
+                    if (login_password.getText().equals(True_password)) {
+                        Stage stage = (Stage) login_button.getScene().getWindow();
+                        new APP().jump(stage, "user_trainerPortrait");
+                    } else {
+                        password1.setVisible(false);
+                        password2.setVisible(true);
+
+                    }
+                }
+
+
+            }
+        }
+        else if (type_manager.isSelected()){
+            ManagerDAOImpl managerDAO = new ManagerDAOImpl();
+            boolean flag = true;
+            passValue.setValue(login_usename.getText());
+            if (login_usename.getText().equals("")) {
+                username1.setVisible(true);
+                username2.setVisible(false);
+                flag = false;
+            } else {
+                username1.setVisible(false);
+                username2.setVisible(false);
+            }
+            if (login_password.getText().equals("")) {
+                password1.setVisible(true);
+                password2.setVisible(false);
+                flag = false;
+            } else {
+                password1.setVisible(false);
+            }
+            if (flag) {
+                if (managerDAO.queryByUserName(login_usename.getText()) == null) {
+                    username2.setVisible(true);
+                    username1.setVisible(false);
+                } else {
+                    String True_password = managerDAO.queryByUserName(login_usename.getText()).getPassword(); //get from UserDAO
+                    if (login_password.getText().equals(True_password)) {
+                        Stage stage = (Stage) login_button.getScene().getWindow();
+                        new APP().jump(stage, "manage_income");
+                    } else {
+                        password1.setVisible(false);
+                        password2.setVisible(true);
+
+                    }
+                }
+
+
+            }
+        }
+
 
 
         }
-    }
-
     @FXML
-    void initialize() {
-        // assert no_account != null : "fx:id=\"no_account\" was not injected: check your FXML file 'login.fxml'.";
-        assert forget_password != null : "fx:id=\"forget_password\" was not injected: check your FXML file 'login.fxml'.";
+    void initialize () {
         assert login_button != null : "fx:id=\"login_button\" was not injected: check your FXML file 'login.fxml'.";
+        assert user_image != null : "fx:id=\"user_image\" was not injected: check your FXML file 'login.fxml'.";
+        assert login_type != null : "fx:id=\"login_type\" was not injected: check your FXML file 'login.fxml'.";
+        assert type_user != null : "fx:id=\"type_user\" was not injected: check your FXML file 'login.fxml'.";
+        assert lock_image != null : "fx:id=\"lock_image\" was not injected: check your FXML file 'login.fxml'.";
+        assert no_account != null : "fx:id=\"no_account\" was not injected: check your FXML file 'login.fxml'.";
+        assert forget_password != null : "fx:id=\"forget_password\" was not injected: check your FXML file 'login.fxml'.";
         assert login_password != null : "fx:id=\"login_password\" was not injected: check your FXML file 'login.fxml'.";
+        assert type_manager != null : "fx:id=\"type_manager\" was not injected: check your FXML file 'login.fxml'.";
+        assert password2 != null : "fx:id=\"password2\" was not injected: check your FXML file 'login.fxml'.";
+        assert password1 != null : "fx:id=\"password1\" was not injected: check your FXML file 'login.fxml'.";
+        assert username2 != null : "fx:id=\"username2\" was not injected: check your FXML file 'login.fxml'.";
+        assert type_trainer != null : "fx:id=\"type_trainer\" was not injected: check your FXML file 'login.fxml'.";
+        assert username1 != null : "fx:id=\"username1\" was not injected: check your FXML file 'login.fxml'.";
         assert login_usename != null : "fx:id=\"login_usename\" was not injected: check your FXML file 'login.fxml'.";
 
-    }
-
-    @FXML
-    public void getUsername(ActionEvent actionEvent) {
 
     }
-}
+    }
+

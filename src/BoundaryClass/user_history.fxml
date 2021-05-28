@@ -53,7 +53,7 @@
                               <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
                         </Hyperlink>
-                        <Hyperlink fx:id="user_live_hyper" onMouseClicked="#user_live_click" text="Live" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Hyperlink fx:id="user_live_hyper" onMouseClicked="#user_live_click" text="Live" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
                               <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
@@ -68,7 +68,7 @@
                               <Image url="@Resource/user_Profile.jpg" />
                            </image>
                         </ImageView>
-                        <Hyperlink fx:id="user_history_hyper" layoutX="86.0" layoutY="438.0" onMouseClicked="#user_history_click" text="History" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <Hyperlink fx:id="user_history_hyper" layoutX="86.0" layoutY="438.0" onMouseClicked="#user_history_click" text="History" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <font>
                               <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
