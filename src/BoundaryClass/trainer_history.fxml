@@ -120,14 +120,14 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <ToolBar layoutX="77.0" layoutY="161.0" prefHeight="44.0" prefWidth="856.0">
+                  <ToolBar layoutX="77.0" layoutY="153.0" prefHeight="44.0" prefWidth="856.0">
                      <items>
                         <Label fx:id="history_live1" prefHeight="23.0" prefWidth="174.0" text="Live" textAlignment="RIGHT" textFill="#6d6aa3">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="16.0" />
                            </font>
                         </Label>
-                        <Label fx:id="history_type1_strength" prefHeight="23.0" prefWidth="118.0" text="Strength" textAlignment="RIGHT" textFill="#6d6aa3">
+                        <Label fx:id="history_type1" prefHeight="23.0" prefWidth="118.0" text="Strength" textAlignment="RIGHT" textFill="#6d6aa3">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="16.0" />
                            </font>
@@ -145,7 +145,7 @@
                      </items>
                   </ToolBar>
                   <Separator prefHeight="0.0" prefWidth="856.0" />
-                  <Pagination fx:id="turn_page" layoutX="175.0" layoutY="590.0" onMouseClicked="#click_turn_page" pageCount="100" prefHeight="100.0" prefWidth="660.0">
+                  <Pagination fx:id="turn_page" layoutX="168.0" layoutY="589.0" onMouseClicked="#click_turn_page" pageCount="100" prefHeight="100.0" prefWidth="660.0">
                      <cursor>
                         <Cursor fx:constant="NW_RESIZE" />
                      </cursor>
@@ -163,17 +163,161 @@
                               <Font name="Comic Sans MS Bold Italic" size="16.0" />
                            </font>
                         </Label>
-                        <Label fx:id="history_type2_yoga" prefHeight="23.0" prefWidth="118.0" text="Yoga" textAlignment="RIGHT" textFill="#6d6aa3">
+                        <Label fx:id="history_type2" prefHeight="23.0" prefWidth="118.0" text="Yoga" textAlignment="RIGHT" textFill="#6d6aa3">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="16.0" />
                            </font>
                         </Label>
-                        <Label fx:id="history_trainer2" prefHeight="23.0" prefWidth="205.0" text="Customer: Astor" textFill="#6d6aa3">
+                        <Label fx:id="history_user2" prefHeight="23.0" prefWidth="205.0" text="Customer: Astor" textFill="#6d6aa3">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="16.0" />
                            </font>
                         </Label>
                         <Label fx:id="history_time2" nodeOrientation="LEFT_TO_RIGHT" prefHeight="23.0" prefWidth="298.0" text="8:00-10:00   2021-03-25" textFill="#6d6aa3" underline="true">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                     </items>
+                  </ToolBar>
+                  <ToolBar layoutX="77.0" layoutY="257.0" prefHeight="44.0" prefWidth="856.0">
+                     <items>
+                        <Label fx:id="history_live3" prefHeight="23.0" prefWidth="174.0" text="Live" textAlignment="RIGHT" textFill="#6d6aa3">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="history_type3" prefHeight="23.0" prefWidth="118.0" text="Yoga" textAlignment="RIGHT" textFill="#6d6aa3">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="history_user3" prefHeight="23.0" prefWidth="205.0" text="Customer: Astor" textFill="#6d6aa3">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="history_time3" nodeOrientation="LEFT_TO_RIGHT" prefHeight="23.0" prefWidth="298.0" text="8:00-10:00   2021-03-25" textFill="#6d6aa3" underline="true">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                     </items>
+                  </ToolBar>
+                  <ToolBar layoutX="77.0" layoutY="310.0" prefHeight="44.0" prefWidth="856.0">
+                     <items>
+                        <Label fx:id="history_live4" prefHeight="23.0" prefWidth="174.0" text="Live" textAlignment="RIGHT" textFill="#6d6aa3">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="history_type4" prefHeight="23.0" prefWidth="118.0" text="Yoga" textAlignment="RIGHT" textFill="#6d6aa3">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="history_user4" prefHeight="23.0" prefWidth="205.0" text="Customer: Astor" textFill="#6d6aa3">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="history_time4" nodeOrientation="LEFT_TO_RIGHT" prefHeight="23.0" prefWidth="298.0" text="8:00-10:00   2021-03-25" textFill="#6d6aa3" underline="true">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                     </items>
+                  </ToolBar>
+                  <ToolBar layoutX="77.0" layoutY="366.0" prefHeight="44.0" prefWidth="856.0">
+                     <items>
+                        <Label fx:id="history_live5" prefHeight="23.0" prefWidth="174.0" text="Live" textAlignment="RIGHT" textFill="#6d6aa3">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="history_type5" prefHeight="23.0" prefWidth="118.0" text="Yoga" textAlignment="RIGHT" textFill="#6d6aa3">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="history_user5" prefHeight="23.0" prefWidth="205.0" text="Customer: Astor" textFill="#6d6aa3">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="history_time5" nodeOrientation="LEFT_TO_RIGHT" prefHeight="23.0" prefWidth="298.0" text="8:00-10:00   2021-03-25" textFill="#6d6aa3" underline="true">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                     </items>
+                  </ToolBar>
+                  <ToolBar layoutX="77.0" layoutY="420.0" prefHeight="44.0" prefWidth="856.0">
+                     <items>
+                        <Label fx:id="history_live6" prefHeight="23.0" prefWidth="174.0" text="Live" textAlignment="RIGHT" textFill="#6d6aa3">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="history_type6" prefHeight="23.0" prefWidth="118.0" text="Yoga" textAlignment="RIGHT" textFill="#6d6aa3">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="history_user6" prefHeight="23.0" prefWidth="205.0" text="Customer: Astor" textFill="#6d6aa3">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="history_time6" nodeOrientation="LEFT_TO_RIGHT" prefHeight="23.0" prefWidth="298.0" text="8:00-10:00   2021-03-25" textFill="#6d6aa3" underline="true">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                     </items>
+                  </ToolBar>
+                  <ToolBar layoutX="77.0" layoutY="472.0" prefHeight="44.0" prefWidth="856.0">
+                     <items>
+                        <Label fx:id="history_live7" prefHeight="23.0" prefWidth="174.0" text="Live" textAlignment="RIGHT" textFill="#6d6aa3">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="history_type7" prefHeight="23.0" prefWidth="118.0" text="Yoga" textAlignment="RIGHT" textFill="#6d6aa3">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="history_user7" prefHeight="23.0" prefWidth="205.0" text="Customer: Astor" textFill="#6d6aa3">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="history_time7" nodeOrientation="LEFT_TO_RIGHT" prefHeight="23.0" prefWidth="298.0" text="8:00-10:00   2021-03-25" textFill="#6d6aa3" underline="true">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                     </items>
+                  </ToolBar>
+                  <ToolBar layoutX="77.0" layoutY="527.0" prefHeight="44.0" prefWidth="856.0">
+                     <items>
+                        <Label fx:id="history_live8" prefHeight="23.0" prefWidth="174.0" text="Live" textAlignment="RIGHT" textFill="#6d6aa3">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="history_type8" prefHeight="23.0" prefWidth="118.0" text="Yoga" textAlignment="RIGHT" textFill="#6d6aa3">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="history_user8" prefHeight="23.0" prefWidth="205.0" text="Customer: Astor" textFill="#6d6aa3">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="history_time8" nodeOrientation="LEFT_TO_RIGHT" prefHeight="23.0" prefWidth="298.0" text="8:00-10:00   2021-03-25" textFill="#6d6aa3" underline="true">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="16.0" />
                            </font>
