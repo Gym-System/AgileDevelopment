@@ -538,7 +538,7 @@ public class Test {
 
         trainer1 = trainerDAO.queryByUserName("kaiyi");
         System.out.println(trainer1);
-        */
+
         Trainer trainer = null;
         try {
             trainer = new Trainer("kaiyi",
@@ -573,5 +573,22 @@ public class Test {
         premierUser.bookLiveSession(trainer, new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-30T14:00:00"));
         premierUser.bookLiveSession(trainer, new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-31T10:00:00"));
         premierUser.bookLiveSession(trainer, new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-31T14:00:00"));
+         */
+
+        String userName = "kaiyi";
+        LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
+        ArrayList<LiveSession> liveSessions = liveSessionDAO.queryAll();
+        RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
+        ArrayList<RecVideo> recVideos = recVideoDAO.queryAll();
+        ArrayList<Course> courses = new ArrayList<>();
+        for (LiveSession liveSession:liveSessions) {
+            courses.add(liveSession);
+        }
+        for (RecVideo recVideo:recVideos) {
+            courses.add(recVideo);
+        }
+        for (Course course:courses) {
+            System.out.println(course.getSubject());
+        }
     }
 }
