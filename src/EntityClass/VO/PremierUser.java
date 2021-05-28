@@ -1,6 +1,6 @@
 package EntityClass.VO;
 
-import EntityClass.DAO.impl.HistoryDataDAOImpl;
+import EntityClass.DAO.impl.WatchedVideoDAOImpl;
 import EntityClass.DAO.impl.LiveSessionDAOImpl;
 
 import java.util.Date;
@@ -49,9 +49,9 @@ public class PremierUser extends User {
             liveSessionDAO.insertLiveSession(liveSession);
 
             String type = "live";
-            HistoryData historyData = new HistoryData(super.getUserName(), type, liveSession.getCourseId());
-            HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
-            historyDataDAO.insertHistoryData(historyData);
+            WatchedVideo watchedVideo = new WatchedVideo(super.getUserName(), type, liveSession.getCourseId());
+            WatchedVideoDAOImpl historyDataDAO = new WatchedVideoDAOImpl();
+            historyDataDAO.insertHistoryData(watchedVideo);
         }
 
         return flag;

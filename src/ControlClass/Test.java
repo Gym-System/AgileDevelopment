@@ -445,7 +445,7 @@ public class Test {
         Boolean flag = recVideoDAO.insertRecVideo(recVideo);
         System.out.println(flag);
 
-        HistoryData historyData = new HistoryData("kaiyi", "recorded", recVideo.getCourseId());
+        WatchedVideo historyData = new WatchedVideo("kaiyi", "recorded", recVideo.getCourseId());
         System.out.println(historyData);
 
         User user = null;
@@ -463,10 +463,10 @@ public class Test {
 
         user.watchRecVideo(recVideo.getCourseId());
 
-        HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
+        WatchedVideoDAOImpl historyDataDAO = new WatchedVideoDAOImpl();
 
-        ArrayList<HistoryData> historyDatas = historyDataDAO.queryByUserName(user.getUserName());
-        for(HistoryData historyData1:historyDatas) {
+        ArrayList<WatchedVideo> historyDatas = historyDataDAO.queryByUserName(user.getUserName());
+        for(WatchedVideo historyData1:historyDatas) {
             System.out.println(historyData1);
         }
          */

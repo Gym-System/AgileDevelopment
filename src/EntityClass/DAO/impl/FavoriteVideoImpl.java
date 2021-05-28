@@ -1,12 +1,8 @@
 package EntityClass.DAO.impl;
 
-import EntityClass.DAO.HistoryDataDAO;
-import EntityClass.VO.HistoryData;
+import EntityClass.DAO.FavoriteVideoDAO;
+import EntityClass.VO.FavoriteVideo;
 import com.csvreader.CsvReader;
-
-
-import static EntityClass.DAO.impl.PersonDAOImpl.insertInfo;
-import static EntityClass.DAO.impl.CourseDAOImpl.deleteInfo;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -14,15 +10,18 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class HistoryDataDAOImpl implements HistoryDataDAO {
-    private HistoryData historyData = null;
+import static EntityClass.DAO.impl.CourseDAOImpl.deleteInfo;
+import static EntityClass.DAO.impl.PersonDAOImpl.insertInfo;
+
+public class FavoriteVideoImpl implements FavoriteVideoDAO {
+    private FavoriteVideo favoriteVideo = null;
     public static final String fileFolder = "./src/Data/";
-    private final String fileName = "historyData.csv";
+    private final String fileName = "favoriteVideo.csv";
     private String filePath = fileFolder + fileName;
 
     @Override
-    public Boolean insertHistoryData(HistoryData historyData) {
-        return insertInfo(filePath, historyData.toStrArray());
+    public Boolean insertHistoryData(FavoriteVideo favoriteVideo) {
+        return insertInfo(filePath, favoriteVideo.toStrArray());
     }
 
     @Override
@@ -31,9 +30,9 @@ public class HistoryDataDAOImpl implements HistoryDataDAO {
     }
 
     @Override
-    public ArrayList<HistoryData> queryByUserName(String userName) {
+    public ArrayList<FavoriteVideo> queryByUserName(String userName) {
         File inFile = new File(filePath);
-        ArrayList<HistoryData> historyDatas = new ArrayList<>();
+        ArrayList<FavoriteVideo> favoriteVideos = new ArrayList<>();
         try {
             String[] record;
             BufferedReader reader = new BufferedReader(new FileReader(inFile));
@@ -41,14 +40,14 @@ public class HistoryDataDAOImpl implements HistoryDataDAO {
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
                 if(userName.equals(record[0])) {
-                    historyData = new HistoryData(record[0], record[1], Long.parseLong(record[2]));
-                    historyDatas.add(historyData);
+                    favoriteVideo = new FavoriteVideo(record[0], Long.parseLong(record[2]));
+                    favoriteVideos.add(favoriteVideo);
                 }
             }
             csvReader.close();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        return historyDatas;
+        return favoriteVideos;
     }
 }
