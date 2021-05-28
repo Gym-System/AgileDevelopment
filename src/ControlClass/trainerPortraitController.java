@@ -1,7 +1,5 @@
 package ControlClass;
 
-import java.awt.*;
-import java.awt.Paint;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -208,7 +206,9 @@ public class trainerPortraitController {
 
 
     @FXML
-    void trainer_portrait_bookLiveSession_click(ActionEvent event) throws IOException {
+    void trainer_portrait_bookLiveSession_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) trainer_logout_hyper.getScene().getWindow();
+        new APP().jump(stage, "tra_trainer_calendar");
 
     }
 
@@ -302,6 +302,7 @@ public class trainerPortraitController {
         assert user_recEnter_hyper611 != null : "fx:id=\"user_recEnter_hyper611\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         TrainerDAOImpl TrainerDAO = new TrainerDAOImpl();
         trainer_portrait_name.setText(TrainerDAO.queryByUserName("kaiyi").getUserName());
+        passValue.setTrainerName(trainer_portrait_name.getText());
         String [] str = new String [5];
         str=TrainerDAO.queryByUserName("kaiyi").getLabel();
         int count=0;

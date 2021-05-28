@@ -162,7 +162,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </TextArea>
-                              <Hyperlink fx:id="trainer_portrait_bookLiveSession" layoutX="37.0" layoutY="639.0" onAction="#trainer_portrait_bookLiveSession_click" text="Book Live Session 👉">
+                              <Hyperlink fx:id="trainer_portrait_bookLiveSession" layoutX="37.0" layoutY="639.0" onMouseClicked="#trainer_portrait_bookLiveSession_click" text="Book Live Session 👉">
                                  <font>
                                     <Font name="Baskerville Old Face" size="36.0" />
                                  </font>

@@ -322,7 +322,7 @@
                               <Font name="Comic Sans MS Bold Italic" size="11.0" />
                            </font>
                         </Button>
-                        <Label fx:id="status10" text="scheduled-Jane" textFill="#cd6e62" GridPane.columnIndex="1">
+                        <Label fx:id="status10" text="Not scheduled" textFill="#4cbf78" GridPane.columnIndex="1">
                            <font>
                               <Font name="Comic Sans MS Bold" size="15.0" />
                            </font>
@@ -462,57 +462,57 @@
                               <Font name="Comic Sans MS Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Button fx:id="book21" mnemonicParsing="false" onMouseClicked="#click_book31" prefHeight="20.0" prefWidth="59.0" text="reserve" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <Button fx:id="book21" mnemonicParsing="false" onMouseClicked="#click_book21" prefHeight="20.0" prefWidth="59.0" text="reserve" GridPane.columnIndex="2" GridPane.rowIndex="1">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="book51" mnemonicParsing="false" onMouseClicked="#click_book31" prefHeight="20.0" prefWidth="59.0" text="reserve" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                        <Button fx:id="book51" mnemonicParsing="false" onMouseClicked="#click_book51" prefHeight="20.0" prefWidth="59.0" text="reserve" GridPane.columnIndex="5" GridPane.rowIndex="1">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="book33" mnemonicParsing="false" onMouseClicked="#click_book23" prefHeight="20.0" prefWidth="59.0" text="reserve" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                        <Button fx:id="book33" mnemonicParsing="false" onMouseClicked="#click_book33" prefHeight="20.0" prefWidth="59.0" text="reserve" GridPane.columnIndex="3" GridPane.rowIndex="3">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="book63" mnemonicParsing="false" onMouseClicked="#click_book53" prefHeight="20.0" prefWidth="59.0" text="reserve" GridPane.columnIndex="6" GridPane.rowIndex="3">
+                        <Button fx:id="book63" mnemonicParsing="false" onMouseClicked="#click_book63" prefHeight="20.0" prefWidth="59.0" text="reserve" GridPane.columnIndex="6" GridPane.rowIndex="3">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="book37" mnemonicParsing="false" onMouseClicked="#click_book27" prefHeight="20.0" prefWidth="59.0" text="reserve" GridPane.columnIndex="3" GridPane.rowIndex="7">
+                        <Button fx:id="book37" mnemonicParsing="false" onMouseClicked="#click_book37" prefHeight="20.0" prefWidth="59.0" text="reserve" GridPane.columnIndex="3" GridPane.rowIndex="7">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="book47" mnemonicParsing="false" onMouseClicked="#click_book27" prefHeight="20.0" prefWidth="59.0" text="reserve" GridPane.columnIndex="4" GridPane.rowIndex="7">
+                        <Button fx:id="book47" mnemonicParsing="false" onMouseClicked="#click_book47" prefHeight="20.0" prefWidth="59.0" text="reserve" GridPane.columnIndex="4" GridPane.rowIndex="7">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="book09" mnemonicParsing="false" onMouseClicked="#click_book07" prefHeight="20.0" prefWidth="59.0" text="reserve" GridPane.rowIndex="9">
+                        <Button fx:id="book09" mnemonicParsing="false" onMouseClicked="#click_book09" prefHeight="20.0" prefWidth="59.0" text="reserve" GridPane.rowIndex="9">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="book19" mnemonicParsing="false" onMouseClicked="#click_book07" prefHeight="20.0" prefWidth="59.0" text="reserve" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                        <Button fx:id="book19" mnemonicParsing="false" onMouseClicked="#click_book19" prefHeight="20.0" prefWidth="59.0" text="reserve" GridPane.columnIndex="1" GridPane.rowIndex="9">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="book69" mnemonicParsing="false" onMouseClicked="#click_book59" prefHeight="20.0" prefWidth="59.0" text="reserve" GridPane.columnIndex="6" GridPane.rowIndex="9">
+                        <Button fx:id="book69" mnemonicParsing="false" onMouseClicked="#click_book69" prefHeight="20.0" prefWidth="59.0" text="reserve" GridPane.columnIndex="6" GridPane.rowIndex="9">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="book211" mnemonicParsing="false" onMouseClicked="#click_book111" prefHeight="20.0" prefWidth="59.0" text="reserve" GridPane.columnIndex="2" GridPane.rowIndex="11">
+                        <Button fx:id="book211" mnemonicParsing="false" onMouseClicked="#click_book211" prefHeight="20.0" prefWidth="59.0" text="reserve" GridPane.columnIndex="2" GridPane.rowIndex="11">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="book411" mnemonicParsing="false" onMouseClicked="#click_book311" prefHeight="20.0" prefWidth="59.0" text="reserve" GridPane.columnIndex="4" GridPane.rowIndex="11">
+                        <Button fx:id="book411" mnemonicParsing="false" onMouseClicked="#click_book411" prefHeight="20.0" prefWidth="59.0" text="reserve" GridPane.columnIndex="4" GridPane.rowIndex="11">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="11.0" />
                            </font>
@@ -557,7 +557,7 @@
       </SplitPane>
       <ImageView fitHeight="73.0" fitWidth="104.0" layoutX="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="..\resource\logo.png" />
+            <Image url="@Resource/logo.png" />
          </image>
       </ImageView>
    </children>

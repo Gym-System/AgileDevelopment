@@ -1,5 +1,7 @@
 package ControlClass;
 
+import EntityClass.DAO.impl.RecVideoDAOImpl;
+import EntityClass.DAO.impl.UserDAOImpl;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -242,19 +244,24 @@ public class PlayerController_ref implements Initializable {
     }
 
     @FXML
-    void user_history_click(ActionEvent event) throws IOException {
+    void user_history_click(MouseEvent event) throws IOException {
         Stage stage = (Stage) user_history_hyper.getScene().getWindow();
         new APP().jump(stage,"user_history");
     }
 
     @FXML
-    void user_logout_click(ActionEvent event) {
-
+    void user_logout_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_history_hyper.getScene().getWindow();
+        new APP().jump(stage,"login");
     }
 
     @FXML
-    void add_collect(ActionEvent event) {
-
+    void add_collect(MouseEvent event) {
+        RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
+        //recVideoDAO.
+        long courseid = 0;
+        UserDAOImpl UserDAO = new UserDAOImpl();
+        UserDAO.queryByUserName(passValue.getValue()).favoriteVideo(courseid);
     }
 
     @FXML
@@ -321,7 +328,7 @@ public class PlayerController_ref implements Initializable {
         this.url = url;
         this.popup = popup;
 
-        File file = new File("src/resource/WeChat_20210427231911.mp4");
+        File file = new File("src/BoundaryClass/Resource/WeChat_20210427231911.mp4");
         url = file.toURI().toString();
         System.out.println(url);
 

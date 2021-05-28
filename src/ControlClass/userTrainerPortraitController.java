@@ -169,38 +169,45 @@ public class userTrainerPortraitController {
     private Hyperlink user_trainer_portrait_recEnter_yoga2_hyper1;
 
     @FXML
-    void user_trainer_portrait_favoraites_click(ActionEvent event) {
-
+    void user_trainer_portrait_favoraites_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) user_recDur_hitt1_label.getScene().getWindow();
+        new APP().jump(stage, "user_favorites");
     }
 
     @FXML
-    void user_trainer_portrait_recording_click(ActionEvent event) {
-
+    void user_trainer_portrait_recording_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) user_recDur_hitt1_label.getScene().getWindow();
+        new APP().jump(stage, "user_recording");
     }
 
     @FXML
-    void user_trainer_portrait_live_click(ActionEvent event) {
-
+    void user_trainer_portrait_live_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) user_recDur_hitt1_label.getScene().getWindow();
+        new APP().jump(stage, "user_live");
     }
 
     @FXML
-    void user_trainer_portrait_calendar_click(ActionEvent event) {
-
+    void user_trainer_portrait_calendar_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) user_recDur_hitt1_label.getScene().getWindow();
+        new APP().jump(stage, "user_calendar");
     }
 
     @FXML
-    void user_trainer_portrait_history_click(ActionEvent event) {
-
+    void user_trainer_portrait_history_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) user_recDur_hitt1_label.getScene().getWindow();
+        new APP().jump(stage, "user_history");
     }
 
     @FXML
-    void user_trainer_portrait_info_click(ActionEvent event) {
-
+    void user_trainer_portrait_info_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) user_recDur_hitt1_label.getScene().getWindow();
+        new APP().jump(stage, "user_history");
     }
 
     @FXML
-    void user_trainer_portrait_logout_click(ActionEvent event) {
-
+    void user_trainer_portrait_logout_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) user_recDur_hitt1_label.getScene().getWindow();
+        new APP().jump(stage, "login");
     }
 
     @FXML
@@ -304,6 +311,7 @@ public class userTrainerPortraitController {
         assert user_trainer_portrait_user_recEnter_hyper31 != null : "fx:id=\"user_trainer_portrait_user_recEnter_hyper31\" was not injected: check your FXML file 'user_trainerPortrait.fxml'.";
         assert user_trainer_portrait_recEnter_yoga1_hyper1 != null : "fx:id=\"user_trainer_portrait_recEnter_yoga1_hyper1\" was not injected: check your FXML file 'user_trainerPortrait.fxml'.";
         assert user_trainer_portrait_recEnter_yoga2_hyper1 != null : "fx:id=\"user_trainer_portrait_recEnter_yoga2_hyper1\" was not injected: check your FXML file 'user_trainerPortrait.fxml'.";
+        //passValue.setTrainerName("kaiyi");
         TrainerDAOImpl TrainerDAO = new TrainerDAOImpl();
         user_trainer_portrait_name.setText(TrainerDAO.queryByUserName("kaiyi").getUserName());
         String [] str = new String [5];

@@ -1,5 +1,6 @@
 package ControlClass;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -7,7 +8,6 @@ import java.util.ResourceBundle;
 
 import EntityClass.DAO.impl.TrainerDAOImpl;
 import EntityClass.VO.Trainer;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -18,6 +18,7 @@ import javafx.scene.control.Pagination;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class manageIncomeController {
@@ -139,28 +140,33 @@ public class manageIncomeController {
     ArrayList<Trainer> trainers = TrainerDAO.queryAll();
 
     @FXML
-    void click_user_hyplink_mi(ActionEvent event) {
-
+    void click_user_hyplink_mi(MouseEvent event) throws IOException {
+        Stage stage = (Stage) name4_mi.getScene().getWindow();
+        new APP().jump(stage, "manage_user");
     }
 
     @FXML
-    void click_trainer_hyplink_mi(ActionEvent event) {
-
+    void click_trainer_hyplink_mi(MouseEvent event) throws IOException {
+        Stage stage = (Stage) name4_mi.getScene().getWindow();
+        new APP().jump(stage, "manage_trainer");
     }
 
     @FXML
-    void click_income_hyplink_mi(ActionEvent event) {
-
+    void click_income_hyplink_mi(MouseEvent event) throws IOException {
+        Stage stage = (Stage) name4_mi.getScene().getWindow();
+        new APP().jump(stage, "manage_income");
     }
 
     @FXML
-    void click_regu_hyplink_mi(ActionEvent event) {
-
+    void click_regu_hyplink_mi(MouseEvent event) throws IOException {
+        Stage stage = (Stage) name4_mi.getScene().getWindow();
+        new APP().jump(stage, "manage_income");
     }
 
     @FXML
-    void click_out_hyplink_mi(ActionEvent event) {
-
+    void click_out_hyplink_mi(MouseEvent event) throws IOException {
+        Stage stage = (Stage) name4_mi.getScene().getWindow();
+        new APP().jump(stage, "login");
     }
 
     @FXML
