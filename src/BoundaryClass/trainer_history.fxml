@@ -56,27 +56,27 @@
                         </ImageView>
                         <Hyperlink fx:id="trainer_portrait_portrait" onAction="#trainer_portrait_portrait_click" text="Portrait" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
-                              <Font name="Baskerville Old Face" size="36.0" />
+                              <Font name="Comic Sans MS Bold" size="36.0" />
                            </font>
                         </Hyperlink>
                         <Hyperlink fx:id="trainer_portrait_upload" onAction="#trainer_portrait_upload_click" text="Upload" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
-                              <Font name="Baskerville Old Face" size="36.0" />
+                              <Font name="Comic Sans MS Bold" size="36.0" />
                            </font>
                         </Hyperlink>
                         <Hyperlink fx:id="trainer_portrait_live" onAction="#trainer_portrait_live_click" text="Live" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
-                              <Font name="Baskerville Old Face" size="36.0" />
+                              <Font name="Comic Sans MS Bold" size="36.0" />
                            </font>
                         </Hyperlink>
                         <Hyperlink fx:id="trainer_portrait_calendar" onAction="#trainer_portrait_calendar_click" text="Calendar" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
-                              <Font name="Baskerville Old Face" size="36.0" />
+                              <Font name="Comic Sans MS Bold" size="36.0" />
                            </font>
                         </Hyperlink>
                         <Hyperlink fx:id="trainer_portrait_history" onAction="#trainer_portrait_history_click" text="History" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <font>
-                              <Font name="Baskerville Old Face" size="36.0" />
+                              <Font name="Comic Sans MS Bold" size="36.0" />
                            </font>
                         </Hyperlink>
                         <ImageView fx:id="trainer_portrait_info" fitHeight="150.0" fitWidth="200.0" layoutX="10.0" onDragDetected="#trainer_portrait_info_click" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
@@ -120,7 +120,7 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <ToolBar layoutX="77.0" layoutY="235.0" prefHeight="44.0" prefWidth="856.0">
+                  <ToolBar layoutX="77.0" layoutY="161.0" prefHeight="44.0" prefWidth="856.0">
                      <items>
                         <Label fx:id="history_live1" prefHeight="23.0" prefWidth="174.0" text="Live" textAlignment="RIGHT" textFill="#6d6aa3">
                            <font>
@@ -156,7 +156,7 @@
                      </font>
                   </Button>
                   <TextField fx:id="trainer_find_text" layoutX="77.0" layoutY="39.0" prefHeight="56.0" prefWidth="332.0" />
-                  <ToolBar layoutX="77.0" layoutY="279.0" prefHeight="44.0" prefWidth="856.0">
+                  <ToolBar layoutX="77.0" layoutY="205.0" prefHeight="44.0" prefWidth="856.0">
                      <items>
                         <Label fx:id="history_live2" prefHeight="23.0" prefWidth="174.0" text="Live" textAlignment="RIGHT" textFill="#6d6aa3">
                            <font>
