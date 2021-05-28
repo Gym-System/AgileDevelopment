@@ -11,7 +11,7 @@ public class APP extends javafx.application.Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         System.out.println(getClass().getResource("../fxml/user_recording_video.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("../BoundaryClass/trainer_live.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../BoundaryClass/user_recording_video.fxml"));
         Scene scene = new Scene(root, 1350, 807);
 //        passValue.setStage(primaryStage);
 //        System.out.println(passValue.getStage());
@@ -28,7 +28,7 @@ public class APP extends javafx.application.Application{
 
 
     public void jump(Stage stage,String path) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/"+path+".fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../BoundaryClass/"+path+".fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

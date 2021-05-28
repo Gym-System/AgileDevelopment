@@ -145,7 +145,7 @@ public class loginController {
                     String True_password = trainerDAO.queryByUserName(login_usename.getText()).getPassword(); //get from UserDAO
                     if (login_password.getText().equals(True_password)) {
                         Stage stage = (Stage) login_button.getScene().getWindow();
-                        new APP().jump(stage, "user_trainerPortrait");
+                        new APP().jump(stage, "trainer_portrait");
                     } else {
                         password1.setVisible(false);
                         password2.setVisible(true);
