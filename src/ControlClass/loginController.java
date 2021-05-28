@@ -27,25 +27,31 @@ public class loginController {
     private URL location;
 
     @FXML
+    private Button login_button;
+
+    @FXML
+    private ImageView user_image;
+
+    @FXML
+    private ToggleGroup login_type;
+
+    @FXML
+    private RadioButton type_user;
+
+    @FXML
+    private ImageView lock_image;
+
+    @FXML
     private Hyperlink no_account;
 
     @FXML
     private Hyperlink forget_password;
 
     @FXML
-    private Button login_button;
-
-    @FXML
     private PasswordField login_password;
 
     @FXML
-    private ImageView user_image;
-
-    @FXML
-    private ImageView lock_image;
-
-    @FXML
-    private TextField login_usename;
+    private RadioButton type_manager;
 
     @FXML
     private Label password2;
@@ -54,10 +60,16 @@ public class loginController {
     private Label password1;
 
     @FXML
+    private Label username2;
+
+    @FXML
+    private RadioButton type_trainer;
+
+    @FXML
     private Label username1;
 
     @FXML
-    private Label username2;
+    private TextField login_usename;
 //    public static passValue model = new passValue();
     @FXML
     void forget_password_click(ActionEvent event){
