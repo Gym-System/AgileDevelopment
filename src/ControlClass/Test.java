@@ -511,6 +511,7 @@ public class Test {
         }
          */
 
+        /*
         Trainer trainer = null;
         try {
             trainer = new Trainer("kaiyi",
@@ -537,27 +538,40 @@ public class Test {
 
         trainer1 = trainerDAO.queryByUserName("kaiyi");
         System.out.println(trainer1);
-
-        /*
-        User user = null;
+        */
+        Trainer trainer = null;
         try {
-            user = new User("kaiyi",
+            trainer = new Trainer("kaiyi",
                     "123",
                     "zhaokaiyi@bupt.edu.cn",
                     "Male",
                     "18810282618",
-                    new SimpleDateFormat("yyyy-MM-dd").parse("1999-11-25"));
+                    new SimpleDateFormat("yyyy-MM-dd").parse("1999-11-25"),
+                    "London Fitness");
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        System.out.println(user);
 
-        user.bookLiveSession("kaiyi", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-28T10:00:00"));
-        user.bookLiveSession("kaiyi", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-28T14:00:00"));
-        user.bookLiveSession("kaiyi", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-29T10:00:00"));
-        user.bookLiveSession("kaiyi", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-30T14:00:00"));
-        user.bookLiveSession("kaiyi", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-31T10:00:00"));
-        user.bookLiveSession("kaiyi", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-31T14:00:00"));
-         */
+        PremierUser premierUser = null;
+        try {
+            premierUser = new PremierUser("kaiyi",
+                    "123",
+                    "zhaokaiyi@bupt.edu.cn",
+                    "Male",
+                    "18810282618",
+                    new SimpleDateFormat("yyyy-MM-dd").parse("1999-11-25"),
+                    1000.0,
+                    2);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        System.out.println(premierUser);
+
+        premierUser.bookLiveSession(trainer, new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-28T10:00:00"));
+        premierUser.bookLiveSession(trainer, new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-28T14:00:00"));
+        premierUser.bookLiveSession(trainer, new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-29T10:00:00"));
+        premierUser.bookLiveSession(trainer, new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-30T14:00:00"));
+        premierUser.bookLiveSession(trainer, new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-31T10:00:00"));
+        premierUser.bookLiveSession(trainer, new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-31T14:00:00"));
     }
 }
