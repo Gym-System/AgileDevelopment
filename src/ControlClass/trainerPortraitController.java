@@ -47,6 +47,9 @@ public class trainerPortraitController {
     private ImageView user_recPic_yoga1;
 
     @FXML
+    private Hyperlink trainer_logout_hyper;
+
+    @FXML
     private Hyperlink trainer_portrait_recEnter_yoga1_hyper1;
 
     @FXML
@@ -246,6 +249,11 @@ public class trainerPortraitController {
     }
 
     @FXML
+    void trainer_logout_click(ActionEvent event) {
+
+    }
+
+    @FXML
     void initialize() {
         assert trainer_portrait_name != null : "fx:id=\"trainer_portrait_name\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert recName_hitt2_label != null : "fx:id=\"recName_hitt2_label\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
@@ -258,6 +266,7 @@ public class trainerPortraitController {
         assert trainer_portrait_recDur_yoga2_label != null : "fx:id=\"trainer_portrait_recDur_yoga2_label\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert trainer_portrait_portrait != null : "fx:id=\"trainer_portrait_portrait\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert recCoa_strenght2_label != null : "fx:id=\"recCoa_strenght2_label\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
+        assert label_grid != null : "fx:id=\"label_grid\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert trainer_portrait_recCoa_yoga1_label != null : "fx:id=\"trainer_portrait_recCoa_yoga1_label\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert trainer_portrait_recName_yoga2_label != null : "fx:id=\"trainer_portrait_recName_yoga2_label\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert user_recPic_strength1 != null : "fx:id=\"user_recPic_strength1\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
@@ -273,6 +282,7 @@ public class trainerPortraitController {
         assert user_recPic_strength2 != null : "fx:id=\"user_recPic_strength2\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert trainer_portrait_recCoa_yoga2_label != null : "fx:id=\"trainer_portrait_recCoa_yoga2_label\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert trainer_portrait_pic3 != null : "fx:id=\"trainer_portrait_pic3\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
+        assert trainer_logout_hyper != null : "fx:id=\"trainer_logout_hyper\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert recCoa_hitt1_label != null : "fx:id=\"recCoa_hitt1_label\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert trainer_portrait_pic1 != null : "fx:id=\"trainer_portrait_pic1\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert recDur_strength2_label != null : "fx:id=\"recDur_strength2_label\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
@@ -282,17 +292,12 @@ public class trainerPortraitController {
         assert trainer_recording_display != null : "fx:id=\"trainer_recording_display\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert trainer_portrait_recEnter_yoga2_hyper1 != null : "fx:id=\"trainer_portrait_recEnter_yoga2_hyper1\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert trainer_portrait_user_recEnter_hyper31 != null : "fx:id=\"trainer_portrait_user_recEnter_hyper31\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
-        assert trainer_portrait_label3 != null : "fx:id=\"trainer_portrait_label3\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert recCoa_strenght1_label != null : "fx:id=\"recCoa_strenght1_label\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
-        assert trainer_portrait_label2 != null : "fx:id=\"trainer_portrait_label2\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
-        assert trainer_portrait_label5 != null : "fx:id=\"trainer_portrait_label5\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert user_recPic_hitt1 != null : "fx:id=\"user_recPic_hitt1\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
-        assert trainer_portrait_label4 != null : "fx:id=\"trainer_portrait_label4\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert recDur_hitt1_label != null : "fx:id=\"recDur_hitt1_label\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert trainer_portrait_upload != null : "fx:id=\"trainer_portrait_upload\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert trainer_portrait_bookLiveSession != null : "fx:id=\"trainer_portrait_bookLiveSession\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert recName_strength1_label != null : "fx:id=\"recName_strength1_label\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
-        assert trainer_portrait_label1 != null : "fx:id=\"trainer_portrait_label1\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert trainer_portrait_history != null : "fx:id=\"trainer_portrait_history\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert user_recEnter_hyper611 != null : "fx:id=\"user_recEnter_hyper611\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         TrainerDAOImpl TrainerDAO = new TrainerDAOImpl();
