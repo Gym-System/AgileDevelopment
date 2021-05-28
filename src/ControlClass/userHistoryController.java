@@ -20,8 +20,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -192,32 +194,39 @@ public class userHistoryController implements Initializable {
 
 
     @FXML
-    void user_favorites_click(ActionEvent event) {
-
+    void user_favorites_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_facorites_hyper.getScene().getWindow();
+        new APP().jump(stage,"user_favorites");
     }
 
     @FXML
-    void user_recording_click(ActionEvent event) {
-
+    void user_recording_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_recording_hyper.getScene().getWindow();
+        new APP().jump(stage,"user_recording");
     }
 
     @FXML
-    void user_live_click(ActionEvent event) {
-
+    void user_live_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_live_hyper.getScene().getWindow();
+        new APP().jump(stage,"user_live");
     }
 
     @FXML
-    void user_calendar_click(ActionEvent event) {
-
+    void user_calendar_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_calendar_hyper.getScene().getWindow();
+        new APP().jump(stage,"user_calendar");
     }
 
     @FXML
-    void user_history_click(ActionEvent event) {
-
+    void user_history_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_history_hyper.getScene().getWindow();
+        new APP().jump(stage,"user_history");
     }
 
     @FXML
-    void user_logout_click(ActionEvent event) {
+    void user_logout_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_history_hyper.getScene().getWindow();
+        new APP().jump(stage,"login");
 
     }
 

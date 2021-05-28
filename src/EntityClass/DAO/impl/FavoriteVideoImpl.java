@@ -40,7 +40,7 @@ public class FavoriteVideoImpl implements FavoriteVideoDAO {
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
                 if(userName.equals(record[0])) {
-                    favoriteVideo = new FavoriteVideo(record[0], Long.parseLong(record[2]));
+                    favoriteVideo = new FavoriteVideo(record[0], Long.parseLong(record[1]));
                     favoriteVideos.add(favoriteVideo);
                 }
             }
