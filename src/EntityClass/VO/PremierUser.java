@@ -1,5 +1,8 @@
 package EntityClass.VO;
 
+import EntityClass.DAO.impl.HistoryDataDAOImpl;
+import EntityClass.DAO.impl.LiveSessionDAOImpl;
+
 import java.util.Date;
 
 public class PremierUser extends User {
@@ -30,6 +33,28 @@ public class PremierUser extends User {
         double discount = price * (1 - userType /10);
 
         return discount;
+    }
+
+    public boolean bookLiveSession(Trainer trainer, Date startTime) {
+        boolean flag = false;
+
+        if(getBalance() > calDiscount(trainer.getPrice())) {
+            setBalance(getBalance() - calDiscount(trainer.getPrice()));
+            flag = true;
+        }
+
+        if(flag) {
+            LiveSession liveSession = new LiveSession(null, 2, startTime, trainer.getUserName(), getUserName());
+            LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
+            liveSessionDAO.insertLiveSession(liveSession);
+
+            String type = "live";
+            HistoryData historyData = new HistoryData(super.getUserName(), type, liveSession.getCourseId());
+            HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
+            historyDataDAO.insertHistoryData(historyData);
+        }
+
+        return flag;
     }
 
     @Override

@@ -46,17 +46,6 @@ public class User extends Person {
         recVideoDAO.changeRecVideoViewTime(courseId, viewTime + 1);
     }
 
-    public void bookLiveSession(String trainerName, Date startTime) {
-        LiveSession liveSession = new LiveSession(null, 2, startTime, trainerName, getUserName());
-        LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
-        liveSessionDAO.insertLiveSession(liveSession);
-
-        String type = "live";
-        HistoryData historyData = new HistoryData(super.getUserName(), type, liveSession.getCourseId());
-        HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
-        historyDataDAO.insertHistoryData(historyData);
-    }
-
     public void cancelLiveSession(long courseId) {
         LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
         liveSessionDAO.deleteLiveSession(courseId);
