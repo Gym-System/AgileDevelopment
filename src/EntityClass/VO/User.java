@@ -77,13 +77,15 @@ public class User extends Person {
         Date endTime = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
                 new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
 
+        ArrayList<LiveSession> liveSessions1 = new ArrayList<LiveSession>();
+
         for (LiveSession liveSession:liveSessions) {
-            if(!liveSession.getStartTime().after(startTime) || !liveSession.getStartTime().before(endTime)) {
-                liveSessions.remove(liveSession);
+            if(liveSession.getStartTime().after(startTime) && liveSession.getStartTime().before(endTime)) {
+                liveSessions1.add(liveSession);
             }
         }
 
-        return liveSessions;
+        return liveSessions1;
     }
 
     public void sendGift(int amount, long courseId) {
