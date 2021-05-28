@@ -28,7 +28,7 @@ public class APP extends javafx.application.Application{
 
 
     public void jump(Stage stage,String path) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/"+path+".fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../BoundaryClass/"+path+".fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
