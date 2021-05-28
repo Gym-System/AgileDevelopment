@@ -1,10 +1,18 @@
 package ControlClass;
 
-import EntityClass.DAO.impl.HistoryDataDAOImpl;
-import EntityClass.VO.HistoryData;
+import EntityClass.DAO.WatchedVideoDAO;
+
+import EntityClass.DAO.impl.LiveSessionDAOImpl;
+import EntityClass.DAO.impl.RecVideoDAOImpl;
+import EntityClass.DAO.impl.WatchedVideoDAOImpl;
+
+import EntityClass.VO.LiveSession;
+import EntityClass.VO.RecVideo;
+import EntityClass.VO.WatchedVideo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
@@ -12,6 +20,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.util.Callback;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -178,7 +188,7 @@ public class userHistoryController implements Initializable {
     @FXML
     private CheckBox history_recording_check;
 
-    HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
+    WatchedVideoDAOImpl watchedVideoDAO = new WatchedVideoDAOImpl();
 
 
     @FXML
@@ -286,7 +296,78 @@ public class userHistoryController implements Initializable {
         labelTime[8] = history_time9;
         labelTime[9] = history_time10;
 
-        ArrayList<HistoryData> historyData = historyDataDAO.queryByUserName("kaiyi");
+        ArrayList<WatchedVideo> watchedVideos = watchedVideoDAO.queryByUserName("kaiyi");
 
+
+        turn_page.setPageCount((int) Math.ceil(watchedVideos.size()/10.0));
+        turn_page.setPageFactory(new Callback<Integer, Node>() {
+            @Override
+            public Node call(Integer param) {
+                VBox vbox = new VBox();
+                int limit = 10;
+                if (param.intValue() == watchedVideos.size()/10) {
+                    limit = watchedVideos.size()%4;
+                }
+
+                if(param.intValue() < watchedVideos.size()/10){
+                    LiveSessionDAOImpl liveSessionDAO;
+                    LiveSession liveSession;
+                    RecVideoDAOImpl recVideoDAO;
+                    RecVideo recVideo;
+                    for (int i =0; i <limit; i++){
+                        labelCategory[i].setText(watchedVideos.get(10 * param.intValue() + i).getType());
+                        if (watchedVideos.get(10 * param.intValue() + i).getType().equals("live")) {
+                            liveSessionDAO = new LiveSessionDAOImpl();
+                            liveSession = liveSessionDAO.queryByCourseId(watchedVideos.get(10 * param.intValue() + i).getCourseId());
+                            labelName[i].setText(liveSession.getSubject());
+                            labelCoach[i].setText(liveSession.getTrainerName());
+                            labelTime[i].setText(String.valueOf(liveSession.getStartTime()));
+                        } else {
+                            recVideoDAO = new RecVideoDAOImpl();
+                            recVideo = recVideoDAO.queryByCourseId(watchedVideos.get(10 * param.intValue() + i).getCourseId());
+                            labelName[i].setText(recVideo.getSubject());
+                            labelCoach[i].setText(recVideo.getUserName());
+                            labelTime[i].setText(String.valueOf(recVideo.getUploadedTime()));
+                        }
+
+
+
+                    }
+
+                } else {
+                    LiveSessionDAOImpl liveSessionDAO;
+                    LiveSession liveSession;
+                    RecVideoDAOImpl recVideoDAO;
+                    RecVideo recVideo;
+                    for (int i =0; i <limit; i++){
+                        labelCategory[i].setText(watchedVideos.get(10 * param.intValue() + i).getType());
+                        if (watchedVideos.get(10 * param.intValue() + i).getType().equals("live")) {
+                            liveSessionDAO = new LiveSessionDAOImpl();
+                            liveSession = liveSessionDAO.queryByCourseId(watchedVideos.get(10 * param.intValue() + i).getCourseId());
+                            labelName[i].setText(liveSession.getSubject());
+                            labelCoach[i].setText(liveSession.getTrainerName());
+                            labelTime[i].setText(String.valueOf(liveSession.getStartTime()));
+                        } else {
+                            recVideoDAO = new RecVideoDAOImpl();
+                            recVideo = recVideoDAO.queryByCourseId(watchedVideos.get(10 * param.intValue() + i).getCourseId());
+                            labelName[i].setText(recVideo.getSubject());
+                            labelCoach[i].setText(recVideo.getUserName());
+                            labelTime[i].setText(String.valueOf(recVideo.getUploadedTime()));
+                        }
+                    }
+                    for (int i = limit; i<10; i++){
+                        labelCategory[i].setText("");
+                        labelName[i].setText("");
+                        labelCoach[i].setText("");
+                        labelTime[i].setText("");
+                    }
+
+                }
+
+
+
+                return vbox;
+            }
+        });
     }
 }
