@@ -2,6 +2,7 @@ package ControlClass;
 
 import java.awt.*;
 import java.awt.Paint;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -20,6 +21,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 public class trainerPortraitController {
 
@@ -203,7 +205,7 @@ public class trainerPortraitController {
 
 
     @FXML
-    void trainer_portrait_bookLiveSession_click(ActionEvent event) {
+    void trainer_portrait_bookLiveSession_click(ActionEvent event) throws IOException {
 
     }
 

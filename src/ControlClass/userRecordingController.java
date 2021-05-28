@@ -251,7 +251,7 @@ public class userRecordingController implements Initializable {
                             labelName[i].setText(recVideos.get(6 * param.intValue() + i).getSubject());
                             labelDur[i].setText("Duration: " + String.valueOf(recVideos.get(6 * param.intValue() + i).getLength()));
                             labelCoa[i].setText(recVideos.get(6 * param.intValue() + i).getUserName());
-                            imageViews[i].setImage(new Image("resource/yoga2.jpg"));
+                            imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga2.jpg"));
                         }
 
                     } else {
@@ -259,7 +259,7 @@ public class userRecordingController implements Initializable {
                             labelName[i].setText(recVideos.get(6 * param.intValue() + i).getSubject());
                             labelDur[i].setText("Duration: " + String.valueOf(recVideos.get(6 * param.intValue() + i).getLength()));
                             labelCoa[i].setText(recVideos.get(6 * param.intValue() + i).getUserName());
-                            imageViews[i].setImage(new Image("resource/yoga3.jpg"));
+                            imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga3.jpg"));
                         }
                         for (int i = limit; i<6; i++){
                             labelName[i].setText("");
@@ -314,7 +314,7 @@ public class userRecordingController implements Initializable {
                             labelName[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getSubject());
                             labelDur[i].setText("Duration: " + String.valueOf(recVideoArrayList.get(6 * param.intValue() + i).getLength()));
                             labelCoa[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getUserName());
-                            imageViews[i].setImage(new Image("resource/yoga2.jpg"));
+                            imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga2.jpg"));
                         }
 
                     } else {
@@ -322,7 +322,7 @@ public class userRecordingController implements Initializable {
                             labelName[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getSubject());
                             labelDur[i].setText("Duration: " + String.valueOf(recVideoArrayList.get(6 * param.intValue() + i).getLength()));
                             labelCoa[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getUserName());
-                            imageViews[i].setImage(new Image("resource/yoga3.jpg"));
+                            imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga3.jpg"));
                             System.out.println("test");
                         }
                         for (int i = limit; i<6; i++){
@@ -403,7 +403,7 @@ public class userRecordingController implements Initializable {
                             labelName[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getSubject());
                             labelDur[i].setText("Duration: " + String.valueOf(recVideoArrayList.get(6 * param.intValue() + i).getLength()));
                             labelCoa[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getUserName());
-                            imageViews[i].setImage(new Image("resource/yoga2.jpg"));
+                            imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga2.jpg"));
                         }
 
                     } else {
@@ -411,7 +411,7 @@ public class userRecordingController implements Initializable {
                             labelName[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getSubject());
                             labelDur[i].setText("Duration: " + String.valueOf(recVideoArrayList.get(6 * param.intValue() + i).getLength()));
                             labelCoa[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getUserName());
-                            imageViews[i].setImage(new Image("resource/yoga3.jpg"));
+                            imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga3.jpg"));
                             System.out.println("test");
                         }
                         for (int i = limit; i<6; i++){
@@ -485,7 +485,7 @@ public class userRecordingController implements Initializable {
                             labelName[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getSubject());
                             labelDur[i].setText("Duration: " + String.valueOf(recVideoArrayList.get(6 * param.intValue() + i).getLength()));
                             labelCoa[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getUserName());
-                            imageViews[i].setImage(new Image("resource/yoga2.jpg"));
+                            imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga2.jpg"));
                         }
 
                     } else {
@@ -493,7 +493,7 @@ public class userRecordingController implements Initializable {
                             labelName[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getSubject());
                             labelDur[i].setText("Duration: " + String.valueOf(recVideoArrayList.get(6 * param.intValue() + i).getLength()));
                             labelCoa[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getUserName());
-                            imageViews[i].setImage(new Image("resource/yoga3.jpg"));
+                            imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga3.jpg"));
                             System.out.println("strength");
                         }
                         for (int i = limit; i<6; i++){
@@ -568,7 +568,7 @@ public class userRecordingController implements Initializable {
                             labelName[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getSubject());
                             labelDur[i].setText("Duration: " + String.valueOf(recVideoArrayList.get(6 * param.intValue() + i).getLength()));
                             labelCoa[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getUserName());
-                            imageViews[i].setImage(new Image("resource/yoga2.jpg"));
+                            imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga2.jpg"));
                         }
 
                     } else {
@@ -576,7 +576,7 @@ public class userRecordingController implements Initializable {
                             labelName[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getSubject());
                             labelDur[i].setText("Duration: " + String.valueOf(recVideoArrayList.get(6 * param.intValue() + i).getLength()));
                             labelCoa[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getUserName());
-                            imageViews[i].setImage(new Image("resource/yoga3.jpg"));
+                            imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga3.jpg"));
                             System.out.println("test");
                         }
                         for (int i = limit; i<6; i++){
@@ -729,7 +729,7 @@ public class userRecordingController implements Initializable {
                         labelName[i].setText(recVideos.get(6 * param.intValue() + i).getSubject());
                         labelDur[i].setText("Duration: " + String.valueOf(recVideos.get(6 * param.intValue() + i).getLength()));
                         labelCoa[i].setText(recVideos.get(6 * param.intValue() + i).getUserName());
-                        imageViews[i].setImage(new Image("resource/yoga2.jpg"));
+                        imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga2.jpg"));
                     }
 
                 } else {
@@ -737,7 +737,7 @@ public class userRecordingController implements Initializable {
                         labelName[i].setText(recVideos.get(6 * param.intValue() + i).getSubject());
                         labelDur[i].setText("Duration: " + String.valueOf(recVideos.get(6 * param.intValue() + i).getLength()));
                         labelCoa[i].setText(recVideos.get(6 * param.intValue() + i).getUserName());
-                        imageViews[i].setImage(new Image("resource/yoga3.jpg"));
+                        imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga3.jpg"));
                     }
                     for (int i = limit; i<6; i++){
                         labelName[i].setText("");

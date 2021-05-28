@@ -1131,7 +1131,8 @@ public class trainerCalendarController {
         trainer_calendar_7.setText(df.format(date7));
         Trainer trainer;
         TrainerDAOImpl TrainerDAO = new TrainerDAOImpl();
-        trainer = TrainerDAO.queryByUserName("kaiyi");
+        trainer = TrainerDAO.queryByUserName(passValue.getValue());
+        trainer_calendar_time21.setText(trainer.getUserName()+"'s Time Table");
         ArrayList<LiveSession> recent = new ArrayList<LiveSession>();
         recent = trainer.showCalender();
         for (LiveSession liveSession : recent) {

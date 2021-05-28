@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="807.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControlClass.userLiveController">
+   <children>
+      <ImageView fx:id="logo" fitHeight="73.0" fitWidth="294.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Resource/logo.png" />
+         </image>
+      </ImageView>
+      <SplitPane dividerPositions="0.2229" layoutX="244.0" layoutY="202.0" prefHeight="807.0" prefWidth="1350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.3">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <GridPane layoutX="38.0" prefHeight="805.0" prefWidth="297.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="10.0" prefWidth="125.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.0" minWidth="10.0" prefWidth="220.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="174.0" minHeight="10.0" prefHeight="131.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="87.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                           <viewport>
+                              <Rectangle2D />
+                           </viewport>
+                        </ImageView>
+                        <Hyperlink fx:id="user_facorites_hyper" onMouseClicked="#user_favorites_click" text="Favorites" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="30.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink fx:id="user_recording_hyper" onMouseClicked="#user_recording_click" text="Recording" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="30.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink fx:id="user_live_hyper" onMouseClicked="#user_live_click" text="Live" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="30.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink fx:id="user_calendar_hyper" onMouseClicked="#user_calendar_click" text="Calendar" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="30.0" />
+                           </font>
+                        </Hyperlink>
+                        <ImageView fx:id="user_profile_pic" fitHeight="105.0" fitWidth="102.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
+                           <image>
+                              <Image url="@Resource/user_Profile.jpg" />
+                           </image>
+                        </ImageView>
+                        <Hyperlink fx:id="user_history_hyper" layoutX="86.0" layoutY="438.0" onMouseClicked="#user_history_click" text="History" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="30.0" />
+                           </font>
+                        </Hyperlink>
+                        <Hyperlink fx:id="user_logout_hyper" onMouseClicked="#user_logout_click" text="Log out" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="30.0" />
+                           </font>
+                        </Hyperlink>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TextField fx:id="user_find_text" layoutX="60.0" layoutY="53.0" prefHeight="56.0" prefWidth="332.0" />
+                  <Button fx:id="user_find_button" layoutX="392.0" layoutY="53.0" mnemonicParsing="false" onMouseClicked="#click_find" prefHeight="56.0" prefWidth="89.0" text="Find">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="18.0" />
+                     </font></Button>
+                  <Pagination fx:id="turn_page" layoutX="467.0" layoutY="601.0" onMouseClicked="#click_turn_page" pageCount="100" prefHeight="100.0" prefWidth="660.0">
+                     <cursor>
+                        <Cursor fx:constant="NW_RESIZE" />
+                     </cursor></Pagination>
+                  <CheckBox fx:id="user_yoga_check" layoutX="543.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#click_check_yoga" text="Yoga">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="18.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="user_strength_check" layoutX="771.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#click_check_strength" text="Strength">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="18.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="user_hitt_check" layoutX="658.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#click_check_hitt" text="Hitt">
+                     <font>
+                        <Font name="Comic Sans MS Bold" size="18.0" />
+                     </font>
+                  </CheckBox>
+                  <Separator layoutX="60.0" layoutY="145.0" prefHeight="0.0" prefWidth="856.0" />
+                  <Separator layoutX="60.0" layoutY="228.0" prefHeight="48.0" prefWidth="856.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebebeb" height="313.0" layoutX="60.0" layoutY="282.0" stroke="#94717142" strokeType="INSIDE" strokeWidth="5.0" width="258.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d0d0" height="135.0" layoutX="72.0" layoutY="304.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="234.0" />
+                  <ImageView fx:id="user_livePic_strength1" fitHeight="124.0" fitWidth="244.0" layoutX="79.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Resource/strength1.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="LiveName_trainer1_label" layoutX="84.0" layoutY="456.0" prefHeight="28.0" prefWidth="223.0" text="Yoga, Hitt, Strenght...     ">
+                     <font>
+                        <Font name="Comic Sans MS" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Live_trainer1_label" layoutX="84.0" layoutY="484.0" prefHeight="25.0" prefWidth="215.0" text="Coach: Dexter ">
+                     <font>
+                        <Font name="Comic Sans MS" size="18.0" />
+                     </font>
+                  </Label>
+                  <Hyperlink fx:id="user_BookLive_hyper1" layoutX="147.0" layoutY="548.0" onMouseClicked="#click_BookLive1" text="Book Live Session">
+                     <font>
+                        <Font name="Comic Sans MS Bold Italic" size="18.0" />
+                     </font>
+                  </Hyperlink>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebebeb" height="313.0" layoutX="359.0" layoutY="283.0" stroke="#94717142" strokeType="INSIDE" strokeWidth="5.0" width="258.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d0d0" height="135.0" layoutX="371.0" layoutY="305.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="234.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebebeb" height="313.0" layoutX="658.0" layoutY="282.0" stroke="#94717142" strokeType="INSIDE" strokeWidth="5.0" width="258.0" />
+                  <Label fx:id="LiveName_trainer2_label1" layoutX="383.0" layoutY="457.0" prefHeight="28.0" prefWidth="223.0" text="Yoga, StrenYoga, Hitt, Strenght...     gth   ">
+                     <font>
+                        <Font name="Comic Sans MS" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Live_trainer2_label" layoutX="383.0" layoutY="485.0" prefHeight="25.0" prefWidth="208.0" text="Coach: Lila     ">
+                     <font>
+                        <Font name="Comic Sans MS" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="Live_trainer3_label" layoutX="682.0" layoutY="484.0" prefHeight="25.0" prefWidth="223.0" text="Coach: Rita ">
+                     <font>
+                        <Font name="Comic Sans MS" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="LiveName_trainer3_label2" layoutX="682.0" layoutY="456.0" prefHeight="28.0" prefWidth="223.0" text="Yoga, Hitt, Strenght...     ">
+                     <font>
+                        <Font name="Comic Sans MS" size="18.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d0d0" height="135.0" layoutX="670.0" layoutY="304.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="234.0" />
+                  <ImageView fx:id="user_livePic_strength2" fitHeight="124.0" fitWidth="244.0" layoutX="378.0" layoutY="311.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Resource/strength2.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="user_livePic_yoga3" fitHeight="124.0" fitWidth="244.0" layoutX="677.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Resource/yoga3.jpg" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink fx:id="user_BookLive_hyper2" layoutX="446.0" layoutY="549.0" onMouseClicked="#click_BookLive2" text="Book Live Session">
+                     <font>
+                        <Font name="Comic Sans MS Bold Italic" size="18.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="user_BookLive_hyper3" layoutX="745.0" layoutY="548.0" onMouseClicked="#click_BookLive3" text="Book Live Session">
+                     <font>
+                        <Font name="Comic Sans MS Bold Italic" size="18.0" />
+                     </font>
+                  </Hyperlink>
+                  <ToolBar layoutX="60.0" layoutY="147.0" prefHeight="44.0" prefWidth="856.0">
+                    <items>
+                      <Button fx:id="user_enterLive_button" mnemonicParsing="false" onMouseClicked="#user_enterLive_click" text="Join My Live" textFill="#4ebfbe">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="18.0" />
+                           </font>
+                        </Button>
+                        <Label fx:id="user_enterLive_name" prefHeight="23.0" prefWidth="263.0" text="                        Strength" textAlignment="RIGHT" textFill="#6d6aa3">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="user_enterLive_trainer" prefHeight="23.0" prefWidth="184.0" text="Trainer: Dexter" textFill="#6d6aa3">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="user_enterLive_time" prefHeight="23.0" prefWidth="236.0" text="8:00-10:00   2021-03-25" textFill="#6d6aa3" underline="true">
+                           <font>
+                              <Font name="Comic Sans MS Bold Italic" size="16.0" />
+                           </font>
+                        </Label>
+                    </items>
+                  </ToolBar>
+                  <Label fx:id="cost1" layoutX="84.0" layoutY="510.0" text="\$100/h" textFill="#0f659e">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="cost2" layoutX="383.0" layoutY="510.0" text="\$90/h" textFill="#0f659e">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="cost3" layoutX="677.0" layoutY="510.0" text="\$110/h" textFill="#0f659e">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

@@ -288,12 +288,12 @@ public class PlayerController_ref implements Initializable {
     }
 
     //控件素材图片
-    private String playIcon  = getClass().getResource("/resource/play.png").toString();
-    private String pauseIcon  = getClass().getResource("/resource/pause.png").toString();
-    private String stopIcon  = getClass().getResource("/resource/stop.png").toString();
-    private String volOffIcon  = getClass().getResource("/resource/volume_off.png").toString();
-    private String volOnIcon  = getClass().getResource("/resource/volume_On.png").toString();
-    private String maxIcon  = getClass().getResource("/resource/max.png").toString();
+    private String playIcon  = getClass().getResource("/BoundaryClass/Resource/play.png").toString();
+    private String pauseIcon  = getClass().getResource("/BoundaryClass/Resource/pause.png").toString();
+    private String stopIcon  = getClass().getResource("/BoundaryClass/Resource/stop.png").toString();
+    private String volOffIcon  = getClass().getResource("/BoundaryClass/Resource/volume_off.png").toString();
+    private String volOnIcon  = getClass().getResource("/BoundaryClass/Resource/volume_On.png").toString();
+    private String maxIcon  = getClass().getResource("/BoundaryClass/Resource/max.png").toString();
     private MediaPlayer mediaPlayer;
     private Media media;
     private String url;     //资源的url地址
@@ -704,7 +704,7 @@ public class PlayerController_ref implements Initializable {
 
 
         //测试嵌入式调用
-        SimpleMediaPlayer_ref player = SimpleMediaPlayer_ref.newInstance(getClass().getResource("/resource/WeChat_20210427231911.mp4").toString());
+        SimpleMediaPlayer_ref player = SimpleMediaPlayer_ref.newInstance(getClass().getResource("/BoundaryClass/Resource/WeChat_20210427231911.mp4").toString());
         pane.setCenter(player);
         pane.setAlignment(player,Pos.CENTER);
 

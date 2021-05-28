@@ -1,8 +1,11 @@
 package ControlClass;
 
+        import java.io.IOException;
         import java.net.URL;
         import java.util.ResourceBundle;
 
+        import EntityClass.DAO.impl.PreUserDAOImpl;
+        import EntityClass.DAO.impl.TrainerDAOImpl;
         import javafx.event.ActionEvent;
         import javafx.fxml.FXML;
         import javafx.scene.control.Hyperlink;
@@ -10,8 +13,17 @@ package ControlClass;
         import javafx.scene.control.Pagination;
         import javafx.scene.control.TextArea;
         import javafx.scene.image.ImageView;
+        import javafx.scene.input.MouseEvent;
+        import javafx.scene.layout.Background;
+        import javafx.scene.layout.BackgroundFill;
         import javafx.scene.layout.GridPane;
+        import javafx.scene.paint.Color;
+        import javafx.scene.text.Font;
         import javafx.scene.text.Text;
+        import javafx.stage.Stage;
+        import javafx.stage.Window;
+
+        import javax.swing.*;
 
 public class userTrainerPortraitController {
 
@@ -198,7 +210,14 @@ public class userTrainerPortraitController {
 
 
     @FXML
-    void user_trainer_portrait_bookLiveSession_click(ActionEvent event) {
+    void user_trainer_portrait_bookLiveSession_click(MouseEvent event) throws IOException {
+        PreUserDAOImpl preUserDAO = new PreUserDAOImpl();
+        if(preUserDAO.queryByUserName(passValue.getValue()).getUserName()!=null){
+            Stage stage = (Stage) user_trainer_portrait_recCoa_yoga2_label.getScene().getWindow();
+            new APP().jump(stage,"trainer_calendar");
+        }else{
+            JOptionPane.showMessageDialog(null, "ONLY for Premier User", "Forbid", JOptionPane.ERROR_MESSAGE);
+        }
 
     }
 
@@ -285,6 +304,19 @@ public class userTrainerPortraitController {
         assert user_trainer_portrait_user_recEnter_hyper31 != null : "fx:id=\"user_trainer_portrait_user_recEnter_hyper31\" was not injected: check your FXML file 'user_trainerPortrait.fxml'.";
         assert user_trainer_portrait_recEnter_yoga1_hyper1 != null : "fx:id=\"user_trainer_portrait_recEnter_yoga1_hyper1\" was not injected: check your FXML file 'user_trainerPortrait.fxml'.";
         assert user_trainer_portrait_recEnter_yoga2_hyper1 != null : "fx:id=\"user_trainer_portrait_recEnter_yoga2_hyper1\" was not injected: check your FXML file 'user_trainerPortrait.fxml'.";
-
+        TrainerDAOImpl TrainerDAO = new TrainerDAOImpl();
+        user_trainer_portrait_name.setText(TrainerDAO.queryByUserName("kaiyi").getUserName());
+        String [] str = new String [5];
+        str=TrainerDAO.queryByUserName("kaiyi").getLabel();
+        int count=0;
+        for (String Trainerlabel:str){
+            Label textlabel = new Label();
+            textlabel.setText(Trainerlabel);
+            textlabel.setBackground(new Background(new BackgroundFill(Color.GRAY,null,null)));
+            textlabel.setFont(Font.font(30));
+            label_grid.add(textlabel,count,0);
+            count++;
+        }
+        user_trainer_portrait_text.setText(TrainerDAO.queryByUserName("kaiyi").getCV());
     }
 }

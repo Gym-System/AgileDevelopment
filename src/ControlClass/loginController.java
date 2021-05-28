@@ -113,7 +113,7 @@ public class loginController {
                 if(login_password.getText().equals(True_password))
                 {
                     Stage stage = (Stage) login_button.getScene().getWindow();
-                    new APP().jump(stage,"trainer_calendar");
+                    new APP().jump(stage,"user_trainerPortrait");
                 }
                 else{
                     password1.setVisible(false);
