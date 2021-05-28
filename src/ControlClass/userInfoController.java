@@ -10,26 +10,84 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
+import java.util.Timer;
 
 public class userInfoController {
 
-    @FXML
-    private ImageView userInfo_info;
 
     @FXML
-    private Hyperlink user_logout_hyper;
+    private ResourceBundle resources;
+
+    @FXML
+    private URL location;
 
     @FXML
     private Label birthday;
 
     @FXML
-    private Hyperlink userInfo_live;
+    private Label user_info_myOrder_type1;
+
+    @FXML
+    private Label user_info_myOrder_type3;
+
+    @FXML
+    private Label user_info_myOrder_type2;
 
     @FXML
     private Label gender;
+
+    @FXML
+    private Label user_info_myOrder_trainer2;
+
+    @FXML
+    private Label user_info_myOrder_trainer1;
+
+    @FXML
+    private Label user_info_myOrder_live3;
+
+    @FXML
+    private Label user_info_myOrder_trainer4;
+
+    @FXML
+    private Label user_info_myOrder_live2;
+
+    @FXML
+    private Label user_info_myOrder_trainer3;
+
+    @FXML
+    private Label user_info_myOrder_live4;
+
+    @FXML
+    private Label user_info_myOrder_live1;
+
+    @FXML
+    private Hyperlink userInfo_calendar;
+
+    @FXML
+    private Label balance;
+
+    @FXML
+    private Hyperlink user_logout_hyper;
+
+    @FXML
+    private Hyperlink userinfo_vip;
+
+    @FXML
+    private Label email;
+
+    @FXML
+    private Label height;
+
+    @FXML
+    private ImageView userInfo_info;
+
+    @FXML
+    private Hyperlink userInfo_live;
 
     @FXML
     private Label level;
@@ -44,12 +102,6 @@ public class userInfoController {
     private Hyperlink userInfo_history;
 
     @FXML
-    private Hyperlink userInfo_calendar;
-
-    @FXML
-    private Label balance;
-
-    @FXML
     private Hyperlink userInfo_favorates;
 
     @FXML
@@ -59,18 +111,38 @@ public class userInfoController {
     private Label name;
 
     @FXML
-    private Label email;
+    private Label user_info_myOrder_price1;
+
+    @FXML
+    private Label user_info_myOrder_price2;
+
+    @FXML
+    private Label user_info_myOrder_time3;
+
+    @FXML
+    private Label user_info_myOrder_time4;
+
+    @FXML
+    private Label user_info_myOrder_time1;
+
+    @FXML
+    private Label user_info_myOrder_time2;
+
+    @FXML
+    private Label user_info_myOrder_type4;
 
     @FXML
     private Hyperlink userInfo_modify;
 
     @FXML
-    private Label height;
+    private Label user_info_myOrder_price3;
 
     @FXML
     private Label bmi;
 
-    
+    @FXML
+    private Label user_info_myOrder_price4;
+
 
 
     @FXML
@@ -141,5 +213,21 @@ public class userInfoController {
 
     public void userinfo_vip_click(ActionEvent actionEvent) {
     }
+
+    public void user_logout_click(MouseEvent mouseEvent) {
+    }
+
+    @FXML
+    void userInfo_info_click(ActionEvent event) {
+
+    }
+
+    @FXML
+    void user_logout_click(ActionEvent event) {
+
+    }
+
+
+
 }
 
