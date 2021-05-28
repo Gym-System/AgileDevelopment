@@ -43,7 +43,7 @@
                               <Rectangle2D />
                            </viewport>
                         </ImageView>
-                        <Hyperlink fx:id="user_facorites_hyper" onMouseClicked="#user_favorites_click" text="Favorites" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Hyperlink fx:id="user_favorites_hyper" onMouseClicked="#user_favorites_click" text="Favorites" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>

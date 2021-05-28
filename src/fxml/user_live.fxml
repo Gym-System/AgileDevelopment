@@ -200,6 +200,21 @@
                         </Label>
                     </items>
                   </ToolBar>
+                  <Label fx:id="cost1" layoutX="84.0" layoutY="510.0" text="\$100/h" textFill="#0f659e">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="cost2" layoutX="383.0" layoutY="510.0" text="\$90/h" textFill="#0f659e">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="cost3" layoutX="677.0" layoutY="510.0" text="\$110/h" textFill="#0f659e">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
                </children></AnchorPane>
         </items>
       </SplitPane>

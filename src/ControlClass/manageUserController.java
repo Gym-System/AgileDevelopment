@@ -2,7 +2,9 @@ package ControlClass;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import EntityClass.DAO.impl.UserDAOImpl;
 import EntityClass.VO.User;
@@ -17,6 +19,7 @@ import javafx.util.Callback;
 public class manageUserController  {
 
 
+    public GridPane userInfo_gridpane;
     Label name0 = new Label();
     Label name1 = new Label();
     Label name2 = new Label();
@@ -281,6 +284,18 @@ public class manageUserController  {
 
     @FXML
     void click_delete_mu(MouseEvent event) {
+//        checkBoxes[0] = box1_mu;
+//        checkBoxes[1] = box2_mu;
+//        checkBoxes[2] = box3_mu;
+//        checkBoxes[3] = box4_mu;
+//        checkBoxes[4] = box5_mu;
+//        for (int i = 0; i<5; i++){
+//            System.out.println(checkBoxes[i].isSelected() + "no." +i);
+//            deleteRow(userInfo_gridpane,i);
+//        }
+////        System.out.println(box1_mu.isSelected());       //true when is selected
+//        System.out.println(turn_page.getCurrentPageIndex());
+        int pageIndex = turn_page.getCurrentPageIndex();
         checkBoxes[0] = box1_mu;
         checkBoxes[1] = box2_mu;
         checkBoxes[2] = box3_mu;
@@ -288,10 +303,15 @@ public class manageUserController  {
         checkBoxes[4] = box5_mu;
         for (int i = 0; i<5; i++){
             System.out.println(checkBoxes[i].isSelected() + "no." +i);
+            if (checkBoxes[i].isSelected()){
+                int index = (pageIndex * 5 + i + 1);
+                System.out.println("第几项 被选中" + index);
+                userDAO.deleteUser(users.get(index-1).getUserName());
+                users.remove(index-1);
+                click_find_mu(event);
+                checkBoxes[i].setSelected(false);
+            }
         }
-//        System.out.println(box1_mu.isSelected());       //true when is selected
-        System.out.println(turn_page.getCurrentPageIndex());
-
 
     }
 
@@ -564,6 +584,40 @@ public class manageUserController  {
 //        }
 //
 //    }
+
+
+    public void deleteRow(GridPane pane,int row) {
+        Set<Node> deleteRows = new HashSet<>();
+        for (Node child: pane.getChildren()) {
+            Integer rowIndex = GridPane.getRowIndex(child);
+
+            int r = rowIndex == null ? 0:rowIndex;
+
+            if (r > row) {
+                GridPane.setRowIndex(child,r-1);
+            } else if (r == row) {
+                deleteRows.add(child);
+            }
+        }
+        pane.getChildren().removeAll(deleteRows);
+
+
+        int pageIndex = turn_page.getCurrentPageIndex();
+        checkBoxes[0] = box1_mu;
+        checkBoxes[1] = box2_mu;
+        checkBoxes[2] = box3_mu;
+        checkBoxes[3] = box4_mu;
+        checkBoxes[4] = box5_mu;
+        for (int i = 0; i<5; i++){
+            System.out.println(checkBoxes[i].isSelected() + "no." +i);
+            if (checkBoxes[i].isSelected()){
+                int index = (pageIndex * 5 + i + 1);
+                System.out.println(index);
+            }
+        }
+
+    }
+
 
 
 }

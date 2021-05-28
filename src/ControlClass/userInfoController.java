@@ -21,6 +21,9 @@ public class userInfoController {
     private ImageView userInfo_info;
 
     @FXML
+    private Hyperlink user_logout_hyper;
+
+    @FXML
     private Label birthday;
 
     @FXML
@@ -113,12 +116,6 @@ public class userInfoController {
         ArrayList<HistoryData> HISTORY = historyDataDAO.queryByUserName(username);
         time2 = userDAO.queryByUserName(username).getExerciseTime(null,null,null);
         totalTime.setText(Integer.toString(time1+time2)+" min");
-
-
-
-
-
-
 
     }
 

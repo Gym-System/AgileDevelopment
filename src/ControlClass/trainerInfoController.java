@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import EntityClass.DAO.impl.LiveSessionDAOImpl;
 import EntityClass.DAO.impl.PhyDataDAOImpl;
 import EntityClass.DAO.impl.TrainerDAOImpl;
+import EntityClass.DAO.impl.UserDAOImpl;
 import EntityClass.VO.LiveSession;
 
 import javafx.event.ActionEvent;
@@ -46,6 +47,9 @@ public class trainerInfoController {
 
     @FXML
     private Label trainer_salary;
+
+    @FXML
+    private Button trainer_info_save;
 
     @FXML
     private Label trainer_experience;
@@ -168,6 +172,15 @@ public class trainerInfoController {
     void trainerInfo_photoWall_add_click(ActionEvent event) {
 
     }
+    @FXML
+    void Info_save(ActionEvent event) {
+        System.out.println("Save successfully");
+        String trainername = passValue.getValue();
+        TrainerDAOImpl TrainerDAO = new TrainerDAOImpl();
+        TrainerDAO.changeTrainerLabel(trainername,trainerInfo_label.getText());
+        TrainerDAO.changeTrainerCV(trainername,trainerInfo_cv.getText());
+
+    }
 
     @FXML
     void initialize() {
@@ -198,7 +211,7 @@ public class trainerInfoController {
         assert trainer_course1 != null : "fx:id=\"trainer_course1\" was not injected: check your FXML file 'TrainerInfo.fxml'.";
         assert trainer_major != null : "fx:id=\"trainer_major\" was not injected: check your FXML file 'TrainerInfo.fxml'.";
         assert trainer_course2 != null : "fx:id=\"trainer_course2\" was not injected: check your FXML file 'TrainerInfo.fxml'.";
-
+        TrainerDAOImpl TrainerDAO = new TrainerDAOImpl();
 
         String trainername = passValue.getValue();
         TrainerDAOImpl trainerDAO = new TrainerDAOImpl();

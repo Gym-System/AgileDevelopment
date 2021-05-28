@@ -1,16 +1,13 @@
 package ControlClass;
 
-import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.ColorAdjust;
@@ -30,8 +27,8 @@ import javafx.util.Duration;
 import javafx.fxml.Initializable;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLOutput;
 import java.util.ResourceBundle;
 
 
@@ -221,28 +218,33 @@ public class PlayerController_ref implements Initializable {
     private Label video_title;
 
     @FXML
-    void user_favorites_click(ActionEvent event) {
-
+    void user_favorites_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_facorites_hyper.getScene().getWindow();
+        new APP().jump(stage,"user_favorites");
     }
 
     @FXML
-    void user_recording_click(ActionEvent event) {
-
+    void user_recording_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_recording_hyper.getScene().getWindow();
+        new APP().jump(stage,"user_recording");
     }
 
     @FXML
-    void user_live_click(ActionEvent event) {
-
+    void user_live_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_live_hyper.getScene().getWindow();
+        new APP().jump(stage,"user_live");
     }
 
     @FXML
-    void user_calendar_click(ActionEvent event) {
-
+    void user_calendar_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_calendar_hyper.getScene().getWindow();
+        new APP().jump(stage,"user_calendar");
     }
 
     @FXML
-    void user_history_click(ActionEvent event) {
-
+    void user_history_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) user_history_hyper.getScene().getWindow();
+        new APP().jump(stage,"user_history");
     }
 
     @FXML

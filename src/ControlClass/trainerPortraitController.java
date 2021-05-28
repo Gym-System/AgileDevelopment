@@ -1,16 +1,25 @@
 package ControlClass;
 
-import java.awt.event.ActionEvent;
+import java.awt.*;
+import java.awt.Paint;
 import java.net.URL;
-        import java.util.ResourceBundle;
-        import javafx.fxml.FXML;
-        import javafx.scene.control.Hyperlink;
-        import javafx.scene.control.Label;
-        import javafx.scene.control.Pagination;
-        import javafx.scene.control.TextArea;
-        import javafx.scene.image.ImageView;
+import java.util.ResourceBundle;
+
+import EntityClass.DAO.impl.TrainerDAOImpl;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
+import javafx.scene.control.Pagination;
+import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.paint.Color;
 
 public class trainerPortraitController {
 
@@ -19,6 +28,9 @@ public class trainerPortraitController {
 
     @FXML
     private URL location;
+
+    @FXML
+    private GridPane label_grid;
 
     @FXML
     private Text trainer_portrait_name;
@@ -126,10 +138,22 @@ public class trainerPortraitController {
     private Hyperlink trainer_portrait_user_recEnter_hyper31;
 
     @FXML
+    private Label trainer_portrait_label3;
+
+    @FXML
     private Label recCoa_strenght1_label;
 
     @FXML
+    private Label trainer_portrait_label2;
+
+    @FXML
+    private Label trainer_portrait_label5;
+
+    @FXML
     private ImageView user_recPic_hitt1;
+
+    @FXML
+    private Label trainer_portrait_label4;
 
     @FXML
     private Label recDur_hitt1_label;
@@ -138,13 +162,13 @@ public class trainerPortraitController {
     private Hyperlink trainer_portrait_upload;
 
     @FXML
-    private Label trainer_portrait_label;
-
-    @FXML
     private Hyperlink trainer_portrait_bookLiveSession;
 
     @FXML
     private Label recName_strength1_label;
+
+    @FXML
+    private Label trainer_portrait_label1;
 
     @FXML
     private Hyperlink trainer_portrait_history;
@@ -256,57 +280,36 @@ public class trainerPortraitController {
         assert trainer_recording_display != null : "fx:id=\"trainer_recording_display\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert trainer_portrait_recEnter_yoga2_hyper1 != null : "fx:id=\"trainer_portrait_recEnter_yoga2_hyper1\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert trainer_portrait_user_recEnter_hyper31 != null : "fx:id=\"trainer_portrait_user_recEnter_hyper31\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
+        assert trainer_portrait_label3 != null : "fx:id=\"trainer_portrait_label3\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert recCoa_strenght1_label != null : "fx:id=\"recCoa_strenght1_label\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
+        assert trainer_portrait_label2 != null : "fx:id=\"trainer_portrait_label2\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
+        assert trainer_portrait_label5 != null : "fx:id=\"trainer_portrait_label5\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert user_recPic_hitt1 != null : "fx:id=\"user_recPic_hitt1\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
+        assert trainer_portrait_label4 != null : "fx:id=\"trainer_portrait_label4\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert recDur_hitt1_label != null : "fx:id=\"recDur_hitt1_label\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert trainer_portrait_upload != null : "fx:id=\"trainer_portrait_upload\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
-        assert trainer_portrait_label != null : "fx:id=\"trainer_portrait_label\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert trainer_portrait_bookLiveSession != null : "fx:id=\"trainer_portrait_bookLiveSession\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert recName_strength1_label != null : "fx:id=\"recName_strength1_label\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
+        assert trainer_portrait_label1 != null : "fx:id=\"trainer_portrait_label1\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert trainer_portrait_history != null : "fx:id=\"trainer_portrait_history\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert user_recEnter_hyper611 != null : "fx:id=\"user_recEnter_hyper611\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
+        TrainerDAOImpl TrainerDAO = new TrainerDAOImpl();
+        trainer_portrait_name.setText(TrainerDAO.queryByUserName("kaiyi").getUserName());
+        String [] str = new String [5];
+        str=TrainerDAO.queryByUserName("kaiyi").getLabel();
+        int count=0;
+        for (String Trainerlabel:str){
+            Label textlabel = new Label();
+            textlabel.setText(Trainerlabel);
+            textlabel.setBackground(new Background(new BackgroundFill(Color.GRAY,null,null)));
+            textlabel.setFont(Font.font(30));
+            label_grid.add(textlabel,count,0);
+            count++;
+        }
+        trainer_portrait_text.setText(TrainerDAO.queryByUserName("kaiyi").getCV());
 
-    }
-
-    public void trainer_portrait_portrait_click(javafx.event.ActionEvent actionEvent) {
-    }
-
-    public void trainer_portrait_upload_click(javafx.event.ActionEvent actionEvent) {
-    }
-
-    public void trainer_portrait_live_click(javafx.event.ActionEvent actionEvent) {
-    }
-
-    public void trainer_portrait_calendar_click(javafx.event.ActionEvent actionEvent) {
-    }
-
-    public void trainer_portrait_history_click(javafx.event.ActionEvent actionEvent) {
     }
 
     public void trainer_portrait_info_click(MouseEvent mouseEvent) {
-    }
-
-    public void trainer_portrait_bookLiveSession_click(javafx.event.ActionEvent actionEvent) {
-    }
-
-    public void click_turn_page(MouseEvent mouseEvent) {
-    }
-
-    public void click_enterrec1(MouseEvent mouseEvent) {
-    }
-
-    public void click_enterrec2(MouseEvent mouseEvent) {
-    }
-
-    public void click_enterrec3(MouseEvent mouseEvent) {
-    }
-
-    public void click_enterrec4(MouseEvent mouseEvent) {
-    }
-
-    public void click_enterrec5(MouseEvent mouseEvent) {
-    }
-
-    public void click_enterrec6(MouseEvent mouseEvent) {
     }
 }

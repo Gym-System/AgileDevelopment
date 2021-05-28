@@ -1,18 +1,29 @@
 package ControlClass;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
+import EntityClass.DAO.impl.TrainerDAOImpl;
+import EntityClass.VO.Trainer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
+import javafx.util.Callback;
 
-public class manageTrainerController {
+public class manageTrainerController implements Initializable {
 
     @FXML
     private ResourceBundle resources;
@@ -116,6 +127,9 @@ public class manageTrainerController {
     @FXML
     private CheckBox box1_mt;
 
+    TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
+    ArrayList<Trainer> trainers = trainerDAO.queryAll();
+
     @FXML
     void click_user_hyplink_mt(ActionEvent event) {
 
@@ -142,17 +156,210 @@ public class manageTrainerController {
     }
 
     @FXML
-    void click_add_trainer_mt(ActionEvent event) {
+    void click_add_trainer_mt(MouseEvent event) {
+        Label[] names = new Label[4];
+        names[0] = name1_mt;
+        names[1] = name2_mt;
+        names[2] = name3_mt;
+        names[3] = name4_mt;
+        Label[] emails = new Label[4];
+        emails[0] = email1_mt;
+        emails[1] = email2_mt;
+        emails[2] = email3_mt;
+        emails[3] = email4_mt;
+        Label[] passwords = new Label[4];
+        passwords[0] = password1_mt;
+        passwords[1] = password2_mt;
+        passwords[2] = password3_mt;
+        passwords[3] = password4_mt;
+        CheckBox[] checkBoxes = new CheckBox[4];
+        checkBoxes[0] = box1_mt;
+        checkBoxes[1] = box2_mt;
+        checkBoxes[2] = box3_mt;
+        checkBoxes[3] = box4_mt;
 
+        trainerDAO.insertTrainer(new Trainer(add_name_mt.getText(),add_password_mt.getText(),add_email_mt.getText(),"Male","11111111111",new Date(),"London Fitness"));
+        ArrayList<Trainer> trainers1 = trainerDAO.queryAll();
+
+        turn_page_mt.setPageCount((int) Math.ceil(trainers1.size()/4.0));
+        turn_page_mt.setPageFactory(new Callback<Integer, Node>() {
+            @Override
+            public Node call(Integer param) {
+                VBox box = new VBox();
+                int limit = 4;
+                if (param.intValue() == trainers1.size()/4) {
+                    limit = trainers1.size()%4;
+                }
+
+                if(param.intValue() < trainers.size()/4){
+                    for (int i =0; i <limit; i++){
+                        names[i].setText(trainers1.get(4 * param.intValue() + i).getUserName());
+                        emails[i].setText(trainers1.get(4 * param.intValue() + i).getEmail());
+                        passwords[i].setText(trainers1.get(4 * param.intValue() + i).getPassword());
+                        checkBoxes[i].setVisible(true);
+                    }
+
+                } else {
+                    for (int i =0; i <limit; i++){
+                        names[i].setText(trainers1.get(4 * param.intValue() + i).getUserName());
+                        emails[i].setText(trainers1.get(4 * param.intValue() + i).getEmail());
+                        passwords[i].setText(trainers1.get(4 * param.intValue() + i).getPassword());
+                        checkBoxes[i].setVisible(true);
+                    }
+                    for (int i = limit; i<4; i++){
+                        names[i].setText("");
+                        emails[i].setText("");
+                        passwords[i].setText("");
+                        checkBoxes[i].setVisible(false);
+                    }
+
+                }
+                return box;
+            }
+        });
+
+        add_name_mt.setText("");
+        add_password_mt.setText("");
+        add_email_mt.setText("");
     }
 
     @FXML
-    void click_find_mt(ActionEvent event) {
+    void click_find_mt(MouseEvent event) {
+        Label[] names = new Label[4];
+        names[0] = name1_mt;
+        names[1] = name2_mt;
+        names[2] = name3_mt;
+        names[3] = name4_mt;
+        Label[] emails = new Label[4];
+        emails[0] = email1_mt;
+        emails[1] = email2_mt;
+        emails[2] = email3_mt;
+        emails[3] = email4_mt;
+        Label[] passwords = new Label[4];
+        passwords[0] = password1_mt;
+        passwords[1] = password2_mt;
+        passwords[2] = password3_mt;
+        passwords[3] = password4_mt;
+        CheckBox[] checkBoxes = new CheckBox[4];
+        checkBoxes[0] = box1_mt;
+        checkBoxes[1] = box2_mt;
+        checkBoxes[2] = box3_mt;
+        checkBoxes[3] = box4_mt;
 
+        ArrayList<Trainer> trainers1 = trainerDAO.queryAll();
+
+        if (text_find_mt.getText().equals("")){
+            turn_page_mt.setPageCount((int) Math.ceil(trainers1.size()/4.0));
+            turn_page_mt.setPageFactory(new Callback<Integer, Node>() {
+                @Override
+                public Node call(Integer param) {
+                    VBox box = new VBox();
+                    int limit = 4;
+                    if (param.intValue() == trainers1.size() / 4) {
+                        limit = trainers1.size() % 4;
+                    }
+
+                    if (param.intValue() < trainers1.size() /4) {
+                        for (int i = 0; i < limit; i++) {
+                            names[i].setText(trainers1.get(4 * param.intValue() + i).getUserName());
+                            emails[i].setText(trainers1.get(4 * param.intValue() + i).getEmail());
+                            passwords[i].setText(trainers1.get(4 * param.intValue() + i).getPassword());
+                            checkBoxes[i].setVisible(true);
+                        }
+
+                    } else {
+                        for (int i =0; i <limit; i++){
+                            names[i].setText(trainers1.get(4 * param.intValue() + i).getUserName());
+                            emails[i].setText(trainers1.get(4 * param.intValue() + i).getEmail());
+                            passwords[i].setText(trainers1.get(4 * param.intValue() + i).getPassword());
+                            checkBoxes[i].setVisible(true);
+                        }
+                        for (int i = limit; i < 4; i++) {
+                            names[i].setText("");
+                            emails[i].setText("");
+                            passwords[i].setText("");
+                            checkBoxes[i].setVisible(false);
+                        }
+
+                    }
+                    return box;
+                }});
+        }
+
+        if (!trainerDAO.queryByUserName(text_find_mt.getText()).getUserName().equals(text_find_mt.getText()) && !text_find_mt.getText().equals("")){
+            System.out.println("not same");
+            turn_page_mt.setPageCount(1);
+            turn_page_mt.setPageFactory(new Callback<Integer, Node>() {
+                @Override
+                public Node call(Integer param) {
+                    VBox box = new VBox();
+                    for (int i = 0; i < 4; i++) {
+                        names[i].setText("");
+                        emails[i].setText("");
+                        passwords[i].setText("");
+                        checkBoxes[i].setVisible(false);
+                    }
+                    return box;
+                }
+            });
+        }
+
+        if (!text_find_mt.getText().equals("") && trainerDAO.queryByUserName(text_find_mt.getText()).getUserName().equals(text_find_mt.getText())){
+            turn_page_mt.setPageCount(1);
+            turn_page_mt.setPageFactory(new Callback<Integer, Node>() {
+                @Override
+                public Node call(Integer param) {
+                    VBox box = new VBox();
+                    int limit = 4;
+                    if (param.intValue() == 1 / 4) {
+                        limit = 1 % 4;
+                    }
+
+                    if (param.intValue() < limit) {
+                        for (int i = 0; i < limit; i++) {
+                            names[i].setText(trainerDAO.queryByUserName(text_find_mt.getText()).getUserName());
+                            emails[i].setText(trainerDAO.queryByUserName(text_find_mt.getText()).getEmail());
+                            passwords[i].setText(trainerDAO.queryByUserName(text_find_mt.getText()).getPassword());
+                            checkBoxes[i].setVisible(true);
+                        }
+                        for (int i = limit; i < 4; i++) {
+                            names[i].setText("");
+                            emails[i].setText("");
+                            passwords[i].setText("");
+                            checkBoxes[i].setVisible(false);
+                        }
+                    }
+
+                    return box;
+                }
+
+
+            });
+        }
     }
 
     @FXML
-    void click_delete_mt(ActionEvent event) {
+    void click_delete_mt(MouseEvent event) {
+        int pageIndex = turn_page_mt.getCurrentPageIndex();
+        CheckBox[] checkBoxes = new CheckBox[4];
+        checkBoxes[0] = box1_mt;
+        checkBoxes[1] = box2_mt;
+        checkBoxes[2] = box3_mt;
+        checkBoxes[3] = box4_mt;
+
+        for (int i = 0; i<4; i++){
+            System.out.println(checkBoxes[i].isSelected() + "no." +i);
+            if (checkBoxes[i].isSelected()){
+                int index = (pageIndex * 4 + i + 1);
+                System.out.println("第几项 被选中" + index);
+                trainerDAO.deleteTrainer(trainers.get(index-1).getUserName());
+                trainers.remove(index-1);
+                click_find_mt(event);
+                checkBoxes[i].setSelected(false);
+
+            }
+        }
+
 
     }
 
@@ -161,40 +368,68 @@ public class manageTrainerController {
 
     }
 
-    @FXML
-    void initialize() {
-        assert email1_mt != null : "fx:id=\"email1_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert regu_mt != null : "fx:id=\"regu_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert text_find_mt != null : "fx:id=\"text_find_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert button_delete_mt != null : "fx:id=\"button_delete_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert trainer_hyplink_mt != null : "fx:id=\"trainer_hyplink_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert add_email_mt != null : "fx:id=\"add_email_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert password2_mt != null : "fx:id=\"password2_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert password4_mt != null : "fx:id=\"password4_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert out_hyplink_mt != null : "fx:id=\"out_hyplink_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert name3_mt != null : "fx:id=\"name3_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert email3_mt != null : "fx:id=\"email3_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert box4_mt != null : "fx:id=\"box4_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert turn_page_mt != null : "fx:id=\"turn_page_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert income_hyplink_mt != null : "fx:id=\"income_hyplink_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert password_mt != null : "fx:id=\"password_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert box2_mt != null : "fx:id=\"box2_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert add_password_mt != null : "fx:id=\"add_password_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert email2_mt != null : "fx:id=\"email2_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert name1_mt != null : "fx:id=\"name1_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert password1_mt != null : "fx:id=\"password1_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert password3_mt != null : "fx:id=\"password3_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert email_mt != null : "fx:id=\"email_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert user_hyplink_mt != null : "fx:id=\"user_hyplink_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert add_name_mt != null : "fx:id=\"add_name_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert name_mt != null : "fx:id=\"name_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert name2_mt != null : "fx:id=\"name2_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert email4_mt != null : "fx:id=\"email4_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert add_trainer_mt != null : "fx:id=\"add_trainer_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert name4_mt != null : "fx:id=\"name4_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert button_find_mt != null : "fx:id=\"button_find_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert box3_mt != null : "fx:id=\"box3_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
-        assert box1_mt != null : "fx:id=\"box1_mt\" was not injected: check your FXML file 'manage_trainer.fxml'.";
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        show();
+    }
 
+    public void show() {
+        Label[] names = new Label[4];
+        names[0] = name1_mt;
+        names[1] = name2_mt;
+        names[2] = name3_mt;
+        names[3] = name4_mt;
+        Label[] emails = new Label[4];
+        emails[0] = email1_mt;
+        emails[1] = email2_mt;
+        emails[2] = email3_mt;
+        emails[3] = email4_mt;
+        Label[] passwords = new Label[4];
+        passwords[0] = password1_mt;
+        passwords[1] = password2_mt;
+        passwords[2] = password3_mt;
+        passwords[3] = password4_mt;
+        CheckBox[] checkBoxes = new CheckBox[4];
+        checkBoxes[0] = box1_mt;
+        checkBoxes[1] = box2_mt;
+        checkBoxes[2] = box3_mt;
+        checkBoxes[3] = box4_mt;
+
+        turn_page_mt.setPageCount((int) Math.ceil(trainers.size()/4.0));
+        turn_page_mt.setPageFactory(new Callback<Integer, Node>() {
+            @Override
+            public Node call(Integer param) {
+                VBox box = new VBox();
+                int limit = 4;
+                if (param.intValue() == trainers.size()/4) {
+                    limit = trainers.size()%4;
+                }
+
+                if(param.intValue() < trainers.size()/4){
+                    for (int i =0; i <limit; i++){
+                        names[i].setText(trainers.get(4 * param.intValue() + i).getUserName());
+                        emails[i].setText(trainers.get(4 * param.intValue() + i).getEmail());
+                        passwords[i].setText(trainers.get(4 * param.intValue() + i).getPassword());
+                        checkBoxes[i].setVisible(true);
+                    }
+
+                } else {
+                    for (int i =0; i <limit; i++){
+                        names[i].setText(trainers.get(4 * param.intValue() + i).getUserName());
+                        emails[i].setText(trainers.get(4 * param.intValue() + i).getEmail());
+                        passwords[i].setText(trainers.get(4 * param.intValue() + i).getPassword());
+                        checkBoxes[i].setVisible(true);
+                    }
+                    for (int i = limit; i<4; i++){
+                        names[i].setText("");
+                        emails[i].setText("");
+                        passwords[i].setText("");
+                        checkBoxes[i].setVisible(false);
+                    }
+
+                }
+                return box;
+            }
+        });
     }
 }
