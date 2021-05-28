@@ -15,7 +15,7 @@
    <children>
       <ImageView fx:id="logo" fitHeight="73.0" fitWidth="294.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../resource/logo.png" />
+            <Image url="@Resource/logo.png" />
          </image>
       </ImageView>
       <SplitPane dividerPositions="0.2229" layoutX="244.0" layoutY="202.0" prefHeight="807.0" prefWidth="1350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="74.3">
