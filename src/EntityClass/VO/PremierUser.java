@@ -3,7 +3,7 @@ package EntityClass.VO;
 import java.util.Date;
 
 public class PremierUser extends User {
-    private int userType = 0;
+    private int userType = 1;
 
     public PremierUser(String userName, String password, String email) {
         super(userName, password, email);
@@ -24,6 +24,12 @@ public class PremierUser extends User {
 
     public void setUserType(int userType) {
         this.userType = userType;
+    }
+
+    public double calDiscount(double price) {
+        double discount = price * (1 - userType /10);
+
+        return discount;
     }
 
     @Override

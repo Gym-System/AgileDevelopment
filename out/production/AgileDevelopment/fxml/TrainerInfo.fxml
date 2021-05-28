@@ -338,6 +338,7 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
+                  <Button fx:id="trainer_info_save" layoutX="933.0" layoutY="40.0" mnemonicParsing="false" onAction="#Info_save" text="Save" />
                </children></AnchorPane>
         </items>
       </SplitPane>

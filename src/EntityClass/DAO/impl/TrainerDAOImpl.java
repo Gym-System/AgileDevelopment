@@ -45,7 +45,7 @@ public class TrainerDAOImpl implements TrainerDAO {
                     record[1] = password;
                     trainer = new Trainer(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6], Double.parseDouble(record[7]), record[8], record[9]);
+                            record[6], Double.parseDouble(record[7]), record[8], record[9], Double.parseDouble(record[10]));
                 }
                 records.add(record);
             }
@@ -71,7 +71,7 @@ public class TrainerDAOImpl implements TrainerDAO {
                     record[2] = email;
                     trainer = new Trainer(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6], Double.parseDouble(record[7]), record[8], record[9]);
+                            record[6], Double.parseDouble(record[7]), record[8], record[9], Double.parseDouble(record[10]));
                 }
                 records.add(record);
             }
@@ -97,7 +97,7 @@ public class TrainerDAOImpl implements TrainerDAO {
                     record[4] = teleNo;
                     trainer = new Trainer(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6], Double.parseDouble(record[7]), record[8], record[9]);
+                            record[6], Double.parseDouble(record[7]), record[8], record[9], Double.parseDouble(record[10]));
                 }
                 records.add(record);
             }
@@ -123,7 +123,7 @@ public class TrainerDAOImpl implements TrainerDAO {
                     record[7] = String.valueOf(salary);
                     trainer = new Trainer(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6], Double.parseDouble(record[7]), record[8], record[9]);
+                            record[6], Double.parseDouble(record[7]), record[8], record[9], Double.parseDouble(record[10]));
                 }
                 records.add(record);
             }
@@ -149,7 +149,7 @@ public class TrainerDAOImpl implements TrainerDAO {
                     record[8] = label;
                     trainer = new Trainer(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6], Double.parseDouble(record[7]), record[8], record[9]);
+                            record[6], Double.parseDouble(record[7]), record[8], record[9], Double.parseDouble(record[10]));
                 }
                 records.add(record);
             }
@@ -175,7 +175,33 @@ public class TrainerDAOImpl implements TrainerDAO {
                     record[9] = CV;
                     trainer = new Trainer(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6], Double.parseDouble(record[7]), record[8], record[9]);
+                            record[6], Double.parseDouble(record[7]), record[8], record[9], Double.parseDouble(record[10]));
+                }
+                records.add(record);
+            }
+            csvReader.close();
+            recordToCsv(records, filePath);
+        } catch (IOException | ParseException ex) {
+            ex.printStackTrace();
+        }
+        return trainer;
+    }
+
+    @Override
+    public Trainer changeTrainerPrice(String userName, double price) {
+        File inFile = new File(filePath);
+        try {
+            String[] record = null;
+            ArrayList<String[]> records = new ArrayList<>();
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getRawRecord().split(",");
+                if(userName.equals(record[0])) {
+                    record[10] = String.valueOf(price);
+                    trainer = new Trainer(record[0], record[1], record[2], record[3], record[4],
+                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                            record[6], Double.parseDouble(record[7]), record[8], record[9], Double.parseDouble(record[10]));
                 }
                 records.add(record);
             }
@@ -199,7 +225,7 @@ public class TrainerDAOImpl implements TrainerDAO {
                 if(userName.equals(record[0])) {
                     trainer = new Trainer(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6], Double.parseDouble(record[7]), record[8], record[9]);
+                            record[6], Double.parseDouble(record[7]), record[8], record[9], Double.parseDouble(record[10]));
                 }
             }
             csvReader.close();
@@ -221,7 +247,7 @@ public class TrainerDAOImpl implements TrainerDAO {
                 record = csvReader.getValues();
                 trainer = new Trainer(record[0], record[1], record[2], record[3], record[4],
                         new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                        record[6], Double.parseDouble(record[7]), record[8], record[9]);
+                        record[6], Double.parseDouble(record[7]), record[8], record[9], Double.parseDouble(record[10]));
                 trainers.add(trainer);
             }
             csvReader.close();

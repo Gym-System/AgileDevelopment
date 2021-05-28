@@ -18,6 +18,7 @@ public interface TrainerDAO {
     Trainer changeTrainerSalary(String userName, double salary);
     Trainer changeTrainerLabel(String userName, String label);
     Trainer changeTrainerCV(String userName, String CV);
+    Trainer changeTrainerPrice(String userName, double price);
 
     // select
     Trainer queryByUserName(String userName);

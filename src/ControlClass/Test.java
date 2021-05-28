@@ -511,7 +511,6 @@ public class Test {
         }
          */
 
-        /*
         Trainer trainer = null;
         try {
             trainer = new Trainer("kaiyi",
@@ -538,8 +537,8 @@ public class Test {
 
         trainer1 = trainerDAO.queryByUserName("kaiyi");
         System.out.println(trainer1);
-         */
 
+        /*
         User user = null;
         try {
             user = new User("kaiyi",
@@ -559,6 +558,6 @@ public class Test {
         user.bookLiveSession("kaiyi", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-30T14:00:00"));
         user.bookLiveSession("kaiyi", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-31T10:00:00"));
         user.bookLiveSession("kaiyi", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-31T14:00:00"));
-
+         */
     }
 }
