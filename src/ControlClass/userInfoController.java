@@ -1,7 +1,7 @@
 package ControlClass;
 import EntityClass.DAO.LiveSessionDAO;
 import EntityClass.DAO.impl.*;
-import EntityClass.VO.HistoryData;
+import EntityClass.VO.WatchedVideo;
 import EntityClass.VO.LiveSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,12 +13,14 @@ import javafx.scene.input.MouseEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Timer;
 
 public class userInfoController {
 
     @FXML
     private ImageView userInfo_info;
+
+    @FXML
+    private Hyperlink user_logout_hyper;
 
     @FXML
     private Label birthday;
@@ -109,16 +111,10 @@ public class userInfoController {
             }
         }
 
-        HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
-        ArrayList<HistoryData> HISTORY = historyDataDAO.queryByUserName(username);
+        WatchedVideoDAOImpl historyDataDAO = new WatchedVideoDAOImpl();
+        ArrayList<WatchedVideo> HISTORY = historyDataDAO.queryByUserName(username);
         time2 = userDAO.queryByUserName(username).getExerciseTime(null,null,null);
         totalTime.setText(Integer.toString(time1+time2)+" min");
-
-
-
-
-
-
 
     }
 

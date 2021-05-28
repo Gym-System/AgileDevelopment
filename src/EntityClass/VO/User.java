@@ -1,10 +1,6 @@
 package EntityClass.VO;
 
-import EntityClass.DAO.LiveSessionDAO;
-import EntityClass.DAO.impl.HistoryDataDAOImpl;
-import EntityClass.DAO.impl.LiveSessionDAOImpl;
-import EntityClass.DAO.impl.RecVideoDAOImpl;
-import EntityClass.DAO.impl.UserDAOImpl;
+import EntityClass.DAO.impl.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -36,9 +32,9 @@ public class User extends Person {
 
     public void watchRecVideo(long courseId) {
         String type = "recorded";
-        HistoryData historyData = new HistoryData(super.getUserName(), type, courseId);
-        HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
-        historyDataDAO.insertHistoryData(historyData);
+        WatchedVideo watchedVideo = new WatchedVideo(super.getUserName(), type, courseId);
+        WatchedVideoDAOImpl historyDataDAO = new WatchedVideoDAOImpl();
+        historyDataDAO.insertHistoryData(watchedVideo);
 
         RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
         RecVideo recVideo = recVideoDAO.queryByCourseId(courseId);
@@ -46,22 +42,22 @@ public class User extends Person {
         recVideoDAO.changeRecVideoViewTime(courseId, viewTime + 1);
     }
 
-    public void bookLiveSession(String trainerName, Date startTime) {
-        LiveSession liveSession = new LiveSession(null, 2, startTime, trainerName, getUserName());
-        LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
-        liveSessionDAO.insertLiveSession(liveSession);
+    public void favoriteVideo(long courseId) {
+        FavoriteVideo favoriteVideo = new FavoriteVideo(super.getUserName(), courseId);
+        FavoriteVideoImpl favoriteVideoDao = new FavoriteVideoImpl();
+        favoriteVideoDao.insertHistoryData(favoriteVideo);
+    }
 
-        String type = "live";
-        HistoryData historyData = new HistoryData(super.getUserName(), type, liveSession.getCourseId());
-        HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
-        historyDataDAO.insertHistoryData(historyData);
+    public void unFavoriteVideo(long courseId) {
+        FavoriteVideoImpl favoriteVideoDAO = new FavoriteVideoImpl();
+        favoriteVideoDAO.deleteHistoryData(courseId);
     }
 
     public void cancelLiveSession(long courseId) {
         LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
         liveSessionDAO.deleteLiveSession(courseId);
 
-        HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
+        WatchedVideoDAOImpl historyDataDAO = new WatchedVideoDAOImpl();
         historyDataDAO.deleteHistoryData(courseId);
     }
 
@@ -77,13 +73,15 @@ public class User extends Person {
         Date endTime = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
                 new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
 
+        ArrayList<LiveSession> liveSessions1 = new ArrayList<LiveSession>();
+
         for (LiveSession liveSession:liveSessions) {
-            if(!liveSession.getStartTime().after(startTime) || !liveSession.getStartTime().before(endTime)) {
-                liveSessions.remove(liveSession);
+            if(liveSession.getStartTime().after(startTime) && liveSession.getStartTime().before(endTime)) {
+                liveSessions1.add(liveSession);
             }
         }
 
-        return liveSessions;
+        return liveSessions1;
     }
 
     public void sendGift(int amount, long courseId) {
@@ -109,9 +107,9 @@ public class User extends Person {
 
     public int getExerciseTime(String timeType, String subject, String courseType) throws ParseException {
         int time = 0;
-        HistoryDataDAOImpl historyDataDAO = new HistoryDataDAOImpl();
-        ArrayList<HistoryData> historyDatas = historyDataDAO.queryByUserName(getUserName());
-        ArrayList<HistoryData> historyDatas1 = new ArrayList<>();
+        WatchedVideoDAOImpl historyDataDAO = new WatchedVideoDAOImpl();
+        ArrayList<WatchedVideo> watchedVideos = historyDataDAO.queryByUserName(getUserName());
+        ArrayList<WatchedVideo> historyDatas1 = new ArrayList<>();
 
         LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
         RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
@@ -143,90 +141,90 @@ public class User extends Person {
             date2 = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
                     new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
 
-            for(HistoryData historyData:historyDatas) {
-                if(historyData.getType().equals("live")) {
-                    liveSession = liveSessionDAO.queryByCourseId(historyData.getCourseId());
+            for(WatchedVideo watchedVideo : watchedVideos) {
+                if(watchedVideo.getType().equals("live")) {
+                    liveSession = liveSessionDAO.queryByCourseId(watchedVideo.getCourseId());
                     date1 = liveSession.getStartTime();
                 }
                 else {
-                    recVideo = recVideoDAO.queryByCourseId(historyData.getCourseId());
+                    recVideo = recVideoDAO.queryByCourseId(watchedVideo.getCourseId());
                     date1 = recVideo.getUploadedTime();
                 }
                 if(date1.after(date2)) {
-                    historyDatas1.add(historyData);
+                    historyDatas1.add(watchedVideo);
                 }
             }
-            historyDatas.clear();
-            for(HistoryData historyData:historyDatas1) {
-                historyDatas.add(historyData);
+            watchedVideos.clear();
+            for(WatchedVideo watchedVideo :historyDatas1) {
+                watchedVideos.add(watchedVideo);
             }
             historyDatas1.clear();
         }
 
         if(subject != null) {
-            for(HistoryData historyData:historyDatas) {
-                if (historyData.getType().equals("live")) {
-                    liveSession = liveSessionDAO.queryByCourseId(historyData.getCourseId());
+            for(WatchedVideo watchedVideo : watchedVideos) {
+                if (watchedVideo.getType().equals("live")) {
+                    liveSession = liveSessionDAO.queryByCourseId(watchedVideo.getCourseId());
                     if (liveSession.getSubject().equals(subject)) {
-                        historyDatas1.add(historyData);
+                        historyDatas1.add(watchedVideo);
                     }
                 }
                 else {
-                    recVideo = recVideoDAO.queryByCourseId(historyData.getCourseId());
+                    recVideo = recVideoDAO.queryByCourseId(watchedVideo.getCourseId());
                     if (recVideo.getSubject().equals(subject)) {
-                        historyDatas1.add(historyData);
+                        historyDatas1.add(watchedVideo);
                     }
                 }
             }
-            historyDatas.clear();
-            for(HistoryData historyData:historyDatas1) {
-                historyDatas.add(historyData);
+            watchedVideos.clear();
+            for(WatchedVideo watchedVideo :historyDatas1) {
+                watchedVideos.add(watchedVideo);
             }
             historyDatas1.clear();
         }
 
         if(courseType != null) {
             if(courseType.equals("live")) {
-                for(HistoryData historyData:historyDatas) {
-                    if(historyData.getType().equals("live")) {
-                        historyDatas1.add(historyData);
+                for(WatchedVideo watchedVideo : watchedVideos) {
+                    if(watchedVideo.getType().equals("live")) {
+                        historyDatas1.add(watchedVideo);
                     }
                 }
             }
             else {
-                for(HistoryData historyData:historyDatas) {
-                    if(historyData.getType().equals("recorded")) {
-                        historyDatas1.add(historyData);
+                for(WatchedVideo watchedVideo : watchedVideos) {
+                    if(watchedVideo.getType().equals("recorded")) {
+                        historyDatas1.add(watchedVideo);
                     }
                 }
             }
-            historyDatas.clear();
-            for(HistoryData historyData:historyDatas1) {
-                historyDatas.add(historyData);
+            watchedVideos.clear();
+            for(WatchedVideo watchedVideo :historyDatas1) {
+                watchedVideos.add(watchedVideo);
             }
             historyDatas1.clear();
         }
 
-        time = calExerciseTime(historyDatas);
+        time = calExerciseTime(watchedVideos);
 
         return time;
     }
 
     // helper function
-    public int calExerciseTime(ArrayList<HistoryData> historyDatas) {
+    public int calExerciseTime(ArrayList<WatchedVideo> watchedVideos) {
         int time = 0;
         LiveSession liveSession;
         RecVideo recVideo;
         LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
         RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
 
-        for(HistoryData historyData:historyDatas) {
-            if(historyData.getType().equals("live")) {
-                liveSession = liveSessionDAO.queryByCourseId(historyData.getCourseId());
+        for(WatchedVideo watchedVideo : watchedVideos) {
+            if(watchedVideo.getType().equals("live")) {
+                liveSession = liveSessionDAO.queryByCourseId(watchedVideo.getCourseId());
                 time += liveSession.getLength();
             }
             else {
-                recVideo = recVideoDAO.queryByCourseId(historyData.getCourseId());
+                recVideo = recVideoDAO.queryByCourseId(watchedVideo.getCourseId());
                 time += recVideo.getLength();
             }
         }

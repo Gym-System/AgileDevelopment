@@ -1,9 +1,12 @@
 package EntityClass.VO;
 
+import EntityClass.DAO.impl.WatchedVideoDAOImpl;
+import EntityClass.DAO.impl.LiveSessionDAOImpl;
+
 import java.util.Date;
 
 public class PremierUser extends User {
-    private int userType = 0;
+    private int userType = 1;
 
     public PremierUser(String userName, String password, String email) {
         super(userName, password, email);
@@ -24,6 +27,34 @@ public class PremierUser extends User {
 
     public void setUserType(int userType) {
         this.userType = userType;
+    }
+
+    public double calDiscount(double price) {
+        double discount = price * (1 - userType /10);
+
+        return discount;
+    }
+
+    public boolean bookLiveSession(Trainer trainer, Date startTime) {
+        boolean flag = false;
+
+        if(getBalance() > calDiscount(trainer.getPrice())) {
+            setBalance(getBalance() - calDiscount(trainer.getPrice()));
+            flag = true;
+        }
+
+        if(flag) {
+            LiveSession liveSession = new LiveSession(null, 2, startTime, trainer.getUserName(), getUserName());
+            LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
+            liveSessionDAO.insertLiveSession(liveSession);
+
+            String type = "live";
+            WatchedVideo watchedVideo = new WatchedVideo(super.getUserName(), type, liveSession.getCourseId());
+            WatchedVideoDAOImpl historyDataDAO = new WatchedVideoDAOImpl();
+            historyDataDAO.insertHistoryData(watchedVideo);
+        }
+
+        return flag;
     }
 
     @Override

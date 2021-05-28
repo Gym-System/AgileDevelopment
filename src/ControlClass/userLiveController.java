@@ -2,7 +2,6 @@ package ControlClass;
 
 import EntityClass.DAO.impl.LiveSessionDAOImpl;
 import EntityClass.VO.LiveSession;
-import EntityClass.VO.RecVideo;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -19,14 +18,20 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class userLiveController implements Initializable {
+        @FXML
+        private Label cost1;
 
+        @FXML
+        private Label cost2;
+
+        @FXML
+        private Label cost3;
         @FXML
         private Label LiveName_trainer3_label2;
 
@@ -192,7 +197,7 @@ public class userLiveController implements Initializable {
                             labelLive[i].setText(liveSessions.get(3 * param.intValue() + i).getSubject());
                             labelTrainer[i].setText("Coach: " + liveSessions.get(3 * param.intValue() + i).getTrainerName());
                             hyperlinks[i].setText("Book Live Session");
-                            imageViews[i].setImage(new Image("resource/yoga2.jpg"));
+                            imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga2.jpg"));
                         }
 
                     } else {
@@ -200,7 +205,7 @@ public class userLiveController implements Initializable {
                             labelLive[i].setText(liveSessions.get(3 * param.intValue() + i).getSubject());
                             labelTrainer[i].setText("Coach" + liveSessions.get(3 * param.intValue() + i).getTrainerName());
                             hyperlinks[i].setText("Book Live Session");
-                            imageViews[i].setImage(new Image("resource/yoga3.jpg"));
+                            imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga3.jpg"));
                         }
                         for (int i = limit; i<3; i++){
                             labelLive[i].setText("");
@@ -257,7 +262,7 @@ public class userLiveController implements Initializable {
                             labelLive[i].setText(liveSessions.get(3 * param.intValue() + i).getSubject());
                             labelTrainer[i].setText("Coach: " + liveSessions.get(3 * param.intValue() + i).getTrainerName());
                             hyperlinks[i].setText("Book Live Session");
-                            imageViews[i].setImage(new Image("resource/yoga2.jpg"));
+                            imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga2.jpg"));
                         }
 
                     } else {
@@ -265,7 +270,7 @@ public class userLiveController implements Initializable {
                             labelLive[i].setText(liveSessions.get(3 * param.intValue() + i).getSubject());
                             labelTrainer[i].setText("Coach: " + liveSessions.get(3 * param.intValue() + i).getTrainerName());
                             hyperlinks[i].setText("Book Live Session");
-                            imageViews[i].setImage(new Image("resource/yoga2.jpg"));
+                            imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga2.jpg"));
                             System.out.println("test");
                         }
                         for (int i = limit; i<3; i++){
@@ -351,7 +356,7 @@ public class userLiveController implements Initializable {
                         labelLive[i].setText(liveSessions.get(3 * param.intValue() + i).getSubject());
                         labelTrainer[i].setText("Coach: " + liveSessions.get(3 * param.intValue() + i).getTrainerName());
                         hyperlinks[i].setText("Book Live Session");
-                        imageViews[i].setImage(new Image("resource/yoga2.jpg"));
+                        imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga2.jpg"));
                     }
 
                 } else {
@@ -359,7 +364,7 @@ public class userLiveController implements Initializable {
                         labelLive[i].setText(liveSessions.get(3 * param.intValue() + i).getSubject());
                         labelTrainer[i].setText("Coach" + liveSessions.get(3 * param.intValue() + i).getTrainerName());
                         hyperlinks[i].setText("Book Live Session");
-                        imageViews[i].setImage(new Image("resource/yoga3.jpg"));
+                        imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga3.jpg"));
                     }
                     for (int i = limit; i<3; i++){
                         labelLive[i].setText("");

@@ -14,6 +14,7 @@ public class Trainer extends Staff {
     private double salary = 0.0;
     private String label = "To be added";
     private String CV = "To be added";
+    private double price = 300.0;
 
     public Trainer(String userName, String password, String email) {
         super(userName, password, email);
@@ -23,11 +24,12 @@ public class Trainer extends Staff {
         super(userName, password, email, gender, telNo, doB, companyName);
     }
 
-    public Trainer(String userName, String password, String email, String gender, String telNo, Date doB, String companyName, double salary, String label, String CV) {
+    public Trainer(String userName, String password, String email, String gender, String telNo, Date doB, String companyName, double salary, String label, String CV, double price) {
         super(userName, password, email, gender, telNo, doB, companyName);
         this.salary = salary;
         this.label = label;
         this.CV = CV;
+        this.price = price;
     }
 
     public double getSalary() {
@@ -38,8 +40,8 @@ public class Trainer extends Staff {
         this.salary = salary;
     }
 
-    public String getLabel() {
-        return label;
+    public String[] getLabel() {
+        return label.split(";");
     }
 
     public void setLabel(String label) {
@@ -54,8 +56,16 @@ public class Trainer extends Staff {
         this.CV = CV;
     }
 
-    public String[] getCVStrArray() {
-        return CV.split(";");
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getCVStrArray() {
+        return CV;
     }
 
     public ArrayList<LiveSession> showCalender() throws ParseException {
@@ -71,13 +81,15 @@ public class Trainer extends Staff {
         Date endTime = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
                 new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
 
+        ArrayList<LiveSession> liveSessions1 = new ArrayList<LiveSession>();
+
         for (LiveSession liveSession:liveSessions) {
-            if(!liveSession.getStartTime().after(startTime) || !liveSession.getStartTime().before(endTime)) {
-                liveSessions.remove(liveSession);
+            if(liveSession.getStartTime().after(startTime) && liveSession.getStartTime().before(endTime)) {
+                liveSessions1.add(liveSession);
             }
         }
 
-        return liveSessions;
+        return liveSessions1;
     }
 
     public int getRecTime() throws ParseException {
@@ -146,9 +158,10 @@ public class Trainer extends Staff {
     @Override
     public String[] toStrArray() {
         String text = "" + super.getUserName() + "," + super.getPassword() + "," + super.getEmail() + "," + super.getGender() + "," +
-                super.getTelNo() + "," + super.getDoB() + "," + super.getCompanyName() + "," + salary + "," + label + "," + CV;
+                super.getTelNo() + "," + super.getDoB() + "," + super.getCompanyName() + "," + salary + "," + label + "," + CV + "," + price;
         return text.split(",");
     }
+
 
     @Override
     public String toString() {
@@ -156,6 +169,7 @@ public class Trainer extends Staff {
                 "salary=" + salary +
                 ", label='" + label + '\'' +
                 ", CV='" + CV + '\'' +
+                ", price=" + price +
                 "} " + super.toString();
     }
 }
