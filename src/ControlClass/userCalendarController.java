@@ -151,33 +151,39 @@ public class userCalendarController {
     private Label user_calendar_2;
 
     @FXML
-    void user_favorites_click(ActionEvent event) {
-
+    void user_favorites_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage)user_calendar_2.getScene().getWindow();
+        new APP().jump(stage, "user_favorites");
     }
 
     @FXML
-    void user_recording_click(ActionEvent event) {
-
+    void user_recording_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage)user_calendar_2.getScene().getWindow();
+        new APP().jump(stage, "user_recording");
     }
 
     @FXML
-    void user_live_click(ActionEvent event) {
-
+    void user_live_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage)user_calendar_2.getScene().getWindow();
+        new APP().jump(stage, "user_live");
     }
 
     @FXML
-    void user_calendar_click(ActionEvent event) {
-
+    void user_calendar_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage)user_calendar_2.getScene().getWindow();
+        new APP().jump(stage, "user_calendar");
     }
 
     @FXML
-    void user_history_click(ActionEvent event) {
-
+    void user_history_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage)user_calendar_2.getScene().getWindow();
+        new APP().jump(stage, "user_history");
     }
 
     @FXML
-    void user_logout_click(ActionEvent event) {
-
+    void user_logout_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage)user_calendar_2.getScene().getWindow();
+        new APP().jump(stage, "login");
     }
 
     @FXML
