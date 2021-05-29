@@ -573,7 +573,7 @@ public class Test {
         premierUser.bookLiveSession(trainer, new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-30T14:00:00"));
         premierUser.bookLiveSession(trainer, new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-31T10:00:00"));
         premierUser.bookLiveSession(trainer, new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-31T14:00:00"));
-         */
+
 
         String userName = "kaiyi";
         LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
@@ -590,5 +590,13 @@ public class Test {
         for (Course course:courses) {
             System.out.println(course.getSubject());
         }
+
+         */
+        TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
+        Trainer trainer1 = trainerDAO.queryByUserName("kaiyi2");
+
+        trainerDAO.changeTrainerLabel(trainer1.getUserName(), "30;London;Strength");
+        trainerDAO.changeTrainerCV(trainer1.getUserName(), "I am a couch from London Fitness! I love working out! Working out makes me happy!");
+
     }
 }
