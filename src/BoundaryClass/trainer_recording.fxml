@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="807.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControlClass.trainerRecordingController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="807.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControlClass.trainerRecordingController">
    <children>
       <ImageView fx:id="logo" fitHeight="73.0" fitWidth="294.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -31,12 +29,12 @@
                               <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
                         </Hyperlink>
-                        <Hyperlink fx:id="trainer_upload_hyper" onMouseClicked="#user_recording_click" text="Upload" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Hyperlink fx:id="trainer_upload_hyper" onMouseClicked="#user_recording_click" text="Upload" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
                         </Hyperlink>
-                        <Hyperlink fx:id="trainer_live_hyper" onMouseClicked="#user_live_click" text="Live" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Hyperlink fx:id="trainer_live_hyper" onMouseClicked="#user_live_click" text="Live" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
                               <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
@@ -81,7 +79,7 @@
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Label layoutX="59.0" layoutY="59.0" prefHeight="39.0" prefWidth="102.0" text="Title:">
+                  <Label layoutX="59.0" layoutY="59.0" prefHeight="39.0" prefWidth="173.0" text="Trainername:">
                      <font>
                         <Font name="Baskerville Old Face" size="28.0" />
                      </font></Label>
@@ -89,7 +87,7 @@
                      <font>
                         <Font name="Baskerville Old Face" size="28.0" />
                      </font></Label>
-                  <Label layoutX="59.0" layoutY="197.0" prefHeight="39.0" prefWidth="143.0" text="Description:" AnchorPane.leftAnchor="60.0">
+                  <Label layoutX="59.0" layoutY="197.0" prefHeight="39.0" prefWidth="143.0" text="Length:" AnchorPane.leftAnchor="60.0">
                      <font>
                         <Font name="Baskerville Old Face" size="28.0" />
                      </font></Label>
@@ -97,20 +95,7 @@
                      <font>
                         <Font name="Baskerville Old Face" size="28.0" />
                      </font></Label>
-                  <Label layoutX="216.0" layoutY="128.0" prefHeight="29.0" prefWidth="75.0" text="Yoga" AnchorPane.leftAnchor="216.0">
-                     <font>
-                        <Font name="Baskerville Old Face" size="24.0" />
-                     </font></Label>
-                  <Label layoutX="340.0" layoutY="128.0" prefHeight="32.0" prefWidth="102.0" text="Strength">
-                     <font>
-                        <Font name="Baskerville Old Face" size="24.0" />
-                     </font></Label>
-                  <Label layoutX="497.0" layoutY="128.0" prefHeight="29.0" prefWidth="75.0" text="HIIT">
-                     <font>
-                        <Font name="Baskerville Old Face" size="24.0" />
-                     </font></Label>
-                  <TextField layoutX="214.0" layoutY="57.0" prefHeight="45.0" prefWidth="589.0" AnchorPane.leftAnchor="214.0" />
-                  <TextField layoutX="214.0" layoutY="200.0" prefHeight="123.0" prefWidth="589.0" AnchorPane.leftAnchor="214.0" />
+                  <TextField layoutX="195.0" layoutY="197.0" prefHeight="39.0" prefWidth="590.0" AnchorPane.leftAnchor="195.0" />
                   <Button fx:id="button_save" layoutX="59.0" layoutY="602.0" mnemonicParsing="false" onMouseClicked="#save_click" prefHeight="54.0" prefWidth="166.0" text="Save Changes" AnchorPane.leftAnchor="59.0">
                      <font>
                         <Font name="Baskerville Old Face" size="24.0" />
@@ -128,6 +113,12 @@
                         <Font name="Baskerville Old Face" size="29.0" />
                      </font>
                   </TextField>
+                  <Label fx:id="trainername_text" layoutX="254.0" layoutY="63.0" prefHeight="32.0" prefWidth="236.0">
+                     <font>
+                        <Font name="Baskerville Old Face" size="12.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="choicebox_type" layoutX="203.0" layoutY="132.0" prefWidth="150.0" />
                </children>
             </AnchorPane>
          </items>

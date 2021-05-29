@@ -52,6 +52,7 @@ public class trainerRecordingController {
 
     final FileChooser fileChooser = new FileChooser();
     private final Desktop desktop = Desktop.getDesktop();
+//    passValue passValue = new passValue();
 
     public trainerRecordingController() {
     }
@@ -149,9 +150,13 @@ public class trainerRecordingController {
     @FXML
     public void save_click(MouseEvent mouseEvent) {
         Stage stage = (Stage) button_upload.getScene().getWindow();
+        String trainerName = passValue.getValue();
+        passValue.setTrainerName(trainerName);
+
+        System.out.println(passValue.getTrainerName());
         button_save.setOnAction((final ActionEvent e) -> {
 
-            fileChooser.setInitialDirectory(new File("src/resource"));
+            fileChooser.setInitialDirectory(new File("src/BoundaryClass/Resource"));
             fileChooser.setInitialFileName(text_upload.getText());
 
             File file = fileChooser.showSaveDialog(stage);
@@ -161,7 +166,7 @@ public class trainerRecordingController {
                 FileInputStream fin = new FileInputStream(f1);
                 byte b[] = new byte[(int)f1.length()];
                 fin.read(b);
-                FileOutputStream fw = new FileOutputStream(new File("src/resource/1.mp4" ));
+                FileOutputStream fw = new FileOutputStream(new File("src/BoundaryClass/Resource/1.mp4" ));
                 fw.write(b);
                 fw.flush();
                 fw.close();

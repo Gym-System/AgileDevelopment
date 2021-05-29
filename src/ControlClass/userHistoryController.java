@@ -4,6 +4,7 @@ import EntityClass.DAO.impl.LiveSessionDAOImpl;
 import EntityClass.DAO.impl.RecVideoDAOImpl;
 import EntityClass.DAO.impl.WatchedVideoDAOImpl;
 
+import EntityClass.VO.FavoriteVideo;
 import EntityClass.VO.LiveSession;
 import EntityClass.VO.RecVideo;
 import EntityClass.VO.WatchedVideo;
@@ -356,25 +357,165 @@ public class userHistoryController implements Initializable {
             });
         }
 
+        RecVideo recVideos;
+        LiveSession liveSessions;
+        ArrayList<RecVideo> recVideoArrayList = new ArrayList<>();
+        ArrayList<LiveSession> liivesessionArrayList = new ArrayList<>();
+        for (WatchedVideo w: watchedVideos) {
+            recVideos = recVideoDAO.queryByCourseId(w.getCourseId());
+            liveSessions = liveSessionDAO.queryByCourseId(w.getCourseId());
+            if (!user_find_text.getText().equals("") && !user_find_text.getText().equals("live") && !user_find_text.getText().equals("recorded")) {
+                turn_page.setPageCount(1);
+                turn_page.setPageFactory(new Callback<Integer, Node>() {
+                    @Override
+                    public Node call(Integer param) {
+                        VBox box = new VBox();
 
-//        if (!user_find_text.getText().equals("") && watchedVideoDAO.q(user_find_text.getText()).size() ==0){
-//            turn_page.setPageCount(1);
-//            turn_page.setPageFactory(new Callback<Integer, Node>() {
-//                @Override
-//                public Node call(Integer param) {
-//                    VBox box = new VBox();
-//
-//                    for (int i = 0; i < 6;i++){
-//                        labelCoa[i].setText("");
-//                        labelDur[i].setText("");
-//                        labelName[i].setText("");
-//                        imageViews[i].setImage(null);
-//                    }
-//
-//                    return box;
-//                }
-//            });
-//        }
+                        for (int i = 0; i < 10;i++){
+                            labelCategory[i].setText("");
+                            labelName[i].setText("");
+                            labelCoach[i].setText("");
+                            labelTime[i].setText("");
+                        }
+
+                        return box;
+                    }
+                });
+            }
+        }
+
+        for (WatchedVideo w: watchedVideos) {
+            recVideos = recVideoDAO.queryByCourseId(w.getCourseId());
+            liveSessions = liveSessionDAO.queryByCourseId(w.getCourseId());
+            if (!user_find_text.getText().equals("") && user_find_text.getText().equals("recorded")) {
+                ArrayList<WatchedVideo> watchedVideos1 = new ArrayList<>();
+                RecVideo recVideo;
+                for (WatchedVideo w2:watchedVideos) {
+                    recVideoDAO = new RecVideoDAOImpl();
+                    recVideo = recVideoDAO.queryByCourseId(w2.getCourseId());
+                    if (user_find_text.getText().equals("recorded")){
+                        watchedVideos1.add(w2);
+                    }
+                }
+
+                turn_page.setPageCount((int) Math.ceil(watchedVideos1.size()/10.0));
+                turn_page.setPageFactory(new Callback<Integer, Node>() {
+                    @Override
+                    public Node call(Integer param) {
+                        VBox vbox = new VBox();
+                        int limit = 10;
+                        int record = 0;
+                        if (param.intValue() == watchedVideos1.size()/10) {
+                            limit = watchedVideos1.size()%10;
+                        }
+
+                        if(param.intValue() < watchedVideos1.size()/10){
+                            RecVideoDAOImpl recVideoDAO;
+                            RecVideo recVideo;
+                            for (int i =0; i <limit; i++){
+                                if (watchedVideos.get(10 * param.intValue() + i).getType().equals("recorded")) {
+                                    labelCategory[i].setText(watchedVideos1.get(10 * param.intValue() + i).getType());
+                                    recVideoDAO = new RecVideoDAOImpl();
+                                    recVideo = recVideoDAO.queryByCourseId(watchedVideos1.get(10 * param.intValue() + i).getCourseId());
+                                    labelName[i].setText(recVideo.getSubject());
+                                    labelCoach[i].setText(recVideo.getUserName());
+                                    labelTime[i].setText(String.valueOf(recVideo.getUploadedTime()));
+                                    record += 1;
+                                }
+                            }
+                        } else {
+                            RecVideoDAOImpl recVideoDAO;
+                            RecVideo recVideo;
+                            for (int i =0; i <limit; i++){
+                                if (watchedVideos.get(10 * param.intValue() + i).getType().equals("recorded")) {
+                                    labelCategory[i].setText(watchedVideos1.get(10 * param.intValue() + i).getType());
+                                    recVideoDAO = new RecVideoDAOImpl();
+                                    recVideo = recVideoDAO.queryByCourseId(watchedVideos1.get(10 * param.intValue() + i).getCourseId());
+                                    labelName[i].setText(recVideo.getSubject());
+                                    labelCoach[i].setText(recVideo.getUserName());
+                                    labelTime[i].setText(String.valueOf(recVideo.getUploadedTime()));
+                                    record += 1;
+                                }
+                            }
+                            for (int i = record; i<10; i++){
+                                labelCategory[i].setText("");
+                                labelName[i].setText("");
+                                labelCoach[i].setText("");
+                                labelTime[i].setText("");
+                            }
+                        }
+
+                        return vbox;
+                    }
+                });
+
+            }
+            if (!user_find_text.getText().equals("") && user_find_text.getText().equals("live")){
+                ArrayList<WatchedVideo> watchedVideos1 = new ArrayList<>();
+                LiveSession liveSession;
+                for (WatchedVideo w2:watchedVideos) {
+                    liveSessionDAO = new LiveSessionDAOImpl();
+
+                    liveSession = liveSessionDAO.queryByCourseId(w2.getCourseId());
+                    if (user_find_text.getText().equals("live")){
+                        watchedVideos1.add(w2);
+                    }
+
+                }
+
+                turn_page.setPageCount((int) Math.ceil(watchedVideos1.size()/10.0));
+                turn_page.setPageFactory(new Callback<Integer, Node>() {
+                    @Override
+                    public Node call(Integer param) {
+                        VBox vbox = new VBox();
+                        int limit = 10;
+                        int record = 0;
+                        if (param.intValue() == watchedVideos1.size()/10) {
+                            limit = watchedVideos1.size()%10;
+                        }
+
+                        if(param.intValue() < watchedVideos1.size()/10){
+                            LiveSessionDAOImpl liveSessionDAO;
+                            LiveSession liveSession;
+                            for (int i =0; i <limit; i++){
+                                if (watchedVideos.get(10 * param.intValue() + i).getType().equals("live")) {
+                                    labelCategory[record].setText(watchedVideos1.get(10 * param.intValue() + i).getType());
+                                    liveSessionDAO = new LiveSessionDAOImpl();
+                                    liveSession = liveSessionDAO.queryByCourseId(watchedVideos1.get(10 * param.intValue() + i).getCourseId());
+                                    labelName[record].setText(liveSession.getSubject());
+                                    labelCoach[record].setText(liveSession.getTrainerName());
+                                    labelTime[record].setText(String.valueOf(liveSession.getStartTime()));
+                                    record += 1;
+                                }
+                            }
+                        } else {
+                            LiveSessionDAOImpl liveSessionDAO;
+                            LiveSession liveSession;
+                            for (int i =0; i <limit; i++){
+                                if (watchedVideos.get(10 * param.intValue() + i).getType().equals("live")) {
+                                    labelCategory[record].setText(watchedVideos1.get(10 * param.intValue() + i).getType());
+                                    liveSessionDAO = new LiveSessionDAOImpl();
+                                    liveSession = liveSessionDAO.queryByCourseId(watchedVideos1.get(10 * param.intValue() + i).getCourseId());
+                                    labelName[record].setText(liveSession.getSubject());
+                                    labelCoach[record].setText(liveSession.getTrainerName());
+                                    labelTime[record].setText(String.valueOf(liveSession.getStartTime()));
+                                    record += 1;
+                                }
+                            }
+                            for (int i = record; i<10; i++){
+                                labelCategory[i].setText("");
+                                labelName[i].setText("");
+                                labelCoach[i].setText("");
+                                labelTime[i].setText("");
+                            }
+                        }
+
+                        return vbox;
+                    }
+                });
+            }
+        }
+
     }
 
     @FXML

@@ -1,7 +1,9 @@
 package ControlClass;
 
 import EntityClass.DAO.impl.LiveSessionDAOImpl;
+import EntityClass.DAO.impl.TrainerDAOImpl;
 import EntityClass.VO.LiveSession;
+import EntityClass.VO.Trainer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -342,12 +344,19 @@ public class userLiveController implements Initializable {
         hyperlinks[1] = user_BookLive_hyper2;
         hyperlinks[2] = user_BookLive_hyper3;
 
+        Label[] labelCost = new Label[3];
+        labelCost[0] = cost1;
+        labelCost[1] = cost2;
+        labelCost[2] = cost3;
+
         turn_page.setPageCount((int) Math.ceil(liveSessions.size()/3.0));
 
         turn_page.setPageFactory(new Callback<Integer, Node>() {
             @Override
             public Node call(Integer param) {
                 VBox box = new VBox();
+                Trainer trainer;
+                TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
                 int limit = 3;
                 if (param.intValue() == liveSessions.size()/3) {
                     limit = liveSessions.size()%3;
@@ -355,24 +364,29 @@ public class userLiveController implements Initializable {
 
                 if(param.intValue() < liveSessions.size()/3){
                     for (int i =0; i <limit; i++){
+                        trainer = trainerDAO.queryByUserName(liveSessions.get(3 * param.intValue() + i).getTrainerName());
                         labelLive[i].setText(liveSessions.get(3 * param.intValue() + i).getSubject());
                         labelTrainer[i].setText("Coach: " + liveSessions.get(3 * param.intValue() + i).getTrainerName());
                         hyperlinks[i].setText("Book Live Session");
                         imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga2.jpg"));
+                        labelCost[i].setText(String.valueOf(trainer.getPrice()));
                     }
 
                 } else {
                     for (int i =0; i <limit; i++){
+                        trainer = trainerDAO.queryByUserName(liveSessions.get(3 * param.intValue() + i).getTrainerName());
                         labelLive[i].setText(liveSessions.get(3 * param.intValue() + i).getSubject());
                         labelTrainer[i].setText("Coach" + liveSessions.get(3 * param.intValue() + i).getTrainerName());
                         hyperlinks[i].setText("Book Live Session");
                         imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga3.jpg"));
+                        labelCost[i].setText(String.valueOf(trainer.getPrice()));
                     }
                     for (int i = limit; i<3; i++){
                         labelLive[i].setText("");
                         labelTrainer[i].setText("");
                         hyperlinks[i].setText("");
                         imageViews[i].setImage(null);
+                        labelCost[i].setText("");
                         System.out.println(i+" test");
                     }
 
