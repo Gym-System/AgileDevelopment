@@ -180,28 +180,33 @@ public class trainerPortraitController {
     private Hyperlink user_recEnter_hyper611;
 
     @FXML
-    void trainer_portrait_portrait_click(ActionEvent event) {
-
+    void trainer_portrait_portrait_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) trainer_logout_hyper.getScene().getWindow();
+        new APP().jump(stage, "trainer_portrait");
     }
 
     @FXML
-    void trainer_portrait_upload_click(ActionEvent event) {
-
+    void trainer_portrait_upload_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) trainer_logout_hyper.getScene().getWindow();
+        new APP().jump(stage, "trainer_recording");
     }
 
     @FXML
-    void trainer_portrait_live_click(ActionEvent event) {
-
+    void trainer_portrait_live_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) trainer_logout_hyper.getScene().getWindow();
+        new APP().jump(stage, "trainer_live");
     }
 
     @FXML
-    void trainer_portrait_calendar_click(ActionEvent event) {
-
+    void trainer_portrait_calendar_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) trainer_logout_hyper.getScene().getWindow();
+        new APP().jump(stage, "tra_trainer_calendar");
     }
 
     @FXML
-    void trainer_portrait_history_click(ActionEvent event) {
-
+    void trainer_portrait_history_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) trainer_logout_hyper.getScene().getWindow();
+        new APP().jump(stage, "trainer_history");
     }
 
 
@@ -249,8 +254,9 @@ public class trainerPortraitController {
     }
 
     @FXML
-    void trainer_logout_click(ActionEvent event) {
-
+    void trainer_logout_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) trainer_logout_hyper.getScene().getWindow();
+        new APP().jump(stage, "login");
     }
 
     @FXML
@@ -318,6 +324,8 @@ public class trainerPortraitController {
 
     }
 
-    public void trainer_portrait_info_click(MouseEvent mouseEvent) {
+    public void trainer_portrait_info_click(MouseEvent mouseEvent) throws IOException {
+        Stage stage = (Stage) trainer_logout_hyper.getScene().getWindow();
+        new APP().jump(stage, "TrainerInfo");
     }
 }

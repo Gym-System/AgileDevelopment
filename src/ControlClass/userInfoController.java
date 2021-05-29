@@ -9,7 +9,9 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -193,28 +195,40 @@ public class userInfoController {
     public void userInfo_live_click(javafx.event.ActionEvent actionEvent) {
     }
 
-    public void userInfo_favorates_click(ActionEvent actionEvent) {
+    public void userInfo_favorates_click(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) level.getScene().getWindow();
+        new APP().jump(stage, "user_history");
     }
 
     public void userInfo_modify_click(ActionEvent actionEvent) {
     }
 
-    public void userInfo_recording_click(ActionEvent actionEvent) {
+    public void userInfo_recording_click(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) level.getScene().getWindow();
+        new APP().jump(stage, "user_recording");
     }
 
-    public void userInfo_calendar_click(ActionEvent actionEvent) {
+    public void userInfo_calendar_click(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) level.getScene().getWindow();
+        new APP().jump(stage, "user_calendar");
     }
 
-    public void userInfo_history_click(ActionEvent actionEvent) {
+    public void userInfo_history_click(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) level.getScene().getWindow();
+        new APP().jump(stage, "user_history");
     }
 
-    public void userInfo_info_click(MouseEvent mouseEvent) {
+    public void userInfo_info_click(MouseEvent mouseEvent) throws IOException {
+        Stage stage = (Stage) level.getScene().getWindow();
+        new APP().jump(stage, "userInfo");
     }
 
     public void userinfo_vip_click(ActionEvent actionEvent) {
     }
 
-    public void user_logout_click(MouseEvent mouseEvent) {
+    public void user_logout_click(MouseEvent mouseEvent) throws IOException {
+        Stage stage = (Stage) level.getScene().getWindow();
+        new APP().jump(stage, "login");
     }
 
     @FXML

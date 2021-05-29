@@ -1,5 +1,6 @@
 package ControlClass;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,6 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 import javax.swing.*;
 
@@ -340,13 +342,16 @@ public class tra_trainerCalendarController {
     }
 
     @FXML
-    void userInfo_info_click(ActionEvent event) {
+    void userInfo_info_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) book61.getScene().getWindow();
+        new APP().jump(stage, "TrainerInfo");
 
     }
 
     @FXML
-    void user_logout_click(ActionEvent event) {
-
+    void user_logout_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) book61.getScene().getWindow();
+        new APP().jump(stage, "login");
     }
 
     @FXML

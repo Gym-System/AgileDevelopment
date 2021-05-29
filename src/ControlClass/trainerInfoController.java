@@ -1,5 +1,6 @@
 package ControlClass;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -19,6 +20,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 
 public class trainerInfoController {
@@ -119,33 +121,39 @@ public class trainerInfoController {
 
 
     @FXML
-    void trainerInfo_portrait_click(ActionEvent event) {
-
+    void trainerInfo_portrait_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) trainerInfo_label.getScene().getWindow();
+        new APP().jump(stage, "trainer_portrait");
     }
 
     @FXML
-    void trainerInfo_upload_click(ActionEvent event) {
-
+    void trainerInfo_upload_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) trainerInfo_label.getScene().getWindow();
+        new APP().jump(stage, "trainer_recording");
     }
 
     @FXML
-    void trainerInfo_live_click(ActionEvent event) {
-
+    void trainerInfo_live_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) trainerInfo_label.getScene().getWindow();
+        new APP().jump(stage, "trainer_live");
     }
 
     @FXML
-    void trainerInfo_calendar_click(ActionEvent event) {
-
+    void trainerInfo_calendar_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) trainerInfo_label.getScene().getWindow();
+        new APP().jump(stage, "tra_trainer_calendar");
     }
 
     @FXML
-    void trainerInfo_history_click(ActionEvent event) {
-
+    void trainerInfo_history_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) trainerInfo_label.getScene().getWindow();
+        new APP().jump(stage, "trainer_history");
     }
 
     @FXML
-    void trainerInfo_info_click(ActionEvent event) {
-
+    void trainerInfo_info_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) trainerInfo_label.getScene().getWindow();
+        new APP().jump(stage, "TrainerInfo");
     }
 
     @FXML
