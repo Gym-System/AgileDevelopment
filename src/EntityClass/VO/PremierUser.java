@@ -3,7 +3,12 @@ package EntityClass.VO;
 import EntityClass.DAO.impl.WatchedVideoDAOImpl;
 import EntityClass.DAO.impl.LiveSessionDAOImpl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class PremierUser extends User {
     private int userType = 1;
@@ -55,6 +60,37 @@ public class PremierUser extends User {
         }
 
         return flag;
+    }
+
+    public void cancelLiveSession(long courseId) {
+        LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
+        liveSessionDAO.deleteLiveSession(courseId);
+
+        WatchedVideoDAOImpl historyDataDAO = new WatchedVideoDAOImpl();
+        historyDataDAO.deleteHistoryData(courseId);
+    }
+
+    public ArrayList<LiveSession> showCalender() throws ParseException {
+        LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
+        ArrayList<LiveSession> liveSessions = liveSessionDAO.queryByUserName(getUserName());
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        Date startTime = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
+                new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
+        calendar.add(Calendar.DATE, 7);
+        Date endTime = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
+                new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
+
+        ArrayList<LiveSession> liveSessions1 = new ArrayList<LiveSession>();
+
+        for (LiveSession liveSession:liveSessions) {
+            if(liveSession.getStartTime().after(startTime) && liveSession.getStartTime().before(endTime)) {
+                liveSessions1.add(liveSession);
+            }
+        }
+
+        return liveSessions1;
     }
 
     @Override

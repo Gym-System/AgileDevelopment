@@ -53,35 +53,20 @@ public class User extends Person {
         favoriteVideoDAO.deleteHistoryData(courseId);
     }
 
-    public void cancelLiveSession(long courseId) {
-        LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
-        liveSessionDAO.deleteLiveSession(courseId);
+    public boolean recharge(double money) {
+        if(money > 0) {
+            UserDAOImpl userDAO = new UserDAOImpl();
+            userDAO.deleteUser(super.getUserName());
+            PremierUser premierUser = new PremierUser(super.getUserName(), super.getPassword(), super.getEmail(), super.getGender(), super.getTelNo(), super.getDoB());
+            premierUser.setBalance(money);
+            PersonDAOImpl personDAO = new PersonDAOImpl();
+            personDAO.insertPerson(premierUser);
 
-        WatchedVideoDAOImpl historyDataDAO = new WatchedVideoDAOImpl();
-        historyDataDAO.deleteHistoryData(courseId);
-    }
-
-    public ArrayList<LiveSession> showCalender() throws ParseException {
-        LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
-        ArrayList<LiveSession> liveSessions = liveSessionDAO.queryByUserName(getUserName());
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(new Date());
-        Date startTime = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
-                new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
-        calendar.add(Calendar.DATE, 7);
-        Date endTime = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
-                new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
-
-        ArrayList<LiveSession> liveSessions1 = new ArrayList<LiveSession>();
-
-        for (LiveSession liveSession:liveSessions) {
-            if(liveSession.getStartTime().after(startTime) && liveSession.getStartTime().before(endTime)) {
-                liveSessions1.add(liveSession);
-            }
+            return true;
         }
-
-        return liveSessions1;
+        else {
+            return false;
+        }
     }
 
     public void sendGift(int amount, long courseId) {
