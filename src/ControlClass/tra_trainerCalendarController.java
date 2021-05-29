@@ -317,28 +317,33 @@ public class tra_trainerCalendarController {
     private Hyperlink trainer_live;
 
     @FXML
-    void trainer_portrait_click(ActionEvent event) {
-
+    void trainer_portrait_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) book61.getScene().getWindow();
+        new APP().jump(stage, "trainer_portrait");
     }
 
     @FXML
-    void trainer_upload_click(ActionEvent event) {
-
+    void trainer_upload_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) book61.getScene().getWindow();
+        new APP().jump(stage, "trainer_recording");
     }
 
     @FXML
-    void trainer_live_click(ActionEvent event) {
-
+    void trainer_live_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) book61.getScene().getWindow();
+        new APP().jump(stage, "trainer_live");
     }
 
     @FXML
-    void user_calendar_click(ActionEvent event) {
-
+    void user_calendar_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) book61.getScene().getWindow();
+        new APP().jump(stage, "tra_trainer_calendar");
     }
 
     @FXML
-    void trainer_history_click(ActionEvent event) {
-
+    void trainer_history_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) book61.getScene().getWindow();
+        new APP().jump(stage, "trainer_history");
     }
 
     @FXML

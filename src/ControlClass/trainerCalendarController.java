@@ -377,6 +377,9 @@ public class trainerCalendarController {
         Boolean moneyState;
         System.out.println(passValue.getTrainerName());
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -397,6 +400,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -417,6 +423,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -438,6 +447,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -458,6 +470,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -478,6 +493,10 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "Pay successfully", "Pay successfully", JOptionPane.ERROR_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -498,6 +517,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -518,6 +540,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -539,6 +564,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -559,6 +587,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -579,6 +610,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -599,6 +633,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -619,6 +656,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -640,6 +680,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -660,6 +703,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -680,6 +726,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -700,6 +749,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -720,6 +772,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -740,6 +795,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -760,6 +818,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -780,6 +841,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -800,6 +864,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -820,6 +887,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -840,6 +910,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -860,6 +933,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -880,6 +956,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -900,6 +979,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -920,6 +1002,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -940,6 +1025,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -960,6 +1048,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -980,6 +1071,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -1000,6 +1094,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -1020,6 +1117,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -1040,6 +1140,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
@@ -1060,6 +1163,9 @@ public class trainerCalendarController {
         Date bookDate = df2.parse(time);
         Boolean moneyState;
         moneyState=preUserDAO.queryByUserName(passValue.getValue()).bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()), bookDate);
+        if(moneyState==true){
+            JOptionPane.showInternalMessageDialog(null, "Pay successfully","Pay successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
         if(moneyState==false){
             JOptionPane.showMessageDialog(null, "Lack of balance", "Lack of balance", JOptionPane.ERROR_MESSAGE);
         }
