@@ -592,11 +592,5 @@ public class Test {
         }
 
          */
-        TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
-        Trainer trainer1 = trainerDAO.queryByUserName("kaiyi2");
-
-        trainerDAO.changeTrainerLabel(trainer1.getUserName(), "30;London;Strength");
-        trainerDAO.changeTrainerCV(trainer1.getUserName(), "I am a couch from London Fitness! I love working out! Working out makes me happy!");
-
     }
 }

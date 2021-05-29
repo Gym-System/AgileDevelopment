@@ -10,8 +10,10 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 import EntityClass.DAO.impl.LiveSessionDAOImpl;
+import EntityClass.DAO.impl.PreUserDAOImpl;
 import EntityClass.DAO.impl.UserDAOImpl;
 import EntityClass.VO.LiveSession;
+import EntityClass.VO.PremierUser;
 import EntityClass.VO.User;
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import javafx.event.ActionEvent;
@@ -251,9 +253,9 @@ public class userCalendarController {
         user_calendar_5.setText(df.format(new Date(d.getTime() + 4 * 24 * 60 * 60 * 1000)));
         user_calendar_6.setText(df.format(new Date(d.getTime() + 5 * 24 * 60 * 60 * 1000)));
         user_calendar_7.setText(df.format(new Date(d.getTime() + 6 * 24 * 60 * 60 * 1000)));
-        User user;
-        UserDAOImpl UserDAO = new UserDAOImpl();
-        user=UserDAO.queryByUserName("kaiyi");
+        PremierUser user;
+        PreUserDAOImpl UserDAO = new PreUserDAOImpl();
+        user=UserDAO.queryByUserName(passValue.getValue());
         ArrayList<LiveSession> recent = new ArrayList<LiveSession>();
         recent=user.showCalender();
         for (LiveSession liveSession:recent) {
