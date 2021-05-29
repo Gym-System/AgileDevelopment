@@ -63,7 +63,7 @@
                               <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
                         </Hyperlink>
-                        <ImageView fx:id="user_profile_pic" fitHeight="105.0" fitWidth="102.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
+                        <ImageView fx:id="user_profile_pic" fitHeight="105.0" fitWidth="102.0" layoutX="10.0" onMouseClicked="#userinfo_hyperlink" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
                            <image>
                               <Image url="@Resource/user_Profile.jpg" />
                            </image>

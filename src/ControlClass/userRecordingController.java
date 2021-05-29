@@ -166,6 +166,12 @@ public class userRecordingController implements Initializable {
     ArrayList<RecVideo> recVideos = recVideoDAO.queryAll();
 
     @FXML
+    public void userinfo_hyperlink(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_facorites_hyper.getScene().getWindow();
+        new APP().jump(stage, "UserInfo");
+    }
+
+    @FXML
     void user_favorites_click(MouseEvent event) throws IOException {
         Stage stage = (Stage) user_facorites_hyper.getScene().getWindow();
         new APP().jump(stage, "user_favorites");
@@ -832,5 +838,6 @@ public class userRecordingController implements Initializable {
             }
         });
     }
+
 
 }

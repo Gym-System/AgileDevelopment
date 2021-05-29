@@ -198,7 +198,9 @@ public class userInfoController {
 
     }
 
-    public void userInfo_live_click(javafx.event.ActionEvent actionEvent) {
+    public void userInfo_live_click(javafx.event.ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) level.getScene().getWindow();
+        new APP().jump(stage, "user_live");
     }
 
     public void userInfo_favorates_click(ActionEvent actionEvent) throws IOException {

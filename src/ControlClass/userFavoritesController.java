@@ -139,6 +139,12 @@ public class userFavoritesController implements Initializable {
     FavoriteVideoImpl favoriteVideo = new FavoriteVideoImpl();
 
     @FXML
+    public void userinfo_hyperlink(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_favorites_hyper.getScene().getWindow();
+        new APP().jump(stage,"UserInfo");
+    }
+
+    @FXML
     void user_favorites_click(MouseEvent event) throws IOException {
         Stage stage = (Stage) user_favorites_hyper.getScene().getWindow();
         new APP().jump(stage,"user_favorites");
@@ -1069,5 +1075,7 @@ public class userFavoritesController implements Initializable {
             }
         });
     }
+
+
 }
 

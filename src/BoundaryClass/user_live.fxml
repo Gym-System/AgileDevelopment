@@ -63,7 +63,7 @@
                               <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
                         </Hyperlink>
-                        <ImageView fx:id="user_profile_pic" fitHeight="105.0" fitWidth="102.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
+                        <ImageView fx:id="user_profile_pic" fitHeight="105.0" fitWidth="102.0" layoutX="10.0" onMouseClicked="#userinfo_hyperlink" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
                            <image>
                               <Image url="@Resource/user_Profile.jpg" />
                            </image>
@@ -93,21 +93,6 @@
                      <cursor>
                         <Cursor fx:constant="NW_RESIZE" />
                      </cursor></Pagination>
-                  <CheckBox fx:id="user_yoga_check" layoutX="543.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#click_check_yoga" text="Yoga">
-                     <font>
-                        <Font name="Comic Sans MS Bold" size="18.0" />
-                     </font>
-                  </CheckBox>
-                  <CheckBox fx:id="user_strength_check" layoutX="771.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#click_check_strength" text="Strength">
-                     <font>
-                        <Font name="Comic Sans MS Bold" size="18.0" />
-                     </font>
-                  </CheckBox>
-                  <CheckBox fx:id="user_hitt_check" layoutX="658.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#click_check_hitt" text="Hitt">
-                     <font>
-                        <Font name="Comic Sans MS Bold" size="18.0" />
-                     </font>
-                  </CheckBox>
                   <Separator layoutX="60.0" layoutY="145.0" prefHeight="0.0" prefWidth="856.0" />
                   <Separator layoutX="60.0" layoutY="228.0" prefHeight="48.0" prefWidth="856.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebebeb" height="313.0" layoutX="60.0" layoutY="282.0" stroke="#94717142" strokeType="INSIDE" strokeWidth="5.0" width="258.0" />

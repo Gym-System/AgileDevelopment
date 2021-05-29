@@ -1,6 +1,5 @@
 package ControlClass;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
@@ -9,13 +8,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-import EntityClass.DAO.impl.LiveSessionDAOImpl;
 import EntityClass.DAO.impl.PreUserDAOImpl;
-import EntityClass.DAO.impl.UserDAOImpl;
 import EntityClass.VO.LiveSession;
 import EntityClass.VO.PremierUser;
-import EntityClass.VO.User;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -23,6 +18,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -153,25 +149,31 @@ public class userCalendarController {
     private Label user_calendar_2;
 
     @FXML
-    void user_favorites_click(ActionEvent event) throws IOException {
+    public void userinfo_hyperlink(MouseEvent event) throws IOException {
+        Stage stage = (Stage)user_calendar_2.getScene().getWindow();
+        new APP().jump(stage, "UserInfo");
+    }
+
+    @FXML
+    void user_favorites_click(MouseEvent event) throws IOException {
         Stage stage = (Stage)user_calendar_2.getScene().getWindow();
         new APP().jump(stage, "user_favorites");
     }
 
     @FXML
-    void user_recording_click(ActionEvent event) throws IOException {
+    void user_recording_click(MouseEvent event) throws IOException {
         Stage stage = (Stage)user_calendar_2.getScene().getWindow();
         new APP().jump(stage, "user_recording");
     }
 
     @FXML
-    void user_live_click(ActionEvent event) throws IOException {
+    void user_live_click(MouseEvent event) throws IOException {
         Stage stage = (Stage)user_calendar_2.getScene().getWindow();
         new APP().jump(stage, "user_live");
     }
 
     @FXML
-    void user_calendar_click(ActionEvent event) throws IOException {
+    void user_calendar_click(MouseEvent event) throws IOException {
         Stage stage = (Stage)user_calendar_2.getScene().getWindow();
         new APP().jump(stage, "user_calendar");
     }
@@ -183,7 +185,7 @@ public class userCalendarController {
     }
 
     @FXML
-    void user_logout_click(ActionEvent event) throws IOException {
+    void user_logout_click(MouseEvent event) throws IOException {
         Stage stage = (Stage)user_calendar_2.getScene().getWindow();
         new APP().jump(stage, "login");
     }
@@ -325,4 +327,6 @@ public class userCalendarController {
         }
 
     }
+
+
 }
