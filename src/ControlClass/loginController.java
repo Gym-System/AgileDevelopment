@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import EntityClass.DAO.impl.ManagerDAOImpl;
+import EntityClass.DAO.impl.PreUserDAOImpl;
 import EntityClass.DAO.impl.TrainerDAOImpl;
 import EntityClass.DAO.impl.UserDAOImpl;
 import EntityClass.VO.Manager;
@@ -82,6 +83,7 @@ public class loginController {
     void login_button_submit(ActionEvent event) throws IOException {
         if (type_user.isSelected()) {
             UserDAOImpl userDAO = new UserDAOImpl();
+            PreUserDAOImpl preUserDAO = new PreUserDAOImpl();
             boolean flag = true;
             passValue.setValue(login_usename.getText());
             if (login_usename.getText().equals("")) {
@@ -100,12 +102,13 @@ public class loginController {
                 password1.setVisible(false);
             }
             if (flag) {
-                if (userDAO.queryByUserName(login_usename.getText()) == null) {
+                if (userDAO.queryByUserName(login_usename.getText()) == null && preUserDAO.queryByUserName(login_usename.getText()) ==null) {
                     username2.setVisible(true);
                     username1.setVisible(false);
                 } else {
-                    String True_password = userDAO.queryByUserName(login_usename.getText()).getPassword(); //get from UserDAO
-                    if (login_password.getText().equals(True_password)) {
+                    String True_password1 = userDAO.queryByUserName(login_usename.getText()).getPassword(); //get from UserDAO
+                    String True_password2 = preUserDAO.queryByUserName(login_usename.getText()).getPassword();
+                    if (login_password.getText().equals(True_password1)||login_password.getText().equals(True_password2)) {
                         Stage stage = (Stage) login_button.getScene().getWindow();
                         new APP().jump(stage, "user_trainerPortrait");
                     } else {

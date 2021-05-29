@@ -201,7 +201,7 @@ public class userTrainerPortraitController {
     @FXML
     void user_trainer_portrait_info_click(ActionEvent event) throws IOException {
         Stage stage = (Stage) user_recDur_hitt1_label.getScene().getWindow();
-        new APP().jump(stage, "user_history");
+        new APP().jump(stage, "UserInfo");
     }
 
     @FXML
@@ -313,9 +313,9 @@ public class userTrainerPortraitController {
         assert user_trainer_portrait_recEnter_yoga2_hyper1 != null : "fx:id=\"user_trainer_portrait_recEnter_yoga2_hyper1\" was not injected: check your FXML file 'user_trainerPortrait.fxml'.";
         //passValue.setTrainerName("kaiyi");
         TrainerDAOImpl TrainerDAO = new TrainerDAOImpl();
-        user_trainer_portrait_name.setText(TrainerDAO.queryByUserName("kaiyi").getUserName());
+        user_trainer_portrait_name.setText(TrainerDAO.queryByUserName(passValue.getTrainerName()).getUserName());
         String [] str = new String [5];
-        str=TrainerDAO.queryByUserName("kaiyi").getLabel();
+        str=TrainerDAO.queryByUserName(passValue.getTrainerName()).getLabel();
         int count=0;
         for (String Trainerlabel:str){
             Label textlabel = new Label();
