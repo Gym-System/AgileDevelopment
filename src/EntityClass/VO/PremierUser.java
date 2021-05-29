@@ -1,5 +1,8 @@
 package EntityClass.VO;
 
+import EntityClass.DAO.PreUserDAO;
+import EntityClass.DAO.impl.OrderDAOImpl;
+import EntityClass.DAO.impl.PreUserDAOImpl;
 import EntityClass.DAO.impl.WatchedVideoDAOImpl;
 import EntityClass.DAO.impl.LiveSessionDAOImpl;
 
@@ -35,28 +38,51 @@ public class PremierUser extends User {
     }
 
     public double calDiscount(double price) {
+        calUserType();
         double discount = price * (1 - userType /10);
 
         return discount;
+    }
+
+    public void calUserType() {
+        int type;
+        double expend = 0.0;
+        ArrayList<Order> orders = new OrderDAOImpl().queryByUserName(super.getUserName());
+        for(Order order:orders) {
+            expend += order.getCost();
+        }
+
+        if (expend < 50000) {
+            type = (int) (expend/10000);
+            setUserType(type);
+        }
+        else {
+            type = 5;
+            setUserType(type);
+        }
+        new PreUserDAOImpl().changePreUserType(super.getUserName(), type);
+    }
+
+    public void watchLiveSession(long courseId) {
+        String type = "live";
+        WatchedVideo watchedVideo = new WatchedVideo(super.getUserName(), type, courseId);
+        WatchedVideoDAOImpl historyDataDAO = new WatchedVideoDAOImpl();
+        historyDataDAO.insertHistoryData(watchedVideo);
     }
 
     public boolean bookLiveSession(Trainer trainer, Date startTime) {
         boolean flag = false;
 
         if(getBalance() > calDiscount(trainer.getPrice())) {
-            setBalance(getBalance() - calDiscount(trainer.getPrice()));
             flag = true;
-        }
+            setBalance(getBalance() - calDiscount(trainer.getPrice()));
 
-        if(flag) {
             LiveSession liveSession = new LiveSession(null, 2, startTime, trainer.getUserName(), getUserName());
             LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
             liveSessionDAO.insertLiveSession(liveSession);
 
-            String type = "live";
-            WatchedVideo watchedVideo = new WatchedVideo(super.getUserName(), type, liveSession.getCourseId());
-            WatchedVideoDAOImpl historyDataDAO = new WatchedVideoDAOImpl();
-            historyDataDAO.insertHistoryData(watchedVideo);
+            Order order = new Order(liveSession.getCourseId(), super.getUserName(), calDiscount(trainer.getPrice()));
+            new OrderDAOImpl().insertOrder(order);
         }
 
         return flag;
@@ -66,8 +92,7 @@ public class PremierUser extends User {
         LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
         liveSessionDAO.deleteLiveSession(courseId);
 
-        WatchedVideoDAOImpl historyDataDAO = new WatchedVideoDAOImpl();
-        historyDataDAO.deleteHistoryData(courseId);
+        new OrderDAOImpl().deleteOrder(courseId);
     }
 
     public ArrayList<LiveSession> showCalender() throws ParseException {
