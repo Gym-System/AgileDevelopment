@@ -69,10 +69,7 @@ public class trainerRecordingController implements Initializable {
     private final Desktop desktop = Desktop.getDesktop();
 //    passValue passValue = new passValue();
 
-    @FXML
-    void trainer_portrait_hyper(MouseEvent event){
 
-    }
 
 //    @FXML
 //    void user_favorites_click(ActionEvent event) {
@@ -80,32 +77,42 @@ public class trainerRecordingController implements Initializable {
 //    }
 
     @FXML
-    void user_recording_click(MouseEvent event) {
-
+    public void user_favorites_click(MouseEvent mouseEvent) throws IOException {
+        Stage stage = (Stage) trainer_portrait_hyper.getScene().getWindow();
+        new APP().jump(stage,"trainer_portrait");
     }
 
     @FXML
-    void user_live_click(MouseEvent event) {
-
+    void user_recording_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) trainer_portrait_hyper.getScene().getWindow();
+        new APP().jump(stage,"trainer_recording");
     }
 
     @FXML
-    void user_calendar_click(MouseEvent event) {
-
+    void user_live_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) trainer_portrait_hyper.getScene().getWindow();
+        new APP().jump(stage,"trainer_live");
     }
 
     @FXML
-    void user_history_click(MouseEvent event) {
-
+    void user_calendar_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) trainer_portrait_hyper.getScene().getWindow();
+        new APP().jump(stage,"tra_trainer_calendar");
     }
 
     @FXML
-    void user_logout_click(MouseEvent event) {
-
+    void user_history_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) trainer_portrait_hyper.getScene().getWindow();
+        new APP().jump(stage,"trainer_history");
     }
 
-    public void user_favorites_click(MouseEvent mouseEvent) {
+    @FXML
+    void user_logout_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) trainer_portrait_hyper.getScene().getWindow();
+        new APP().jump(stage,"login");
     }
+
+
 
 
     public void upload_click(MouseEvent mouseEvent) {
@@ -165,33 +172,43 @@ public class trainerRecordingController implements Initializable {
     }
 
     @FXML
-    public void save_click(MouseEvent mouseEvent) {
+    public void save_click(MouseEvent mouseEvent) throws IOException {
         Stage stage = (Stage) button_upload.getScene().getWindow();
 
+        choicebox_type.setItems(FXCollections.observableArrayList(
+                "Yoga", "Hiit", "Strength")
+        );
         final String[] greetings = new String[] { "Yoga", "Hiit", "Strength"};
 
+        final String[] type = {""};
+        final String[] length = {""};
         final int[] index = new int[1];
+
         choicebox_type.getSelectionModel().selectedIndexProperty().addListener(
                 (ObservableValue<? extends Number> ov,
-                    Number old_val, Number new_val) ->{
+                 Number old_val, Number new_val) ->{
+                    type[0] = greetings[new_val.intValue()];
                     System.out.println(greetings[new_val.intValue()]);
                 }
         );
 
-
         button_save.setOnAction((final ActionEvent e) -> {
 
-            fileChooser.setInitialDirectory(new File("src/BoundaryClass/Resource"));
-            fileChooser.setInitialFileName(text_upload.getText());
+            RecVideo recVideo = new RecVideo(type[0],Integer.parseInt(length_text.getText()),passValue.getTrainerName());
+            System.out.println("11111111");
+
+            fileChooser.setInitialDirectory(new File("src/BoundaryClass/Resource/Video"));
+            fileChooser.setInitialFileName(String.valueOf(recVideo.getCourseId()));
 
             File file = fileChooser.showSaveDialog(stage);
+            System.out.println(file+"测试");
 
             File f1 = new File(text_upload.getText());
             try {
                 FileInputStream fin = new FileInputStream(f1);
                 byte b[] = new byte[(int)f1.length()];
                 fin.read(b);
-                FileOutputStream fw = new FileOutputStream(new File("src/BoundaryClass/Resource/1.mp4" ));
+                FileOutputStream fw = new FileOutputStream(new File("src/BoundaryClass/Resource/Video/"+ recVideo.getCourseId() +".mp4" ));
                 fw.write(b);
                 fw.flush();
                 fw.close();
@@ -200,10 +217,15 @@ public class trainerRecordingController implements Initializable {
             } catch (IOException ioException) {
                 ioException.printStackTrace();
             }
-
+            try {
+                new APP().jump(stage,"trainer_portrait");
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
         });
 
-        System.out.println(text_upload.getText());
+
+//        System.out.println(recVideo.getCourseId());
     }
 
     @FXML
@@ -219,25 +241,23 @@ public class trainerRecordingController implements Initializable {
         choicebox_type.setItems(FXCollections.observableArrayList(
                 "Yoga", "Hiit", "Strength")
         );
-        final String[] greetings = new String[] { "Yoga", "Hiit", "Strength"};
-
-
-        final String[] length = {""};
-        final int[] index = new int[1];
-//        choicebox_type.getSelectionModel().selectedIndexProperty().addListener((ov,oldv,newv)->{
-//            length[0] = greetings[newv.intValue()];
+//        final String[] greetings = new String[] { "Yoga", "Hiit", "Strength"};
 //
-//        });
-        choicebox_type.getSelectionModel().selectedIndexProperty()
-                .addListener(new ChangeListener<Number>() {
-                    public void changed(ObservableValue ov, Number value, Number new_value) {
-                        index[0] = new_value.intValue();
-                    }
-                });
-
-
-
-        length_text.getText();
+//        final String[] type = {""};
+//        final String[] length = {""};
+//        final int[] index = new int[1];
+//
+//        choicebox_type.getSelectionModel().selectedIndexProperty().addListener(
+//                (ObservableValue<? extends Number> ov,
+//                 Number old_val, Number new_val) ->{
+//                    type[0] = greetings[new_val.intValue()];
+//                    System.out.println(greetings[new_val.intValue()]);
+//                }
+//        );
+//
+//
+//        RecVideo recVideo = new RecVideo(type[0],Integer.parseInt(length_text.getText()),passValue.getTrainerName());
+//        passValue.setUploadCourseID(String.valueOf(recVideo.getCourseId()));
 
 //        RecVideo recVideo = new RecVideo()
 

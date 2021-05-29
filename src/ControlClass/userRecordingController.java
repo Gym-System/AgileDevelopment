@@ -234,6 +234,14 @@ public class userRecordingController implements Initializable {
         labelCoa[4] = recCoa_strenght1_label;
         labelCoa[5] = recCoa_strenght2_label;
 
+        Hyperlink[] labelEnter = new Hyperlink[6];
+        labelEnter[0] = recEnter_yoga1_hyper1;
+        labelEnter[1] = recEnter_yoga2_hyper1;
+        labelEnter[2] = user_recEnter_hyper31;
+        labelEnter[3] = user_recEnter_hyper4;
+        labelEnter[4] = user_recEnter_hyper5111;
+        labelEnter[5] = user_recEnter_hyper611;
+
         //nothing enters, return whole list
         if (user_find_text.getText().equals("")) {
             turn_page.setPageCount((int) Math.ceil(recVideos.size()/6.0));
@@ -252,6 +260,7 @@ public class userRecordingController implements Initializable {
                             labelDur[i].setText("Duration: " + String.valueOf(recVideos.get(6 * param.intValue() + i).getLength()));
                             labelCoa[i].setText(recVideos.get(6 * param.intValue() + i).getUserName());
                             imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga2.jpg"));
+                            labelEnter[i].setVisible(true);
                         }
 
                     } else {
@@ -260,12 +269,14 @@ public class userRecordingController implements Initializable {
                             labelDur[i].setText("Duration: " + String.valueOf(recVideos.get(6 * param.intValue() + i).getLength()));
                             labelCoa[i].setText(recVideos.get(6 * param.intValue() + i).getUserName());
                             imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga3.jpg"));
+                            labelEnter[i].setVisible(true);
                         }
                         for (int i = limit; i<6; i++){
                             labelName[i].setText("");
                             labelDur[i].setText("");
                             labelCoa[i].setText("");
                             imageViews[i].setImage(null);
+                            labelEnter[i].setVisible(false);
                             System.out.println(i+" test");
                         }
 
@@ -286,6 +297,7 @@ public class userRecordingController implements Initializable {
                         labelCoa[i].setText("");
                         labelDur[i].setText("");
                         labelName[i].setText("");
+                        labelEnter[i].setVisible(false);
                         imageViews[i].setImage(null);
                     }
 
@@ -315,6 +327,7 @@ public class userRecordingController implements Initializable {
                             labelDur[i].setText("Duration: " + String.valueOf(recVideoArrayList.get(6 * param.intValue() + i).getLength()));
                             labelCoa[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getUserName());
                             imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga2.jpg"));
+                            labelEnter[i].setVisible(true);
                         }
 
                     } else {
@@ -323,6 +336,7 @@ public class userRecordingController implements Initializable {
                             labelDur[i].setText("Duration: " + String.valueOf(recVideoArrayList.get(6 * param.intValue() + i).getLength()));
                             labelCoa[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getUserName());
                             imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga3.jpg"));
+                            labelEnter[i].setVisible(true);
                             System.out.println("test");
                         }
                         for (int i = limit; i<6; i++){
@@ -330,6 +344,7 @@ public class userRecordingController implements Initializable {
                             labelDur[i].setText("");
                             labelCoa[i].setText("");
                             imageViews[i].setImage(null);
+                            labelEnter[i].setVisible(false);
                             System.out.println(i+" test");
                         }
 
@@ -383,6 +398,14 @@ public class userRecordingController implements Initializable {
             labelCoa[4] = recCoa_strenght1_label;
             labelCoa[5] = recCoa_strenght2_label;
 
+            Hyperlink[] labelEnter = new Hyperlink[6];
+            labelEnter[0] = recEnter_yoga1_hyper1;
+            labelEnter[1] = recEnter_yoga2_hyper1;
+            labelEnter[2] = user_recEnter_hyper31;
+            labelEnter[3] = user_recEnter_hyper4;
+            labelEnter[4] = user_recEnter_hyper5111;
+            labelEnter[5] = user_recEnter_hyper611;
+
             System.out.println(user_yoga_check.getText());
 
             ArrayList<RecVideo> recVideoArrayList = recVideoDAO.queryBySubject(user_yoga_check.getText());
@@ -404,6 +427,7 @@ public class userRecordingController implements Initializable {
                             labelDur[i].setText("Duration: " + String.valueOf(recVideoArrayList.get(6 * param.intValue() + i).getLength()));
                             labelCoa[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getUserName());
                             imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga2.jpg"));
+                            labelEnter[i].setVisible(true);
                         }
 
                     } else {
@@ -412,6 +436,7 @@ public class userRecordingController implements Initializable {
                             labelDur[i].setText("Duration: " + String.valueOf(recVideoArrayList.get(6 * param.intValue() + i).getLength()));
                             labelCoa[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getUserName());
                             imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga3.jpg"));
+                            labelEnter[i].setVisible(true);
                             System.out.println("test");
                         }
                         for (int i = limit; i<6; i++){
@@ -419,6 +444,7 @@ public class userRecordingController implements Initializable {
                             labelDur[i].setText("");
                             labelCoa[i].setText("");
                             imageViews[i].setImage(null);
+                            labelEnter[i].setVisible(false);
                             System.out.println(i+" test");
                         }
 
@@ -466,6 +492,13 @@ public class userRecordingController implements Initializable {
             labelCoa[4] = recCoa_strenght1_label;
             labelCoa[5] = recCoa_strenght2_label;
 
+            Hyperlink[] labelEnter = new Hyperlink[6];
+            labelEnter[0] = recEnter_yoga1_hyper1;
+            labelEnter[1] = recEnter_yoga2_hyper1;
+            labelEnter[2] = user_recEnter_hyper31;
+            labelEnter[3] = user_recEnter_hyper4;
+            labelEnter[4] = user_recEnter_hyper5111;
+            labelEnter[5] = user_recEnter_hyper611;
 
             ArrayList<RecVideo> recVideoArrayList = recVideoDAO.queryBySubject(user_strength_check.getText());
             turn_page.setPageCount((int) Math.ceil(recVideoArrayList.size()/6.0));
@@ -486,6 +519,7 @@ public class userRecordingController implements Initializable {
                             labelDur[i].setText("Duration: " + String.valueOf(recVideoArrayList.get(6 * param.intValue() + i).getLength()));
                             labelCoa[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getUserName());
                             imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga2.jpg"));
+                            labelEnter[i].setVisible(true);
                         }
 
                     } else {
@@ -494,6 +528,7 @@ public class userRecordingController implements Initializable {
                             labelDur[i].setText("Duration: " + String.valueOf(recVideoArrayList.get(6 * param.intValue() + i).getLength()));
                             labelCoa[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getUserName());
                             imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga3.jpg"));
+                            labelEnter[i].setVisible(true);
                             System.out.println("strength");
                         }
                         for (int i = limit; i<6; i++){
@@ -501,6 +536,7 @@ public class userRecordingController implements Initializable {
                             labelDur[i].setText("");
                             labelCoa[i].setText("");
                             imageViews[i].setImage(null);
+                            labelEnter[i].setVisible(false);
                             System.out.println(i+" strength");
                         }
 
@@ -548,6 +584,14 @@ public class userRecordingController implements Initializable {
             labelCoa[4] = recCoa_strenght1_label;
             labelCoa[5] = recCoa_strenght2_label;
 
+            Hyperlink[] labelEnter = new Hyperlink[6];
+            labelEnter[0] = recEnter_yoga1_hyper1;
+            labelEnter[1] = recEnter_yoga2_hyper1;
+            labelEnter[2] = user_recEnter_hyper31;
+            labelEnter[3] = user_recEnter_hyper4;
+            labelEnter[4] = user_recEnter_hyper5111;
+            labelEnter[5] = user_recEnter_hyper611;
+
             System.out.println(user_yoga_check.getText());
 
             ArrayList<RecVideo> recVideoArrayList = recVideoDAO.queryBySubject(user_hitt_check.getText());
@@ -569,6 +613,7 @@ public class userRecordingController implements Initializable {
                             labelDur[i].setText("Duration: " + String.valueOf(recVideoArrayList.get(6 * param.intValue() + i).getLength()));
                             labelCoa[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getUserName());
                             imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga2.jpg"));
+                            labelEnter[i].setVisible(true);
                         }
 
                     } else {
@@ -577,6 +622,7 @@ public class userRecordingController implements Initializable {
                             labelDur[i].setText("Duration: " + String.valueOf(recVideoArrayList.get(6 * param.intValue() + i).getLength()));
                             labelCoa[i].setText(recVideoArrayList.get(6 * param.intValue() + i).getUserName());
                             imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga3.jpg"));
+                            labelEnter[i].setVisible(true);
                             System.out.println("test");
                         }
                         for (int i = limit; i<6; i++){
@@ -584,6 +630,7 @@ public class userRecordingController implements Initializable {
                             labelDur[i].setText("");
                             labelCoa[i].setText("");
                             imageViews[i].setImage(null);
+                            labelEnter[i].setVisible(false);
                             System.out.println(i+" test");
                         }
 
@@ -599,32 +646,43 @@ public class userRecordingController implements Initializable {
     @FXML
     void click_enterrec1(MouseEvent event) throws IOException {
         Stage stage = (Stage) user_find_button.getScene().getWindow();
+        passValue.setCourseID(Long.parseLong(String.valueOf(passValue.getRecVideoslist().get(turn_page.getCurrentPageIndex() * 6 + 0).getCourseId())));
         new APP().jump(stage,"user_recording_video");
     }
 
     @FXML
-    void click_enterrec2(ActionEvent event) throws IOException {
-
+    void click_enterrec2(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_find_button.getScene().getWindow();
+        passValue.setCourseID(Long.parseLong(String.valueOf(passValue.getRecVideoslist().get(turn_page.getCurrentPageIndex() * 6 + 1).getCourseId())));
+        new APP().jump(stage,"user_recording_video");
     }
 
     @FXML
-    void click_enterrec3(ActionEvent event) throws IOException {
-
+    void click_enterrec3(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_find_button.getScene().getWindow();
+        passValue.setCourseID(Long.parseLong(String.valueOf(passValue.getRecVideoslist().get(turn_page.getCurrentPageIndex() * 6 + 2).getCourseId())));
+        new APP().jump(stage,"user_recording_video");
     }
 
     @FXML
-    void click_enterrec4(ActionEvent event) throws IOException {
-
+    void click_enterrec4(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_find_button.getScene().getWindow();
+        passValue.setCourseID(Long.parseLong(String.valueOf(passValue.getRecVideoslist().get(turn_page.getCurrentPageIndex() * 6 + 3).getCourseId())));
+        new APP().jump(stage,"user_recording_video");
     }
 
     @FXML
-    void click_enterrec5(ActionEvent event) throws IOException {
-
+    void click_enterrec5(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_find_button.getScene().getWindow();
+        passValue.setCourseID(Long.parseLong(String.valueOf(passValue.getRecVideoslist().get(turn_page.getCurrentPageIndex() * 6 + 4).getCourseId())));
+        new APP().jump(stage,"user_recording_video");
     }
 
     @FXML
-    void click_enterrec6(ActionEvent event) throws IOException {
-
+    void click_enterrec6(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_find_button.getScene().getWindow();
+        passValue.setCourseID(Long.parseLong(String.valueOf(passValue.getRecVideoslist().get(turn_page.getCurrentPageIndex() * 6 + 5).getCourseId())));
+        new APP().jump(stage,"user_recording_video");
     }
 
     @Override
@@ -710,6 +768,14 @@ public class userRecordingController implements Initializable {
         labelCoa[4] = recCoa_strenght1_label;
         labelCoa[5] = recCoa_strenght2_label;
 
+        Hyperlink[] labelEnter = new Hyperlink[6];
+        labelEnter[0] = recEnter_yoga1_hyper1;
+        labelEnter[1] = recEnter_yoga2_hyper1;
+        labelEnter[2] = user_recEnter_hyper31;
+        labelEnter[3] = user_recEnter_hyper4;
+        labelEnter[4] = user_recEnter_hyper5111;
+        labelEnter[5] = user_recEnter_hyper611;
+
         System.out.println(user_recPic_yoga1.getImage());
 //        user_recPic_yoga1.setImage(new Image("resource/yoga3.jpg"));
 
@@ -719,6 +785,17 @@ public class userRecordingController implements Initializable {
             @Override
             public Node call(Integer param) {
                 VBox box = new VBox();
+
+                RecVideo recVideo;
+                RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
+                ArrayList<RecVideo> recVideos1 = new ArrayList<>();
+                for (RecVideo r:recVideos){
+                    recVideo = recVideoDAO.queryByCourseId(r.getCourseId());
+                    recVideos1.add(recVideo);
+                }
+                passValue.setRecVideoslist(recVideos1);
+                System.out.println(recVideos1.size());
+
                 int limit = 6;
                 if (param.intValue() == recVideos.size()/6) {
                     limit = recVideos.size()%6;
@@ -730,6 +807,7 @@ public class userRecordingController implements Initializable {
                         labelDur[i].setText("Duration: " + String.valueOf(recVideos.get(6 * param.intValue() + i).getLength()));
                         labelCoa[i].setText(recVideos.get(6 * param.intValue() + i).getUserName());
                         imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga2.jpg"));
+                        labelEnter[i].setVisible(true);
                     }
 
                 } else {
@@ -738,12 +816,14 @@ public class userRecordingController implements Initializable {
                         labelDur[i].setText("Duration: " + String.valueOf(recVideos.get(6 * param.intValue() + i).getLength()));
                         labelCoa[i].setText(recVideos.get(6 * param.intValue() + i).getUserName());
                         imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga3.jpg"));
+                        labelEnter[i].setVisible(true);
                     }
                     for (int i = limit; i<6; i++){
                         labelName[i].setText("");
                         labelDur[i].setText("");
                         labelCoa[i].setText("");
                         imageViews[i].setImage(null);
+                        labelEnter[i].setVisible(false);
                         System.out.println(i+" test");
                     }
 

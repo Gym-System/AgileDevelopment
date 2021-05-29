@@ -307,8 +307,6 @@ public class userLiveController implements Initializable {
     }
 
     public void click_BookLive1(MouseEvent mouseEvent) {
-
-
         passValue.setTrainerName(passValue.getTrainernamelist().get(turn_page.getCurrentPageIndex() * 3 + 0).getUserName());
         System.out.println(turn_page.getCurrentPageIndex() * 3 + 0);
         System.out.println(passValue.getTrainernamelist().get(turn_page.getCurrentPageIndex() * 3 + 0).getUserName());

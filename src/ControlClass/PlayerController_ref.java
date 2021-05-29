@@ -259,7 +259,8 @@ public class PlayerController_ref implements Initializable {
     void add_collect(MouseEvent event) {
         RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
         //recVideoDAO.
-        long courseid = 0;
+        long courseid = passValue.getCourseID();
+        System.out.println(courseid);
         UserDAOImpl UserDAO = new UserDAOImpl();
         UserDAO.queryByUserName(passValue.getValue()).favoriteVideo(courseid);
     }
