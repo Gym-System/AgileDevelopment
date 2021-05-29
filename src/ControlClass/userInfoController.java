@@ -147,6 +147,8 @@ public class userInfoController {
 
 
 
+
+
     @FXML
     void initialize() throws ParseException {
         String username = passValue.getValue();
@@ -241,6 +243,15 @@ public class userInfoController {
 
     }
 
+    @FXML
+    void user_info_recharge_money_click(ActionEvent event) {
+
+    }
+
+    @FXML
+    void user_info_recharge_ok_click(ActionEvent event) {
+
+    }
 
 
 }
