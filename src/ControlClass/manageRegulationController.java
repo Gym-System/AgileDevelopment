@@ -1,5 +1,6 @@
 package ControlClass;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -9,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class manageRegulationController {
 
@@ -112,28 +115,33 @@ public class manageRegulationController {
     private Button save_regulation;
 
     @FXML
-    void click_user_hyplink_mr(ActionEvent event) {
-
+    void click_user_hyplink_mr(MouseEvent event) throws IOException {
+        Stage stage = (Stage) income_hyplink_mr.getScene().getWindow();
+        new APP().jump(stage,"manage_user");
     }
 
     @FXML
-    void click_trainer_hyplink_mr(ActionEvent event) {
-
+    void click_trainer_hyplink_mr(MouseEvent event) throws IOException {
+        Stage stage = (Stage) income_hyplink_mr.getScene().getWindow();
+        new APP().jump(stage,"manage_trainer");
     }
 
     @FXML
-    void click_income_hyplink_mr(ActionEvent event) {
-
+    void click_income_hyplink_mr(MouseEvent event) throws IOException {
+        Stage stage = (Stage) income_hyplink_mr.getScene().getWindow();
+        new APP().jump(stage,"manage_income");
     }
 
     @FXML
-    void click_regu_hyplink_mr(ActionEvent event) {
-
+    void click_regu_hyplink_mr(MouseEvent event) throws IOException {
+        Stage stage = (Stage) income_hyplink_mr.getScene().getWindow();
+        new APP().jump(stage,"manage_regulation");
     }
 
     @FXML
-    void click_out_hyplink_mr(ActionEvent event) {
-
+    void click_out_hyplink_mr(MouseEvent event) throws IOException {
+        Stage stage = (Stage) income_hyplink_mr.getScene().getWindow();
+        new APP().jump(stage,"login");
     }
 
     @FXML

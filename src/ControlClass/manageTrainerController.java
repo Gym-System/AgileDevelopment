@@ -1,10 +1,9 @@
 package ControlClass;
 
+import java.io.IOException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 import EntityClass.DAO.impl.TrainerDAOImpl;
@@ -21,6 +20,7 @@ import javafx.scene.control.Pagination;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class manageTrainerController implements Initializable {
@@ -131,28 +131,34 @@ public class manageTrainerController implements Initializable {
     ArrayList<Trainer> trainers = trainerDAO.queryAll();
 
     @FXML
-    void click_user_hyplink_mt(ActionEvent event) {
+    void click_user_hyplink_mt(MouseEvent event) throws IOException {
+        Stage stage = (Stage) income_hyplink_mt.getScene().getWindow();
+        new APP().jump(stage,"manage_user");
+    }
+
+    @FXML
+    void click_trainer_hyplink_mt(MouseEvent event) throws IOException {
+        Stage stage = (Stage) income_hyplink_mt.getScene().getWindow();
+        new APP().jump(stage,"manage_trainer");
+    }
+
+    @FXML
+    void click_income_hyplink_mt(MouseEvent event) throws IOException {
+        Stage stage = (Stage) income_hyplink_mt.getScene().getWindow();
+        new APP().jump(stage,"manage_income");
 
     }
 
     @FXML
-    void click_trainer_hyplink_mt(ActionEvent event) {
-
+    void click_regu_hyplink_mt(MouseEvent event) throws IOException {
+        Stage stage = (Stage) income_hyplink_mt.getScene().getWindow();
+        new APP().jump(stage,"manage_regulation");
     }
 
     @FXML
-    void click_income_hyplink_mt(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_regu_hyplink_mt(ActionEvent event) {
-
-    }
-
-    @FXML
-    void click_out_hyplink_mt(ActionEvent event) {
-
+    void click_out_hyplink_mt(MouseEvent event) throws IOException {
+        Stage stage = (Stage) income_hyplink_mt.getScene().getWindow();
+        new APP().jump(stage,"login");
     }
 
     @FXML

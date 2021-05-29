@@ -160,7 +160,7 @@ public class manageIncomeController {
     @FXML
     void click_regu_hyplink_mi(MouseEvent event) throws IOException {
         Stage stage = (Stage) name4_mi.getScene().getWindow();
-        new APP().jump(stage, "manage_income");
+        new APP().jump(stage, "manage_regulation");
     }
 
     @FXML
