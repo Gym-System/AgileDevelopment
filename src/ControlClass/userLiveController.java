@@ -307,57 +307,43 @@ public class userLiveController implements Initializable {
     }
 
     public void click_BookLive1(MouseEvent mouseEvent) {
-        passValue.getTrainernamelist();
-        turn_page.setPageFactory(new Callback<Integer, Node>() {
-            @Override
-            public Node call(Integer param) {
-                VBox box = new VBox();
-//                System.out.println(passValue.getTrainernamelist().get(param.intValue() * 3 + 1).getUserName());
-                passValue.setTrainerName(passValue.getTrainernamelist().get(param.intValue() * 3 + 1).getUserName());
-                Stage stage = (Stage) turn_page.getScene().getWindow();
-                try {
-                    new APP().jump(stage,"user_trainerPortrait");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return box;
-            }
-        });
+
+
+        passValue.setTrainerName(passValue.getTrainernamelist().get(turn_page.getCurrentPageIndex() * 3 + 0).getUserName());
+        System.out.println(turn_page.getCurrentPageIndex() * 3 + 0);
+        System.out.println(passValue.getTrainernamelist().get(turn_page.getCurrentPageIndex() * 3 + 0).getUserName());
+        Stage stage = (Stage) turn_page.getScene().getWindow();
+        try {
+            new APP().jump(stage,"user_trainerPortrait");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     public void click_BookLive2(MouseEvent mouseEvent) {
-        turn_page.setPageFactory(new Callback<Integer, Node>() {
-            @Override
-            public Node call(Integer param) {
-                VBox box = new VBox();
-                passValue.setTrainerName(passValue.getTrainernamelist().get(param.intValue() * 3 + 1).getUserName());
-                Stage stage = (Stage) turn_page.getScene().getWindow();
-                try {
-                    new APP().jump(stage,"user_trainerPortrait");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return box;
-            }
-        });
+        passValue.setTrainerName(passValue.getTrainernamelist().get(turn_page.getCurrentPageIndex() * 3 + 1).getUserName());
+        System.out.println(turn_page.getCurrentPageIndex() * 3 + 1);
+        System.out.println(passValue.getTrainernamelist().get(turn_page.getCurrentPageIndex() * 3 + 1).getUserName());
+        Stage stage = (Stage) turn_page.getScene().getWindow();
+        try {
+            new APP().jump(stage,"user_trainerPortrait");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void click_BookLive3(MouseEvent mouseEvent) {
-        turn_page.setPageFactory(new Callback<Integer, Node>() {
-            @Override
-            public Node call(Integer param) {
-                VBox box = new VBox();
-                passValue.setTrainerName(passValue.getTrainernamelist().get(param.intValue() * 3 + 1).getUserName());
-                Stage stage = (Stage) turn_page.getScene().getWindow();
-                try {
-                    new APP().jump(stage,"user_trainerPortrait");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                return box;
-            }
-        });
+        passValue.setTrainerName(passValue.getTrainernamelist().get(turn_page.getCurrentPageIndex() * 3 + 2).getUserName());
+        System.out.println(turn_page.getCurrentPageIndex() * 3 + 2);
+        System.out.println(passValue.getTrainernamelist().get(turn_page.getCurrentPageIndex() * 3 + 2).getUserName());
+        Stage stage = (Stage) turn_page.getScene().getWindow();
+        try {
+            new APP().jump(stage,"user_trainerPortrait");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void user_enterLive_click(MouseEvent mouseEvent) {
@@ -404,6 +390,14 @@ public class userLiveController implements Initializable {
                 VBox box = new VBox();
                 Trainer trainer;
                 TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
+                ArrayList<Trainer> trainers = new ArrayList<>();
+                for(LiveSession liveSession:liveSessions) {
+                    trainer = trainerDAO.queryByUserName(liveSession.getTrainerName());
+                    trainers.add(trainer);
+                }
+                passValue.setTrainernamelist(trainers);
+                System.out.println(passValue.getTrainernamelist().size());
+
                 int limit = 3;
                 if (param.intValue() == liveSessions.size()/3) {
                     limit = liveSessions.size()%3;
@@ -420,7 +414,7 @@ public class userLiveController implements Initializable {
                         imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga2.jpg"));
                         labelCost[i].setText(String.valueOf(trainer.getPrice()));
                     }
-                    passValue.setTrainernamelist(trainerArrayList);
+
                 } else {
                     for (int i =0; i <limit; i++){
                         trainer = trainerDAO.queryByUserName(liveSessions.get(3 * param.intValue() + i).getTrainerName());
@@ -430,9 +424,10 @@ public class userLiveController implements Initializable {
                         hyperlinks[i].setText("Book Live Session");
                         imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga3.jpg"));
                         labelCost[i].setText(String.valueOf(trainer.getPrice()));
+                        System.out.println(param.intValue() + "索引");
                     }
 
-                    passValue.setTrainernamelist(trainerArrayList);
+
 
                     for (int i = limit; i<3; i++){
                         labelLive[i].setText("");
@@ -444,7 +439,7 @@ public class userLiveController implements Initializable {
 
                 }
 
-                System.out.println(passValue.getTrainernamelist().size());
+//                System.out.println(passValue.getTrainernamelist().size());
                 return box;
 
             }
