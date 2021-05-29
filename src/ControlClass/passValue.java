@@ -1,11 +1,15 @@
 package ControlClass;
 
+import EntityClass.VO.Trainer;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
 
 public class passValue {
     private static String value;
     private static Stage stage;
     private static String trainerName;
+    private static ArrayList<Trainer> trainerlist;
 
 
     public static Stage getStage() {
@@ -30,4 +34,13 @@ public class passValue {
     public static void setTrainerName(String trainerName){
         passValue.trainerName=trainerName;
     }
+
+    public static ArrayList<Trainer> getTrainernamelist() {
+        return trainerlist;
+    }
+
+    public static void setTrainernamelist(ArrayList<Trainer> trainernamelist) {
+        passValue.trainerlist = trainernamelist;
+    }
 }
+
