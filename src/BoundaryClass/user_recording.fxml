@@ -55,12 +55,12 @@
                         </Hyperlink>
                         <Hyperlink fx:id="user_live_hyper" onMouseClicked="#user_live_click" text="Live" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
-                              <Font size="30.0" />
+                              <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
                         </Hyperlink>
                         <Hyperlink fx:id="user_calendar_hyper" onMouseClicked="#user_calendar_click" text="Calendar" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
-                              <Font size="30.0" />
+                              <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
                         </Hyperlink>
                         <ImageView fx:id="user_profile_pic" fitHeight="105.0" fitWidth="102.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
@@ -70,7 +70,7 @@
                         </ImageView>
                         <Hyperlink fx:id="user_history_hyper" layoutX="86.0" layoutY="438.0" onMouseClicked="#user_history_click" text="History" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <font>
-                              <Font size="30.0" />
+                              <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
                         </Hyperlink>
                         <Hyperlink fx:id="user_logout_hyper" onMouseClicked="#user_logout_click" text="Log out" GridPane.columnIndex="1" GridPane.rowIndex="7">
