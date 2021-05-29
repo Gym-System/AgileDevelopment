@@ -11,7 +11,7 @@ public class APP extends javafx.application.Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         System.out.println(getClass().getResource("../fxml/user_recording_video.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("../BoundaryClass/login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../BoundaryClass/user_live.fxml"));
         Scene scene = new Scene(root, 1350, 807);
 //        passValue.setStage(primaryStage);
 //        System.out.println(passValue.getStage());
