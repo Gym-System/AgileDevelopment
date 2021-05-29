@@ -156,7 +156,9 @@ public class userLiveController implements Initializable {
     }
 
     @FXML
-    public void user_logout_click(MouseEvent mouseEvent) {
+    public void user_logout_click(MouseEvent mouseEvent) throws IOException {
+        Stage stage = (Stage) user_history_hyper.getScene().getWindow();
+        new APP().jump(stage,"login");
     }
 
     public void click_find(MouseEvent mouseEvent) {

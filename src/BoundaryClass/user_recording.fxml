@@ -111,7 +111,7 @@
                         <Font name="Comic Sans MS Bold" size="18.0" />
                      </font>
                   </CheckBox>
-                  <CheckBox fx:id="user_strength_check" layoutX="771.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#click_check_strength" text="strength">
+                  <CheckBox fx:id="user_strength_check" layoutX="771.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#click_check_strength" text="Strength">
                      <font>
                         <Font name="Comic Sans MS Bold" size="18.0" />
                      </font>

@@ -1,10 +1,15 @@
 package ControlClass;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import EntityClass.DAO.impl.LiveSessionDAOImpl;
+import EntityClass.VO.LiveSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
@@ -13,8 +18,10 @@ import javafx.scene.control.Pagination;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.util.Callback;
 
-public class trainerLiveController {
+public class trainerLiveController implements Initializable {
 
     @FXML
     private ResourceBundle resources;
@@ -160,6 +167,9 @@ public class trainerLiveController {
     @FXML
     private ToolBar toolbar5;
 
+    LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
+
+
     @FXML
     void trainer_portrait_click(ActionEvent event) {
 
@@ -255,54 +265,64 @@ public class trainerLiveController {
 
     }
 
-    @FXML
-    void initialize() {
-        assert trainer_enterLive_button3 != null : "fx:id=\"trainer_enterLive_button3\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_enterLive_name8 != null : "fx:id=\"trainer_enterLive_name8\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_enterLive_button4 != null : "fx:id=\"trainer_enterLive_button4\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_enterLive_button5 != null : "fx:id=\"trainer_enterLive_button5\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_enterLive_button6 != null : "fx:id=\"trainer_enterLive_button6\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_enterLive_button1 != null : "fx:id=\"trainer_enterLive_button1\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_upload_hyper != null : "fx:id=\"trainer_upload_hyper\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert turn_page != null : "fx:id=\"turn_page\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_enterLive_button2 != null : "fx:id=\"trainer_enterLive_button2\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_enterLive_name1 != null : "fx:id=\"trainer_enterLive_name1\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_enterLive_name2 != null : "fx:id=\"trainer_enterLive_name2\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_enterLive_name3 != null : "fx:id=\"trainer_enterLive_name3\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_enterLive_name4 != null : "fx:id=\"trainer_enterLive_name4\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_enterLive_name5 != null : "fx:id=\"trainer_enterLive_name5\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_enterLive_name6 != null : "fx:id=\"trainer_enterLive_name6\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_enterLive_name7 != null : "fx:id=\"trainer_enterLive_name7\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_live_hyper != null : "fx:id=\"trainer_live_hyper\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert logo != null : "fx:id=\"logo\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_enterLive_time1 != null : "fx:id=\"trainer_enterLive_time1\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert user_yoga_check != null : "fx:id=\"user_yoga_check\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_enterLive_time2 != null : "fx:id=\"trainer_enterLive_time2\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_portrait_hyper != null : "fx:id=\"trainer_portrait_hyper\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_enterLive_time3 != null : "fx:id=\"trainer_enterLive_time3\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_enterLive_time4 != null : "fx:id=\"trainer_enterLive_time4\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_enterLive_time5 != null : "fx:id=\"trainer_enterLive_time5\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_enterLive_time6 != null : "fx:id=\"trainer_enterLive_time6\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_enterLive_time7 != null : "fx:id=\"trainer_enterLive_time7\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_logout_hyper != null : "fx:id=\"trainer_logout_hyper\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_enterLive_time8 != null : "fx:id=\"trainer_enterLive_time8\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert user_hitt_check != null : "fx:id=\"user_hitt_check\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert user_find_button != null : "fx:id=\"user_find_button\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_profile_pic != null : "fx:id=\"trainer_profile_pic\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert toolbar2 != null : "fx:id=\"toolbar2\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_calendar_hyper != null : "fx:id=\"trainer_calendar_hyper\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert toolbar1 != null : "fx:id=\"toolbar1\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert user_find_text != null : "fx:id=\"user_find_text\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert user_strength_check != null : "fx:id=\"user_strength_check\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_history_hyper != null : "fx:id=\"trainer_history_hyper\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert toolbar8 != null : "fx:id=\"toolbar8\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert toolbar7 != null : "fx:id=\"toolbar7\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert toolbar4 != null : "fx:id=\"toolbar4\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_enterLive_button7 != null : "fx:id=\"trainer_enterLive_button7\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert toolbar3 != null : "fx:id=\"toolbar3\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert trainer_enterLive_button8 != null : "fx:id=\"trainer_enterLive_button8\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert toolbar6 != null : "fx:id=\"toolbar6\" was not injected: check your FXML file 'trainer_live.fxml'.";
-        assert toolbar5 != null : "fx:id=\"toolbar5\" was not injected: check your FXML file 'trainer_live.fxml'.";
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        show();
+    }
+
+    public void show() {
+        Label[] labelType = new Label[8];
+        labelType[0] = trainer_enterLive_name1;
+        labelType[1] = trainer_enterLive_name2;
+        labelType[2] = trainer_enterLive_name3;
+        labelType[3] = trainer_enterLive_name4;
+        labelType[4] = trainer_enterLive_name5;
+        labelType[5] = trainer_enterLive_name6;
+        labelType[6] = trainer_enterLive_name7;
+        labelType[7] = trainer_enterLive_name8;
+
+        Label[] labelTime = new Label[8];
+        labelTime[0] =trainer_enterLive_time1;
+        labelTime[1] =trainer_enterLive_time2;
+        labelTime[2] =trainer_enterLive_time3;
+        labelTime[3] =trainer_enterLive_time4;
+        labelTime[4] =trainer_enterLive_time5;
+        labelTime[5] =trainer_enterLive_time6;
+        labelTime[6] =trainer_enterLive_time7;
+        labelTime[7] =trainer_enterLive_time8;
+
+        ArrayList<LiveSession> liveSessions = liveSessionDAO.queryByTrainerName("kaiyi");
+        turn_page.setPageCount((int) Math.ceil(liveSessions.size()/8.0));
+        turn_page.setPageFactory(new Callback<Integer, Node>() {
+            @Override
+            public Node call(Integer param) {
+                VBox vBox = new VBox();
+                int limit = 8;
+                if (param.intValue() == liveSessions.size()/8) {
+                    limit = liveSessions.size()%8;
+                }
+
+                if(param.intValue() < liveSessions.size()/8){
+                    for (int i =0; i <limit; i++){
+                        labelType[i].setText(liveSessions.get(8 * param.intValue() + i).getSubject());
+                        labelTime[i].setText(String.valueOf(liveSessions.get(8 * param.intValue() + i).getStartTime()));
+
+                    }
+
+                } else {
+                    for (int i =0; i <limit; i++){
+                        labelType[i].setText(liveSessions.get(8 * param.intValue() + i).getSubject());
+                        labelTime[i].setText(String.valueOf(liveSessions.get(8 * param.intValue() + i).getStartTime()));
+                    }
+                    for (int i = limit; i<8; i++){
+                        labelType[i].setText("");
+                        labelTime[i].setText("");
+                    }
+
+                }
+                return vBox;
+            }
+        });
     }
 }
