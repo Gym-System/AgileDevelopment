@@ -1,5 +1,6 @@
 package ControlClass;
 
+import EntityClass.VO.RecVideo;
 import EntityClass.VO.Trainer;
 import javafx.stage.Stage;
 
@@ -9,7 +10,26 @@ public class passValue {
     private static String value;
     private static Stage stage;
     private static String trainerName;
+    private static long courseID;
+    public static ArrayList<RecVideo> getRecVideoslist() {
+        return recVideoslist;
+    }
+
+    public static long getCourseID() {
+        return courseID;
+    }
+
+    public static void setCourseID(long courseID) {
+        passValue.courseID = courseID;
+    }
+
+    public static void setRecVideoslist(ArrayList<RecVideo> recVideoslist) {
+        passValue.recVideoslist = recVideoslist;
+    }
+
     private static ArrayList<Trainer> trainerlist;
+    private static String uploadCourseID;
+    private static ArrayList<RecVideo> recVideoslist;
 
 
     public static Stage getStage() {
@@ -41,6 +61,14 @@ public class passValue {
 
     public static void setTrainernamelist(ArrayList<Trainer> trainernamelist) {
         passValue.trainerlist = trainernamelist;
+    }
+
+    public static String getUploadCourseID() {
+        return uploadCourseID;
+    }
+
+    public static void setUploadCourseID(String uploadCourseID) {
+        passValue.uploadCourseID = uploadCourseID;
     }
 }
 

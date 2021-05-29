@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -24,6 +25,9 @@ public class userInfoController {
 
     @FXML
     private ResourceBundle resources;
+
+    @FXML
+    private TextField user_info_recharge_money;
 
     @FXML
     private URL location;
@@ -194,7 +198,9 @@ public class userInfoController {
 
     }
 
-    public void userInfo_live_click(javafx.event.ActionEvent actionEvent) {
+    public void userInfo_live_click(javafx.event.ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) level.getScene().getWindow();
+        new APP().jump(stage, "user_live");
     }
 
     public void userInfo_favorates_click(ActionEvent actionEvent) throws IOException {
@@ -250,6 +256,13 @@ public class userInfoController {
 
     @FXML
     void user_info_recharge_ok_click(ActionEvent event) {
+        UserDAOImpl userDAO = new UserDAOImpl();
+        PreUserDAOImpl preUserDAO = new PreUserDAOImpl();
+        if (userDAO.queryByUserName(passValue.getValue()).getUserName()!=null){
+            userDAO.queryByUserName(passValue.getValue()).recharge(Double.parseDouble(user_info_recharge_money.getText()));
+        }else{
+            preUserDAO.queryByUserName(passValue.getValue()).recharge(Double.parseDouble(user_info_recharge_money.getText()));
+        }
 
     }
 

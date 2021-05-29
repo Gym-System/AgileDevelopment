@@ -193,6 +193,11 @@ public class userHistoryController implements Initializable {
     WatchedVideoDAOImpl watchedVideoDAO = new WatchedVideoDAOImpl();
     RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
 
+    @FXML
+    public void userinfo_hyperlink(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_facorites_hyper.getScene().getWindow();
+        new APP().jump(stage,"UserInfo");
+    }
 
     @FXML
     void user_favorites_click(MouseEvent event) throws IOException {
@@ -866,4 +871,6 @@ public class userHistoryController implements Initializable {
             }
         });
     }
+
+
 }

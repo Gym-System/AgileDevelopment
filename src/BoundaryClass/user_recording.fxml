@@ -63,7 +63,7 @@
                               <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
                         </Hyperlink>
-                        <ImageView fx:id="user_profile_pic" fitHeight="105.0" fitWidth="102.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
+                        <ImageView fx:id="user_profile_pic" fitHeight="105.0" fitWidth="102.0" layoutX="10.0" onMouseClicked="#userinfo_hyperlink" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
                            <image>
                               <Image url="@Resource/user_Profile.jpg" />
                            </image>
@@ -145,7 +145,7 @@
                      <image>
                         <Image url="@Resource/strength2.jpg" />
                      </image></ImageView>
-                  <Hyperlink fx:id="recEnter_yoga1_hyper1" layoutX="252.0" layoutY="321.0" onMouseClicked="#click_enterrec1" text="Enter">
+                  <Hyperlink fx:id="recEnter_yoga1_hyper1" layoutX="252.0" layoutY="321.0" onMouseClicked="#click_enterrec1" text="Enter" visible="false">
                      <font>
                         <Font name="Comic Sans MS Bold Italic" size="18.0" />
                      </font></Hyperlink>
@@ -179,27 +179,27 @@
                         <Font name="Comic Sans MS" size="18.0" />
                      </font>
                   </Label>
-                  <Hyperlink fx:id="recEnter_yoga2_hyper1" layoutX="573.0" layoutY="321.0" onMouseClicked="#click_enterrec2" text="Enter">
+                  <Hyperlink fx:id="recEnter_yoga2_hyper1" layoutX="573.0" layoutY="321.0" onMouseClicked="#click_enterrec2" text="Enter" visible="false">
                      <font>
                         <Font name="Comic Sans MS Bold Italic" size="18.0" />
                      </font>
                   </Hyperlink>
-                  <Hyperlink fx:id="user_recEnter_hyper31" layoutX="888.0" layoutY="321.0" onMouseClicked="#click_enterrec3" text="Enter">
+                  <Hyperlink fx:id="user_recEnter_hyper31" layoutX="888.0" layoutY="321.0" onMouseClicked="#click_enterrec3" text="Enter" visible="false">
                      <font>
                         <Font name="Comic Sans MS Bold Italic" size="18.0" />
                      </font>
                   </Hyperlink>
-                  <Hyperlink fx:id="user_recEnter_hyper4" layoutX="252.0" layoutY="559.0" onMouseClicked="#click_enterrec4" text="Enter">
+                  <Hyperlink fx:id="user_recEnter_hyper4" layoutX="252.0" layoutY="559.0" onMouseClicked="#click_enterrec4" text="Enter" visible="false">
                      <font>
                         <Font name="Comic Sans MS Bold Italic" size="18.0" />
                      </font>
                   </Hyperlink>
-                  <Hyperlink fx:id="user_recEnter_hyper5111" layoutX="573.0" layoutY="559.0" onMouseClicked="#click_enterrec5" text="Enter">
+                  <Hyperlink fx:id="user_recEnter_hyper5111" layoutX="573.0" layoutY="559.0" onMouseClicked="#click_enterrec5" text="Enter" visible="false">
                      <font>
                         <Font name="Comic Sans MS Bold Italic" size="18.0" />
                      </font>
                   </Hyperlink>
-                  <Hyperlink fx:id="user_recEnter_hyper611" layoutX="888.0" layoutY="559.0" onMouseClicked="#click_enterrec6" text="Enter">
+                  <Hyperlink fx:id="user_recEnter_hyper611" layoutX="888.0" layoutY="559.0" onMouseClicked="#click_enterrec6" text="Enter" visible="false">
                      <font>
                         <Font name="Comic Sans MS Bold Italic" size="18.0" />
                      </font>

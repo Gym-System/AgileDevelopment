@@ -1,5 +1,6 @@
 package ControlClass;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -18,7 +19,9 @@ import javafx.scene.control.Pagination;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class trainerLiveController implements Initializable {
@@ -171,33 +174,39 @@ public class trainerLiveController implements Initializable {
 
 
     @FXML
-    void trainer_portrait_click(ActionEvent event) {
-
+    void trainer_portrait_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) trainer_portrait_hyper.getScene().getWindow();
+        new APP().jump(stage,"trainer_portrait");
     }
 
     @FXML
-    void trainer_upload_click(ActionEvent event) {
-
+    void trainer_upload_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) trainer_portrait_hyper.getScene().getWindow();
+        new APP().jump(stage,"trainer_recording");
     }
 
     @FXML
-    void trainer_live_click(ActionEvent event) {
-
+    void trainer_live_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) trainer_portrait_hyper.getScene().getWindow();
+        new APP().jump(stage,"trainer_live");
     }
 
     @FXML
-    void trainer_calendar_click(ActionEvent event) {
-
+    void trainer_calendar_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) trainer_portrait_hyper.getScene().getWindow();
+        new APP().jump(stage,"tra_trainer_calendar");
     }
 
     @FXML
-    void trainer_history_click(ActionEvent event) {
-
+    void trainer_history_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) trainer_portrait_hyper.getScene().getWindow();
+        new APP().jump(stage,"trainer_history");
     }
 
     @FXML
-    void user_logout_click(ActionEvent event) {
-
+    void user_logout_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) trainer_portrait_hyper.getScene().getWindow();
+        new APP().jump(stage,"login");
     }
 
     @FXML

@@ -110,7 +110,7 @@ public class loginController {
                     String True_password2 = preUserDAO.queryByUserName(login_usename.getText()).getPassword();
                     if (login_password.getText().equals(True_password1)||login_password.getText().equals(True_password2)) {
                         Stage stage = (Stage) login_button.getScene().getWindow();
-                        new APP().jump(stage, "user_trainerPortrait");
+                        new APP().jump(stage, "userInfo");
                     } else {
                         password1.setVisible(false);
                         password2.setVisible(true);

@@ -172,7 +172,7 @@ public class trainerHistoryController implements Initializable {
     @FXML
     void trainer_portrait_calendar_click(ActionEvent event) throws IOException {
         Stage stage = (Stage) history_time1.getScene().getWindow();
-        new APP().jump(stage,"trainer_calendar");
+        new APP().jump(stage,"tra_trainer_calendar");
     }
 
     @FXML
