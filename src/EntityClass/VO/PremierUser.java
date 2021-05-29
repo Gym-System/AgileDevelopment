@@ -119,6 +119,14 @@ public class PremierUser extends User {
     }
 
     @Override
+    public boolean recharge(double money) {
+        setBalance(getBalance() + money);
+        new PreUserDAOImpl().changePreUserBalance(super.getUserName(),getBalance() + money);
+
+        return true;
+    }
+
+    @Override
     public String[] toStrArray() {
         String text = "" + super.getUserName() + "," + super.getPassword() + "," + super.getEmail() + "," +
                 super.getGender() + "," + super.getTelNo() + "," + super.getDoB() + "," + super.getBalance() + "," +
