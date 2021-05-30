@@ -91,7 +91,7 @@ public class User extends Person {
     public void favoriteVideo(long courseId) {
         FavoriteVideo favoriteVideo = new FavoriteVideo(super.getUserName(), courseId);
         FavoriteVideoImpl favoriteVideoDao = new FavoriteVideoImpl();
-        favoriteVideoDao.insertHistoryData(favoriteVideo);
+        favoriteVideoDao.insertFavoriteVideo(favoriteVideo);
     }
 
     /**
@@ -100,7 +100,7 @@ public class User extends Person {
      */
     public void unFavoriteVideo(long courseId) {
         FavoriteVideoImpl favoriteVideoDAO = new FavoriteVideoImpl();
-        favoriteVideoDAO.deleteHistoryData(courseId);
+        favoriteVideoDAO.deleteFavoriteVideo(courseId);
     }
 
     /**

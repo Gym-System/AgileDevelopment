@@ -15,24 +15,43 @@ import java.util.Locale;
 
 import static EntityClass.DAO.impl.PersonDAOImpl.*;
 
+/**
+ * javadoc of ManagerDAOImpl class
+ * @author Kaiyi Zhao
+ * @version 1.0
+ * {@inheritDoc}
+ */
 public class ManagerDAOImpl implements ManagerDAO {
     private Manager manager = null;
     private final String fileName = "manager.csv";
     private String filePath = PersonDAOImpl.fileFolder + fileName;
 
-    // insert
+    /**
+     * This method insert a Manager class into manager.sv
+     * @param manager A Manager class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
     @Override
     public Boolean insertManager(Manager manager) {
         return insertInfo(filePath, manager.toStrArray());
     }
 
-    // delete
+    /**
+     * This method query a manager record by userName and delete the record
+     * @param userName The userName of a manager
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
     @Override
     public Boolean deleteManager(String userName) {
         return deleteInfo(userName, filePath);
     }
 
-    // update
+    /**
+     * This method query a manager record by userName and change the password value of the record
+     * @param userName The userName of a manager
+     * @param password The password value of a manager
+     * @return A Manager class after changing
+     */
     @Override
     public Manager changeManagerPassword(String userName, String password) {
         File inFile = new File(filePath);
@@ -59,6 +78,12 @@ public class ManagerDAOImpl implements ManagerDAO {
         return manager;
     }
 
+    /**
+     * This method query a manager record by userName and change the email value of the record
+     * @param userName The userName of a manager
+     * @param email The email value of a manager
+     * @return A Manager class after changing
+     */
     @Override
     public Manager changeManagerEmail(String userName, String email) {
         File inFile = new File(filePath);
@@ -85,6 +110,12 @@ public class ManagerDAOImpl implements ManagerDAO {
         return manager;
     }
 
+    /**
+     * This method query a manager record by userName and change the telephone number of the record
+     * @param userName The userName of a manager
+     * @param teleNo The telephone number of a manager
+     * @return A Manager class after changing
+     */
     @Override
     public Manager changeManagerTeleNo(String userName, String teleNo) {
         File inFile = new File(filePath);
@@ -111,6 +142,12 @@ public class ManagerDAOImpl implements ManagerDAO {
         return manager;
     }
 
+    /**
+     * This method query a manager record by userName and change the manager type of the record
+     * @param userName The userName of a manager
+     * @param managerType The manager type of a manager
+     * @return A Manager class after changing
+     */
     @Override
     public Manager changeManagerType(String userName, int managerType) {
         File inFile = new File(filePath);
@@ -137,7 +174,11 @@ public class ManagerDAOImpl implements ManagerDAO {
         return manager;
     }
 
-    // select
+    /**
+     * This method query a manager record by user name
+     * @param userName The userName of a manager
+     * @return A Manager class
+     */
     @Override
     public Manager queryByUserName(String userName) {
         File inFile = new File(filePath);
@@ -160,6 +201,10 @@ public class ManagerDAOImpl implements ManagerDAO {
         return manager;
     }
 
+    /**
+     * This method query all the manager records
+     * @return A array list of manager class
+     */
     @Override
     public ArrayList<Manager> queryAll() {
         File inFile = new File(filePath);

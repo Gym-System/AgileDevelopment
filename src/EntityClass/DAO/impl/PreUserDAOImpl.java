@@ -13,23 +13,43 @@ import java.util.Locale;
 import static EntityClass.DAO.impl.PersonDAOImpl.deleteInfo;
 import static EntityClass.DAO.impl.PersonDAOImpl.insertInfo;
 
+/**
+ * javadoc of PreUserDAOImpl class
+ * @author Kaiyi Zhao
+ * @version 1.0
+ * {@inheritDoc}
+ */
 public class PreUserDAOImpl implements PreUserDAO {
     private PremierUser premierUser = null;
     private final String fileName = "preUser.csv";
     private String filePath = PersonDAOImpl.fileFolder + fileName;
-    // insert
+
+    /**
+     * This method insert a PremierUser class into premierUser.sv
+     * @param premierUser A PremierUser class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
     @Override
     public Boolean insertPreUser(PremierUser premierUser) {
         return insertInfo(filePath, premierUser.toStrArray());
     }
 
-    // delete
+    /**
+     * This method query a premierUser record by userName and delete the record
+     * @param userName The userName of a premierUser
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
     @Override
     public Boolean deletePreUser(String userName) {
         return deleteInfo(userName, filePath);
     }
 
-    // update
+    /**
+     * This method query a premierUser record by userName and change the password value of the record
+     * @param userName The userName of a premierUser
+     * @param password The password value of a premierUser
+     * @return A PremierUser class after changing
+     */
     @Override
     public PremierUser changePreUserPassword(String userName, String password) {
         File inFile = new File(filePath);
@@ -56,6 +76,11 @@ public class PreUserDAOImpl implements PreUserDAO {
         return premierUser;
     }
 
+    /** This method query a premierUser record by userName and change the email value of the record
+     * @param userName The userName of a premierUser
+     * @param email The email value of a premierUser
+     * @return A PremierUser class after changing
+     */
     @Override
     public PremierUser changePreUserEmail(String userName, String email) {
         File inFile = new File(filePath);
@@ -82,6 +107,12 @@ public class PreUserDAOImpl implements PreUserDAO {
         return premierUser;
     }
 
+    /**
+     * This method query a premierUser record by userName and change the telephone number of the record
+     * @param userName The userName of a premierUser
+     * @param teleNo The telephone number of a premierUser
+     * @return A PremierUser class after changing
+     */
     @Override
     public PremierUser changePreUserTeleNo(String userName, String teleNo) {
         File inFile = new File(filePath);
@@ -108,6 +139,12 @@ public class PreUserDAOImpl implements PreUserDAO {
         return premierUser;
     }
 
+    /**
+     * This method query a premierUser record by userName and change the telephone number of the record
+     * @param userName The userName of a premierUser
+     * @param balance The balance of a premierUser
+     * @return A PremierUser class after changing
+     */
     @Override
     public PremierUser changePreUserBalance(String userName, Double balance) {
         File inFile = new File(filePath);
@@ -134,6 +171,12 @@ public class PreUserDAOImpl implements PreUserDAO {
         return premierUser;
     }
 
+    /**
+     * This method query a premierUser record by userName and change the telephone number of the record
+     * @param userName The userName of a premierUser
+     * @param userType The userType of a premierUser
+     * @return A PremierUser class after changing
+     */
     @Override
     public PremierUser changePreUserType(String userName, int userType) {
         File inFile = new File(filePath);
@@ -160,7 +203,11 @@ public class PreUserDAOImpl implements PreUserDAO {
         return premierUser;
     }
 
-    // select
+    /**
+     * This method query a premierUser record by user name
+     * @param userName The userName of a person
+     * @return A PremierUser class
+     */
     @Override
     public PremierUser queryByUserName(String userName) {
         File inFile = new File(filePath);
@@ -183,6 +230,10 @@ public class PreUserDAOImpl implements PreUserDAO {
         return premierUser;
     }
 
+    /**
+     * This method query all the premierUser records
+     * @return A array list of PremierUser class
+     */
     @Override
     public ArrayList<PremierUser> queryAll() {
         File inFile = new File(filePath);

@@ -32,6 +32,20 @@ public class Trainer extends Staff {
     }
 
     /**
+     * This constructor contains major params needed to make a instance of Trainer class.
+     * @param userName The userName of a trainer
+     * @param password The password of a trainer
+     * @param email The email of a trainer
+     * @param gender The gender of a trainer
+     * @param telNo The telephone number of a trainer
+     * @param doB The date of birth of a trainer
+     * @param companyName Name of the company trainer is in
+     */
+    public Trainer(String userName, String password, String email, String gender, String telNo, Date doB, String companyName) {
+        super(userName, password, email, gender, telNo, doB, companyName);
+    }
+
+    /**
      * This constructor contains all params needed to make a instance of Trainer class.
      * @param userName The userName of a trainer
      * @param password The password of a trainer

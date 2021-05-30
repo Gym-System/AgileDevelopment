@@ -13,24 +13,43 @@ import java.util.ArrayList;
 import static EntityClass.DAO.impl.PersonDAOImpl.insertInfo;
 import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
 
+/**
+ * javadoc of CourseDAOImpl class
+ * @author Kaiyi Zhao
+ * @version 1.0
+ * {@inheritDoc}
+ */
 public class CourseDAOImpl implements CourseDAO {
     private Course course = null;
     private final String fileName = "course.csv";
     private String filePath = PersonDAOImpl.fileFolder + fileName;
 
-    // insert
+    /**
+     * This method insert a Course class into course.sv
+     * @param course A Course class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
     @Override
     public Boolean insertCourse(Course course) {
         return insertInfo(filePath, course.toStrArray());
     }
 
-    // delete
+    /**
+     * This method query a course record by courseId and delete the record
+     * @param courseId The ID of a course
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
     @Override
     public Boolean deleteCourse(long courseId) {
         return deleteInfo(courseId, filePath);
     }
 
-    // update
+    /**
+     * This method query a course record by courseId and change the gift value of the record
+     * @param courseId The ID of a course
+     * @param gift The new gift value
+     * @return A Course class after changing
+     */
     @Override
     public Course changeCourseGift(long courseId, int gift) {
         File inFile = new File(filePath);
@@ -56,6 +75,12 @@ public class CourseDAOImpl implements CourseDAO {
         return course;
     }
 
+    /**
+     * This method query a course record by courseId and change the star value of the record
+     * @param courseId The ID of a course
+     * @param star The new star value
+     * @return A Course class after changing
+     */
     @Override
     public Course changeCourseStar(long courseId, double star) {
         File inFile = new File(filePath);
@@ -81,7 +106,11 @@ public class CourseDAOImpl implements CourseDAO {
         return course;
     }
 
-    // select
+    /**
+     * This method query a course record by courseId
+     * @param courseId The ID of a course
+     * @return A Course class
+     */
     @Override
     public Course queryByCourseId(long courseId) {
         File inFile = new File(filePath);
@@ -104,6 +133,11 @@ public class CourseDAOImpl implements CourseDAO {
         return course;
     }
 
+    /**
+     * This method query course records by subject
+     * @param subject The subject of course
+     * @return A array list of course class
+     */
     @Override
     public ArrayList<Course> queryBySubject(String subject) {
         ArrayList<Course> courses = new ArrayList<>();
@@ -127,6 +161,10 @@ public class CourseDAOImpl implements CourseDAO {
         return courses;
     }
 
+    /**
+     * This method query all the course records
+     * @return A array list of course class
+     */
     @Override
     public ArrayList<Course> queryAll() {
         ArrayList<Course> courses = new ArrayList<>();
@@ -148,7 +186,12 @@ public class CourseDAOImpl implements CourseDAO {
         return courses;
     }
 
-    // helper function
+    /**
+     * This method is a helper function of {@code deleteCourse}
+     * @param courseId The ID of a course
+     * @param fileName The name of the file which contains all information of {@code Course}
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
     static Boolean deleteInfo(long courseId, String fileName) {
         Boolean flag = false;
         File inFile = new File(fileName);

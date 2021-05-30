@@ -17,24 +17,43 @@ import static EntityClass.DAO.impl.CourseDAOImpl.deleteInfo;
 import static EntityClass.DAO.impl.PersonDAOImpl.insertInfo;
 import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
 
+/**
+ * javadoc of RecVideoDAOImpl class
+ * @author Kaiyi Zhao
+ * @version 1.0
+ * {@inheritDoc}
+ */
 public class RecVideoDAOImpl implements RecVideoDAO {
     private RecVideo recVideo = null;
     private final String fileName = "recVideo.csv";
     private String filePath = PersonDAOImpl.fileFolder + fileName;
 
-    // insert
+    /**
+     * This method insert a RecVideo class into recVideo.sv
+     * @param recVideo A RecVideo class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
     @Override
     public Boolean insertRecVideo(RecVideo recVideo) {
         return insertInfo(filePath, recVideo.toStrArray());
     }
 
-    // delete
+    /**
+     * This method query a recVideo record by courseId and delete the record
+     * @param courseId The ID of a recVideo
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
     @Override
     public Boolean deleteRecVideo(long courseId) {
         return deleteInfo(courseId, filePath);
     }
 
-    // update
+    /**
+     * This method query a recVideo record by courseId and change the gift value of the record
+     * @param courseId The ID of a recVideo
+     * @param gift The new gift value
+     * @return A RecVideo class after changing
+     */
     @Override
     public RecVideo changeRecVideoGift(long courseId, int gift) {
         File inFile = new File(filePath);
@@ -62,6 +81,12 @@ public class RecVideoDAOImpl implements RecVideoDAO {
         return recVideo;
     }
 
+    /**
+     * This method query a recVideo record by courseId and change the star value of the record
+     * @param courseId The ID of a recVideo
+     * @param star The new star value
+     * @return A RecVideo class after changing
+     */
     @Override
     public RecVideo changeRecVideoStar(long courseId, double star) {
         File inFile = new File(filePath);
@@ -89,6 +114,12 @@ public class RecVideoDAOImpl implements RecVideoDAO {
         return recVideo;
     }
 
+    /**
+     * This method query a recVideo record by courseId and change the viewTime of the record
+     * @param courseId The ID of a recVideo
+     * @param viewTime How much time did the recorded video viewed
+     * @return A RecVideo class after changing
+     */
     @Override
     public RecVideo changeRecVideoViewTime(long courseId, int viewTime) {
         File inFile = new File(filePath);
@@ -116,6 +147,12 @@ public class RecVideoDAOImpl implements RecVideoDAO {
         return recVideo;
     }
 
+    /**
+     * This method query a recVideo record by courseId and change the star value of the record
+     * @param courseId The ID of a recVideo
+     * @param rateTime How much time did the recorded video rated
+     * @return A RecVideo class after changing
+     */
     @Override
     public RecVideo changeRecVideoRateTime(long courseId, int rateTime) {
         File inFile = new File(filePath);
@@ -143,7 +180,11 @@ public class RecVideoDAOImpl implements RecVideoDAO {
         return recVideo;
     }
 
-    // select
+    /**
+     * This method query a recVideo record by courseId
+     * @param courseId The ID of a recVideo
+     * @return A RecVideo class
+     */
     @Override
     public RecVideo queryByCourseId(long courseId) {
         File inFile = new File(filePath);
@@ -168,6 +209,11 @@ public class RecVideoDAOImpl implements RecVideoDAO {
         return recVideo;
     }
 
+    /**
+     * This method query recVideo records by trainerName
+     * @param trainerName The trainerName of recVideo
+     * @return A array list of RecVideo class
+     */
     @Override
     public ArrayList<RecVideo> queryByTrainerName(String trainerName) {
         ArrayList<RecVideo> recVideos = new ArrayList<>();
@@ -193,6 +239,11 @@ public class RecVideoDAOImpl implements RecVideoDAO {
         return recVideos;
     }
 
+    /**
+     * This method query recVideo records by subject
+     * @param subject The subject of recVideo
+     * @return A array list of RecVideo class
+     */
     @Override
     public ArrayList<RecVideo> queryBySubject(String subject) {
         ArrayList<RecVideo> recVideos = new ArrayList<>();
@@ -218,6 +269,10 @@ public class RecVideoDAOImpl implements RecVideoDAO {
         return recVideos;
     }
 
+    /**
+     * This method query all the recVideo records
+     * @return A array list of RecVideo class
+     */
     @Override
     public ArrayList<RecVideo> queryAll() {
         ArrayList<RecVideo> recVideos = new ArrayList<>();
