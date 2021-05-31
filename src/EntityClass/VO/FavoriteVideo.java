@@ -1,5 +1,7 @@
 package EntityClass.VO;
 
+import java.util.Objects;
+
 /**
  * javadoc of FavoriteVideo class
  * @author Kaiyi Zhao
@@ -70,5 +72,19 @@ public class FavoriteVideo {
                 "userName='" + userName + '\'' +
                 ", courseId=" + courseId +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof FavoriteVideo)) return false;
+        FavoriteVideo that = (FavoriteVideo) o;
+        return getCourseId() == that.getCourseId() &&
+                Objects.equals(getUserName(), that.getUserName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getUserName(), getCourseId());
     }
 }

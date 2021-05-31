@@ -313,4 +313,18 @@ public class User extends Person {
                 "balance=" + balance +
                 "} " + super.toString();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        if (!super.equals(o)) return false;
+        User user = (User) o;
+        return Double.compare(user.getBalance(), getBalance()) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getBalance());
+    }
 }

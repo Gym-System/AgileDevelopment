@@ -1,5 +1,7 @@
 package EntityClass.VO;
 
+import java.util.Objects;
+
 /**
  * javadoc of WatchedVideo class
  * @author Kaiyi Zhao
@@ -90,5 +92,20 @@ public class WatchedVideo {
                 ", type='" + type + '\'' +
                 ", courseId=" + courseId +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof WatchedVideo)) return false;
+        WatchedVideo that = (WatchedVideo) o;
+        return getCourseId() == that.getCourseId() &&
+                Objects.equals(getUserName(), that.getUserName()) &&
+                Objects.equals(getType(), that.getType());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getUserName(), getType(), getCourseId());
     }
 }

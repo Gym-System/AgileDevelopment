@@ -573,7 +573,6 @@ public class Test {
         premierUser.bookLiveSession(trainer, new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-30T14:00:00"));
         premierUser.bookLiveSession(trainer, new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-31T10:00:00"));
         premierUser.bookLiveSession(trainer, new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-31T14:00:00"));
-    */
 
         LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
         ArrayList<LiveSession> liveSessions = liveSessionDAO.queryAll();
@@ -588,8 +587,34 @@ public class Test {
         }
         for (Course course:courses) {
             System.out.println(course.getSubject());
+        }*/
+
+        Trainer trainer = null;
+        try {
+            trainer = new Trainer("kaiyi",
+                    "123",
+                    "zhaokaiyi@bupt.edu.cn",
+                    "Male",
+                    "18810282618",
+                    new SimpleDateFormat("yyyy-MM-dd").parse("1999-11-25"),
+                    "London Fitness");
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
 
+        Trainer trainer1 = null;
+        try {
+            trainer1 = new Trainer("kaiyi",
+                    "123",
+                    "zhaokaiyi@bupt.edu.cn",
+                    "Male",
+                    "18810282618",
+                    new SimpleDateFormat("yyyy-MM-dd").parse("1999-11-25"),
+                    "London Fitness");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
+        System.out.println(trainer.equals(trainer1));
     }
 }
