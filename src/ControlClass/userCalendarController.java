@@ -322,7 +322,7 @@ public class userCalendarController {
             button.setOnMouseClicked(e -> {
                 label.setVisible(false);
                 button.setVisible(false);
-                user.cancelLiveSession(courseid);
+                user.cancelLiveSession(new LiveSession(courseid));
                 JOptionPane.showInternalMessageDialog(null, "Cancel successfully","Pay successfully! Money has back to your account!", JOptionPane.INFORMATION_MESSAGE);
             });
             user_grid.add(button,j,(i+1));
