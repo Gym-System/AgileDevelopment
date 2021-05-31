@@ -221,38 +221,50 @@ public class PlayerController_ref implements Initializable {
 
     @FXML
     void user_favorites_click(MouseEvent event) throws IOException {
+        mediaPlayer.stop();
         Stage stage = (Stage) user_facorites_hyper.getScene().getWindow();
         new APP().jump(stage,"user_favorites");
+
     }
 
     @FXML
     void user_recording_click(MouseEvent event) throws IOException {
+        mediaPlayer.stop();
         Stage stage = (Stage) user_recording_hyper.getScene().getWindow();
         new APP().jump(stage,"user_recording");
+
     }
 
     @FXML
     void user_live_click(MouseEvent event) throws IOException {
+        mediaPlayer.stop();
         Stage stage = (Stage) user_live_hyper.getScene().getWindow();
         new APP().jump(stage,"user_live");
+
     }
 
     @FXML
     void user_calendar_click(MouseEvent event) throws IOException {
+        mediaPlayer.stop();
         Stage stage = (Stage) user_calendar_hyper.getScene().getWindow();
         new APP().jump(stage,"user_calendar");
+
     }
 
     @FXML
     void user_history_click(MouseEvent event) throws IOException {
+        mediaPlayer.stop();
         Stage stage = (Stage) user_history_hyper.getScene().getWindow();
         new APP().jump(stage,"user_history");
+
     }
 
     @FXML
     void user_logout_click(MouseEvent event) throws IOException {
+        mediaPlayer.stop();
         Stage stage = (Stage) user_history_hyper.getScene().getWindow();
         new APP().jump(stage,"login");
+
     }
 
     @FXML
@@ -329,7 +341,7 @@ public class PlayerController_ref implements Initializable {
         this.url = url;
         this.popup = popup;
 
-        File file = new File("src/BoundaryClass/Resource/WeChat_20210427231911.mp4");
+        File file = new File("src/BoundaryClass/Resource/Video/"+ passValue.getCourseID() +".mp4");
         url = file.toURI().toString();
         System.out.println(url);
 
@@ -712,7 +724,7 @@ public class PlayerController_ref implements Initializable {
 
 
         //测试嵌入式调用
-        SimpleMediaPlayer_ref player = SimpleMediaPlayer_ref.newInstance(getClass().getResource("/BoundaryClass/Resource/WeChat_20210427231911.mp4").toString());
+        SimpleMediaPlayer_ref player = SimpleMediaPlayer_ref.newInstance(getClass().getResource("/BoundaryClass/Resource/Video/"+passValue.getCourseID()+".mp4").toString());
         pane.setCenter(player);
         pane.setAlignment(player,Pos.CENTER);
 

@@ -23,8 +23,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-import javax.swing.*;
-
 public class tra_trainerCalendarController {
     TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
 
@@ -354,7 +352,7 @@ public class tra_trainerCalendarController {
     }
 
     @FXML
-    void user_logout_click(ActionEvent event) throws IOException {
+    void user_logout_click(MouseEvent event) throws IOException {
         Stage stage = (Stage) book61.getScene().getWindow();
         new APP().jump(stage, "login");
     }

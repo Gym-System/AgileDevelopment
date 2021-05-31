@@ -182,13 +182,15 @@ public class trainerHistoryController implements Initializable {
     }
 
     @FXML
-    void trainer_portrait_info_click(ActionEvent event) {
-
+    void trainer_portrait_info_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) history_time1.getScene().getWindow();
+        new APP().jump(stage, "TrainerInfo");
     }
 
     @FXML
-    void trainer_logout_click(ActionEvent event) {
-
+    void trainer_logout_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) history_time1.getScene().getWindow();
+        new APP().jump(stage, "login");
     }
 
 
