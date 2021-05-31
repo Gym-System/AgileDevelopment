@@ -1062,7 +1062,6 @@ public class userFavoritesController implements Initializable {
                 alert.setHeaderText("WARN");
                 alert.showAndWait();
             }
-
         }
     }
 
