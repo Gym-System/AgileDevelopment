@@ -124,7 +124,7 @@
                               <Insets />
                            </GridPane.margin>
                            <font>
-                              <Font name="System Bold" size="24.0" />
+                              <Font name="System Bold" size="20.0" />
                            </font>
                         </Label>
                         <Label fx:id="award_mi" text="Award" GridPane.columnIndex="3">
@@ -132,7 +132,7 @@
                               <Insets />
                            </GridPane.margin>
                            <font>
-                              <Font name="System Bold" size="24.0" />
+                              <Font name="System Bold" size="20.0" />
                            </font>
                         </Label>
                         <Label fx:id="c_income_mi" text="Income" GridPane.columnIndex="4">
@@ -140,43 +140,106 @@
                               <Insets />
                            </GridPane.margin>
                            <font>
-                              <Font name="System Bold" size="24.0" />
+                              <Font name="System Bold" size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="name1_mi" text="Holly" GridPane.rowIndex="1" />
-                        <Label fx:id="award1_mi" text="0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <Label fx:id="name2_mi" text="Sara" GridPane.rowIndex="2" />
-                        <Label fx:id="name3_mi" text="Linc" GridPane.rowIndex="3" />
-                        <Label fx:id="name4_mi" text="Micaul" GridPane.rowIndex="4" />
-                        <Label fx:id="award2_mi" text="0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                        <Label fx:id="award3_mi" text="0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                        <Label fx:id="award4_mi" text="0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                        <Label fx:id="c_income1_mi" text="550" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                        <Label fx:id="c_income2_mi" text="550" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                        <Label fx:id="c_income3_mi" text="550" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                        <Label fx:id="c_income4_mi" text="550" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                        <Label fx:id="name1_mi" text="Holly" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label fx:id="award1_mi" text="0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label fx:id="name2_mi" text="Sara" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label fx:id="name3_mi" text="Linc" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label fx:id="name4_mi" text="Micaul" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label fx:id="award2_mi" text="0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label fx:id="award3_mi" text="0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label fx:id="award4_mi" text="0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label fx:id="c_income1_mi" text="550" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label fx:id="c_income2_mi" text="550" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label fx:id="c_income3_mi" text="550" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label fx:id="c_income4_mi" text="550" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
                         <Label fx:id="live_hour_mi" text="Live hour" GridPane.columnIndex="1">
                            <font>
-                              <Font name="System Bold" size="24.0" />
+                              <Font name="System Bold" size="20.0" />
                            </font>
                         </Label>
                         <Label fx:id="record_hour_mi" text="recording hour" GridPane.columnIndex="2">
                            <font>
-                              <Font name="System Bold" size="24.0" />
+                              <Font name="System Bold" size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="live_hour1_mi" text="1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="live_hour2_mi" text="1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label fx:id="live_hour3_mi" text="1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label fx:id="live_hour4_mi" text="1" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label fx:id="record_hour1_mi" text="1" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Label fx:id="record_hour2_mi" text="1" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <Label fx:id="record_hour3_mi" text="1" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                        <Label fx:id="record_hour4_mi" text="1" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <Label fx:id="live_hour1_mi" text="1" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label fx:id="live_hour2_mi" text="1" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label fx:id="live_hour3_mi" text="1" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label fx:id="live_hour4_mi" text="1" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label fx:id="record_hour1_mi" text="1" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label fx:id="record_hour2_mi" text="1" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label fx:id="record_hour3_mi" text="1" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label fx:id="record_hour4_mi" text="1" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
                      </children>
                   </GridPane>
-                  <TextField fx:id="text_find_mi" layoutX="91.0" layoutY="53.0" prefHeight="56.0" prefWidth="332.0" />
-                  <Button fx:id="button_find_mi" layoutX="423.0" layoutY="53.0" mnemonicParsing="false" onMouseClicked="#click_find_mi" prefHeight="56.0" prefWidth="89.0" text="Find" />
+                  <TextField fx:id="text_find_mi" layoutX="91.0" layoutY="53.0" prefHeight="45.0" prefWidth="280.0" />
+                  <Button fx:id="button_find_mi" layoutX="371.0" layoutY="55.0" mnemonicParsing="false" onMouseClicked="#click_find_mi" prefHeight="45.0" prefWidth="75.0" text="Find">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Button>
                   <Pagination fx:id="turn_page_mi" layoutX="422.0" layoutY="601.0" maxPageIndicatorCount="7" onMouseClicked="#click_turn_page_mi" pageCount="100" prefHeight="100.0" prefWidth="660.0" />
                   <Separator layoutX="80.0" layoutY="220.0" prefHeight="3.0" prefWidth="862.0" />
                   <Separator layoutX="80.0" layoutY="305.0" prefHeight="0.0" prefWidth="862.0" />
@@ -188,8 +251,11 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="597.0" layoutY="65.0" text="Sorted by" />
-                   <ChoiceBox fx:id="chosice_sort_mi" layoutX="740.0" layoutY="57.0" prefHeight="48.0" prefWidth="212.0" value="income">
+                  <Label layoutX="628.0" layoutY="68.0" text="Sorted by">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                   <ChoiceBox fx:id="chosice_sort_mi" layoutX="740.0" layoutY="57.0" prefHeight="45.0" prefWidth="186.0" style="-fx-font-size: 20px;" value="income">
                        <items>
                            <FXCollections fx:factory="observableArrayList">
                                <String fx:value="income" />

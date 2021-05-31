@@ -29,11 +29,7 @@
             <Image url="@Resource/lock.png" />
          </image>
       </ImageView>
-      <Hyperlink fx:id="forget_password" layoutX="454.0" layoutY="600.0" onAction="#forget_password_click" text="Forget your password?">
-         <font>
-            <Font size="20.0" />
-         </font></Hyperlink>
-      <Hyperlink fx:id="no_account" layoutX="452.0" layoutY="644.0" onMouseClicked="#no_account_click" text="Do not have an account?">
+      <Hyperlink fx:id="no_account" layoutX="467.0" layoutY="619.0" onMouseClicked="#no_account_click" text="Do not have an account?">
          <font>
             <Font size="20.0" />
          </font></Hyperlink>
@@ -46,10 +42,10 @@
          <font>
             <Font name="Arial Rounded MT Bold" size="25.0" />
          </font></PasswordField>
-      <Label fx:id="username1" layoutX="596.0" layoutY="401.0" prefHeight="20.0" prefWidth="303.0" text="The username can not be null" textFill="#f50535" visible="false" />
-      <Label fx:id="password1" layoutX="596.0" layoutY="520.0" prefHeight="20.0" prefWidth="303.0" text="The password can not be null" textFill="#f50535" visible="false" />
-      <Label fx:id="password2" layoutX="596.0" layoutY="520.0" prefHeight="20.0" prefWidth="303.0" text="Please enter the correct password" textFill="#f50535" visible="false" />
-      <Label fx:id="username2" layoutX="596.0" layoutY="401.0" prefHeight="20.0" prefWidth="303.0" text="The username doesn't exist" textFill="#f50535" visible="false" />
+      <Label fx:id="username1" layoutX="596.0" layoutY="415.0" prefHeight="20.0" prefWidth="303.0" text="The username can not be null" textFill="#f50535" visible="false" />
+      <Label fx:id="password1" layoutX="596.0" layoutY="535.0" prefHeight="20.0" prefWidth="303.0" text="The password can not be null" textFill="#f50535" visible="false" />
+      <Label fx:id="password2" layoutX="596.0" layoutY="535.0" prefHeight="20.0" prefWidth="303.0" text="Please enter the correct password" textFill="#f50535" visible="false" />
+      <Label fx:id="username2" layoutX="596.0" layoutY="415.0" prefHeight="20.0" prefWidth="303.0" text="The username doesn't exist" textFill="#f50535" visible="false" />
       <RadioButton fx:id="type_trainer" layoutX="594.0" layoutY="256.0" mnemonicParsing="false" text="trainer">
          <toggleGroup>
             <ToggleGroup fx:id="login_type" />
