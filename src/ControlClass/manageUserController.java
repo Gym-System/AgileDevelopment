@@ -196,6 +196,13 @@ public class manageUserController  {
         passwords[2] = password3_mu;
         passwords[3] = password4_mu;
         passwords[4] = password5_mu;
+
+        CheckBox[] checkBoxes = new CheckBox[5];
+        checkBoxes[0] = box1_mu;
+        checkBoxes[1] = box2_mu;
+        checkBoxes[2] = box3_mu;
+        checkBoxes[3] = box4_mu;
+        checkBoxes[4] = box5_mu;
         //What if nothing is entered and all user information is returned
         if (text_find_mu.getText().equals("")){
             turn_page.setPageCount((int) Math.ceil(users.size()/5.0));
@@ -213,6 +220,7 @@ public class manageUserController  {
                             names[i].setText(users.get(5 * param.intValue() + i).getUserName());
                             emails[i].setText(users.get(5 * param.intValue() + i).getEmail());
                             passwords[i].setText(users.get(5 * param.intValue() + i).getPassword());
+                            checkBoxes[i].setVisible(true);
                         }
 
                     } else {
@@ -220,11 +228,13 @@ public class manageUserController  {
                             names[i].setText(users.get(5 * param.intValue() + i).getUserName());
                             emails[i].setText(users.get(5 * param.intValue() + i).getEmail());
                             passwords[i].setText(users.get(5 * param.intValue() + i).getPassword());
+                            checkBoxes[i].setVisible(true);
                         }
                         for (int i = limit; i < 5; i++) {
                             names[i].setText("");
                             emails[i].setText("");
                             passwords[i].setText("");
+                            checkBoxes[i].setVisible(false);
                         }
 
                     }
@@ -244,6 +254,7 @@ public class manageUserController  {
                         names[i].setText("");
                         emails[i].setText("");
                         passwords[i].setText("");
+                        checkBoxes[i].setVisible(false);
                     }
                     return box;
                 }
@@ -266,11 +277,13 @@ public class manageUserController  {
                             names[i].setText(userDAO.queryByUserName(text_find_mu.getText()).getUserName());
                             emails[i].setText(userDAO.queryByUserName(text_find_mu.getText()).getEmail());
                             passwords[i].setText(userDAO.queryByUserName(text_find_mu.getText()).getPassword());
+                            checkBoxes[i].setVisible(true);
                         }
                         for (int i = limit; i < 5; i++) {
                             names[i].setText("");
                             emails[i].setText("");
                             passwords[i].setText("");
+                            checkBoxes[i].setVisible(false);
                         }
                     }
 //                else {
@@ -351,6 +364,12 @@ public class manageUserController  {
         passwords[3] = password4_mu;
         passwords[4] = password5_mu;
 
+        CheckBox[] checkBoxes = new CheckBox[5];
+        checkBoxes[0] = box1_mu;
+        checkBoxes[1] = box2_mu;
+        checkBoxes[2] = box3_mu;
+        checkBoxes[3] = box4_mu;
+        checkBoxes[4] = box5_mu;
 
         turn_page.setPageFactory(new Callback<Integer, Node>() {
             @Override
@@ -366,6 +385,7 @@ public class manageUserController  {
                         names[i].setText(users.get(5 * param.intValue() + i).getUserName());
                         emails[i].setText(users.get(5 * param.intValue() + i).getEmail());
                         passwords[i].setText(users.get(5 * param.intValue() + i).getPassword());
+                        checkBoxes[i].setVisible(true);
                     }
 
                 } else {
@@ -373,11 +393,13 @@ public class manageUserController  {
                         names[i].setText(users.get(5 * param.intValue() + i).getUserName());
                         emails[i].setText(users.get(5 * param.intValue() + i).getEmail());
                         passwords[i].setText(users.get(5 * param.intValue() + i).getPassword());
+                        checkBoxes[i].setVisible(true);
                     }
                     for (int i = limit; i<5; i++){
                         names[i].setText("");
                         emails[i].setText("");
                         passwords[i].setText("");
+                        checkBoxes[i].setVisible(false);
                     }
 
                 }

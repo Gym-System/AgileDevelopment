@@ -1,6 +1,7 @@
 package EntityClass.VO;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * javadoc of Course class
@@ -127,5 +128,22 @@ public class Course {
                 ", gift=" + gift +
                 ", star=" + star +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Course)) return false;
+        Course course = (Course) o;
+        return getCourseId() == course.getCourseId() &&
+                getLength() == course.getLength() &&
+                getGift() == course.getGift() &&
+                Double.compare(course.getStar(), getStar()) == 0 &&
+                Objects.equals(getSubject(), course.getSubject());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCourseId(), getSubject(), getLength(), getGift(), getStar());
     }
 }

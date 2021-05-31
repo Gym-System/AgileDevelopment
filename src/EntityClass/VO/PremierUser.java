@@ -7,10 +7,7 @@ import EntityClass.DAO.impl.LiveSessionDAOImpl;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
 /**
  * javadoc of PremierUser class
@@ -217,5 +214,19 @@ public class PremierUser extends User {
         return "PremierUser{" +
                 "userType=" + userType +
                 "} " + super.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PremierUser)) return false;
+        if (!super.equals(o)) return false;
+        PremierUser that = (PremierUser) o;
+        return getUserType() == that.getUserType();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getUserType());
     }
 }

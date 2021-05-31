@@ -131,7 +131,7 @@
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d0d0" height="135.0" layoutX="389.0" layoutY="397.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="244.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d0d0" height="135.0" layoutX="704.0" layoutY="155.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="244.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d0d0" height="135.0" layoutX="704.0" layoutY="397.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="244.0" />
-                  <CheckBox fx:id="user_yoga_check" layoutX="543.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#click_check_yoga" text="yoga">
+                  <CheckBox fx:id="user_yoga_check" layoutX="543.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#click_check_yoga" text="Yoga">
                      <font>
                         <Font name="Comic Sans MS Bold" size="18.0" />
                      </font>

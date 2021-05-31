@@ -66,7 +66,7 @@ public class FavoriteVideoImpl implements FavoriteVideoDAO {
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
                 if(userName.equals(record[1])) {
-                    favoriteVideo = new FavoriteVideo(record[0], Long.parseLong(record[1]));
+                    favoriteVideo = new FavoriteVideo(Long.parseLong(record[0]), record[1]);
                     favoriteVideos.add(favoriteVideo);
                 }
             }
@@ -93,7 +93,7 @@ public class FavoriteVideoImpl implements FavoriteVideoDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
-                favoriteVideoExist = new FavoriteVideo(record[0], Long.parseLong(record[1]));
+                favoriteVideoExist = new FavoriteVideo(Long.parseLong(record[0]), record[1]);
                 if(favoriteVideo.equals(favoriteVideoExist)) {
                     return true;
                 }

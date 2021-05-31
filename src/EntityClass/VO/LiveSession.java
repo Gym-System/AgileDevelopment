@@ -1,6 +1,7 @@
 package EntityClass.VO;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * javadoc of LiveSession class
@@ -99,5 +100,21 @@ public class LiveSession extends Course {
                 ", trainerName='" + trainerName + '\'' +
                 ", userName='" + userName + '\'' +
                 "} " + super.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof LiveSession)) return false;
+        if (!super.equals(o)) return false;
+        LiveSession that = (LiveSession) o;
+        return Objects.equals(getStartTime(), that.getStartTime()) &&
+                Objects.equals(getTrainerName(), that.getTrainerName()) &&
+                Objects.equals(getUserName(), that.getUserName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getStartTime(), getTrainerName(), getUserName());
     }
 }

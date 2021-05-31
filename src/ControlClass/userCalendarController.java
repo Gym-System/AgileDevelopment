@@ -25,6 +25,8 @@ import javafx.scene.text.Font;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+
 public class userCalendarController {
 
     @FXML
@@ -321,6 +323,7 @@ public class userCalendarController {
                 label.setVisible(false);
                 button.setVisible(false);
                 user.cancelLiveSession(courseid);
+                JOptionPane.showInternalMessageDialog(null, "Cancel successfully","Pay successfully! Money has back to your account!", JOptionPane.INFORMATION_MESSAGE);
             });
             user_grid.add(button,j,(i+1));
 

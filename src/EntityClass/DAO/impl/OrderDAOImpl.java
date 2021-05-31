@@ -91,7 +91,7 @@ public class OrderDAOImpl implements OrderDAO {
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
                 if(userName.equals(record[1])) {
-                    order = new Order(Long.parseLong(record[0]), record[1], Double.parseDouble(record[3]));
+                    order = new Order(Long.parseLong(record[0]), record[1], Double.parseDouble(record[2]));
                     orders.add(order);
                 }
             }
@@ -118,7 +118,7 @@ public class OrderDAOImpl implements OrderDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
-                orderExist = new Order(Long.parseLong(record[0]), record[1], Double.parseDouble(record[3]));;
+                orderExist = new Order(Long.parseLong(record[0]), record[1], Double.parseDouble(record[2]));;
                 if(order.equals(orderExist)) {
                     return true;
                 }

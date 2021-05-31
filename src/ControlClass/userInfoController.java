@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
@@ -258,10 +259,17 @@ public class userInfoController {
     void user_info_recharge_ok_click(ActionEvent event) {
         UserDAOImpl userDAO = new UserDAOImpl();
         PreUserDAOImpl preUserDAO = new PreUserDAOImpl();
+        try{
+            Double money=Double.parseDouble(user_info_recharge_money.getText());
+        }catch (Exception e){
+            JOptionPane.showInternalMessageDialog(null, "Please check the input!","Please check the input", JOptionPane.ERROR_MESSAGE);
+        }
         if (userDAO.queryByUserName(passValue.getValue()).getUserName()!=null){
             userDAO.queryByUserName(passValue.getValue()).recharge(Double.parseDouble(user_info_recharge_money.getText()));
+            JOptionPane.showInternalMessageDialog(null, "Recharge successfully","Recharge successfully", JOptionPane.INFORMATION_MESSAGE);
         }else{
             preUserDAO.queryByUserName(passValue.getValue()).recharge(Double.parseDouble(user_info_recharge_money.getText()));
+            JOptionPane.showInternalMessageDialog(null, "Recharge successfully","Recharge successfully", JOptionPane.INFORMATION_MESSAGE);
         }
 
     }

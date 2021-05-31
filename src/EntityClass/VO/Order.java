@@ -1,5 +1,7 @@
 package EntityClass.VO;
 
+import java.util.Objects;
+
 /**
  * javadoc of Order class
  * @author Kaiyi Zhao
@@ -90,5 +92,20 @@ public class Order {
                 ", courseId=" + courseId +
                 ", cost=" + cost +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Order)) return false;
+        Order order = (Order) o;
+        return getCourseId() == order.getCourseId() &&
+                Double.compare(order.getCost(), getCost()) == 0 &&
+                Objects.equals(getUserName(), order.getUserName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getUserName(), getCourseId(), getCost());
     }
 }
