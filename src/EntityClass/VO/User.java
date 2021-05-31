@@ -15,6 +15,14 @@ public class User extends Person {
     private double balance = 0.0;
 
     /**
+     * This constructor contains major params needed to make a instance of Person class.
+     * @param userName The userName of a person
+     */
+    public User(String userName) {
+        super(userName);
+    }
+
+    /**
      * This constructor contains major params needed to make a instance of User class.
      * @param userName The userName of a user
      * @param password The password of a user

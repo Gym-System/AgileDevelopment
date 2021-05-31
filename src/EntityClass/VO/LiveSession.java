@@ -10,8 +10,16 @@ import java.util.Objects;
  */
 public class LiveSession extends Course {
     private Date startTime;
-    private final String trainerName;
-    private final String userName;
+    private String trainerName = null;
+    private String userName = null;
+
+    /**
+     * This constructor contains major params needed to make a instance of Course class.
+     * @param courseId The ID of the course
+     */
+    public LiveSession(long courseId) {
+        super(courseId);
+    }
 
     /**
      * This constructor contains major params needed to make a instance of LiveSession class.

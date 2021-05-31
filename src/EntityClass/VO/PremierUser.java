@@ -18,6 +18,14 @@ public class PremierUser extends User {
     private int userType = 1;
 
     /**
+     * This constructor contains major params needed to make a instance of Person class.
+     * @param userName The userName of a person
+     */
+    public PremierUser(String userName) {
+        super(userName);
+    }
+
+    /**
      * This constructor contains major params needed to make a instance of PremierUser class.
      * @param userName The userName of a user
      * @param password The password of a user

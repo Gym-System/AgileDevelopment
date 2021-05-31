@@ -12,10 +12,18 @@ import java.util.Objects;
  * @version 1.0
  */
 public class RecVideo extends Course {
-    private final String trainerName;
-    private Date uploadedTime;
+    private String trainerName = null;
+    private Date uploadedTime = null;
     private int viewTime = 0;
     private int rateTime = 0;
+
+    /**
+     * This constructor contains major params needed to make a instance of RecVideo class.
+     * @param courseId The ID of the recorded video
+     */
+    public RecVideo(long courseId) {
+        super(courseId);
+    }
 
     /**
      * This constructor contains major params needed to make a instance of RecVideo class.
