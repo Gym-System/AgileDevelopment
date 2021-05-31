@@ -35,7 +35,12 @@ public class RecVideoDAOImpl implements RecVideoDAO {
      */
     @Override
     public Boolean insertRecVideo(RecVideo recVideo) {
-        return insertInfo(filePath, recVideo.toStrArray());
+        if(!searchSame(recVideo)) {
+            return insertInfo(filePath, recVideo.toStrArray());
+        }
+        else {
+            return false;
+        }
     }
 
     /**
@@ -294,5 +299,36 @@ public class RecVideoDAOImpl implements RecVideoDAO {
             ex.printStackTrace();
         }
         return recVideos;
+    }
+
+    /**
+     * This method search file for the same object
+     *
+     * @param recVideo A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean searchSame(Object recVideo) {
+        RecVideo recVideoExist = null;
+        File inFile = new File(filePath);
+        try {
+            String[] record;
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getValues();
+                recVideoExist = new RecVideo(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
+                        Integer.parseInt(record[3]), Double.parseDouble(record[4]), record[5],
+                        new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[6]),
+                        Integer.parseInt(record[7]), Integer.parseInt(record[8]));
+                if(recVideo.equals(recVideoExist)) {
+                    return true;
+                }
+            }
+            csvReader.close();
+        } catch (IOException | ParseException ex) {
+            ex.printStackTrace();
+        }
+        return false;
     }
 }

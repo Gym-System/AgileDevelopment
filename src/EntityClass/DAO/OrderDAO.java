@@ -37,4 +37,12 @@ public interface OrderDAO {
      * @return A array list of Order class
      */
     ArrayList<Order> queryByUserName(String userName);
+
+    /**
+     * This method search file for the same object
+     *
+     * @param order A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    Boolean searchSame(Object order);
 }

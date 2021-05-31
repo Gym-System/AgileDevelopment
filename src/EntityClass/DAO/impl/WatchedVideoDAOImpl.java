@@ -32,7 +32,12 @@ public class WatchedVideoDAOImpl implements WatchedVideoDAO {
      */
     @Override
     public Boolean insertHistoryData(WatchedVideo watchedVideo) {
-        return insertInfo(filePath, watchedVideo.toStrArray());
+        if(!searchSame(watchedVideo)) {
+            return insertInfo(filePath, watchedVideo.toStrArray());
+        }
+        else {
+            return false;
+        }
     }
 
     /**
@@ -70,5 +75,33 @@ public class WatchedVideoDAOImpl implements WatchedVideoDAO {
             ex.printStackTrace();
         }
         return watchedVideos;
+    }
+
+    /**
+     * This method search file for the same object
+     *
+     * @param watchVideo A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean searchSame(Object watchVideo) {
+        WatchedVideo watchedVideoExist = null;
+        File inFile = new File(filePath);
+        try {
+            String[] record;
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getValues();
+                watchedVideoExist = new WatchedVideo(record[0], record[1], Long.parseLong(record[2]));
+                if(watchVideo.equals(watchedVideoExist)) {
+                    return true;
+                }
+            }
+            csvReader.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return false;
     }
 }

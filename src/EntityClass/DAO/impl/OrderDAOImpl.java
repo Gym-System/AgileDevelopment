@@ -31,7 +31,12 @@ public class OrderDAOImpl implements OrderDAO {
      */
     @Override
     public Boolean insertOrder(Order order) {
-        return insertInfo(filePath, order.toStrArray());
+        if(!searchSame(order)) {
+            return insertInfo(filePath, order.toStrArray());
+        }
+        else {
+            return false;
+        }
     }
 
     /**
@@ -86,7 +91,7 @@ public class OrderDAOImpl implements OrderDAO {
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
                 if(userName.equals(record[1])) {
-                    order = new Order(Long.parseLong(record[0]), record[1], Double.parseDouble(record[3]));;
+                    order = new Order(Long.parseLong(record[0]), record[1], Double.parseDouble(record[3]));
                     orders.add(order);
                 }
             }
@@ -95,5 +100,33 @@ public class OrderDAOImpl implements OrderDAO {
             ex.printStackTrace();
         }
         return orders;
+    }
+
+    /**
+     * This method search file for the same object
+     *
+     * @param order A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean searchSame(Object order) {
+        Order orderExist = null;
+        File inFile = new File(filePath);
+        try {
+            String[] record;
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getValues();
+                orderExist = new Order(Long.parseLong(record[0]), record[1], Double.parseDouble(record[3]));;
+                if(order.equals(orderExist)) {
+                    return true;
+                }
+            }
+            csvReader.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return false;
     }
 }

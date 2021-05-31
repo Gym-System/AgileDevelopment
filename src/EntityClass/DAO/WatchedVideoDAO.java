@@ -30,4 +30,12 @@ public interface WatchedVideoDAO {
      * @return A array list of WatchedVideo classes
      */
     ArrayList<WatchedVideo> queryByUserName(String userName);
+
+    /**
+     * This method search file for the same object
+     *
+     * @param watchVideo A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    Boolean searchSame(Object watchVideo);
 }

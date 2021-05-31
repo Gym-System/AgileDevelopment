@@ -29,11 +29,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
-                           <viewport>
-                              <Rectangle2D />
-                           </viewport>
-                        </ImageView>
                         <Hyperlink fx:id="trainerInfo_portrait" onMouseClicked="#trainerInfo_portrait_click" text="Portrait" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="Comic Sans MS Bold" size="30.0" />
@@ -89,11 +84,6 @@
                               <Image url="@Resource/trainer_History.png" />
                            </image>
                         </ImageView>
-                        <Hyperlink fx:id="user_logout_hyper" onMouseClicked="#user_logout_click" text="Log out" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                           <font>
-                              <Font name="Comic Sans MS Bold Italic" size="30.0" />
-                           </font>
-                        </Hyperlink>
                      </children>
                   </GridPane>
                </children>

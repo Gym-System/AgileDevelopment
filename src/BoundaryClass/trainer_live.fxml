@@ -38,11 +38,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
-                           <viewport>
-                              <Rectangle2D />
-                           </viewport>
-                        </ImageView>
                         <Hyperlink fx:id="trainer_portrait_hyper" onMouseClicked="#trainer_portrait_click" text="Portrait" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="Comic Sans MS Bold" size="30.0" />
@@ -63,7 +58,7 @@
                               <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
                         </Hyperlink>
-                        <ImageView fx:id="trainer_profile_pic" fitHeight="105.0" fitWidth="102.0" layoutX="10.0" onMouseClicked="#userInfo_info_click" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
+                        <ImageView fx:id="trainer_profile_pic" fitHeight="105.0" fitWidth="102.0" layoutX="10.0" onMouseClicked="#trainerInfo_info_click" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
                            <image>
                               <Image url="@Resource/trainer_Profile.png" />
                            </image>

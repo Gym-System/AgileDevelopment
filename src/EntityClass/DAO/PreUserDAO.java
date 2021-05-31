@@ -75,4 +75,12 @@ public interface PreUserDAO {
      * @return A array list of PremierUser class
      */
     ArrayList<PremierUser> queryAll();
+
+    /**
+     * This method search file for the same object
+     *
+     * @param preUser A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    Boolean searchSame(Object preUser);
 }

@@ -56,7 +56,7 @@ public class FavoriteVideo {
      * @return A string array contain instance variables of FavoriteVideo class
      */
     public String[] toStrArray() {
-        String text = "" + userName + "," + courseId;
+        String text = "" + courseId + "," + userName ;
         return text.split(",");
     }
 
