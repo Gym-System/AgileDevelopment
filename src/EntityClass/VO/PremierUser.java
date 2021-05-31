@@ -131,16 +131,17 @@ public class PremierUser extends User {
         calUserType();
 
         boolean flag = false;
-        if(getBalance() > calDiscount(trainer.getPrice())) {
+        double cost = calDiscount(trainer.getPrice());
+        if(getBalance() > cost) {
             flag = true;
-            setBalance(getBalance() - calDiscount(trainer.getPrice()));
-            new PreUserDAOImpl().changePreUserBalance(super.getUserName(),getBalance());
+            setBalance(getBalance() - cost);
+            new PreUserDAOImpl().changePreUserBalance(super.getUserName(), getBalance());
 
             LiveSession liveSession = new LiveSession(null, 2, startTime, trainer.getUserName(), getUserName());
             LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
             liveSessionDAO.insertLiveSession(liveSession);
 
-            Order order = new Order(liveSession.getCourseId(), super.getUserName(), calDiscount(trainer.getPrice()));
+            Order order = new Order(liveSession.getCourseId(), super.getUserName(), cost);
             new OrderDAOImpl().insertOrder(order);
         }
 
