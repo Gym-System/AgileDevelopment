@@ -317,6 +317,7 @@ public class trainerPortraitController {
             textlabel.setText(Trainerlabel);
             textlabel.setBackground(new Background(new BackgroundFill(Color.GRAY,null,null)));
             textlabel.setFont(Font.font(30));
+            textlabel.setTextFill(Color.WHITE);
             label_grid.add(textlabel,count,0);
             count++;
         }
