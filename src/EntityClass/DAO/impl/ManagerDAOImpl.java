@@ -33,7 +33,12 @@ public class ManagerDAOImpl implements ManagerDAO {
      */
     @Override
     public Boolean insertManager(Manager manager) {
-        return insertInfo(filePath, manager.toStrArray());
+        if(!searchSame(manager)) {
+            return insertInfo(filePath, manager.toStrArray());
+        }
+        else {
+            return false;
+        }
     }
 
     /**
@@ -225,5 +230,35 @@ public class ManagerDAOImpl implements ManagerDAO {
             ex.printStackTrace();
         }
         return managers;
+    }
+
+    /**
+     * This method search file for the same object
+     *
+     * @param manager A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean searchSame(Object manager) {
+        Manager managerExist = null;
+        File inFile = new File(filePath);
+        try {
+            String[] record;
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getValues();
+                managerExist = new Manager(record[0], record[1], record[2], record[3], record[4],
+                        new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                        record[6], Integer.parseInt(record[7]));
+                if(manager.equals(managerExist)) {
+                    return true;
+                }
+            }
+            csvReader.close();
+        } catch (IOException | ParseException ex) {
+            ex.printStackTrace();
+        }
+        return false;
     }
 }

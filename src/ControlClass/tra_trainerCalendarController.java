@@ -345,7 +345,7 @@ public class tra_trainerCalendarController {
     }
 
     @FXML
-    void userInfo_info_click(ActionEvent event) throws IOException {
+    void userInfo_info_click(MouseEvent event) throws IOException {
         Stage stage = (Stage) book61.getScene().getWindow();
         new APP().jump(stage, "TrainerInfo");
 

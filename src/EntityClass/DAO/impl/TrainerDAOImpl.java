@@ -33,7 +33,12 @@ public class TrainerDAOImpl implements TrainerDAO {
      */
     @Override
     public Boolean insertTrainer(Trainer trainer) {
-        return insertInfo(filePath, trainer.toStrArray());
+        if(!searchSame(trainer)) {
+            return insertInfo(filePath, trainer.toStrArray());
+        }
+        else {
+            return false;
+        }
     }
 
     /**
@@ -321,5 +326,35 @@ public class TrainerDAOImpl implements TrainerDAO {
             ex.printStackTrace();
         }
         return trainers;
+    }
+
+    /**
+     * This method search file for the same object
+     *
+     * @param trainer A Course class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean searchSame(Object trainer) {
+        Trainer trainerExist = null;
+        File inFile = new File(filePath);
+        try {
+            String[] record;
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getValues();
+                trainerExist = new Trainer(record[0], record[1], record[2], record[3], record[4],
+                        new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                        record[6], Double.parseDouble(record[7]), record[8], record[9], Double.parseDouble(record[10]));
+                if(trainer.equals(trainerExist)) {
+                    return true;
+                }
+            }
+            csvReader.close();
+        } catch (IOException | ParseException ex) {
+            ex.printStackTrace();
+        }
+        return false;
     }
 }

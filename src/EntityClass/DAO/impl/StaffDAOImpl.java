@@ -33,7 +33,12 @@ public class StaffDAOImpl implements StaffDAO {
      */
     @Override
     public Boolean insertStaff(Staff staff) {
-        return insertInfo(filePath, staff.toStrArray());
+        if(!searchSame(staff)) {
+            return insertInfo(filePath, staff.toStrArray());
+        }
+        else {
+            return false;
+        }
     }
 
     /**
@@ -193,5 +198,35 @@ public class StaffDAOImpl implements StaffDAO {
             ex.printStackTrace();
         }
         return staffs;
+    }
+
+    /**
+     * This method search file for the same object
+     *
+     * @param staff A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean searchSame(Object staff) {
+        Staff staffExist = null;
+        File inFile = new File(filePath);
+        try {
+            String[] record;
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getValues();
+                staffExist = new Staff(record[0], record[1], record[2], record[3], record[4],
+                        new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                        record[6]);
+                if(staff.equals(staffExist)) {
+                    return true;
+                }
+            }
+            csvReader.close();
+        } catch (IOException | ParseException ex) {
+            ex.printStackTrace();
+        }
+        return false;
     }
 }

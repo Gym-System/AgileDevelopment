@@ -172,7 +172,11 @@ public class trainerLiveController implements Initializable {
 
     LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
 
-
+    @FXML
+    void trainerInfo_info_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) trainer_portrait_hyper.getScene().getWindow();
+        new APP().jump(stage,"TrainerInfo");
+    }
     @FXML
     void trainer_portrait_click(MouseEvent event) throws IOException {
         Stage stage = (Stage) trainer_portrait_hyper.getScene().getWindow();

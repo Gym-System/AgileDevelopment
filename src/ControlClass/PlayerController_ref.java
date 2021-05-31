@@ -44,7 +44,7 @@ import java.util.ResourceBundle;
  * Description:
  */
 public class PlayerController_ref implements Initializable {
-
+Boolean flag = false;
 //    @FXML Button playBT;
 //    @FXML Button stopBT;
 //    @FXML Button maxBT;
@@ -283,11 +283,19 @@ public class PlayerController_ref implements Initializable {
     @FXML
     void add_collect(MouseEvent event) {
         RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
-        //recVideoDAO.
         long courseid = passValue.getCourseID();
-        System.out.println(courseid);
         UserDAOImpl UserDAO = new UserDAOImpl();
-        UserDAO.queryByUserName(passValue.getValue()).favoriteVideo(courseid);
+        if(flag==false){
+            System.out.println(courseid);
+            UserDAO.queryByUserName(passValue.getValue()).favoriteVideo(courseid);
+            JOptionPane.showMessageDialog(null, "Add favorite successfully", "Add favorite successfully", JOptionPane.INFORMATION_MESSAGE);
+            flag=true;
+        }else{
+            UserDAO.queryByUserName(passValue.getValue()).unFavoriteVideo(courseid);
+            JOptionPane.showMessageDialog(null, "Delete favorite successfully", "Delete favorite successfully", JOptionPane.INFORMATION_MESSAGE);
+            flag=false;
+        }
+
     }
 
     @FXML
@@ -315,6 +323,7 @@ public class PlayerController_ref implements Initializable {
         }
         if (Integer.parseInt(flower_num_urs.getText())>=0){
             userDAO.queryByUserName(passValue.getValue()).sendGift2RecVideo(Integer.parseInt(flower_num_urs.getText()),passValue.getCourseID());
+            JOptionPane.showMessageDialog(null, "send flowers successfully", "send flowers successfully", JOptionPane.INFORMATION_MESSAGE);
         }
 
 
@@ -699,6 +708,7 @@ public class PlayerController_ref implements Initializable {
         setIcon(volumeBT,volOnIcon,15);
         RecVideoDAOImpl RecVideoDAO = new RecVideoDAOImpl();
         video_view_times.setText(Integer.toString(RecVideoDAO.queryByCourseId(passValue.getCourseID()).getViewTime()));
+        video_title.setText(RecVideoDAO.queryByCourseId(passValue.getCourseID()).getSubject()+"-Coach: "+RecVideoDAO.queryByCourseId(passValue.getCourseID()).getUserName());
 //        setIcon(maxBT,maxIcon,25);
         //SimpleMediaPlayer_ref.newInstance("aa");
 

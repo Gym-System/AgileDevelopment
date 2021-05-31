@@ -254,7 +254,7 @@ public class trainerPortraitController {
     }
 
     @FXML
-    void trainer_logout_click(ActionEvent event) throws IOException {
+    void trainer_logout_click(MouseEvent event) throws IOException {
         Stage stage = (Stage) trainer_logout_hyper.getScene().getWindow();
         new APP().jump(stage, "login");
     }
@@ -317,6 +317,7 @@ public class trainerPortraitController {
             textlabel.setText(Trainerlabel);
             textlabel.setBackground(new Background(new BackgroundFill(Color.GRAY,null,null)));
             textlabel.setFont(Font.font(30));
+            textlabel.setTextFill(Color.WHITE);
             label_grid.add(textlabel,count,0);
             count++;
         }
@@ -327,5 +328,14 @@ public class trainerPortraitController {
     public void trainer_portrait_info_click(MouseEvent mouseEvent) throws IOException {
         Stage stage = (Stage) trainer_logout_hyper.getScene().getWindow();
         new APP().jump(stage, "TrainerInfo");
+    }
+
+    public void trainer_portrait_info_click2(MouseEvent mouseEvent) {
+    }
+
+    public void trainer_portrait_info_click1(MouseEvent mouseEvent) {
+    }
+
+    public void trainer_portrait_info_click3(MouseEvent mouseEvent) {
     }
 }
