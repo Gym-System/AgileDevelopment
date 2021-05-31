@@ -60,4 +60,12 @@ public interface PersonDAO {
      * @return A array list of person class
      */
     ArrayList<Person> queryAll();
+
+    /**
+     * This method search file for the same object
+     *
+     * @param person A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    Boolean searchSame(Object person);
 }

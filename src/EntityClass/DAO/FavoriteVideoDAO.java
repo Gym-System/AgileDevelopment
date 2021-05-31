@@ -30,4 +30,12 @@ public interface FavoriteVideoDAO {
      * @return A array list of FavoriteVideo class
      */
     ArrayList<FavoriteVideo> queryByUserName(String userName);
+
+    /**
+     * This method search file for the same object
+     *
+     * @param object A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    Boolean searchSame(Object object);
 }

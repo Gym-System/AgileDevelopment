@@ -30,7 +30,12 @@ public class PhyDataDAOImpl implements PhyDataDAO {
      */
     @Override
     public Boolean insertPhyData(PhyData phyData) {
-        return insertInfo(filePath, phyData.toStrArray());
+        if(!searchSame(phyData)) {
+            return insertInfo(filePath, phyData.toStrArray());
+        }
+        else {
+            return false;
+        }
     }
 
     /**
@@ -247,5 +252,34 @@ public class PhyDataDAOImpl implements PhyDataDAO {
             ex.printStackTrace();
         }
         return phyDatas;
+    }
+
+    /**
+     * This method search file for the same object
+     *
+     * @param phyData A Course class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean searchSame(Object phyData) {
+        PhyData phyDataExist = null;
+        File inFile = new File(filePath);
+        try {
+            String[] record;
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getValues();
+                phyDataExist = new PhyData(record[0], Double.parseDouble(record[1]), Double.parseDouble(record[2]),
+                        Integer.parseInt(record[3]), record[4], Double.parseDouble(record[5]));
+                if(phyData.equals(phyDataExist)) {
+                    return true;
+                }
+            }
+            csvReader.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return false;
     }
 }

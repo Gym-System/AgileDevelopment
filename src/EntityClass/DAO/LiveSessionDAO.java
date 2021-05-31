@@ -74,4 +74,12 @@ public interface LiveSessionDAO {
      * @return A array list of LiveSession class
      */
     ArrayList<LiveSession> queryAll();
+
+    /**
+     * This method search file for the same object
+     *
+     * @param liveSession A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    Boolean searchSame(Object liveSession);
 }

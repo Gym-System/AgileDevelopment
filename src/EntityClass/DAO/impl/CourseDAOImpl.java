@@ -4,10 +4,7 @@ import EntityClass.DAO.CourseDAO;
 import EntityClass.VO.Course;
 import com.csvreader.CsvReader;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 import static EntityClass.DAO.impl.PersonDAOImpl.insertInfo;
@@ -31,7 +28,12 @@ public class CourseDAOImpl implements CourseDAO {
      */
     @Override
     public Boolean insertCourse(Course course) {
-        return insertInfo(filePath, course.toStrArray());
+        if(!searchSame(course)) {
+            return insertInfo(filePath, course.toStrArray());
+        }
+        else {
+            return false;
+        }
     }
 
     /**
@@ -215,5 +217,34 @@ public class CourseDAOImpl implements CourseDAO {
             ex.printStackTrace();
         }
         return flag;
+    }
+
+    /**
+     * This method search file for the same object
+     *
+     * @param course A Course class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean searchSame(Object course) {
+        Course courseExist = null;
+        File inFile = new File(filePath);
+        try {
+            String[] record;
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getValues();
+                courseExist = new Course(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
+                            Integer.parseInt(record[3]), Double.parseDouble(record[4]));
+                if(course.equals(courseExist)) {
+                    return true;
+                }
+            }
+            csvReader.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return false;
     }
 }

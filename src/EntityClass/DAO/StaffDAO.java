@@ -60,4 +60,12 @@ public interface StaffDAO {
      * @return A array list of Staff class
      */
     ArrayList<Staff> queryAll();
+
+    /**
+     * This method search file for the same object
+     *
+     * @param staff A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    Boolean searchSame(Object staff);
 }

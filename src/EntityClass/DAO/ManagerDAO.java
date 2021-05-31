@@ -68,4 +68,12 @@ public interface ManagerDAO {
      * @return A array list of manager class
      */
     ArrayList<Manager> queryAll();
+
+    /**
+     * This method search file for the same object
+     *
+     * @param manager A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    Boolean searchSame(Object manager);
 }
