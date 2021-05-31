@@ -86,10 +86,7 @@ public class PremierUser extends User {
      * @return The discount price according to the userType
      */
     public double calDiscount(double price) {
-        calUserType();
-        double discount = price * (1 - userType /10);
-
-        return discount;
+        return price * (1 - getUserType() /10);
     }
 
     /**
@@ -105,12 +102,11 @@ public class PremierUser extends User {
 
         if (expend < 5000) {
             type = (int) (expend/1000);
-            setUserType(type);
         }
         else {
             type = 5;
-            setUserType(type);
         }
+        setUserType(type);
         new PreUserDAOImpl().changePreUserType(super.getUserName(), type);
     }
 
@@ -132,8 +128,9 @@ public class PremierUser extends User {
      * @return A boolean value indicating whether the operation succeed
      */
     public boolean bookLiveSession(Trainer trainer, Date startTime) {
-        boolean flag = false;
+        calUserType();
 
+        boolean flag = false;
         if(getBalance() > calDiscount(trainer.getPrice())) {
             flag = true;
             setBalance(getBalance() - calDiscount(trainer.getPrice()));
