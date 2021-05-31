@@ -28,6 +28,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.fxml.Initializable;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -221,7 +222,9 @@ public class PlayerController_ref implements Initializable {
 
     @FXML
     void user_favorites_click(MouseEvent event) throws IOException {
-        mediaPlayer.stop();
+        if(mediaPlayer!=null){
+            mediaPlayer.stop();
+        }
         Stage stage = (Stage) user_facorites_hyper.getScene().getWindow();
         new APP().jump(stage,"user_favorites");
 
@@ -229,7 +232,9 @@ public class PlayerController_ref implements Initializable {
 
     @FXML
     void user_recording_click(MouseEvent event) throws IOException {
-        mediaPlayer.stop();
+        if(mediaPlayer!=null){
+            mediaPlayer.stop();
+        }
         Stage stage = (Stage) user_recording_hyper.getScene().getWindow();
         new APP().jump(stage,"user_recording");
 
@@ -237,7 +242,9 @@ public class PlayerController_ref implements Initializable {
 
     @FXML
     void user_live_click(MouseEvent event) throws IOException {
-        mediaPlayer.stop();
+        if(mediaPlayer!=null){
+            mediaPlayer.stop();
+        }
         Stage stage = (Stage) user_live_hyper.getScene().getWindow();
         new APP().jump(stage,"user_live");
 
@@ -245,7 +252,9 @@ public class PlayerController_ref implements Initializable {
 
     @FXML
     void user_calendar_click(MouseEvent event) throws IOException {
-        mediaPlayer.stop();
+        if(mediaPlayer!=null){
+            mediaPlayer.stop();
+        }
         Stage stage = (Stage) user_calendar_hyper.getScene().getWindow();
         new APP().jump(stage,"user_calendar");
 
@@ -253,7 +262,9 @@ public class PlayerController_ref implements Initializable {
 
     @FXML
     void user_history_click(MouseEvent event) throws IOException {
-        mediaPlayer.stop();
+        if(mediaPlayer!=null){
+            mediaPlayer.stop();
+        }
         Stage stage = (Stage) user_history_hyper.getScene().getWindow();
         new APP().jump(stage,"user_history");
 
@@ -261,7 +272,9 @@ public class PlayerController_ref implements Initializable {
 
     @FXML
     void user_logout_click(MouseEvent event) throws IOException {
-        mediaPlayer.stop();
+        if(mediaPlayer!=null){
+            mediaPlayer.stop();
+        }
         Stage stage = (Stage) user_history_hyper.getScene().getWindow();
         new APP().jump(stage,"login");
 
@@ -295,7 +308,15 @@ public class PlayerController_ref implements Initializable {
     @FXML
     void click_send_flower(MouseEvent event) {
         UserDAOImpl userDAO = new UserDAOImpl();
-        userDAO.queryByUserName(passValue.getValue()).sendGift2RecVideo(Integer.parseInt(flower_num_urs.getText()),passValue.getCourseID());
+        try{
+            int flowernumber = Integer.parseInt(flower_num_urs.getText());
+        }catch (Exception E){
+            JOptionPane.showMessageDialog(null, "Please check the input", "Please check the input", JOptionPane.ERROR_MESSAGE);
+        }
+        if (Integer.parseInt(flower_num_urs.getText())>=0){
+            userDAO.queryByUserName(passValue.getValue()).sendGift2RecVideo(Integer.parseInt(flower_num_urs.getText()),passValue.getCourseID());
+        }
+
 
 
     }
@@ -364,7 +385,6 @@ public class PlayerController_ref implements Initializable {
         setVolumeButton();
         setVolumeSD();
         setProcessSlider();
-//        setMaximizeButton();
 
     }
 
@@ -677,6 +697,8 @@ public class PlayerController_ref implements Initializable {
         setIcon(playBT,playIcon,25);
         setIcon(stopBT,stopIcon,25);
         setIcon(volumeBT,volOnIcon,15);
+        RecVideoDAOImpl RecVideoDAO = new RecVideoDAOImpl();
+        video_view_times.setText(Integer.toString(RecVideoDAO.queryByCourseId(passValue.getCourseID()).getViewTime()));
 //        setIcon(maxBT,maxIcon,25);
         //SimpleMediaPlayer_ref.newInstance("aa");
 
@@ -719,7 +741,8 @@ public class PlayerController_ref implements Initializable {
         primaryStage.setTitle("Test Media");
         Group root = new Group();
         BorderPane pane = new BorderPane();
-
+        UserDAOImpl userDAO = new UserDAOImpl();
+        userDAO.queryByUserName(passValue.getValue()).watchRecVideo(passValue.getCourseID());
         root.getChildren().add(pane);
         HBox hbox = new HBox();
         hbox.setAlignment(Pos.BASELINE_CENTER);
