@@ -86,7 +86,7 @@ public class PremierUser extends User {
      * @return The discount price according to the userType
      */
     public double calDiscount(double price) {
-        return price * (1 - getUserType() /10);
+        return price * (1 - getUserType() /10.0);
     }
 
     /**

@@ -240,7 +240,7 @@ public class trainerInfoController {
         trainer_stars.add(trainer_star3);
         trainer_stars.add(trainer_star4);
         for (i = 0; i <= 3; i++) {
-            if (trainer_courses.get(i) == null) {
+            if (rec.get(i) == null) {
                 break;
             } else {
                 trainer_courses.get(i).setText(rec.get(i).getSubject());

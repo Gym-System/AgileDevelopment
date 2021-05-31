@@ -307,11 +307,6 @@
                                           <Font name="Comic Sans MS Bold Italic" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="user_info_myOrder_price1" prefHeight="23.0" prefWidth="67.0" text="\$199" textAlignment="RIGHT" textFill="#6d6aa3">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold Italic" size="16.0" />
-                                       </font>
-                                    </Label>
                                  </items>
                               </ToolBar>
                               <ToolBar layoutX="52.0" layoutY="705.0" prefHeight="44.0" prefWidth="940.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="680.0">
@@ -332,11 +327,6 @@
                                        </font>
                                     </Label>
                                     <Label fx:id="user_info_myOrder_time2" prefHeight="23.0" prefWidth="272.0" text="8:00-10:00   2021-03-25" textFill="#6d6aa3" underline="true">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold Italic" size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="user_info_myOrder_price2" prefHeight="23.0" prefWidth="67.0" text="\$199" textAlignment="RIGHT" textFill="#6d6aa3">
                                        <font>
                                           <Font name="Comic Sans MS Bold Italic" size="16.0" />
                                        </font>
@@ -365,11 +355,6 @@
                                           <Font name="Comic Sans MS Bold Italic" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="user_info_myOrder_price3" prefHeight="23.0" prefWidth="67.0" text="\$199" textAlignment="RIGHT" textFill="#6d6aa3">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold Italic" size="16.0" />
-                                       </font>
-                                    </Label>
                                  </items>
                               </ToolBar>
                               <ToolBar layoutX="72.0" layoutY="725.0" prefHeight="44.0" prefWidth="940.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="760.0">
@@ -390,11 +375,6 @@
                                        </font>
                                     </Label>
                                     <Label fx:id="user_info_myOrder_time4" prefHeight="23.0" prefWidth="272.0" text="8:00-10:00   2021-03-25" textFill="#6d6aa3" underline="true">
-                                       <font>
-                                          <Font name="Comic Sans MS Bold Italic" size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="user_info_myOrder_price4" prefHeight="23.0" prefWidth="67.0" text="\$199" textAlignment="RIGHT" textFill="#6d6aa3">
                                        <font>
                                           <Font name="Comic Sans MS Bold Italic" size="16.0" />
                                        </font>

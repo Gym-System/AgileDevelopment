@@ -23,8 +23,10 @@ import java.util.ResourceBundle;
 import java.util.Timer;
 
 public class userInfoController {
-
-
+    private ArrayList<Label> user_types = new ArrayList<>();
+    private ArrayList<Label> user_courses = new ArrayList<>();
+    private ArrayList<Label> user_trainer = new ArrayList<>();
+    private ArrayList<Label> user_time = new ArrayList<>();
     @FXML
     private ResourceBundle resources;
 
@@ -215,6 +217,35 @@ public class userInfoController {
         ArrayList<WatchedVideo> HISTORY = historyDataDAO.queryByUserName(username);
         time2 = userDAO.queryByUserName(username).getExerciseTime(null,null,null);
         totalTime.setText(Integer.toString(time1+time2)+" min");
+
+        ArrayList<LiveSession> nearLiveSeesion = preUserDAO.queryByUserName(username).showCalender();
+        user_types.add(user_info_myOrder_live1);
+        user_types.add(user_info_myOrder_live2);
+        user_types.add(user_info_myOrder_live3);
+        user_types.add(user_info_myOrder_live4);
+        user_courses.add(user_info_myOrder_type1);
+        user_courses.add(user_info_myOrder_type2);
+        user_courses.add(user_info_myOrder_type3);
+        user_courses.add(user_info_myOrder_type4);
+        user_trainer.add(user_info_myOrder_trainer1);
+        user_trainer.add(user_info_myOrder_trainer2);
+        user_trainer.add(user_info_myOrder_trainer3);
+        user_trainer.add(user_info_myOrder_trainer4);
+        user_time.add(user_info_myOrder_time1);
+        user_time.add(user_info_myOrder_time2);
+        user_time.add(user_info_myOrder_time3);
+        user_time.add(user_info_myOrder_time4);
+        for (int i = 0; i <= 3; i++) {
+            if (nearLiveSeesion.get(i) == null) {
+                break;
+            } else {
+                user_types.get(i).setText("live");
+                user_courses.get(i).setText(nearLiveSeesion.get(i).getSubject());
+                user_trainer.get(i).setText(nearLiveSeesion.get(i).getTrainerName());
+                user_time.get(i).setText(String.valueOf(nearLiveSeesion.get(i).getStartTime()));
+            }
+
+        }
 
     }
 
