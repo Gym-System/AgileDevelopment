@@ -237,6 +237,7 @@ public class trainerRecordingController implements Initializable {
                     fw.flush();
                     fw.close();
                     recVideoDAO.insertRecVideo(recVideo);
+
                 } catch (FileNotFoundException fileNotFoundException) {
                     fileNotFoundException.printStackTrace();
                 } catch (IOException ioException) {

@@ -193,15 +193,15 @@ public class manageTrainerController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("WARN");
                 if (add_name_mt.getText().equals("")) {
-                    alert.setContentText("You must enter not empty name");
+                    alert.setHeaderText("You must enter not empty name");
                 }
                 if (!add_email_mt.getText().matches("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$")){
-                    alert.setContentText("You must enter a properly formatted email address");
+                    alert.setHeaderText("You must enter a properly formatted email address");
                 }
                 if (!add_password_mt.getText().matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$")){
-                    alert.setContentText("You must enter a properly formatted password");
+                    alert.setHeaderText("Passwords should be at least an 8-digit combination of uppercase and lowercase letters and numbers");
                 }
-                alert.setHeaderText("WARN");
+
                 alert.showAndWait();
             }
 
