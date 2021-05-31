@@ -12,12 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
-import javafx.scene.control.Pagination;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -163,70 +158,101 @@ public class manageTrainerController implements Initializable {
 
     @FXML
     void click_add_trainer_mt(MouseEvent event) {
-        Label[] names = new Label[4];
-        names[0] = name1_mt;
-        names[1] = name2_mt;
-        names[2] = name3_mt;
-        names[3] = name4_mt;
-        Label[] emails = new Label[4];
-        emails[0] = email1_mt;
-        emails[1] = email2_mt;
-        emails[2] = email3_mt;
-        emails[3] = email4_mt;
-        Label[] passwords = new Label[4];
-        passwords[0] = password1_mt;
-        passwords[1] = password2_mt;
-        passwords[2] = password3_mt;
-        passwords[3] = password4_mt;
-        CheckBox[] checkBoxes = new CheckBox[4];
-        checkBoxes[0] = box1_mt;
-        checkBoxes[1] = box2_mt;
-        checkBoxes[2] = box3_mt;
-        checkBoxes[3] = box4_mt;
+        if (add_name_mt.getText().equals("") || add_email_mt.getText().equals("") || add_password_mt.getText().equals("")) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("WARN");
+            alert.setContentText("You can only choose one subject");
+            alert.setHeaderText("WARN");
+            alert.showAndWait();
+        } else {
+            Label[] names = new Label[4];
+            names[0] = name1_mt;
+            names[1] = name2_mt;
+            names[2] = name3_mt;
+            names[3] = name4_mt;
+            Label[] emails = new Label[4];
+            emails[0] = email1_mt;
+            emails[1] = email2_mt;
+            emails[2] = email3_mt;
+            emails[3] = email4_mt;
+            Label[] passwords = new Label[4];
+            passwords[0] = password1_mt;
+            passwords[1] = password2_mt;
+            passwords[2] = password3_mt;
+            passwords[3] = password4_mt;
+            CheckBox[] checkBoxes = new CheckBox[4];
+            checkBoxes[0] = box1_mt;
+            checkBoxes[1] = box2_mt;
+            checkBoxes[2] = box3_mt;
+            checkBoxes[3] = box4_mt;
 
-        trainerDAO.insertTrainer(new Trainer(add_name_mt.getText(),add_password_mt.getText(),add_email_mt.getText(),"Male","11111111111",new Date(),"London Fitness"));
-        ArrayList<Trainer> trainers1 = trainerDAO.queryAll();
+            boolean flag = true;
 
-        turn_page_mt.setPageCount((int) Math.ceil(trainers1.size()/4.0));
-        turn_page_mt.setPageFactory(new Callback<Integer, Node>() {
-            @Override
-            public Node call(Integer param) {
-                VBox box = new VBox();
-                int limit = 4;
-                if (param.intValue() == trainers1.size()/4) {
-                    limit = trainers1.size()%4;
+            if (add_name_mt.getText().equals("") || !add_email_mt.getText().matches("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$") || !add_password_mt.getText().matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$")) {
+                flag = false;
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("WARN");
+                if (add_name_mt.getText().equals("")) {
+                    alert.setContentText("You must enter not empty name");
                 }
-
-                if(param.intValue() < trainers.size()/4){
-                    for (int i =0; i <limit; i++){
-                        names[i].setText(trainers1.get(4 * param.intValue() + i).getUserName());
-                        emails[i].setText(trainers1.get(4 * param.intValue() + i).getEmail());
-                        passwords[i].setText(trainers1.get(4 * param.intValue() + i).getPassword());
-                        checkBoxes[i].setVisible(true);
-                    }
-
-                } else {
-                    for (int i =0; i <limit; i++){
-                        names[i].setText(trainers1.get(4 * param.intValue() + i).getUserName());
-                        emails[i].setText(trainers1.get(4 * param.intValue() + i).getEmail());
-                        passwords[i].setText(trainers1.get(4 * param.intValue() + i).getPassword());
-                        checkBoxes[i].setVisible(true);
-                    }
-                    for (int i = limit; i<4; i++){
-                        names[i].setText("");
-                        emails[i].setText("");
-                        passwords[i].setText("");
-                        checkBoxes[i].setVisible(false);
-                    }
-
+                if (!add_email_mt.getText().matches("^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$")){
+                    alert.setContentText("You must enter a properly formatted email address");
                 }
-                return box;
+                if (!add_password_mt.getText().matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$")){
+                    alert.setContentText("You must enter a properly formatted password");
+                }
+                alert.setHeaderText("WARN");
+                alert.showAndWait();
             }
-        });
 
-        add_name_mt.setText("");
-        add_password_mt.setText("");
-        add_email_mt.setText("");
+            if (flag == true) {
+                trainerDAO.insertTrainer(new Trainer(add_name_mt.getText(),add_password_mt.getText(),add_email_mt.getText(),"Male","11111111111",new Date(),"London Fitness"));
+                ArrayList<Trainer> trainers1 = trainerDAO.queryAll();
+
+                turn_page_mt.setPageCount((int) Math.ceil(trainers1.size()/4.0));
+                turn_page_mt.setPageFactory(new Callback<Integer, Node>() {
+                    @Override
+                    public Node call(Integer param) {
+                        VBox box = new VBox();
+                        int limit = 4;
+                        if (param.intValue() == trainers1.size()/4) {
+                            limit = trainers1.size()%4;
+                        }
+
+                        if(param.intValue() < trainers.size()/4){
+                            for (int i =0; i <limit; i++){
+                                names[i].setText(trainers1.get(4 * param.intValue() + i).getUserName());
+                                emails[i].setText(trainers1.get(4 * param.intValue() + i).getEmail());
+                                passwords[i].setText(trainers1.get(4 * param.intValue() + i).getPassword());
+                                checkBoxes[i].setVisible(true);
+                            }
+
+                        } else {
+                            for (int i =0; i <limit; i++){
+                                names[i].setText(trainers1.get(4 * param.intValue() + i).getUserName());
+                                emails[i].setText(trainers1.get(4 * param.intValue() + i).getEmail());
+                                passwords[i].setText(trainers1.get(4 * param.intValue() + i).getPassword());
+                                checkBoxes[i].setVisible(true);
+                            }
+                            for (int i = limit; i<4; i++){
+                                names[i].setText("");
+                                emails[i].setText("");
+                                passwords[i].setText("");
+                                checkBoxes[i].setVisible(false);
+                            }
+
+                        }
+                        return box;
+                    }
+                });
+
+                add_name_mt.setText("");
+                add_password_mt.setText("");
+                add_email_mt.setText("");
+            }
+
+        }
+
     }
 
     @FXML
@@ -352,14 +378,15 @@ public class manageTrainerController implements Initializable {
         checkBoxes[1] = box2_mt;
         checkBoxes[2] = box3_mt;
         checkBoxes[3] = box4_mt;
+        ArrayList<Trainer> trainers2 = trainerDAO.queryAll();
 
         for (int i = 0; i<4; i++){
             System.out.println(checkBoxes[i].isSelected() + "no." +i);
             if (checkBoxes[i].isSelected()){
                 int index = (pageIndex * 4 + i + 1);
                 System.out.println("第几项 被选中" + index);
-                trainerDAO.deleteTrainer(trainers.get(index-1).getUserName());
-                trainers.remove(index-1);
+                trainerDAO.deleteTrainer(trainers2.get(index-1).getUserName());
+                trainers2.remove(index-1);
                 click_find_mt(event);
                 checkBoxes[i].setSelected(false);
 

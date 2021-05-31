@@ -42,22 +42,22 @@
                               <Rectangle2D />
                            </viewport>
                         </ImageView>
-                        <Hyperlink fx:id="user_hyplink_mr" onInputMethodTextChanged="#click_user_hyplink_mr" onMouseClicked="#click_user_hyplink_mr" text="User" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Hyperlink fx:id="user_hyplink_mr" focusTraversable="false" onInputMethodTextChanged="#click_user_hyplink_mr" onMouseClicked="#click_user_hyplink_mr" text="User" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="Baskerville Old Face" size="36.0" />
                            </font>
                         </Hyperlink>
-                        <Hyperlink fx:id="trainer_hyplink_mr" onMouseClicked="#click_trainer_hyplink_mr" text="Trainer" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Hyperlink fx:id="trainer_hyplink_mr" focusTraversable="false" onMouseClicked="#click_trainer_hyplink_mr" text="Trainer" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font name="Baskerville Old Face" size="36.0" />
                            </font>
                         </Hyperlink>
-                        <Hyperlink fx:id="income_hyplink_mr" onMouseClicked="#click_income_hyplink_mr" text="Income" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Hyperlink fx:id="income_hyplink_mr" focusTraversable="false" onMouseClicked="#click_income_hyplink_mr" text="Income" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
                               <Font name="Baskerville Old Face" size="36.0" />
                            </font>
                         </Hyperlink>
-                        <Hyperlink fx:id="regu_mr" onMouseClicked="#click_regu_hyplink_mr" text="Regulation" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <Hyperlink fx:id="regu_mr" focusTraversable="false" onMouseClicked="#click_regu_hyplink_mr" text="Regulation" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
                               <Font name="Baskerville Old Face" size="36.0" />
                            </font>
@@ -67,7 +67,7 @@
                               <Image url="@Resource/manager_Profile.png" />
                            </image>
                         </ImageView>
-                        <Hyperlink fx:id="out_hyplink_mr" onMouseClicked="#click_out_hyplink_mr" text="Log Out" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                        <Hyperlink fx:id="out_hyplink_mr" focusTraversable="false" onMouseClicked="#click_out_hyplink_mr" text="Log Out" GridPane.columnIndex="1" GridPane.rowIndex="7">
                            <font>
                               <Font name="Baskerville Old Face" size="36.0" />
                            </font>
