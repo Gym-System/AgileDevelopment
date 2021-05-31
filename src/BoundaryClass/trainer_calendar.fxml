@@ -29,7 +29,7 @@
                               <Rectangle2D />
                            </viewport>
                         </ImageView>
-                        <Hyperlink fx:id="userInfo_favorates" onAction="#userInfo_favorates_click" text="Favorates" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Hyperlink fx:id="userInfo_favorates" onAction="#userInfo_favorates_click" text="Favorites" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
@@ -44,7 +44,7 @@
                               <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
                         </Hyperlink>
-                        <Hyperlink fx:id="userInfo_calendar" onAction="#userInfo_calendar_click" text="Calendar" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <Hyperlink fx:id="userInfo_calendar" onAction="#userInfo_calendar_click" text="Calendar" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
                               <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
