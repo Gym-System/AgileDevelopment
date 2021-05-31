@@ -143,13 +143,13 @@ public class PremierUser extends User {
 
     /**
      * User cancel booked live session
-     * @param courseId The ID of a course
+     * @param liveSession A LiveSession class
      */
-    public void cancelLiveSession(long courseId) {
+    public void cancelLiveSession(LiveSession liveSession) {
         LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
-        liveSessionDAO.deleteLiveSession(courseId);
+        liveSessionDAO.deleteLiveSession(liveSession);
 
-        new OrderDAOImpl().deleteOrder(courseId);
+        new OrderDAOImpl().deleteOrder(new Order(liveSession.getCourseId(), null, 0.0));
     }
 
     /**

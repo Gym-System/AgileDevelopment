@@ -1,16 +1,15 @@
 package EntityClass.DAO.impl;
 
 import EntityClass.DAO.PhyDataDAO;
+import EntityClass.DAO.ToolDAO;
 import EntityClass.VO.PhyData;
 import com.csvreader.CsvReader;
+import com.csvreader.CsvWriter;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
-import static EntityClass.DAO.impl.PersonDAOImpl.*;
+import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
 
 /**
  * javadoc of PhyDataDAOImpl class
@@ -18,7 +17,7 @@ import static EntityClass.DAO.impl.PersonDAOImpl.*;
  * @version 1.0
  * {@inheritDoc}
  */
-public class PhyDataDAOImpl implements PhyDataDAO {
+public class PhyDataDAOImpl implements ToolDAO, PhyDataDAO {
     private PhyData phyData;
     private String fileName = "phyData.csv";
     private String filePath = PersonDAOImpl.fileFolder + fileName;
@@ -31,7 +30,7 @@ public class PhyDataDAOImpl implements PhyDataDAO {
     @Override
     public Boolean insertPhyData(PhyData phyData) {
         if(!searchSame(phyData)) {
-            return insertInfo(filePath, phyData.toStrArray());
+            return insertInfo(phyData);
         }
         else {
             return false;
@@ -40,12 +39,12 @@ public class PhyDataDAOImpl implements PhyDataDAO {
 
     /**
      * This method query a phyData record by userName and delete the record
-     * @param userName The userName of a person
+     * @param phyData A PhyData class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean deletePhyData(String userName) {
-        return deleteInfo(userName, filePath);
+    public Boolean deletePhyData(PhyData phyData) {
+        return deleteInfo(phyData);
     }
 
     /**
@@ -252,6 +251,72 @@ public class PhyDataDAOImpl implements PhyDataDAO {
             ex.printStackTrace();
         }
         return phyDatas;
+    }
+
+    /**
+     * This method insert a Object class into csv file
+     *
+     * @param obj A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean insertInfo(Object obj) {
+        if(obj instanceof PhyData) {
+            PhyData phyData = (PhyData) obj;
+            boolean flag = false;
+            File outFile = new File(filePath);
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(outFile, true));
+                CsvWriter csvWriter = new CsvWriter(writer,',');
+                csvWriter.writeRecord(phyData.toStrArray());
+                csvWriter.close();
+                flag = true;
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            return flag;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * This method query a object record and delete the record
+     *
+     * @param object A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean deleteInfo(Object object) {
+        if(object instanceof PhyData) {
+            PhyData phyData = (PhyData) object;
+            Boolean flag = false;
+            File inFile = new File(filePath);
+            try {
+                String[] record;
+                ArrayList<String[]> records = new ArrayList<>();
+                BufferedReader reader = new BufferedReader(new FileReader(inFile));
+                CsvReader csvReader = new CsvReader(reader, ',');
+                while(csvReader.readRecord()){
+                    record = csvReader.getRawRecord().split(",");
+                    if(phyData.getUserName().equals(record[0])) {
+                        continue;
+                    }
+                    assert records != null;
+                    records.add(record);
+                }
+                csvReader.close();
+                recordToCsv(records, filePath);
+                flag = true;
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            return flag;
+        }
+        else {
+            return false;
+        }
     }
 
     /**

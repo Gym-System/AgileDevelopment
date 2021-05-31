@@ -19,10 +19,10 @@ public interface TrainerDAO {
 
     /**
      * This method query a trainer record by userName and delete the record
-     * @param userName The userName of a trainer
+     * @param trainer A Trainer class
      * @return A boolean value indicating whether the operation is completed successfully
      */
-    Boolean deleteTrainer(String userName);
+    Boolean deleteTrainer(Trainer trainer);
 
     /**
      * This method query a trainer record by userName and change the password value of the record

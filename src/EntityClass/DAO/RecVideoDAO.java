@@ -19,10 +19,10 @@ public interface RecVideoDAO {
 
     /**
      * This method query a recVideo record by courseId and delete the record
-     * @param courseId The ID of a recVideo
+     * @param recVideo A RecVideo class
      * @return A boolean value indicating whether the operation is completed successfully
      */
-    Boolean deleteRecVideo(long courseId);
+    Boolean deleteRecVideo(RecVideo recVideo);
 
     /**
      * This method query a recVideo record by courseId and change the gift value of the record
@@ -82,12 +82,4 @@ public interface RecVideoDAO {
      * @return A array list of RecVideo class
      */
     ArrayList<RecVideo> queryAll();
-
-    /**
-     * This method search file for the same object
-     *
-     * @param recVideo A Object class
-     * @return A boolean value indicating whether the operation is completed successfully
-     */
-    Boolean searchSame(Object recVideo);
 }

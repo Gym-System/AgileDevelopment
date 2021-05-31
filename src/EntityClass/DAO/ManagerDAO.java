@@ -19,10 +19,10 @@ public interface ManagerDAO {
 
     /**
      * This method query a manager record by userName and delete the record
-     * @param userName The userName of a manager
+     * @param manager A Manager class
      * @return A boolean value indicating whether the operation is completed successfully
      */
-    Boolean deleteManager(String userName);
+    Boolean deleteManager(Manager manager);
 
     /**
      * This method query a manager record by userName and change the password value of the record
@@ -68,12 +68,4 @@ public interface ManagerDAO {
      * @return A array list of manager class
      */
     ArrayList<Manager> queryAll();
-
-    /**
-     * This method search file for the same object
-     *
-     * @param manager A Object class
-     * @return A boolean value indicating whether the operation is completed successfully
-     */
-    Boolean searchSame(Object manager);
 }
