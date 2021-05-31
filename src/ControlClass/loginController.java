@@ -108,9 +108,13 @@ public class loginController {
                     username2.setVisible(true);
                     username1.setVisible(false);
                 } else {
-                    String True_password1 = userDAO.queryByUserName(login_usename.getText()).getPassword(); //get from UserDAO
-                    String True_password2 = preUserDAO.queryByUserName(login_usename.getText()).getPassword();
-                    if (login_password.getText().equals(True_password1)||login_password.getText().equals(True_password2)) {
+                    String True_password2;
+                    if(userDAO.queryByUserName(login_usename.getText())==null){
+                        True_password2 = preUserDAO.queryByUserName(login_usename.getText()).getPassword();
+                    }else{
+                        True_password2 = userDAO.queryByUserName(login_usename.getText()).getPassword(); //get from UserDAO
+                    }
+                    if (login_password.getText().equals(True_password2)) {
                         Stage stage = (Stage) login_button.getScene().getWindow();
                         new APP().jump(stage, "userInfo");
                     } else {
@@ -188,7 +192,7 @@ public class loginController {
                     String True_password = managerDAO.queryByUserName(login_usename.getText()).getPassword(); //get from UserDAO
                     if (login_password.getText().equals(True_password)) {
                         Stage stage = (Stage) login_button.getScene().getWindow();
-                        new APP().jump(stage, "manage_income");
+                        new APP().jump(stage, "manage_user");
                     } else {
                         password1.setVisible(false);
                         password2.setVisible(true);
