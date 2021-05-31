@@ -16,12 +16,11 @@ public class APP extends javafx.application.Application{
 //        passValue.setStage(primaryStage);
 //        System.out.println(passValue.getStage());
         primaryStage.setScene(scene);
+        primaryStage.setTitle("London Fitness Digital System");
 
 //        passValue.setStage(primaryStage);
 
         primaryStage.show();
-
-
 
     }
 
