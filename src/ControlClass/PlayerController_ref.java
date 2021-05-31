@@ -293,7 +293,10 @@ public class PlayerController_ref implements Initializable {
     }
 
     @FXML
-    void click_send_flower(ActionEvent event) {
+    void click_send_flower(MouseEvent event) {
+        UserDAOImpl userDAO = new UserDAOImpl();
+        userDAO.queryByUserName(passValue.getValue()).sendGift2RecVideo(Integer.parseInt(flower_num_urs.getText()),passValue.getCourseID());
+
 
     }
 
