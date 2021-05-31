@@ -219,7 +219,7 @@ public class userTrainerPortraitController {
     @FXML
     void user_trainer_portrait_bookLiveSession_click(MouseEvent event) throws IOException {
         PreUserDAOImpl preUserDAO = new PreUserDAOImpl();
-        if(preUserDAO.queryByUserName(passValue.getValue()).getUserName()!=null){
+        if(preUserDAO.queryByUserName(passValue.getValue())!=null){
             Stage stage = (Stage) user_trainer_portrait_recCoa_yoga2_label.getScene().getWindow();
             new APP().jump(stage,"trainer_calendar");
         }else{
