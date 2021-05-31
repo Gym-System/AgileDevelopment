@@ -9,11 +9,19 @@ import java.util.Objects;
  * @version 1.0
  */
 public class Course {
-    private long courseId;
-    private final String subject;
-    private final int length;
+    private long courseId = 0;
+    private String subject = null;
+    private int length = 0;
     private int gift = 0;
     private double star = 0.0;
+
+    /**
+     * This constructor contains major params needed to make a instance of Course class.
+     * @param courseId The ID of the course
+     */
+    public Course(long courseId) {
+        this.courseId = courseId;
+    }
 
     /**
      * This constructor contains major params needed to make a instance of Course class.

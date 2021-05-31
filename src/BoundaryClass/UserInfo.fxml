@@ -217,24 +217,14 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Label text="Weight" GridPane.rowIndex="2">
+                                    <Label text="Weight (kg)" GridPane.rowIndex="2">
                                        <font>
                                           <Font name="Baskerville Old Face" size="24.0" />
                                        </font>
                                     </Label>
-                                    <Label text="Height" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <Label text="Height (cm)" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <font>
                                           <Font name="Baskerville Old Face" size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="weight" text="65.0 kg" GridPane.rowIndex="3">
-                                       <font>
-                                          <Font name="Century" size="36.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="height" text="175.0 cm" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                       <font>
-                                          <Font name="Century" size="36.0" />
                                        </font>
                                     </Label>
                                     <Label text="BMI:" GridPane.rowIndex="5">
@@ -258,6 +248,8 @@
                                        </font>
                                     </Hyperlink>
                                     <Separator prefHeight="0.0" prefWidth="400.0" GridPane.rowIndex="1" />
+                                    <TextField fx:id="weight" text="65" GridPane.rowIndex="3" />
+                                    <TextField fx:id="height" text="184" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                  </children>
                               </GridPane>
                               <GridPane prefHeight="265.0" prefWidth="400.0" AnchorPane.leftAnchor="580.0" AnchorPane.topAnchor="330.0">

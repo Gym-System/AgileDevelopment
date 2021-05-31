@@ -19,10 +19,10 @@ public interface PersonDAO {
 
     /**
      * This method query a person record by userName and delete the record
-     * @param userName The userName of a person
+     * @param person A Person class
      * @return A boolean value indicating whether the operation is completed successfully
      */
-    Boolean deletePerson(String userName);
+    Boolean deletePerson(Person person);
 
     /**
      * This method query a person record by userName and change the password value of the record
@@ -60,12 +60,4 @@ public interface PersonDAO {
      * @return A array list of person class
      */
     ArrayList<Person> queryAll();
-
-    /**
-     * This method search file for the same object
-     *
-     * @param person A Object class
-     * @return A boolean value indicating whether the operation is completed successfully
-     */
-    Boolean searchSame(Object person);
 }

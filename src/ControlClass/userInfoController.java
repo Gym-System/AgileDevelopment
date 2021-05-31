@@ -1,6 +1,7 @@
 package ControlClass;
 import EntityClass.DAO.LiveSessionDAO;
 import EntityClass.DAO.impl.*;
+import EntityClass.VO.PhyData;
 import EntityClass.VO.WatchedVideo;
 import EntityClass.VO.LiveSession;
 import javafx.event.ActionEvent;
@@ -88,7 +89,7 @@ public class userInfoController {
     private Label email;
 
     @FXML
-    private Label height;
+    private TextField height;
 
     @FXML
     private ImageView userInfo_info;
@@ -103,7 +104,7 @@ public class userInfoController {
     private Label totalTime;
 
     @FXML
-    private Label weight;
+    private TextField weight;
 
     @FXML
     private Hyperlink userInfo_history;
@@ -174,12 +175,26 @@ public class userInfoController {
             level.setText(Integer.toString(preUserDAO.queryByUserName(username).getUserType()));
         }
         balance.setText(Double.toString(userDAO.queryByUserName(username).getBalance()));
-        weight.setText(Double.toString(phyDataDAO.queryByUserName(username).getWeight())+" kg");
-        height.setText(Double.toString(phyDataDAO.queryByUserName(username).getHeight())+" cm");
-        double result=(10000*phyDataDAO.queryByUserName(username).getWeight())/(phyDataDAO.queryByUserName(username).getHeight()*phyDataDAO.queryByUserName(username).getHeight());
-        int middlevalue = (int)(result*100);
-        double newresult=middlevalue/100.0;
-        bmi.setText(Double.toString(newresult));
+        if(phyDataDAO.queryByUserName(username)==null){
+            weight.setText(null);
+        }else{
+            weight.setText(Double.toString(phyDataDAO.queryByUserName(username).getWeight()));
+        }
+
+        if(phyDataDAO.queryByUserName(username)==null){
+            height.setText(null);
+        }else{
+            height.setText(Double.toString(phyDataDAO.queryByUserName(username).getHeight()));
+        }
+        if(phyDataDAO.queryByUserName(username)==null||phyDataDAO.queryByUserName(username)==null)
+        {
+            bmi.setText(null);
+        }else{
+            double result=(10000*phyDataDAO.queryByUserName(username).getWeight())/(phyDataDAO.queryByUserName(username).getHeight()*phyDataDAO.queryByUserName(username).getHeight());
+            int middlevalue = (int)(result*100);
+            double newresult=middlevalue/100.0;
+            bmi.setText(Double.toString(newresult));
+        }
         ArrayList<LiveSession> liveSessions = liveSessionDAO.queryByUserName(username);
         int time1 = 0;
         int time2 = 0;
@@ -209,7 +224,13 @@ public class userInfoController {
         new APP().jump(stage, "user_history");
     }
 
-    public void userInfo_modify_click(ActionEvent actionEvent) {
+    public void userInfo_modify_click(ActionEvent actionEvent) throws IOException {
+        PhyDataDAOImpl phyDataDAO = new PhyDataDAOImpl();
+        PhyData phyData = new PhyData(passValue.getValue(),Double.parseDouble(height.getText()),Double.parseDouble(weight.getText()),0,null,0);
+        phyDataDAO.insertPhyData(phyData);
+        JOptionPane.showInternalMessageDialog(null, "Change successfully","Change successfully", JOptionPane.INFORMATION_MESSAGE);
+        Stage stage = (Stage) level.getScene().getWindow();
+        new APP().jump(stage, "UserInfo");
     }
 
     public void userInfo_recording_click(ActionEvent actionEvent) throws IOException {
@@ -264,7 +285,7 @@ public class userInfoController {
         }catch (Exception e){
             JOptionPane.showInternalMessageDialog(null, "Please check the input!","Please check the input", JOptionPane.ERROR_MESSAGE);
         }
-        if (userDAO.queryByUserName(passValue.getValue()).getUserName()!=null){
+        if (preUserDAO.queryByUserName(passValue.getValue())==null){
             userDAO.queryByUserName(passValue.getValue()).recharge(Double.parseDouble(user_info_recharge_money.getText()));
             JOptionPane.showInternalMessageDialog(null, "Recharge successfully","Recharge successfully", JOptionPane.INFORMATION_MESSAGE);
         }else{

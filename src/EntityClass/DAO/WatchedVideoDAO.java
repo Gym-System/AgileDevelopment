@@ -19,10 +19,10 @@ public interface WatchedVideoDAO {
 
     /**
      * This method query a watchedVideo record by courseId and delete the record
-     * @param courseId The ID of a watchedVideo
+     * @param watchedVideo A WatchedVideo class
      * @return A boolean value indicating whether the operation is completed successfully
      */
-    Boolean deleteHistoryData(Long courseId);
+    Boolean deleteHistoryData(WatchedVideo watchedVideo);
 
     /**
      * This method query a course record by userName
@@ -30,12 +30,4 @@ public interface WatchedVideoDAO {
      * @return A array list of WatchedVideo classes
      */
     ArrayList<WatchedVideo> queryByUserName(String userName);
-
-    /**
-     * This method search file for the same object
-     *
-     * @param watchVideo A Object class
-     * @return A boolean value indicating whether the operation is completed successfully
-     */
-    Boolean searchSame(Object watchVideo);
 }

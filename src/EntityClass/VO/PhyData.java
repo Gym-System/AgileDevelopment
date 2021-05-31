@@ -8,12 +8,20 @@ import java.util.Objects;
  * @version 1.0
  */
 public class PhyData {
-    private final String userName;
-    private double height;
-    private double weight;
-    private int experience;
-    private String interest;
-    private double BFR;
+    private String userName;
+    private double height = 0.0;
+    private double weight = 0.0;
+    private int experience = 0;
+    private String interest = null;
+    private double BFR = 0.0;
+
+    /**
+     * This constructor contains all params needed to make a instance of Person class.
+     * @param userName The userName of a person
+     */
+    public PhyData(String userName) {
+        this.userName = userName;
+    }
 
     /**
      * This constructor contains all params needed to make a instance of Person class.

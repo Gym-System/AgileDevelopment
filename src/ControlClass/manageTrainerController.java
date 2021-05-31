@@ -204,7 +204,7 @@ public class manageTrainerController implements Initializable {
                 alert.setHeaderText("WARN");
                 alert.showAndWait();
             }
-            
+
             if (flag == true) {
                 trainerDAO.insertTrainer(new Trainer(add_name_mt.getText(),add_password_mt.getText(),add_email_mt.getText(),"Male","11111111111",new Date(),"London Fitness"));
                 ArrayList<Trainer> trainers1 = trainerDAO.queryAll();
@@ -385,7 +385,7 @@ public class manageTrainerController implements Initializable {
             if (checkBoxes[i].isSelected()){
                 int index = (pageIndex * 4 + i + 1);
                 System.out.println("第几项 被选中" + index);
-                trainerDAO.deleteTrainer(trainers2.get(index-1).getUserName());
+                trainerDAO.deleteTrainer(new Trainer(trainers2.get(index-1).getUserName()));
                 trainers2.remove(index-1);
                 click_find_mt(event);
                 checkBoxes[i].setSelected(false);

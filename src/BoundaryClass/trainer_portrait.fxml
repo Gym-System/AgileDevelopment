@@ -49,27 +49,27 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Hyperlink fx:id="trainer_portrait_portrait" onAction="#trainer_portrait_portrait_click" text="Portrait" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Hyperlink fx:id="trainer_portrait_portrait" focusTraversable="false" onAction="#trainer_portrait_portrait_click" text="Portrait" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
                         </Hyperlink>
-                        <Hyperlink fx:id="trainer_portrait_upload" onAction="#trainer_portrait_upload_click" text="Upload" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Hyperlink fx:id="trainer_portrait_upload" focusTraversable="false" onAction="#trainer_portrait_upload_click" text="Upload" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
                         </Hyperlink>
-                        <Hyperlink fx:id="trainer_portrait_live" onAction="#trainer_portrait_live_click" text="Live" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Hyperlink fx:id="trainer_portrait_live" focusTraversable="false" onAction="#trainer_portrait_live_click" text="Live" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
                               <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
                         </Hyperlink>
-                        <Hyperlink fx:id="trainer_portrait_calendar" onAction="#trainer_portrait_calendar_click" text="Calendar" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <Hyperlink fx:id="trainer_portrait_calendar" focusTraversable="false" onAction="#trainer_portrait_calendar_click" text="Calendar" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
                               <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
                         </Hyperlink>
-                        <Hyperlink fx:id="trainer_portrait_history" onAction="#trainer_portrait_history_click" text="History" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <Hyperlink fx:id="trainer_portrait_history" focusTraversable="false" onAction="#trainer_portrait_history_click" text="History" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <font>
                               <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
@@ -104,7 +104,7 @@
                               <Image url="@Resource/trainer_History.png" />
                            </image>
                         </ImageView>
-                        <Hyperlink fx:id="trainer_logout_hyper" onMouseClicked="#trainer_logout_click" text="Log out" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                        <Hyperlink fx:id="trainer_logout_hyper" focusTraversable="false" onMouseClicked="#trainer_logout_click" text="Log out" GridPane.columnIndex="1" GridPane.rowIndex="7">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="30.0" />
                            </font>

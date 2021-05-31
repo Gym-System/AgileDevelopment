@@ -286,7 +286,8 @@ public class userHistoryController implements Initializable {
         labelTime[8] = history_time9;
         labelTime[9] = history_time10;
 
-        ArrayList<WatchedVideo> watchedVideos = watchedVideoDAO.queryByUserName("kaiyi");
+        ArrayList<WatchedVideo> watchedVideos = watchedVideoDAO.queryByUserName(passValue.getValue());
+        System.out.println(passValue.getValue());
         LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
 //        LiveSession liveSession = liveSessionDAO.q
 //        turn_page.setPageCount((int) Math.ceil(watchedVideos.size()/10.0));

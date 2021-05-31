@@ -1,16 +1,13 @@
 package EntityClass.DAO.impl;
 
+import EntityClass.DAO.ToolDAO;
 import EntityClass.DAO.WatchedVideoDAO;
 import EntityClass.VO.WatchedVideo;
 import com.csvreader.CsvReader;
+import com.csvreader.CsvWriter;
+import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
 
-import static EntityClass.DAO.impl.PersonDAOImpl.insertInfo;
-import static EntityClass.DAO.impl.CourseDAOImpl.deleteInfo;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 /**
@@ -19,7 +16,7 @@ import java.util.ArrayList;
  * @version 1.0
  * {@inheritDoc}
  */
-public class WatchedVideoDAOImpl implements WatchedVideoDAO {
+public class WatchedVideoDAOImpl implements ToolDAO, WatchedVideoDAO {
     private WatchedVideo watchedVideo = null;
     public static final String fileFolder = "./src/Data/";
     private final String fileName = "watchedVideo.csv";
@@ -33,7 +30,7 @@ public class WatchedVideoDAOImpl implements WatchedVideoDAO {
     @Override
     public Boolean insertHistoryData(WatchedVideo watchedVideo) {
         if(!searchSame(watchedVideo)) {
-            return insertInfo(filePath, watchedVideo.toStrArray());
+            return insertInfo(watchedVideo);
         }
         else {
             return false;
@@ -42,12 +39,12 @@ public class WatchedVideoDAOImpl implements WatchedVideoDAO {
 
     /**
      * This method query a watchedVideo record by courseId and delete the record
-     * @param courseId The ID of a watchedVideo
+     * @param watchedVideo A WatchedVideo class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean deleteHistoryData(Long courseId) {
-        return deleteInfo(courseId, filePath);
+    public Boolean deleteHistoryData(WatchedVideo watchedVideo) {
+        return deleteInfo(watchedVideo);
     }
 
     /**
@@ -75,6 +72,72 @@ public class WatchedVideoDAOImpl implements WatchedVideoDAO {
             ex.printStackTrace();
         }
         return watchedVideos;
+    }
+
+    /**
+     * This method insert a Object class into csv file
+     *
+     * @param obj A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean insertInfo(Object obj) {
+        if(obj instanceof WatchedVideo) {
+            WatchedVideo watchedVideo = (WatchedVideo) obj;
+            boolean flag = false;
+            File outFile = new File(filePath);
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(outFile, true));
+                CsvWriter csvWriter = new CsvWriter(writer,',');
+                csvWriter.writeRecord(watchedVideo.toStrArray());
+                csvWriter.close();
+                flag = true;
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            return flag;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * This method query a object record and delete the record
+     *
+     * @param object A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean deleteInfo(Object object) {
+        if(object instanceof WatchedVideo) {
+            WatchedVideo watchedVideo = (WatchedVideo) object;
+            Boolean flag = false;
+            File inFile = new File(filePath);
+            try {
+                String[] record;
+                ArrayList<String[]> records = new ArrayList<>();
+                BufferedReader reader = new BufferedReader(new FileReader(inFile));
+                CsvReader csvReader = new CsvReader(reader, ',');
+                while(csvReader.readRecord()){
+                    record = csvReader.getRawRecord().split(",");
+                    if(watchedVideo.getUserName().equals(record[0])) {
+                        continue;
+                    }
+                    assert records != null;
+                    records.add(record);
+                }
+                csvReader.close();
+                recordToCsv(records, filePath);
+                flag = true;
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            return flag;
+        }
+        else {
+            return false;
+        }
     }
 
     /**

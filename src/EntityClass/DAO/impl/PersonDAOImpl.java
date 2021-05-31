@@ -1,6 +1,7 @@
 package EntityClass.DAO.impl;
 
 import EntityClass.DAO.PersonDAO;
+import EntityClass.DAO.ToolDAO;
 import EntityClass.VO.Person;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
@@ -18,7 +19,7 @@ import java.util.Locale;
  * @version 1.0
  * {@inheritDoc}
  */
-public class PersonDAOImpl implements PersonDAO {
+public class PersonDAOImpl implements ToolDAO, PersonDAO {
     private Person person = null;
     public static final String fileFolder = "./src/Data/";
     private final String fileName = "person.csv";
@@ -32,7 +33,7 @@ public class PersonDAOImpl implements PersonDAO {
     @Override
     public Boolean insertPerson(Person person) {
         if(!searchSame(person)) {
-            return insertInfo(filePath, person.toStrArray());
+            return insertInfo(person);
         }
         else {
             return false;
@@ -41,12 +42,12 @@ public class PersonDAOImpl implements PersonDAO {
 
     /**
      * This method query a person record by userName and delete the record
-     * @param userName The userName of a person
+     * @param person A Person class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean deletePerson(String userName) {
-        return deleteInfo(userName, filePath);
+    public Boolean deletePerson(Person person) {
+        return deleteInfo(person);
     }
 
     /**
@@ -194,6 +195,72 @@ public class PersonDAOImpl implements PersonDAO {
     }
 
     /**
+     * This method insert a Object class into csv file
+     *
+     * @param obj A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean insertInfo(Object obj) {
+        if(obj instanceof Person) {
+            Person person = (Person) obj;
+            boolean flag = false;
+            File outFile = new File(filePath);
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(outFile, true));
+                CsvWriter csvWriter = new CsvWriter(writer,',');
+                csvWriter.writeRecord(person.toStrArray());
+                csvWriter.close();
+                flag = true;
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            return flag;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * This method query a object record and delete the record
+     *
+     * @param object A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean deleteInfo(Object object) {
+        if(object instanceof Person) {
+            Person person = (Person) object;
+            Boolean flag = false;
+            File inFile = new File(filePath);
+            try {
+                String[] record;
+                ArrayList<String[]> records = new ArrayList<>();
+                BufferedReader reader = new BufferedReader(new FileReader(inFile));
+                CsvReader csvReader = new CsvReader(reader, ',');
+                while(csvReader.readRecord()){
+                    record = csvReader.getRawRecord().split(",");
+                    if(person.getUserName().equals(record[0])) {
+                        continue;
+                    }
+                    assert records != null;
+                    records.add(record);
+                }
+                csvReader.close();
+                recordToCsv(records, filePath);
+                flag = true;
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            return flag;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
      * This method search file for the same object
      *
      * @param person A Object class
@@ -223,27 +290,6 @@ public class PersonDAOImpl implements PersonDAO {
     }
 
     /**
-     * This method is insert information into a file
-     * @param fileName The name of a file
-     * @param strings This records needed to be inserted
-     * @return A boolean value indicating whether the operation is completed successfully
-     */
-    static Boolean insertInfo(String fileName, String[] strings) {
-        boolean flag = false;
-        File outFile = new File(fileName);
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(outFile, true));
-            CsvWriter csvWriter = new CsvWriter(writer,',');
-            csvWriter.writeRecord(strings);
-            csvWriter.close();
-            flag = true;
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        return flag;
-    }
-
-    /**
      * This method overwrite all the information
      * @param records This records needed to be written
      * @param fileName The name of a file
@@ -257,36 +303,5 @@ public class PersonDAOImpl implements PersonDAO {
             csvWriter.writeRecord(iterator.next());
         }
         csvWriter.close();
-    }
-
-    /**
-     * This method delete a record from a file
-     * @param userName The user name of a person
-     * @param fileName The name of a file
-     * @return A boolean value indicating whether the operation is completed successfully
-     */
-    static Boolean deleteInfo(String userName, String fileName) {
-        Boolean flag = false;
-        File inFile = new File(fileName);
-        try {
-            String[] record;
-            ArrayList<String[]> records = new ArrayList<>();
-            BufferedReader reader = new BufferedReader(new FileReader(inFile));
-            CsvReader csvReader = new CsvReader(reader, ',');
-            while(csvReader.readRecord()){
-                record = csvReader.getRawRecord().split(",");
-                if(userName.equals(record[0])) {
-                    continue;
-                }
-                assert records != null;
-                records.add(record);
-            }
-            csvReader.close();
-            recordToCsv(records, fileName);
-            flag = true;
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        return flag;
     }
 }

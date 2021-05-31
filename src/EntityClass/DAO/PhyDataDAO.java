@@ -19,10 +19,10 @@ public interface PhyDataDAO {
 
     /**
      * This method query a phyData record by userName and delete the record
-     * @param userName The userName of a person
+     * @param phyData A PhyData class
      * @return A boolean value indicating whether the operation is completed successfully
      */
-    Boolean deletePhyData(String userName);
+    Boolean deletePhyData(PhyData phyData);
 
     /**
      * This method query a person record by userName and change the height value of the record

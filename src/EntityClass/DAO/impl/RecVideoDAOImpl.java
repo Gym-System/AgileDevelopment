@@ -1,6 +1,7 @@
 package EntityClass.DAO.impl;
 
 import EntityClass.DAO.RecVideoDAO;
+import EntityClass.DAO.ToolDAO;
 import EntityClass.VO.RecVideo;
 import com.csvreader.CsvReader;
 
@@ -13,8 +14,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import static EntityClass.DAO.impl.CourseDAOImpl.deleteInfo;
-import static EntityClass.DAO.impl.PersonDAOImpl.insertInfo;
 import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
 
 /**
@@ -23,7 +22,7 @@ import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
  * @version 1.0
  * {@inheritDoc}
  */
-public class RecVideoDAOImpl implements RecVideoDAO {
+public class RecVideoDAOImpl implements ToolDAO, RecVideoDAO {
     private RecVideo recVideo = null;
     private final String fileName = "recVideo.csv";
     private String filePath = PersonDAOImpl.fileFolder + fileName;
@@ -36,7 +35,7 @@ public class RecVideoDAOImpl implements RecVideoDAO {
     @Override
     public Boolean insertRecVideo(RecVideo recVideo) {
         if(!searchSame(recVideo)) {
-            return insertInfo(filePath, recVideo.toStrArray());
+            return insertInfo(recVideo);
         }
         else {
             return false;
@@ -45,12 +44,12 @@ public class RecVideoDAOImpl implements RecVideoDAO {
 
     /**
      * This method query a recVideo record by courseId and delete the record
-     * @param courseId The ID of a recVideo
+     * @param recVideo A RecVideo class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean deleteRecVideo(long courseId) {
-        return deleteInfo(courseId, filePath);
+    public Boolean deleteRecVideo(RecVideo recVideo) {
+        return deleteInfo(recVideo);
     }
 
     /**
@@ -299,6 +298,55 @@ public class RecVideoDAOImpl implements RecVideoDAO {
             ex.printStackTrace();
         }
         return recVideos;
+    }
+
+    /**
+     * This method insert a Object class into csv file
+     *
+     * @param obj A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean insertInfo(Object obj) {
+        if(obj instanceof RecVideo) {
+            RecVideo recVideo = (RecVideo) obj;
+            Boolean flag = false;
+            File inFile = new File(filePath);
+            try {
+                String[] record;
+                ArrayList<String[]> records = new ArrayList<>();
+                BufferedReader reader = new BufferedReader(new FileReader(inFile));
+                CsvReader csvReader = new CsvReader(reader, ',');
+                while(csvReader.readRecord()){
+                    record = csvReader.getRawRecord().split(",");
+                    if(recVideo.getCourseId() == Long.parseLong(record[0])) {
+                        continue;
+                    }
+                    assert records != null;
+                    records.add(record);
+                }
+                csvReader.close();
+                recordToCsv(records, filePath);
+                flag = true;
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            return flag;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * This method query a object record and delete the record
+     *
+     * @param object A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean deleteInfo(Object object) {
+        return null;
     }
 
     /**

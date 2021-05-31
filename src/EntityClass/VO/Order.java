@@ -8,9 +8,17 @@ import java.util.Objects;
  * @version 1.0
  */
 public class Order {
-    private String userName;
     private long courseId;
-    private double cost;
+    private String userName = null;
+    private double cost = 0.0;
+
+    /**
+     * This constructor contains all params needed to make a instance of Person class.
+     * @param courseId The ID of a course
+     */
+    public Order(long courseId) {
+        this.courseId = courseId;
+    }
 
     /**
      * This constructor contains all params needed to make a instance of Person class.

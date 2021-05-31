@@ -19,10 +19,10 @@ public interface OrderDAO {
 
     /**
      * This method query a Oder record by courseId and delete the record
-     * @param courseId The ID of a course
+     * @param order A Order class
      * @return A boolean value indicating whether the operation is completed successfully
      */
-    Boolean deleteOrder(long courseId);
+    Boolean deleteOrder(Order order);
 
     /**
      * This method query a Order record by courseId
@@ -37,12 +37,4 @@ public interface OrderDAO {
      * @return A array list of Order class
      */
     ArrayList<Order> queryByUserName(String userName);
-
-    /**
-     * This method search file for the same object
-     *
-     * @param order A Object class
-     * @return A boolean value indicating whether the operation is completed successfully
-     */
-    Boolean searchSame(Object order);
 }

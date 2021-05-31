@@ -1,17 +1,15 @@
 package EntityClass.DAO.impl;
 
 import EntityClass.DAO.FavoriteVideoDAO;
+import EntityClass.DAO.ToolDAO;
 import EntityClass.VO.FavoriteVideo;
 import com.csvreader.CsvReader;
+import com.csvreader.CsvWriter;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
-import static EntityClass.DAO.impl.CourseDAOImpl.deleteInfo;
-import static EntityClass.DAO.impl.PersonDAOImpl.insertInfo;
+import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
 
 /**
  * javadoc of FavoriteVideoImpl class
@@ -19,7 +17,7 @@ import static EntityClass.DAO.impl.PersonDAOImpl.insertInfo;
  * @version 1.0
  * {@inheritDoc}
  */
-public class FavoriteVideoImpl implements FavoriteVideoDAO {
+public class FavoriteVideoImpl implements ToolDAO, FavoriteVideoDAO {
     private FavoriteVideo favoriteVideo = null;
     public static final String fileFolder = "./src/Data/";
     private final String fileName = "favoriteVideo.csv";
@@ -33,7 +31,7 @@ public class FavoriteVideoImpl implements FavoriteVideoDAO {
     @Override
     public Boolean insertFavoriteVideo(FavoriteVideo favoriteVideo) {
         if(!searchSame(favoriteVideo)) {
-            return insertInfo(filePath, favoriteVideo.toStrArray());
+            return insertInfo(favoriteVideo);
         }
         else {
             return false;
@@ -42,12 +40,12 @@ public class FavoriteVideoImpl implements FavoriteVideoDAO {
 
     /**
      * This method query a FavoriteVideo record by courseId and delete the record
-     * @param courseId The ID of a FavoriteVideo
+     * @param favoriteVideo A FavoriteVideo class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean deleteFavoriteVideo(Long courseId) {
-        return deleteInfo(courseId, filePath);
+    public Boolean deleteFavoriteVideo(FavoriteVideo favoriteVideo) {
+        return deleteInfo(favoriteVideo);
     }
 
     /**
@@ -75,6 +73,72 @@ public class FavoriteVideoImpl implements FavoriteVideoDAO {
             ex.printStackTrace();
         }
         return favoriteVideos;
+    }
+
+    /**
+     * This method insert a Object class into csv file
+     *
+     * @param obj A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean insertInfo(Object obj) {
+        if(obj instanceof FavoriteVideo) {
+            FavoriteVideo favoriteVideo = (FavoriteVideo) obj;
+            boolean flag = false;
+            File outFile = new File(filePath);
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(outFile, true));
+                CsvWriter csvWriter = new CsvWriter(writer,',');
+                csvWriter.writeRecord(favoriteVideo.toStrArray());
+                csvWriter.close();
+                flag = true;
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            return flag;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * This method query a object record and delete the record
+     *
+     * @param object A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean deleteInfo(Object object) {
+        if(object instanceof FavoriteVideo) {
+            FavoriteVideo favoriteVideo = (FavoriteVideo) object;
+            Boolean flag = false;
+            File inFile = new File(filePath);
+            try {
+                String[] record;
+                ArrayList<String[]> records = new ArrayList<>();
+                BufferedReader reader = new BufferedReader(new FileReader(inFile));
+                CsvReader csvReader = new CsvReader(reader, ',');
+                while(csvReader.readRecord()){
+                    record = csvReader.getRawRecord().split(",");
+                    if(favoriteVideo.getCourseId() == Long.parseLong(record[0])) {
+                        continue;
+                    }
+                    assert records != null;
+                    records.add(record);
+                }
+                csvReader.close();
+                recordToCsv(records, filePath);
+                flag = true;
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            return flag;
+        }
+        else {
+            return false;
+        }
     }
 
     /**

@@ -9,7 +9,15 @@ import java.util.Objects;
  * @version 1.0
  */
 public class Staff extends Person {
-    private String companyName;
+    private String companyName = null;
+
+    /**
+     * This constructor contains major params needed to make a instance of Person class.
+     * @param userName The userName of a person
+     */
+    public Staff(String userName) {
+        super(userName);
+    }
 
     /**
      * This constructor contains major params needed to make a instance of Staff class.

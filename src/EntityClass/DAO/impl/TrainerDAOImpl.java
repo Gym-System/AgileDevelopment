@@ -1,19 +1,18 @@
 package EntityClass.DAO.impl;
 
+import EntityClass.DAO.ToolDAO;
 import EntityClass.DAO.TrainerDAO;
 import EntityClass.VO.Trainer;
 import com.csvreader.CsvReader;
+import com.csvreader.CsvWriter;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import static EntityClass.DAO.impl.PersonDAOImpl.*;
+import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
 
 /**
  * javadoc of TrainerDAOImpl class
@@ -21,7 +20,7 @@ import static EntityClass.DAO.impl.PersonDAOImpl.*;
  * @version 1.0
  * {@inheritDoc}
  */
-public class TrainerDAOImpl implements TrainerDAO {
+public class TrainerDAOImpl implements ToolDAO, TrainerDAO {
     private Trainer trainer = null;
     private final String fileName = "trainer.csv";
     private String filePath = PersonDAOImpl.fileFolder + fileName;
@@ -34,7 +33,7 @@ public class TrainerDAOImpl implements TrainerDAO {
     @Override
     public Boolean insertTrainer(Trainer trainer) {
         if(!searchSame(trainer)) {
-            return insertInfo(filePath, trainer.toStrArray());
+            return insertInfo(trainer);
         }
         else {
             return false;
@@ -43,12 +42,12 @@ public class TrainerDAOImpl implements TrainerDAO {
 
     /**
      * This method query a trainer record by userName and delete the record
-     * @param userName The userName of a trainer
+     * @param trainer A Trainer class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean deleteTrainer(String userName) {
-        return deleteInfo(userName, filePath);
+    public Boolean deleteTrainer(Trainer trainer) {
+        return deleteInfo(trainer);
     }
 
     /**
@@ -326,6 +325,72 @@ public class TrainerDAOImpl implements TrainerDAO {
             ex.printStackTrace();
         }
         return trainers;
+    }
+
+    /**
+     * This method insert a Object class into csv file
+     *
+     * @param obj A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean insertInfo(Object obj) {
+        if(obj instanceof Trainer) {
+            Trainer trainer = (Trainer) obj;
+            boolean flag = false;
+            File outFile = new File(filePath);
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(outFile, true));
+                CsvWriter csvWriter = new CsvWriter(writer,',');
+                csvWriter.writeRecord(trainer.toStrArray());
+                csvWriter.close();
+                flag = true;
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            return flag;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * This method query a object record and delete the record
+     *
+     * @param object A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean deleteInfo(Object object) {
+        if(object instanceof Trainer) {
+            Trainer trainer = (Trainer) object;
+            Boolean flag = false;
+            File inFile = new File(filePath);
+            try {
+                String[] record;
+                ArrayList<String[]> records = new ArrayList<>();
+                BufferedReader reader = new BufferedReader(new FileReader(inFile));
+                CsvReader csvReader = new CsvReader(reader, ',');
+                while(csvReader.readRecord()){
+                    record = csvReader.getRawRecord().split(",");
+                    if(trainer.getUserName().equals(record[0])) {
+                        continue;
+                    }
+                    assert records != null;
+                    records.add(record);
+                }
+                csvReader.close();
+                recordToCsv(records, filePath);
+                flag = true;
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            return flag;
+        }
+        else {
+            return false;
+        }
     }
 
     /**

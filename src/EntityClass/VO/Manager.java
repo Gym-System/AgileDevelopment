@@ -15,6 +15,14 @@ public class Manager extends Staff {
     private int managerType = 0;
 
     /**
+     * This constructor contains major params needed to make a instance of Person class.
+     * @param userName The userName of a person
+     */
+    public Manager(String userName) {
+        super(userName);
+    }
+
+    /**
      * This constructor contains major params needed to make a instance of Manager class.
      * @param userName The userName of a manager
      * @param password The password of a manager
@@ -63,7 +71,7 @@ public class Manager extends Staff {
      */
     public boolean deleteUserInfo(String userName) {
         UserDAOImpl userDAO = new UserDAOImpl();
-        return userDAO.deleteUser(userName);
+        return userDAO.deleteUser(new User(userName));
     }
 
     /**
@@ -73,7 +81,7 @@ public class Manager extends Staff {
      */
     public boolean deleteTrainerInfo(String userName) {
         TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
-        return trainerDAO.deleteTrainer(userName);
+        return trainerDAO.deleteTrainer(new Trainer(userName));
     }
 
     /**
