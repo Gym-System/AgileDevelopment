@@ -235,8 +235,8 @@
                            </font></Label>
                      </children>
                   </GridPane>
-                  <TextField fx:id="text_find_mi" layoutX="91.0" layoutY="53.0" prefHeight="45.0" prefWidth="280.0" />
-                  <Button fx:id="button_find_mi" layoutX="371.0" layoutY="54.0" mnemonicParsing="false" onMouseClicked="#click_find_mi" prefHeight="45.0" prefWidth="75.0" text="Find">
+                  <TextField fx:id="text_find_mi" layoutX="112.0" layoutY="53.0" prefHeight="45.0" prefWidth="280.0" />
+                  <Button fx:id="button_find_mi" layoutX="392.0" layoutY="54.0" mnemonicParsing="false" onMouseClicked="#click_find_mi" prefHeight="45.0" prefWidth="75.0" text="Find">
                      <font>
                         <Font size="20.0" />
                      </font></Button>
@@ -251,21 +251,6 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="628.0" layoutY="68.0" text="Sorted by">
-                     <font>
-                        <Font size="20.0" />
-                     </font></Label>
-                   <ChoiceBox fx:id="chosice_sort_mi" layoutX="740.0" layoutY="57.0" prefHeight="45.0" prefWidth="186.0" style="-fx-font-size: 20px;" value="income">
-                       <items>
-                           <FXCollections fx:factory="observableArrayList">
-                               <String fx:value="income" />
-                               <String fx:value="trainer name" />
-                               <String fx:value="live" />
-                               <String fx:value="recording" />
-                               <String fx:value="award" />
-                           </FXCollections>
-                       </items>
-                   </ChoiceBox>
                </children></AnchorPane>
         </items>
       </SplitPane>
