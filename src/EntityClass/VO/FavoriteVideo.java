@@ -14,7 +14,7 @@ public class FavoriteVideo {
      * @param userName Indicate which user liked a video
      * @param courseId Indicate the ID of the course the use liked
      */
-    public FavoriteVideo(String userName, long courseId) {
+    public FavoriteVideo(long courseId, String userName) {
         this.userName = userName;
         this.courseId = courseId;
     }

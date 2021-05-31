@@ -89,7 +89,7 @@ public class User extends Person {
      * @param courseId The ID of a course
      */
     public void favoriteVideo(long courseId) {
-        FavoriteVideo favoriteVideo = new FavoriteVideo(super.getUserName(), courseId);
+        FavoriteVideo favoriteVideo = new FavoriteVideo(courseId, super.getUserName());
         FavoriteVideoImpl favoriteVideoDao = new FavoriteVideoImpl();
         favoriteVideoDao.insertFavoriteVideo(favoriteVideo);
     }

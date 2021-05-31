@@ -573,9 +573,8 @@ public class Test {
         premierUser.bookLiveSession(trainer, new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-30T14:00:00"));
         premierUser.bookLiveSession(trainer, new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-31T10:00:00"));
         premierUser.bookLiveSession(trainer, new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse("2021-05-31T14:00:00"));
+    */
 
-
-        String userName = "kaiyi";
         LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
         ArrayList<LiveSession> liveSessions = liveSessionDAO.queryAll();
         RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
@@ -591,6 +590,6 @@ public class Test {
             System.out.println(course.getSubject());
         }
 
-         */
+
     }
 }
