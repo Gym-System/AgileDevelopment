@@ -24,12 +24,6 @@ public class Trainer extends Staff {
         super(userName, password, email, gender, telNo, doB, companyName);
     }
 
-    public Trainer(String userName, String password, String email, String gender, String telNo, Date doB, String companyName, double salary,  String CV, double price) {
-        super(userName, password, email, gender, telNo, doB, companyName);
-        this.salary = salary;
-        this.CV = CV;
-        this.price = price;
-    }
     public Trainer(String userName, String password, String email, String gender, String telNo, Date doB, String companyName, double salary, String label, String CV, double price) {
         super(userName, password, email, gender, telNo, doB, companyName);
         this.salary = salary;

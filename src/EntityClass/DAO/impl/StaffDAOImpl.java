@@ -15,22 +15,43 @@ import java.util.Locale;
 
 import static EntityClass.DAO.impl.PersonDAOImpl.*;
 
+/**
+ * javadoc of PersonDAOImpl class
+ * @author Kaiyi Zhao
+ * @version 1.0
+ * {@inheritDoc}
+ */
 public class StaffDAOImpl implements StaffDAO {
     private Staff staff = null;
     private final String fileName = "staff.csv";
     private String filePath = PersonDAOImpl.fileFolder + fileName;
 
-    // insert
+    /**
+     * This method insert a Staff class into staff.sv
+     * @param staff A Staff class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
     @Override
     public Boolean insertStaff(Staff staff) {
         return insertInfo(filePath, staff.toStrArray());
     }
 
+    /**
+     * This method query a staff record by userName and delete the record
+     * @param userName The userName of a staff
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
     @Override
     public Boolean deleteStaff(String userName) {
         return deleteInfo(userName, filePath);
     }
 
+    /**
+     * This method query a staff record by userName and change the password value of the record
+     * @param userName The userName of a staff
+     * @param password The password value of a staff
+     * @return A Staff class after changing
+     */
     @Override
     public Staff changeStaffPassword(String userName, String password) {
         File inFile = new File(filePath);
@@ -57,6 +78,12 @@ public class StaffDAOImpl implements StaffDAO {
         return staff;
     }
 
+    /**
+     * This method query a staff record by userName and change the email value of the record
+     * @param userName The userName of a staff
+     * @param email The email value of a staff
+     * @return A Staff class after changing
+     */
     @Override
     public Staff changeStaffEmail(String userName, String email) {
         File inFile = new File(filePath);
@@ -83,6 +110,12 @@ public class StaffDAOImpl implements StaffDAO {
         return staff;
     }
 
+    /**
+     * This method query a staff record by userName and change the telephone number of the record
+     * @param userName The userName of a staff
+     * @param teleNo The telephone number of a staff
+     * @return A Staff class after changing
+     */
     @Override
     public Staff changeStaffTeleNo(String userName, String teleNo) {
         File inFile = new File(filePath);
@@ -109,6 +142,11 @@ public class StaffDAOImpl implements StaffDAO {
         return staff;
     }
 
+    /**
+     * This method query a staff record by user name
+     * @param userName The userName of a staff
+     * @return A Staff class
+     */
     @Override
     public Staff queryByUserName(String userName) {
         File inFile = new File(filePath);
@@ -131,6 +169,10 @@ public class StaffDAOImpl implements StaffDAO {
         return staff;
     }
 
+    /**
+     * This method query all the staff records
+     * @return A array list of Staff class
+     */
     @Override
     public ArrayList<Staff> queryAll() {
         File inFile = new File(filePath);

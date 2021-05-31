@@ -1,6 +1,5 @@
 package EntityClass.DAO.impl;
 
-import EntityClass.DAO.PersonDAO;
 import EntityClass.DAO.PhyDataDAO;
 import EntityClass.VO.PhyData;
 import com.csvreader.CsvReader;
@@ -13,24 +12,43 @@ import java.util.ArrayList;
 
 import static EntityClass.DAO.impl.PersonDAOImpl.*;
 
+/**
+ * javadoc of PhyDataDAOImpl class
+ * @author Kaiyi Zhao
+ * @version 1.0
+ * {@inheritDoc}
+ */
 public class PhyDataDAOImpl implements PhyDataDAO {
     private PhyData phyData;
     private String fileName = "phyData.csv";
     private String filePath = PersonDAOImpl.fileFolder + fileName;
 
-    // insert
+    /**
+     * This method insert a PhyData class into phyData.sv
+     * @param phyData A PhyData class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
     @Override
     public Boolean insertPhyData(PhyData phyData) {
         return insertInfo(filePath, phyData.toStrArray());
     }
 
-    // delete
+    /**
+     * This method query a phyData record by userName and delete the record
+     * @param userName The userName of a person
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
     @Override
     public Boolean deletePhyData(String userName) {
         return deleteInfo(userName, filePath);
     }
 
-    // update
+    /**
+     * This method query a person record by userName and change the height value of the record
+     * @param userName The userName of a person
+     * @param height The height value of a person
+     * @return A PhyData class after changing
+     */
     @Override
     public PhyData changePhyDataHeight(String userName, double height) {
         File inFile = new File(filePath);
@@ -56,6 +74,12 @@ public class PhyDataDAOImpl implements PhyDataDAO {
         return phyData;
     }
 
+    /**
+     * This method query a person record by userName and change the weight value of the record
+     * @param userName The userName of a person
+     * @param weight The weight value of a person
+     * @return A PhyData class after changing
+     */
     @Override
     public PhyData changePhyDataWeight(String userName, double weight) {
         File inFile = new File(filePath);
@@ -81,6 +105,12 @@ public class PhyDataDAOImpl implements PhyDataDAO {
         return phyData;
     }
 
+    /**
+     * This method query a person record by userName and change the experience value of the record
+     * @param userName The userName of a person
+     * @param experience The experience value of a person
+     * @return A PhyData class after changing
+     */
     @Override
     public PhyData changePhyDataExperience(String userName, int experience) {
         File inFile = new File(filePath);
@@ -106,6 +136,12 @@ public class PhyDataDAOImpl implements PhyDataDAO {
         return phyData;
     }
 
+    /**
+     * This method query a person record by userName and change the interest value of the record
+     * @param userName The userName of a person
+     * @param interest The interest value of a person
+     * @return A PhyData class after changing
+     */
     @Override
     public PhyData changePhyDataInterest(String userName, String interest) {
         File inFile = new File(filePath);
@@ -131,6 +167,12 @@ public class PhyDataDAOImpl implements PhyDataDAO {
         return phyData;
     }
 
+    /**
+     * This method query a person record by userName and change the BRF value of the record
+     * @param userName The userName of a person
+     * @param BRF The BRF value of a person
+     * @return A PhyData class after changing
+     */
     @Override
     public PhyData changePhyDataBFR(String userName, double BRF) {
         File inFile = new File(filePath);
@@ -156,7 +198,11 @@ public class PhyDataDAOImpl implements PhyDataDAO {
         return phyData;
     }
 
-    // select
+    /**
+     * This method query a PhyData record by user name
+     * @param userName The userName of a person
+     * @return A PhyData class
+     */
     @Override
     public PhyData queryByUserName(String userName) {
         File inFile = new File(filePath);
@@ -178,6 +224,10 @@ public class PhyDataDAOImpl implements PhyDataDAO {
         return phyData;
     }
 
+    /**
+     * This method query all the PhyData records
+     * @return A array list of PhyData class
+     */
     @Override
     public ArrayList<PhyData> queryAll() {
         File inFile = new File(filePath);

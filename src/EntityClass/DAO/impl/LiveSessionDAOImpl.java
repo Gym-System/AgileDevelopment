@@ -17,24 +17,43 @@ import static EntityClass.DAO.impl.CourseDAOImpl.deleteInfo;
 import static EntityClass.DAO.impl.PersonDAOImpl.insertInfo;
 import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
 
+/**
+ * javadoc of LiveSessionDAOImpl class
+ * @author Kaiyi Zhao
+ * @version 1.0
+ * {@inheritDoc}
+ */
 public class LiveSessionDAOImpl implements LiveSessionDAO {
     private LiveSession liveSession;
     private final String fileName = "liveSession.csv";
     private String filePath = PersonDAOImpl.fileFolder + fileName;
 
-    // insert
+    /**
+     * This method insert a LiveSession class into liveSession.sv
+     * @param liveSession A LiveSession class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
     @Override
     public Boolean insertLiveSession(LiveSession liveSession) {
         return insertInfo(filePath, liveSession.toStrArray());
     }
 
-    // delete
+    /**
+     * This method query a LiveSession record by courseId and delete the record
+     * @param courseId The ID of a LiveSession
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
     @Override
     public Boolean deleteLiveSession(long courseId) {
         return deleteInfo(courseId, filePath);
     }
 
-    // update
+    /**
+     * This method query a LiveSession record by courseId and change the gift value of the record
+     * @param courseId The ID of a LiveSession
+     * @param gift The new gift value
+     * @return A LiveSession class after changing
+     */
     @Override
     public LiveSession changeLiveSessionGift(long courseId, int gift) {
         File inFile = new File(filePath);
@@ -62,6 +81,12 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
         return liveSession;
     }
 
+    /**
+     * This method query a LiveSession record by courseId and change the star value of the record
+     * @param courseId The ID of a LiveSession
+     * @param star The new star value
+     * @return A LiveSession class after changing
+     */
     @Override
     public LiveSession changeLiveSessionStar(long courseId, double star) {
         File inFile = new File(filePath);
@@ -89,6 +114,12 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
         return liveSession;
     }
 
+    /**
+     * This method query a LiveSession record by courseId and change the startTime value of the record
+     * @param courseId The ID of a LiveSession
+     * @param startTime The new startTime value
+     * @return A LiveSession class after changing
+     */
     @Override
     public LiveSession changeLiveSessionStartTime(long courseId, String startTime) {
         File inFile = new File(filePath);
@@ -116,7 +147,11 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
         return liveSession;
     }
 
-    // select
+    /**
+     * This method query a LiveSession record by courseId
+     * @param courseId The ID of a LiveSession
+     * @return A LiveSession class
+     */
     @Override
     public LiveSession queryByCourseId(long courseId) {
         File inFile = new File(filePath);
@@ -141,6 +176,11 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
         return liveSession;
     }
 
+    /**
+     * This method query LiveSession records by trainer name
+     * @param trainerName The trainer name of LiveSession
+     * @return A array list of LiveSession class
+     */
     @Override
     public ArrayList<LiveSession> queryByTrainerName(String trainerName) {
         ArrayList<LiveSession> liveSessions = new ArrayList<>();
@@ -166,6 +206,11 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
         return liveSessions;
     }
 
+    /**
+     * This method query LiveSession records by user name
+     * @param userName The user name of LiveSession
+     * @return A array list of LiveSession class
+     */
     @Override
     public ArrayList<LiveSession> queryByUserName(String userName) {
         ArrayList<LiveSession> liveSessions = new ArrayList<>();
@@ -191,6 +236,10 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
         return liveSessions;
     }
 
+    /**
+     * This method query all LiveSession records
+     * @return A array list of LiveSession class
+     */
     @Override
     public ArrayList<LiveSession> queryAll() {
         ArrayList<LiveSession> liveSessions = new ArrayList<>();
