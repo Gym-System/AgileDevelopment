@@ -331,7 +331,7 @@ Boolean flag;
         }
         if (Integer.parseInt(flower_num_urs.getText())>=0){
             userDAO.queryByUserName(passValue.getValue()).sendGift2RecVideo(Integer.parseInt(flower_num_urs.getText()),passValue.getCourseID());
-            JOptionPane.showMessageDialog(null, "send flowers successfully", "send flowers successfully", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "send "+flower_num_urs.getText()+" flowers successfully", "send flowers successfully", JOptionPane.INFORMATION_MESSAGE);
         }
 
 
