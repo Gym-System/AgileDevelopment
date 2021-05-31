@@ -27,8 +27,8 @@
                     <children>
                         <GridPane layoutX="38.0" prefHeight="805.0" prefWidth="297.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="10.0" prefWidth="125.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.0" minWidth="10.0" prefWidth="220.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="10.0" prefWidth="77.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.0" minWidth="10.0" prefWidth="211.0" />
                             </columnConstraints>
                             <rowConstraints>
                                 <RowConstraints maxHeight="174.0" minHeight="10.0" prefHeight="131.0" vgrow="SOMETIMES" />
@@ -46,37 +46,37 @@
                                         <Rectangle2D />
                                     </viewport>
                                 </ImageView>
-                                <Hyperlink fx:id="user_facorites_hyper" onMouseClicked="#user_favorites_click" text="Favorites" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                <Hyperlink fx:id="user_facorites_hyper" focusTraversable="false" onMouseClicked="#user_favorites_click" text="Favorites" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                     <font>
                                         <Font name="Comic Sans MS Bold" size="30.0" />
                                     </font>
                                 </Hyperlink>
-                                <Hyperlink fx:id="user_recording_hyper" onMouseClicked="#user_recording_click" text="Recording" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                <Hyperlink fx:id="user_recording_hyper" focusTraversable="false" onMouseClicked="#user_recording_click" text="Recording" underline="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                     <font>
                                         <Font name="Comic Sans MS Bold" size="30.0" />
                                     </font>
                                 </Hyperlink>
-                                <Hyperlink fx:id="user_live_hyper" onMouseClicked="#user_live_click" text="Live" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                <Hyperlink fx:id="user_live_hyper" focusTraversable="false" onMouseClicked="#user_live_click" text="Live" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                     <font>
                                         <Font name="Comic Sans MS Bold" size="30.0" />
                                     </font>
                                 </Hyperlink>
-                                <Hyperlink fx:id="user_calendar_hyper" onMouseClicked="#user_calendar_click" text="Calendar" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                <Hyperlink fx:id="user_calendar_hyper" focusTraversable="false" onMouseClicked="#user_calendar_click" text="Calendar" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                     <font>
                                         <Font name="Comic Sans MS Bold" size="30.0" />
                                     </font>
                                 </Hyperlink>
-                                <ImageView fx:id="user_profile_pic" fitHeight="105.0" fitWidth="102.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
+                                <ImageView fx:id="user_profile_pic" fitHeight="110.0" fitWidth="110.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
                                     <image>
                                         <Image url="@Resource/user_Profile.jpg" />
                                     </image>
                                 </ImageView>
-                                <Hyperlink fx:id="user_history_hyper" layoutX="86.0" layoutY="438.0" onMouseClicked="#user_history_click" text="History" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                <Hyperlink fx:id="user_history_hyper" focusTraversable="false" layoutX="86.0" layoutY="438.0" onMouseClicked="#user_history_click" text="History" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                     <font>
                                         <Font name="Comic Sans MS Bold" size="30.0" />
                                     </font>
                                 </Hyperlink>
-                                <Hyperlink fx:id="user_logout_hyper" onMouseClicked="#user_logout_click" text="Log out" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                <Hyperlink fx:id="user_logout_hyper" focusTraversable="false" onMouseClicked="#user_logout_click" text="Log out" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                     <font>
                                         <Font name="Comic Sans MS Bold Italic" size="30.0" />
                                     </font>
@@ -116,14 +116,6 @@
                                 <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="5">
                                     <image>
                                         <Image url="@Resource/user_History.png" />
-                                    </image>
-                                    <GridPane.margin>
-                                        <Insets left="15.0" />
-                                    </GridPane.margin>
-                                </ImageView>
-                                <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="7">
-                                    <image>
-                                        <Image url="@Resource/manager_LogOut.png" />
                                     </image>
                                     <GridPane.margin>
                                         <Insets left="15.0" />
