@@ -11,6 +11,16 @@ public class passValue {
     private static Stage stage;
     private static String trainerName;
     private static long courseID;
+
+    public static String getRecType() {
+        return recType;
+    }
+
+    public static void setRecType(String recType) {
+        passValue.recType = recType;
+    }
+
+    private static String recType;
     public static ArrayList<RecVideo> getRecVideoslist() {
         return recVideoslist;
     }

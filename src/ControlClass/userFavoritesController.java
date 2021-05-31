@@ -13,12 +13,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
-import javafx.scene.control.Pagination;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -205,6 +201,12 @@ public class userFavoritesController implements Initializable {
         hyperlinks[2] = favEnter3_hyper;
         hyperlinks[3] = favEnter4_hyper;
 
+        ImageView[] imageViews = new ImageView[4];
+        imageViews[0] = userFav1_pic;
+        imageViews[1] = userFav2_pic;
+        imageViews[2] = userFav3_pic;
+        imageViews[3] = userFav4_pic;
+
         ArrayList<FavoriteVideo> favoriteVideos = favoriteVideo.queryByUserName("kaiyi");
 
         //nothing enters, return whole list
@@ -230,7 +232,7 @@ public class userFavoritesController implements Initializable {
                             labelCoach[i].setText("Coach: "+ recVideos.getUserName());
                             labelTime[i].setText(String.valueOf(recVideos.getUploadedTime()));
                             hyperlinks[i].setVisible(true);
-
+                            imageViews[i].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                         }
 
                     } else {
@@ -244,12 +246,14 @@ public class userFavoritesController implements Initializable {
                             labelCoach[i].setText("Coach: "+ recVideos.getUserName());
                             labelTime[i].setText(String.valueOf(recVideos.getUploadedTime()));
                             hyperlinks[i].setVisible(true);
+                            imageViews[i].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                         }
                         for (int i = limit; i<4; i++){
                             labelCoach[i].setText("");
                             labelName[i].setText("");
                             labelTime[i].setText("");
                             hyperlinks[i].setVisible(false);
+                            imageViews[i].setImage(null);
                         }
 
                     }
@@ -273,6 +277,7 @@ public class userFavoritesController implements Initializable {
                             labelName[i].setText("");
                             labelTime[i].setText("");
                             hyperlinks[i].setVisible(false);
+                            imageViews[i].setImage(null);
                         }
 
                         return box;
@@ -321,6 +326,7 @@ public class userFavoritesController implements Initializable {
                                         labelCoach[recordt1].setText("Coach: "+ recVideos.getUserName());
                                         labelTime[recordt1].setText(String.valueOf(recVideos.getUploadedTime()));
                                         hyperlinks[recordt1].setVisible(true);
+                                        imageViews[recordt1].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                         recordt1 += 1;
                                         System.out.println(recordt1);
                                     }
@@ -330,6 +336,7 @@ public class userFavoritesController implements Initializable {
                                         labelCoach[recordt2].setText("Coach: "+ recVideos.getUserName());
                                         labelTime[recordt2].setText(String.valueOf(recVideos.getUploadedTime()));
                                         hyperlinks[recordt2].setVisible(true);
+                                        imageViews[recordt2].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                         recordt2 += 1;
                                         System.out.println(recordt2);
                                     }
@@ -339,6 +346,7 @@ public class userFavoritesController implements Initializable {
                                         labelCoach[recordt3].setText("Coach: "+ recVideos.getUserName());
                                         labelTime[recordt3].setText(String.valueOf(recVideos.getUploadedTime()));
                                         hyperlinks[recordt3].setVisible(true);
+                                        imageViews[recordt3].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                         recordt3 += 1;
                                         System.out.println(recordt3);
                                     }
@@ -359,6 +367,7 @@ public class userFavoritesController implements Initializable {
                                         labelCoach[recordt1].setText("Coach: "+ recVideos.getUserName());
                                         labelTime[recordt1].setText(String.valueOf(recVideos.getUploadedTime()));
                                         hyperlinks[recordt1].setVisible(true);
+                                        imageViews[recordt1].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                         recordt1 += 1;
                                         System.out.println(recordt1);
                                     }
@@ -368,6 +377,7 @@ public class userFavoritesController implements Initializable {
                                         labelCoach[recordt2].setText("Coach: "+ recVideos.getUserName());
                                         labelTime[recordt2].setText(String.valueOf(recVideos.getUploadedTime()));
                                         hyperlinks[recordt2].setVisible(true);
+                                        imageViews[recordt2].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                         recordt2 += 1;
                                         System.out.println(recordt2);
                                     }
@@ -377,6 +387,7 @@ public class userFavoritesController implements Initializable {
                                         labelCoach[recordt3].setText("Coach: "+ recVideos.getUserName());
                                         labelTime[recordt3].setText(String.valueOf(recVideos.getUploadedTime()));
                                         hyperlinks[recordt3].setVisible(true);
+                                        imageViews[recordt3].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                         recordt3 += 1;
                                         System.out.println(recordt3);
                                     }
@@ -389,6 +400,7 @@ public class userFavoritesController implements Initializable {
                                     labelName[i].setText("");
                                     labelTime[i].setText("");
                                     hyperlinks[i].setVisible(false);
+                                    imageViews[i].setImage(null);
                                 }
                             } else if (user_find_text.getText().equals("Yoga")) {
                                 for (int i = recordt2; i<4; i++){
@@ -396,6 +408,7 @@ public class userFavoritesController implements Initializable {
                                     labelName[i].setText("");
                                     labelTime[i].setText("");
                                     hyperlinks[i].setVisible(false);
+                                    imageViews[i].setImage(null);
                                 }
                             } else if (user_find_text.getText().equals("Strength")) {
                                 for (int i = recordt3; i<4; i++){
@@ -403,6 +416,7 @@ public class userFavoritesController implements Initializable {
                                     labelName[i].setText("");
                                     labelTime[i].setText("");
                                     hyperlinks[i].setVisible(false);
+                                    imageViews[i].setImage(null);
                                 }
                             }
 
@@ -422,9 +436,10 @@ public class userFavoritesController implements Initializable {
 
     }
 
+
     @FXML
     void click_check_yoga(MouseEvent event) {
-        if (user_yoga_check.isSelected()){
+        if (user_yoga_check.isSelected() && !user_hitt_check.isSelected() && !user_strength_check.isSelected()){
             Label[] labelName = new Label[4];
             labelName[0] = favName1_label;
             labelName[1] = favName2_label;
@@ -448,6 +463,12 @@ public class userFavoritesController implements Initializable {
             hyperlinks[1] = favEnter2_hyper;
             hyperlinks[2] = favEnter3_hyper;
             hyperlinks[3] = favEnter4_hyper;
+
+            ImageView[] imageViews = new ImageView[4];
+            imageViews[0] = userFav1_pic;
+            imageViews[1] = userFav2_pic;
+            imageViews[2] = userFav3_pic;
+            imageViews[3] = userFav4_pic;
 
             ArrayList<FavoriteVideo> favoriteVideos = favoriteVideo.queryByUserName("kaiyi");
             ArrayList<FavoriteVideo> favoriteVideos1 = new ArrayList<>();
@@ -486,6 +507,7 @@ public class userFavoritesController implements Initializable {
                                     labelCoach[recordt1].setText("Coach: "+ recVideos.getUserName());
                                     labelTime[recordt1].setText(String.valueOf(recVideos.getUploadedTime()));
                                     hyperlinks[recordt1].setVisible(true);
+                                    imageViews[recordt1].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                     recordt1 += 1;
                                     System.out.println(recordt1 + "?");
                                 }
@@ -495,6 +517,7 @@ public class userFavoritesController implements Initializable {
                                     labelCoach[recordt2].setText("Coach: "+ recVideos.getUserName());
                                     labelTime[recordt2].setText(String.valueOf(recVideos.getUploadedTime()));
                                     hyperlinks[recordt2].setVisible(true);
+                                    imageViews[recordt2].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                     recordt2 += 1;
                                     System.out.println(recordt2);
                                 }
@@ -504,6 +527,7 @@ public class userFavoritesController implements Initializable {
                                     labelCoach[recordt3].setText("Coach: "+ recVideos.getUserName());
                                     labelTime[recordt3].setText(String.valueOf(recVideos.getUploadedTime()));
                                     hyperlinks[recordt3].setVisible(true);
+                                    imageViews[recordt3].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                     recordt3 += 1;
                                     System.out.println(recordt3+"zheli");
                                 }
@@ -516,6 +540,7 @@ public class userFavoritesController implements Initializable {
                                 labelName[i].setText("");
                                 labelTime[i].setText("");
                                 hyperlinks[i].setVisible(false);
+                                imageViews[i].setImage(null);
                             }
                         } else if (user_yoga_check.getText().equals("Yoga")) {
                             for (int i = recordt2; i<4; i++){
@@ -523,6 +548,7 @@ public class userFavoritesController implements Initializable {
                                 labelName[i].setText("");
                                 labelTime[i].setText("");
                                 hyperlinks[i].setVisible(false);
+                                imageViews[i].setImage(null);
                             }
                         } else if (user_yoga_check.getText().equals("Strength")) {
                             for (int i = recordt3; i<4; i++){
@@ -530,6 +556,7 @@ public class userFavoritesController implements Initializable {
                                 labelName[i].setText("");
                                 labelTime[i].setText("");
                                 hyperlinks[i].setVisible(false);
+                                imageViews[i].setImage(null);
                             }
                         }
                     } else {
@@ -547,6 +574,7 @@ public class userFavoritesController implements Initializable {
                                     labelCoach[recordt1].setText("Coach: "+ recVideos.getUserName());
                                     labelTime[recordt1].setText(String.valueOf(recVideos.getUploadedTime()));
                                     hyperlinks[recordt1].setVisible(true);
+                                    imageViews[recordt1].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                     recordt1 += 1;
                                     System.out.println(recordt1);
                                 }
@@ -556,6 +584,7 @@ public class userFavoritesController implements Initializable {
                                     labelCoach[recordt2].setText("Coach: "+ recVideos.getUserName());
                                     labelTime[recordt2].setText(String.valueOf(recVideos.getUploadedTime()));
                                     hyperlinks[recordt2].setVisible(true);
+                                    imageViews[recordt2].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                     recordt2 += 1;
                                     System.out.println(recordt2);
                                 }
@@ -565,6 +594,7 @@ public class userFavoritesController implements Initializable {
                                     labelCoach[recordt3].setText("Coach: "+ recVideos.getUserName());
                                     labelTime[recordt3].setText(String.valueOf(recVideos.getUploadedTime()));
                                     hyperlinks[recordt3].setVisible(true);
+                                    imageViews[recordt3].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                     recordt3 += 1;
                                     System.out.println(recordt3);
                                 }
@@ -577,6 +607,7 @@ public class userFavoritesController implements Initializable {
                                 labelName[i].setText("");
                                 labelTime[i].setText("");
                                 hyperlinks[i].setVisible(false);
+                                imageViews[i].setImage(null);
                             }
                         } else if (user_yoga_check.getText().equals("Yoga")) {
                             for (int i = recordt2; i<4; i++){
@@ -584,6 +615,7 @@ public class userFavoritesController implements Initializable {
                                 labelName[i].setText("");
                                 labelTime[i].setText("");
                                 hyperlinks[i].setVisible(false);
+                                imageViews[i].setImage(null);
                             }
                         } else if (user_yoga_check.getText().equals("Strength")) {
                             for (int i = recordt3; i<4; i++){
@@ -591,6 +623,7 @@ public class userFavoritesController implements Initializable {
                                 labelName[i].setText("");
                                 labelTime[i].setText("");
                                 hyperlinks[i].setVisible(false);
+                                imageViews[i].setImage(null);
                             }
                         }
 
@@ -599,11 +632,24 @@ public class userFavoritesController implements Initializable {
                 }
             });
         }
+        else if (!user_yoga_check.isSelected() && !user_hitt_check.isSelected() && !user_strength_check.isSelected()) {
+            click_find(event);
+        }
+        else {
+            if (user_yoga_check.isSelected()) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("WARN");
+                alert.setContentText("You can only choose one subject");
+                alert.setHeaderText("WARN");
+                alert.showAndWait();
+            }
+
+        }
     }
 
     @FXML
     void click_check_strength(MouseEvent event) {
-        if (user_strength_check.isSelected()){
+        if (user_strength_check.isSelected() && !user_hitt_check.isSelected() && !user_yoga_check.isSelected()){
             Label[] labelName = new Label[4];
             labelName[0] = favName1_label;
             labelName[1] = favName2_label;
@@ -628,7 +674,11 @@ public class userFavoritesController implements Initializable {
             hyperlinks[2] = favEnter3_hyper;
             hyperlinks[3] = favEnter4_hyper;
 
-
+            ImageView[] imageViews = new ImageView[4];
+            imageViews[0] = userFav1_pic;
+            imageViews[1] = userFav2_pic;
+            imageViews[2] = userFav3_pic;
+            imageViews[3] = userFav4_pic;
             ArrayList<FavoriteVideo> favoriteVideos = favoriteVideo.queryByUserName("kaiyi");
             ArrayList<FavoriteVideo> favoriteVideos1 = new ArrayList<>();
             RecVideo recVideo;
@@ -667,6 +717,7 @@ public class userFavoritesController implements Initializable {
                                     labelCoach[recordt1].setText("Coach: "+ recVideos.getUserName());
                                     labelTime[recordt1].setText(String.valueOf(recVideos.getUploadedTime()));
                                     hyperlinks[recordt1].setVisible(true);
+                                    imageViews[recordt1].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                     recordt1 += 1;
                                     System.out.println(recordt1 + "?");
                                 }
@@ -676,6 +727,7 @@ public class userFavoritesController implements Initializable {
                                     labelCoach[recordt2].setText("Coach: "+ recVideos.getUserName());
                                     labelTime[recordt2].setText(String.valueOf(recVideos.getUploadedTime()));
                                     hyperlinks[recordt2].setVisible(true);
+                                    imageViews[recordt2].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                     recordt2 += 1;
                                     System.out.println(recordt2);
                                 }
@@ -685,6 +737,7 @@ public class userFavoritesController implements Initializable {
                                     labelCoach[recordt3].setText("Coach: "+ recVideos.getUserName());
                                     labelTime[recordt3].setText(String.valueOf(recVideos.getUploadedTime()));
                                     hyperlinks[recordt3].setVisible(true);
+                                    imageViews[recordt3].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                     recordt3 += 1;
                                     System.out.println(recordt3+"zheli");
                                 }
@@ -697,6 +750,7 @@ public class userFavoritesController implements Initializable {
                                 labelName[i].setText("");
                                 labelTime[i].setText("");
                                 hyperlinks[i].setVisible(false);
+                                imageViews[i].setImage(null);
                             }
                         } else if (user_strength_check.getText().equals("Yoga")) {
                             for (int i = recordt2; i<4; i++){
@@ -704,6 +758,7 @@ public class userFavoritesController implements Initializable {
                                 labelName[i].setText("");
                                 labelTime[i].setText("");
                                 hyperlinks[i].setVisible(false);
+                                imageViews[i].setImage(null);
                             }
                         } else if (user_strength_check.getText().equals("Strength")) {
                             for (int i = recordt3; i<4; i++){
@@ -711,6 +766,7 @@ public class userFavoritesController implements Initializable {
                                 labelName[i].setText("");
                                 labelTime[i].setText("");
                                 hyperlinks[i].setVisible(false);
+                                imageViews[i].setImage(null);
                             }
                         }
                     } else {
@@ -728,6 +784,7 @@ public class userFavoritesController implements Initializable {
                                     labelCoach[recordt1].setText("Coach: "+ recVideos.getUserName());
                                     labelTime[recordt1].setText(String.valueOf(recVideos.getUploadedTime()));
                                     hyperlinks[recordt1].setVisible(true);
+                                    imageViews[recordt1].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                     recordt1 += 1;
                                     System.out.println(recordt1);
                                 }
@@ -737,6 +794,7 @@ public class userFavoritesController implements Initializable {
                                     labelCoach[recordt2].setText("Coach: "+ recVideos.getUserName());
                                     labelTime[recordt2].setText(String.valueOf(recVideos.getUploadedTime()));
                                     hyperlinks[recordt2].setVisible(true);
+                                    imageViews[recordt2].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                     recordt2 += 1;
                                     System.out.println(recordt2);
                                 }
@@ -746,6 +804,7 @@ public class userFavoritesController implements Initializable {
                                     labelCoach[recordt3].setText("Coach: "+ recVideos.getUserName());
                                     labelTime[recordt3].setText(String.valueOf(recVideos.getUploadedTime()));
                                     hyperlinks[recordt3].setVisible(true);
+                                    imageViews[recordt3].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                     recordt3 += 1;
                                     System.out.println(recordt3);
                                 }
@@ -758,6 +817,7 @@ public class userFavoritesController implements Initializable {
                                 labelName[i].setText("");
                                 labelTime[i].setText("");
                                 hyperlinks[i].setVisible(false);
+                                imageViews[i].setImage(null);
                             }
                         } else if (user_strength_check.getText().equals("Yoga")) {
                             for (int i = recordt2; i<4; i++){
@@ -765,6 +825,7 @@ public class userFavoritesController implements Initializable {
                                 labelName[i].setText("");
                                 labelTime[i].setText("");
                                 hyperlinks[i].setVisible(false);
+                                imageViews[i].setImage(null);
                             }
                         } else if (user_strength_check.getText().equals("Strength")) {
                             for (int i = recordt3; i<4; i++){
@@ -772,6 +833,7 @@ public class userFavoritesController implements Initializable {
                                 labelName[i].setText("");
                                 labelTime[i].setText("");
                                 hyperlinks[i].setVisible(false);
+                                imageViews[i].setImage(null);
                             }
                         }
 
@@ -780,11 +842,24 @@ public class userFavoritesController implements Initializable {
                 }
             });
         }
+        else if (!user_yoga_check.isSelected() && !user_hitt_check.isSelected() && !user_strength_check.isSelected()) {
+            click_find(event);
+        }
+        else {
+            if (user_strength_check.isSelected()) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("WARN");
+                alert.setContentText("You can only choose one subject");
+                alert.setHeaderText("WARN");
+                alert.showAndWait();
+            }
+
+        }
     }
 
     @FXML
     void click_check_hitt(MouseEvent event) {
-        if (user_hitt_check.isSelected()){
+        if (user_hitt_check.isSelected() && !user_yoga_check.isSelected() && ! user_strength_check.isSelected()){
             Label[] labelName = new Label[4];
             labelName[0] = favName1_label;
             labelName[1] = favName2_label;
@@ -809,6 +884,11 @@ public class userFavoritesController implements Initializable {
             hyperlinks[2] = favEnter3_hyper;
             hyperlinks[3] = favEnter4_hyper;
 
+            ImageView[] imageViews = new ImageView[4];
+            imageViews[0] = userFav1_pic;
+            imageViews[1] = userFav2_pic;
+            imageViews[2] = userFav3_pic;
+            imageViews[3] = userFav4_pic;
             ArrayList<FavoriteVideo> favoriteVideos = favoriteVideo.queryByUserName("kaiyi");
             ArrayList<FavoriteVideo> favoriteVideos1 = new ArrayList<>();
             RecVideo recVideo;
@@ -846,6 +926,7 @@ public class userFavoritesController implements Initializable {
                                     labelCoach[recordt1].setText("Coach: "+ recVideos.getUserName());
                                     labelTime[recordt1].setText(String.valueOf(recVideos.getUploadedTime()));
                                     hyperlinks[recordt1].setVisible(true);
+                                    imageViews[recordt1].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                     recordt1 += 1;
                                     System.out.println(recordt1 + "?");
                                 }
@@ -855,6 +936,7 @@ public class userFavoritesController implements Initializable {
                                     labelCoach[recordt2].setText("Coach: "+ recVideos.getUserName());
                                     labelTime[recordt2].setText(String.valueOf(recVideos.getUploadedTime()));
                                     hyperlinks[recordt2].setVisible(true);
+                                    imageViews[recordt2].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                     recordt2 += 1;
                                     System.out.println(recordt2);
                                 }
@@ -864,6 +946,7 @@ public class userFavoritesController implements Initializable {
                                     labelCoach[recordt3].setText("Coach: "+ recVideos.getUserName());
                                     labelTime[recordt3].setText(String.valueOf(recVideos.getUploadedTime()));
                                     hyperlinks[recordt3].setVisible(true);
+                                    imageViews[recordt3].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                     recordt3 += 1;
                                     System.out.println(recordt3+"zheli");
                                 }
@@ -876,6 +959,7 @@ public class userFavoritesController implements Initializable {
                                 labelName[i].setText("");
                                 labelTime[i].setText("");
                                 hyperlinks[i].setVisible(false);
+                                imageViews[i].setImage(null);
                             }
                         } else if (user_hitt_check.getText().equals("Yoga")) {
                             for (int i = recordt2; i<4; i++){
@@ -883,6 +967,7 @@ public class userFavoritesController implements Initializable {
                                 labelName[i].setText("");
                                 labelTime[i].setText("");
                                 hyperlinks[i].setVisible(false);
+                                imageViews[i].setImage(null);
                             }
                         } else if (user_hitt_check.getText().equals("Strength")) {
                             for (int i = recordt3; i<4; i++){
@@ -890,6 +975,7 @@ public class userFavoritesController implements Initializable {
                                 labelName[i].setText("");
                                 labelTime[i].setText("");
                                 hyperlinks[i].setVisible(false);
+                                imageViews[i].setImage(null);
                             }
                         }
                     } else {
@@ -907,6 +993,7 @@ public class userFavoritesController implements Initializable {
                                     labelCoach[recordt1].setText("Coach: "+ recVideos.getUserName());
                                     labelTime[recordt1].setText(String.valueOf(recVideos.getUploadedTime()));
                                     hyperlinks[recordt1].setVisible(true);
+                                    imageViews[recordt1].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                     recordt1 += 1;
                                     System.out.println(recordt1);
                                 }
@@ -916,6 +1003,7 @@ public class userFavoritesController implements Initializable {
                                     labelCoach[recordt2].setText("Coach: "+ recVideos.getUserName());
                                     labelTime[recordt2].setText(String.valueOf(recVideos.getUploadedTime()));
                                     hyperlinks[recordt2].setVisible(true);
+                                    imageViews[recordt2].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                     recordt2 += 1;
                                     System.out.println(recordt2);
                                 }
@@ -925,6 +1013,7 @@ public class userFavoritesController implements Initializable {
                                     labelCoach[recordt3].setText("Coach: "+ recVideos.getUserName());
                                     labelTime[recordt3].setText(String.valueOf(recVideos.getUploadedTime()));
                                     hyperlinks[recordt3].setVisible(true);
+                                    imageViews[recordt3].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                                     recordt3 += 1;
                                     System.out.println(recordt3);
                                 }
@@ -937,6 +1026,7 @@ public class userFavoritesController implements Initializable {
                                 labelName[i].setText("");
                                 labelTime[i].setText("");
                                 hyperlinks[i].setVisible(false);
+                                imageViews[i].setImage(null);
                             }
                         } else if (user_hitt_check.getText().equals("Yoga")) {
                             for (int i = recordt2; i<4; i++){
@@ -944,6 +1034,7 @@ public class userFavoritesController implements Initializable {
                                 labelName[i].setText("");
                                 labelTime[i].setText("");
                                 hyperlinks[i].setVisible(false);
+                                imageViews[i].setImage(null);
                             }
                         } else if (user_hitt_check.getText().equals("Strength")) {
                             for (int i = recordt3; i<4; i++){
@@ -951,6 +1042,7 @@ public class userFavoritesController implements Initializable {
                                 labelName[i].setText("");
                                 labelTime[i].setText("");
                                 hyperlinks[i].setVisible(false);
+                                imageViews[i].setImage(null);
                             }
                         }
 
@@ -958,6 +1050,19 @@ public class userFavoritesController implements Initializable {
                     return box;
                 }
             });
+        }
+        else if (!user_yoga_check.isSelected() && !user_hitt_check.isSelected() && !user_strength_check.isSelected()) {
+            click_find(event);
+        }
+        else{
+            if (user_hitt_check.isSelected()) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("WARN");
+                alert.setContentText("You can only choose one subject");
+                alert.setHeaderText("WARN");
+                alert.showAndWait();
+            }
+
         }
     }
 
@@ -1024,6 +1129,12 @@ public class userFavoritesController implements Initializable {
         hyperlinks[2] = favEnter3_hyper;
         hyperlinks[3] = favEnter4_hyper;
 
+        ImageView[] imageViews = new ImageView[4];
+        imageViews[0] = userFav1_pic;
+        imageViews[1] = userFav2_pic;
+        imageViews[2] = userFav3_pic;
+        imageViews[3] = userFav4_pic;
+
         ArrayList<FavoriteVideo> favoriteVideos = favoriteVideo.queryByUserName("kaiyi");
 
         turn_page.setPageCount((int) Math.ceil(favoriteVideos.size()/4.0));
@@ -1047,6 +1158,7 @@ public class userFavoritesController implements Initializable {
                         labelCoach[i].setText("Coach: "+ recVideos.getUserName());
                         labelTime[i].setText(String.valueOf(recVideos.getUploadedTime()));
                         hyperlinks[i].setVisible(true);
+                        imageViews[i].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
 
                     }
 
@@ -1061,12 +1173,14 @@ public class userFavoritesController implements Initializable {
                         labelCoach[i].setText("Coach: "+ recVideos.getUserName());
                         labelTime[i].setText(String.valueOf(recVideos.getUploadedTime()));
                         hyperlinks[i].setVisible(true);
+                        imageViews[i].setImage(new Image("BoundaryClass/Resource/Subject/"+recVideos.getSubject()+".jpg"));
                     }
                     for (int i = limit; i<4; i++){
                         labelCoach[i].setText("");
                         labelName[i].setText("");
                         labelTime[i].setText("");
                         hyperlinks[i].setVisible(false);
+                        imageViews[i].setImage(null);
                     }
 
                 }
