@@ -32,7 +32,12 @@ public class FavoriteVideoImpl implements FavoriteVideoDAO {
      */
     @Override
     public Boolean insertFavoriteVideo(FavoriteVideo favoriteVideo) {
-        return insertInfo(filePath, favoriteVideo.toStrArray());
+        if(!searchSame(favoriteVideo)) {
+            return insertInfo(filePath, favoriteVideo.toStrArray());
+        }
+        else {
+            return false;
+        }
     }
 
     /**
@@ -60,7 +65,7 @@ public class FavoriteVideoImpl implements FavoriteVideoDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
-                if(userName.equals(record[0])) {
+                if(userName.equals(record[1])) {
                     favoriteVideo = new FavoriteVideo(record[0], Long.parseLong(record[1]));
                     favoriteVideos.add(favoriteVideo);
                 }
@@ -70,5 +75,33 @@ public class FavoriteVideoImpl implements FavoriteVideoDAO {
             ex.printStackTrace();
         }
         return favoriteVideos;
+    }
+
+    /**
+     * This method search file for the same object
+     *
+     * @param favoriteVideo A FavoriteVideo class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean searchSame(Object favoriteVideo) {
+        FavoriteVideo favoriteVideoExist = null;
+        File inFile = new File(filePath);
+        try {
+            String[] record;
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getValues();
+                favoriteVideoExist = new FavoriteVideo(record[0], Long.parseLong(record[1]));
+                if(favoriteVideo.equals(favoriteVideoExist)) {
+                    return true;
+                }
+            }
+            csvReader.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return false;
     }
 }

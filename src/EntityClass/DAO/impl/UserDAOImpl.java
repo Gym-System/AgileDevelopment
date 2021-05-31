@@ -31,7 +31,12 @@ public class UserDAOImpl implements UserDAO {
      */
     @Override
     public Boolean insertUser(User user) {
-        return insertInfo(filePath, user.toStrArray());
+        if(!searchSame(user)) {
+            return insertInfo(filePath, user.toStrArray());
+        }
+        else {
+            return false;
+        }
     }
 
     /**
@@ -218,5 +223,35 @@ public class UserDAOImpl implements UserDAO {
             ex.printStackTrace();
         }
         return users;
+    }
+
+    /**
+     * This method search file for the same object
+     *
+     * @param user A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean searchSame(Object user) {
+        User userExist = null;
+        File inFile = new File(filePath);
+        try {
+            String[] record;
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getValues();
+                userExist = new User(record[0], record[1], record[2], record[3], record[4],
+                        new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                        Double.parseDouble(record[6]));
+                if(user.equals(userExist)) {
+                    return true;
+                }
+            }
+            csvReader.close();
+        } catch (IOException | ParseException ex) {
+            ex.printStackTrace();
+        }
+        return false;
     }
 }

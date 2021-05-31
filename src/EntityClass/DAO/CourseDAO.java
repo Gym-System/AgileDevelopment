@@ -59,4 +59,12 @@ public interface CourseDAO {
      * @return A array list of course class
      */
     ArrayList<Course> queryAll();
+
+    /**
+     * This method search file for the same object
+     *
+     * @param course A Course class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    Boolean searchSame(Object course);
 }

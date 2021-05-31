@@ -92,4 +92,12 @@ public interface TrainerDAO {
      * @return A array list of Trainer class
      */
     ArrayList<Trainer> queryAll();
+
+    /**
+     * This method search file for the same object
+     *
+     * @param trainer A Course class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    Boolean searchSame(Object trainer);
 }

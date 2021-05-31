@@ -82,4 +82,12 @@ public interface RecVideoDAO {
      * @return A array list of RecVideo class
      */
     ArrayList<RecVideo> queryAll();
+
+    /**
+     * This method search file for the same object
+     *
+     * @param recVideo A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    Boolean searchSame(Object recVideo);
 }
