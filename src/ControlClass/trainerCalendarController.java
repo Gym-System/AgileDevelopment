@@ -10,10 +10,8 @@ import java.util.ResourceBundle;
 
 import EntityClass.DAO.impl.PreUserDAOImpl;
 import EntityClass.DAO.impl.TrainerDAOImpl;
-import EntityClass.DAO.impl.UserDAOImpl;
 import EntityClass.VO.LiveSession;
 import EntityClass.VO.Trainer;
-import EntityClass.VO.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -350,7 +348,7 @@ public class trainerCalendarController {
     }
 
     @FXML
-    void userInfo_info_click(ActionEvent event) throws IOException {
+    void userInfo_info_click(MouseEvent event) throws IOException {
         Stage stage = (Stage) book61.getScene().getWindow();
         new APP().jump(stage, "UserInfo");
     }
