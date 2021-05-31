@@ -364,7 +364,7 @@ public class PlayerController_ref implements Initializable {
         setVolumeButton();
         setVolumeSD();
         setProcessSlider();
-        setMaximizeButton();
+//        setMaximizeButton();
 
     }
 
@@ -516,19 +516,19 @@ public class PlayerController_ref implements Initializable {
 
 
     //设置最大化按钮动作
-    public void setMaximizeButton(){
-        maxBT.setOnAction((ActionEvent e)->{
-            if(popup){
-                ((Stage)scene.getWindow()).setFullScreen(true);
-            }else{
-                mediaPlayer.pause();
-                setIcon(playBT,pauseIcon,25);
-                SimpleMediaPlayer_ref player = SimpleMediaPlayer_ref.popup(url);
-                player.getController().getMediaPlayer().seek(this.mediaPlayer.getCurrentTime());
-
-            }
-        });
-    }
+//    public void setMaximizeButton(){
+//        maxBT.setOnAction((ActionEvent e)->{
+//            if(popup){
+//                ((Stage)scene.getWindow()).setFullScreen(true);
+//            }else{
+//                mediaPlayer.pause();
+//                setIcon(playBT,pauseIcon,25);
+//                SimpleMediaPlayer_ref player = SimpleMediaPlayer_ref.popup(url);
+//                player.getController().getMediaPlayer().seek(this.mediaPlayer.getCurrentTime());
+//
+//            }
+//        });
+//    }
 
 
     //设置音量按钮动作
@@ -677,7 +677,7 @@ public class PlayerController_ref implements Initializable {
         setIcon(playBT,playIcon,25);
         setIcon(stopBT,stopIcon,25);
         setIcon(volumeBT,volOnIcon,15);
-        setIcon(maxBT,maxIcon,25);
+//        setIcon(maxBT,maxIcon,25);
         //SimpleMediaPlayer_ref.newInstance("aa");
 
 
