@@ -28,6 +28,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.fxml.Initializable;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -43,7 +44,7 @@ import java.util.ResourceBundle;
  * Description:
  */
 public class PlayerController_ref implements Initializable {
-
+Boolean flag = false;
 //    @FXML Button playBT;
 //    @FXML Button stopBT;
 //    @FXML Button maxBT;
@@ -221,48 +222,80 @@ public class PlayerController_ref implements Initializable {
 
     @FXML
     void user_favorites_click(MouseEvent event) throws IOException {
+        if(mediaPlayer!=null){
+            mediaPlayer.stop();
+        }
         Stage stage = (Stage) user_facorites_hyper.getScene().getWindow();
         new APP().jump(stage,"user_favorites");
+
     }
 
     @FXML
     void user_recording_click(MouseEvent event) throws IOException {
+        if(mediaPlayer!=null){
+            mediaPlayer.stop();
+        }
         Stage stage = (Stage) user_recording_hyper.getScene().getWindow();
         new APP().jump(stage,"user_recording");
+
     }
 
     @FXML
     void user_live_click(MouseEvent event) throws IOException {
+        if(mediaPlayer!=null){
+            mediaPlayer.stop();
+        }
         Stage stage = (Stage) user_live_hyper.getScene().getWindow();
         new APP().jump(stage,"user_live");
+
     }
 
     @FXML
     void user_calendar_click(MouseEvent event) throws IOException {
+        if(mediaPlayer!=null){
+            mediaPlayer.stop();
+        }
         Stage stage = (Stage) user_calendar_hyper.getScene().getWindow();
         new APP().jump(stage,"user_calendar");
+
     }
 
     @FXML
     void user_history_click(MouseEvent event) throws IOException {
+        if(mediaPlayer!=null){
+            mediaPlayer.stop();
+        }
         Stage stage = (Stage) user_history_hyper.getScene().getWindow();
         new APP().jump(stage,"user_history");
+
     }
 
     @FXML
     void user_logout_click(MouseEvent event) throws IOException {
+        if(mediaPlayer!=null){
+            mediaPlayer.stop();
+        }
         Stage stage = (Stage) user_history_hyper.getScene().getWindow();
         new APP().jump(stage,"login");
+
     }
 
     @FXML
     void add_collect(MouseEvent event) {
         RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
-        //recVideoDAO.
         long courseid = passValue.getCourseID();
-        System.out.println(courseid);
         UserDAOImpl UserDAO = new UserDAOImpl();
-        UserDAO.queryByUserName(passValue.getValue()).favoriteVideo(courseid);
+        if(flag==false){
+            System.out.println(courseid);
+            UserDAO.queryByUserName(passValue.getValue()).favoriteVideo(courseid);
+            JOptionPane.showMessageDialog(null, "Add favorite successfully", "Add favorite successfully", JOptionPane.INFORMATION_MESSAGE);
+            flag=true;
+        }else{
+            UserDAO.queryByUserName(passValue.getValue()).unFavoriteVideo(courseid);
+            JOptionPane.showMessageDialog(null, "Delete favorite successfully", "Delete favorite successfully", JOptionPane.INFORMATION_MESSAGE);
+            flag=false;
+        }
+
     }
 
     @FXML
@@ -281,7 +314,19 @@ public class PlayerController_ref implements Initializable {
     }
 
     @FXML
-    void click_send_flower(ActionEvent event) {
+    void click_send_flower(MouseEvent event) {
+        UserDAOImpl userDAO = new UserDAOImpl();
+        try{
+            int flowernumber = Integer.parseInt(flower_num_urs.getText());
+        }catch (Exception E){
+            JOptionPane.showMessageDialog(null, "Please check the input", "Please check the input", JOptionPane.ERROR_MESSAGE);
+        }
+        if (Integer.parseInt(flower_num_urs.getText())>=0){
+            userDAO.queryByUserName(passValue.getValue()).sendGift2RecVideo(Integer.parseInt(flower_num_urs.getText()),passValue.getCourseID());
+            JOptionPane.showMessageDialog(null, "send flowers successfully", "send flowers successfully", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+
 
     }
 
@@ -329,7 +374,7 @@ public class PlayerController_ref implements Initializable {
         this.url = url;
         this.popup = popup;
 
-        File file = new File("src/BoundaryClass/Resource/WeChat_20210427231911.mp4");
+        File file = new File("src/BoundaryClass/Resource/Video/"+ passValue.getCourseID() +".mp4");
         url = file.toURI().toString();
         System.out.println(url);
 
@@ -349,7 +394,6 @@ public class PlayerController_ref implements Initializable {
         setVolumeButton();
         setVolumeSD();
         setProcessSlider();
-        setMaximizeButton();
 
     }
 
@@ -501,19 +545,19 @@ public class PlayerController_ref implements Initializable {
 
 
     //设置最大化按钮动作
-    public void setMaximizeButton(){
-        maxBT.setOnAction((ActionEvent e)->{
-            if(popup){
-                ((Stage)scene.getWindow()).setFullScreen(true);
-            }else{
-                mediaPlayer.pause();
-                setIcon(playBT,pauseIcon,25);
-                SimpleMediaPlayer_ref player = SimpleMediaPlayer_ref.popup(url);
-                player.getController().getMediaPlayer().seek(this.mediaPlayer.getCurrentTime());
-
-            }
-        });
-    }
+//    public void setMaximizeButton(){
+//        maxBT.setOnAction((ActionEvent e)->{
+//            if(popup){
+//                ((Stage)scene.getWindow()).setFullScreen(true);
+//            }else{
+//                mediaPlayer.pause();
+//                setIcon(playBT,pauseIcon,25);
+//                SimpleMediaPlayer_ref player = SimpleMediaPlayer_ref.popup(url);
+//                player.getController().getMediaPlayer().seek(this.mediaPlayer.getCurrentTime());
+//
+//            }
+//        });
+//    }
 
 
     //设置音量按钮动作
@@ -662,7 +706,10 @@ public class PlayerController_ref implements Initializable {
         setIcon(playBT,playIcon,25);
         setIcon(stopBT,stopIcon,25);
         setIcon(volumeBT,volOnIcon,15);
-        setIcon(maxBT,maxIcon,25);
+        RecVideoDAOImpl RecVideoDAO = new RecVideoDAOImpl();
+        video_view_times.setText(Integer.toString(RecVideoDAO.queryByCourseId(passValue.getCourseID()).getViewTime()));
+        video_title.setText(RecVideoDAO.queryByCourseId(passValue.getCourseID()).getSubject()+"-Coach: "+RecVideoDAO.queryByCourseId(passValue.getCourseID()).getUserName());
+//        setIcon(maxBT,maxIcon,25);
         //SimpleMediaPlayer_ref.newInstance("aa");
 
 
@@ -704,7 +751,8 @@ public class PlayerController_ref implements Initializable {
         primaryStage.setTitle("Test Media");
         Group root = new Group();
         BorderPane pane = new BorderPane();
-
+        UserDAOImpl userDAO = new UserDAOImpl();
+        userDAO.queryByUserName(passValue.getValue()).watchRecVideo(passValue.getCourseID());
         root.getChildren().add(pane);
         HBox hbox = new HBox();
         hbox.setAlignment(Pos.BASELINE_CENTER);
@@ -712,7 +760,7 @@ public class PlayerController_ref implements Initializable {
 
 
         //测试嵌入式调用
-        SimpleMediaPlayer_ref player = SimpleMediaPlayer_ref.newInstance(getClass().getResource("/BoundaryClass/Resource/WeChat_20210427231911.mp4").toString());
+        SimpleMediaPlayer_ref player = SimpleMediaPlayer_ref.newInstance(getClass().getResource("/BoundaryClass/Resource/Video/"+passValue.getCourseID()+".mp4").toString());
         pane.setCenter(player);
         pane.setAlignment(player,Pos.CENTER);
 

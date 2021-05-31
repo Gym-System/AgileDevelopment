@@ -16,7 +16,7 @@
                   <GridPane layoutX="38.0" prefHeight="805.0" prefWidth="297.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="10.0" prefWidth="77.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.0" minWidth="10.0" prefWidth="220.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.0" minWidth="10.0" prefWidth="211.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints maxHeight="174.0" minHeight="10.0" prefHeight="131.0" vgrow="SOMETIMES" />
@@ -29,37 +29,32 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
-                           <viewport>
-                              <Rectangle2D />
-                           </viewport>
-                        </ImageView>
                         <Hyperlink fx:id="trainerInfo_portrait" onMouseClicked="#trainerInfo_portrait_click" text="Portrait" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
-                              <Font name="Baskerville Old Face" size="36.0" />
+                              <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
                         </Hyperlink>
                         <Hyperlink fx:id="trainerInfo_upload" onAction="#trainerInfo_upload_click" text="Upload" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
-                              <Font name="Baskerville Old Face" size="36.0" />
+                              <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
                         </Hyperlink>
                         <Hyperlink fx:id="trainerInfo_live" onAction="#trainerInfo_live_click" text="Live" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
-                              <Font name="Baskerville Old Face" size="36.0" />
+                              <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
                         </Hyperlink>
                         <Hyperlink fx:id="trainerInfo_calendar" onAction="#trainerInfo_calendar_click" text="Calendar" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
-                              <Font name="Baskerville Old Face" size="36.0" />
+                              <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
                         </Hyperlink>
                         <Hyperlink fx:id="trainerInfo_history" onAction="#trainerInfo_history_click" text="History" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <font>
-                              <Font name="Baskerville Old Face" size="36.0" />
+                              <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
                         </Hyperlink>
-                        <ImageView fx:id="trainerInfo_info" fitHeight="150.0" fitWidth="200.0" layoutX="10.0" onMouseClicked="#trainerInfo_info_click" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
+                        <ImageView fx:id="trainerInfo_info" fitHeight="110.0" fitWidth="110.0" layoutX="10.0" onMouseClicked="#trainerInfo_info_click" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
                            <image>
                               <Image url="@Resource/trainer_Profile.png" />
                            </image>

@@ -233,7 +233,7 @@ public class trainerInfoController {
         trainer_experience.setText(Integer.toString(phyDataDAO.queryByUserName(trainername).getExperience()));
         int i = 1;
         LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
-        ArrayList<LiveSession> live = liveSessionDAO.queryByTrainerName("kaiyi1");//接口存在问题
+        ArrayList<LiveSession> live = liveSessionDAO.queryByTrainerName(passValue.getValue());
         trainer_courses.add(trainer_course1);
         trainer_courses.add(trainer_course2);
         trainer_courses.add(trainer_course3);

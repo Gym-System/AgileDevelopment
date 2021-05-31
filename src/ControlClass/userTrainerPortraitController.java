@@ -322,9 +322,10 @@ public class userTrainerPortraitController {
             textlabel.setText(Trainerlabel);
             textlabel.setBackground(new Background(new BackgroundFill(Color.GRAY,null,null)));
             textlabel.setFont(Font.font(30));
+            textlabel.setTextFill(Color.WHITE);
             label_grid.add(textlabel,count,0);
             count++;
         }
-        user_trainer_portrait_text.setText(TrainerDAO.queryByUserName("kaiyi").getCV());
+        user_trainer_portrait_text.setText(TrainerDAO.queryByUserName(passValue.getTrainerName()).getCV());
     }
 }

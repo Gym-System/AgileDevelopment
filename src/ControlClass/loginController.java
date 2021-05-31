@@ -16,6 +16,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+
 public class loginController {
 
     @FXML
@@ -197,8 +199,9 @@ public class loginController {
 
             }
         }
-
-
+        else{
+            JOptionPane.showInternalMessageDialog(null, "Please select your role","Please select your role", JOptionPane.INFORMATION_MESSAGE);
+        }
 
         }
     @FXML

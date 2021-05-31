@@ -168,7 +168,7 @@
                                                         <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="190.0" spacing="20.0" BorderPane.alignment="CENTER">
                                                             <children>
                                                                 <Label fx:id="timeLB" text="Time" textFill="#dadada" HBox.hgrow="ALWAYS" />
-                                                <Button fx:id="importBT" mnemonicParsing="false" onMouseClicked="#playvideo" opacity="0.05">
+                                                <Button fx:id="importBT" mnemonicParsing="false" onMouseClicked="#playvideo">
                                                    <padding>
                                                       <Insets bottom="3.0" left="6.0" right="6.0" top="-10.0" />
                                                    </padding>
@@ -201,11 +201,6 @@
                                                                         <Insets right="10.0" />
                                                                     </HBox.margin>
                                                                 </Slider>
-                                                                <Button fx:id="maxBT" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #636363;" HBox.hgrow="ALWAYS">
-                                                                    <HBox.margin>
-                                                                        <Insets />
-                                                                    </HBox.margin>
-                                                                </Button>
                                                             </children>
                                                             <padding>
                                                                 <Insets right="20.0" />
