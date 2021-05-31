@@ -310,7 +310,7 @@ public class trainerPortraitController {
         trainer_portrait_name.setText(TrainerDAO.queryByUserName("kaiyi").getUserName());
         passValue.setTrainerName(trainer_portrait_name.getText());
         String [] str = new String [5];
-        str=TrainerDAO.queryByUserName("kaiyi").getLabel();
+        str=TrainerDAO.queryByUserName(passValue.getValue()).getLabel();
         int count=0;
         for (String Trainerlabel:str){
             Label textlabel = new Label();
@@ -320,7 +320,7 @@ public class trainerPortraitController {
             label_grid.add(textlabel,count,0);
             count++;
         }
-        trainer_portrait_text.setText(TrainerDAO.queryByUserName("kaiyi").getCV());
+        trainer_portrait_text.setText(TrainerDAO.queryByUserName(passValue.getValue()).getCV());
 
     }
 

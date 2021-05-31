@@ -325,6 +325,6 @@ public class userTrainerPortraitController {
             label_grid.add(textlabel,count,0);
             count++;
         }
-        user_trainer_portrait_text.setText(TrainerDAO.queryByUserName("kaiyi").getCV());
+        user_trainer_portrait_text.setText(TrainerDAO.queryByUserName(passValue.getTrainerName()).getCV());
     }
 }
