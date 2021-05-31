@@ -1,6 +1,7 @@
 package EntityClass.VO;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * javadoc of Staff class
@@ -71,5 +72,19 @@ public class Staff extends Person {
         return "Staff{" +
                 "companyName='" + companyName + '\'' +
                 "} " + super.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Staff)) return false;
+        if (!super.equals(o)) return false;
+        Staff staff = (Staff) o;
+        return Objects.equals(getCompanyName(), staff.getCompanyName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getCompanyName());
     }
 }

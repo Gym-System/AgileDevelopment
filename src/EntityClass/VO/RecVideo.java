@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 /**
  * javadoc of RecVideo class
@@ -131,5 +132,22 @@ public class RecVideo extends Course {
                 ", viewTime=" + viewTime +
                 ", rateTime=" + rateTime +
                 "} " + super.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof RecVideo)) return false;
+        if (!super.equals(o)) return false;
+        RecVideo recVideo = (RecVideo) o;
+        return getViewTime() == recVideo.getViewTime() &&
+                getRateTime() == recVideo.getRateTime() &&
+                Objects.equals(trainerName, recVideo.trainerName) &&
+                Objects.equals(getUploadedTime(), recVideo.getUploadedTime());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), trainerName, getUploadedTime(), getViewTime(), getRateTime());
     }
 }

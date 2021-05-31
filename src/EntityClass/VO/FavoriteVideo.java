@@ -1,5 +1,7 @@
 package EntityClass.VO;
 
+import java.util.Objects;
+
 /**
  * javadoc of FavoriteVideo class
  * @author Kaiyi Zhao
@@ -14,7 +16,7 @@ public class FavoriteVideo {
      * @param userName Indicate which user liked a video
      * @param courseId Indicate the ID of the course the use liked
      */
-    public FavoriteVideo(String userName, long courseId) {
+    public FavoriteVideo(long courseId, String userName) {
         this.userName = userName;
         this.courseId = courseId;
     }
@@ -70,5 +72,19 @@ public class FavoriteVideo {
                 "userName='" + userName + '\'' +
                 ", courseId=" + courseId +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof FavoriteVideo)) return false;
+        FavoriteVideo that = (FavoriteVideo) o;
+        return getCourseId() == that.getCourseId() &&
+                Objects.equals(getUserName(), that.getUserName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getUserName(), getCourseId());
     }
 }

@@ -1,6 +1,7 @@
 package EntityClass.VO;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * javadoc of Person class
@@ -156,5 +157,23 @@ public class Person {
                 ", telNo='" + telNo + '\'' +
                 ", DoB=" + DoB +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Person)) return false;
+        Person person = (Person) o;
+        return Objects.equals(getUserName(), person.getUserName()) &&
+                Objects.equals(getPassword(), person.getPassword()) &&
+                Objects.equals(getEmail(), person.getEmail()) &&
+                Objects.equals(getGender(), person.getGender()) &&
+                Objects.equals(getTelNo(), person.getTelNo()) &&
+                Objects.equals(getDoB(), person.getDoB());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getUserName(), getPassword(), getEmail(), getGender(), getTelNo(), getDoB());
     }
 }

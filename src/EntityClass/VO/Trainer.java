@@ -5,10 +5,7 @@ import EntityClass.DAO.impl.RecVideoDAOImpl;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
 /**
  * javadoc of Trainer class
@@ -281,5 +278,22 @@ public class Trainer extends Staff {
                 ", CV='" + CV + '\'' +
                 ", price=" + price +
                 "} " + super.toString();
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Trainer)) return false;
+        Trainer trainer = (Trainer) o;
+        return Double.compare(trainer.getSalary(), getSalary()) == 0 &&
+                Double.compare(trainer.getPrice(), getPrice()) == 0 &&
+                Objects.equals(getLabel(), trainer.getLabel()) &&
+                Objects.equals(getCV(), trainer.getCV());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getSalary(), getLabel(), getCV(), getPrice());
     }
 }

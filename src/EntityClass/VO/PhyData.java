@@ -1,5 +1,7 @@
 package EntityClass.VO;
 
+import java.util.Objects;
+
 /**
  * javadoc of PhyData class
  * @author Kaiyi Zhao
@@ -152,5 +154,23 @@ public class PhyData {
                 ", major='" + interest + '\'' +
                 ", BFR=" + BFR +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PhyData)) return false;
+        PhyData phyData = (PhyData) o;
+        return Double.compare(phyData.getHeight(), getHeight()) == 0 &&
+                Double.compare(phyData.getWeight(), getWeight()) == 0 &&
+                getExperience() == phyData.getExperience() &&
+                Double.compare(phyData.getBFR(), getBFR()) == 0 &&
+                Objects.equals(getUserName(), phyData.getUserName()) &&
+                Objects.equals(getInterest(), phyData.getInterest());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getUserName(), getHeight(), getWeight(), getExperience(), getInterest(), getBFR());
     }
 }
