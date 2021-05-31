@@ -1,5 +1,6 @@
 package ControlClass;
 
+import EntityClass.DAO.impl.RecVideoDAOImpl;
 import EntityClass.VO.RecVideo;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -35,6 +36,8 @@ public class trainerRecordingController implements Initializable {
     public ChoiceBox choicebox_type;
     @FXML
     public TextField length_text;
+    @FXML
+    public Label label_type;
     @FXML
     private Hyperlink trainer_portrait_hyper;
 
@@ -172,57 +175,87 @@ public class trainerRecordingController implements Initializable {
     }
 
     @FXML
-    public void save_click(MouseEvent mouseEvent) throws IOException {
+    public void save_click(MouseEvent mouseEvent) {
         Stage stage = (Stage) button_upload.getScene().getWindow();
 
-        choicebox_type.setItems(FXCollections.observableArrayList(
-                "Yoga", "Hiit", "Strength")
-        );
-        final String[] greetings = new String[] { "Yoga", "Hiit", "Strength"};
 
-        final String[] type = {""};
-        final String[] length = {""};
-        final int[] index = new int[1];
+//        choicebox_type.setItems(FXCollections.observableArrayList(
+//                "Yoga", "Hiit", "Strength")
+//        );
+//
+//        final String[] greetings = new String[] { "Yoga", "Hiit", "Strength"};
+//
+//        final String[] type = {""};
+//        final String[] length = {""};
+//        final int[] index = new int[1];
+//        String s = "";
+//
+//        try {
+//            choicebox_type.getSelectionModel().selectedIndexProperty().addListener(
+//                    (ObservableValue<? extends Number> ov,
+//                     Number old_val, Number new_val) ->{
+//                        type[0] = greetings[new_val.intValue()];
+//                        System.out.println(greetings[new_val.intValue()]);
+//                    }
+//            );
+//        } catch (Exception e){
+//
+//        }
+        choicebox_type.setVisible(false);
+        label_type.setVisible(true);
+        label_type.setText(passValue.getRecType());
+        if (length_text.getText().equals("") || label_type.getText().equals("")) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("WARN");
+            alert.setContentText("You must input int digits");
+            alert.setHeaderText("WARN");
+            alert.showAndWait();
+        } else {
+            if (text_upload.getText().equals("")) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("WARN");
+                alert.setContentText("You must upload videos");
+                alert.setHeaderText("WARN");
+                alert.showAndWait();
+            } else {
+                RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
+                RecVideo recVideo = new RecVideo(passValue.getRecType(),Integer.parseInt(length_text.getText()),passValue.getTrainerName());
+                System.out.println("11111111");
 
-        choicebox_type.getSelectionModel().selectedIndexProperty().addListener(
-                (ObservableValue<? extends Number> ov,
-                 Number old_val, Number new_val) ->{
-                    type[0] = greetings[new_val.intValue()];
-                    System.out.println(greetings[new_val.intValue()]);
+                fileChooser.setInitialDirectory(new File("src/BoundaryClass/Resource/Video"));
+                fileChooser.setInitialFileName(String.valueOf(recVideo.getCourseId()));
+
+                File file = fileChooser.showSaveDialog(stage);
+                System.out.println(file+"测试");
+                File f1 = new File(text_upload.getText());
+                try {
+                    FileInputStream fin = new FileInputStream(f1);
+                    byte b[] = new byte[(int)f1.length()];
+                    fin.read(b);
+                    FileOutputStream fw = new FileOutputStream(new File("src/BoundaryClass/Resource/Video/"+ recVideo.getCourseId() +".mp4" ));
+                    fw.write(b);
+                    fw.flush();
+                    fw.close();
+                    recVideoDAO.insertRecVideo(recVideo);
+                } catch (FileNotFoundException fileNotFoundException) {
+                    fileNotFoundException.printStackTrace();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
                 }
-        );
-
-        button_save.setOnAction((final ActionEvent e) -> {
-
-            RecVideo recVideo = new RecVideo(type[0],Integer.parseInt(length_text.getText()),passValue.getTrainerName());
-            System.out.println("11111111");
-
-            fileChooser.setInitialDirectory(new File("src/BoundaryClass/Resource/Video"));
-            fileChooser.setInitialFileName(String.valueOf(recVideo.getCourseId()));
-
-            File file = fileChooser.showSaveDialog(stage);
-            System.out.println(file+"测试");
-
-            File f1 = new File(text_upload.getText());
-            try {
-                FileInputStream fin = new FileInputStream(f1);
-                byte b[] = new byte[(int)f1.length()];
-                fin.read(b);
-                FileOutputStream fw = new FileOutputStream(new File("src/BoundaryClass/Resource/Video/"+ recVideo.getCourseId() +".mp4" ));
-                fw.write(b);
-                fw.flush();
-                fw.close();
-            } catch (FileNotFoundException fileNotFoundException) {
-                fileNotFoundException.printStackTrace();
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
+                try {
+                    label_type.setVisible(false);
+                    choicebox_type.setVisible(true);
+                    new APP().jump(stage,"trainer_portrait");
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
             }
-            try {
-                new APP().jump(stage,"trainer_portrait");
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
-        });
+
+        }
+
+
+
+
 
 
 //        System.out.println(recVideo.getCourseId());
@@ -241,19 +274,19 @@ public class trainerRecordingController implements Initializable {
         choicebox_type.setItems(FXCollections.observableArrayList(
                 "Yoga", "Hiit", "Strength")
         );
-//        final String[] greetings = new String[] { "Yoga", "Hiit", "Strength"};
+        final String[] greetings = new String[] { "Yoga", "Hiit", "Strength"};
 //
-//        final String[] type = {""};
+        final String[] type = {""};
 //        final String[] length = {""};
 //        final int[] index = new int[1];
 //
-//        choicebox_type.getSelectionModel().selectedIndexProperty().addListener(
-//                (ObservableValue<? extends Number> ov,
-//                 Number old_val, Number new_val) ->{
-//                    type[0] = greetings[new_val.intValue()];
-//                    System.out.println(greetings[new_val.intValue()]);
-//                }
-//        );
+        choicebox_type.getSelectionModel().selectedIndexProperty().addListener(
+                (ObservableValue<? extends Number> ov,
+                 Number old_val, Number new_val) ->{
+                    passValue.setRecType(greetings[new_val.intValue()]);
+                    System.out.println(greetings[new_val.intValue()]);
+                }
+        );
 //
 //
 //        RecVideo recVideo = new RecVideo(type[0],Integer.parseInt(length_text.getText()),passValue.getTrainerName());

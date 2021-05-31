@@ -597,12 +597,12 @@ public class userHistoryController implements Initializable {
                         RecVideo recVideo;
                         for (int i =0; i <limit; i++){
                             if (watchedVideos.get(10 * param.intValue() + i).getType().equals("recorded")) {
-                                labelCategory[i].setText(watchedVideos.get(10 * param.intValue() + i).getType());
+                                labelCategory[record].setText(watchedVideos.get(10 * param.intValue() + i).getType());
                                 recVideoDAO = new RecVideoDAOImpl();
                                 recVideo = recVideoDAO.queryByCourseId(watchedVideos.get(10 * param.intValue() + i).getCourseId());
-                                labelName[i].setText(recVideo.getSubject());
-                                labelCoach[i].setText(recVideo.getUserName());
-                                labelTime[i].setText(String.valueOf(recVideo.getUploadedTime()));
+                                labelName[record].setText(recVideo.getSubject());
+                                labelCoach[record].setText(recVideo.getUserName());
+                                labelTime[record].setText(String.valueOf(recVideo.getUploadedTime()));
                                 record += 1;
                             }
                         }
@@ -611,12 +611,12 @@ public class userHistoryController implements Initializable {
                         RecVideo recVideo;
                         for (int i =0; i <limit; i++){
                             if (watchedVideos.get(10 * param.intValue() + i).getType().equals("recorded")) {
-                                labelCategory[i].setText(watchedVideos.get(10 * param.intValue() + i).getType());
+                                labelCategory[record].setText(watchedVideos.get(10 * param.intValue() + i).getType());
                                 recVideoDAO = new RecVideoDAOImpl();
                                 recVideo = recVideoDAO.queryByCourseId(watchedVideos.get(10 * param.intValue() + i).getCourseId());
-                                labelName[i].setText(recVideo.getSubject());
-                                labelCoach[i].setText(recVideo.getUserName());
-                                labelTime[i].setText(String.valueOf(recVideo.getUploadedTime()));
+                                labelName[record].setText(recVideo.getSubject());
+                                labelCoach[record].setText(recVideo.getUserName());
+                                labelTime[record].setText(String.valueOf(recVideo.getUploadedTime()));
                                 record += 1;
                             }
                         }

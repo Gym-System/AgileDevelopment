@@ -1,7 +1,10 @@
 package ControlClass;
 
+import EntityClass.DAO.RecVideoDAO;
 import EntityClass.DAO.impl.LiveSessionDAOImpl;
+import EntityClass.DAO.impl.RecVideoDAOImpl;
 import EntityClass.VO.LiveSession;
+import EntityClass.VO.RecVideo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -150,6 +153,7 @@ public class trainerHistoryController implements Initializable {
     private Label history_live8;
 
     LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
+    RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
 
     @FXML
     void trainer_portrait_portrait_click(ActionEvent event) throws IOException {
@@ -252,6 +256,8 @@ public class trainerHistoryController implements Initializable {
         labelTime[7] = history_time8;
 
         ArrayList<LiveSession> liveSessions = liveSessionDAO.queryAll();
+        ArrayList<RecVideo> recVideos = recVideoDAO.queryAll();
+
         turn_page.setPageCount((int) Math.ceil(liveSessions.size() / 8.0));
         turn_page.setPageFactory(new Callback<Integer, Node>() {
             @Override
