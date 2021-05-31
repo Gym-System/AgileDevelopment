@@ -58,7 +58,7 @@
                               <Font name="Comic Sans MS Bold" size="30.0" />
                            </font>
                         </Hyperlink>
-                        <ImageView fx:id="trainer_profile_pic" fitHeight="105.0" fitWidth="102.0" layoutX="10.0" onMouseClicked="#trainerInfo_info_click" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
+                        <ImageView fx:id="trainer_profile_pic" fitHeight="110.0" fitWidth="110.0" layoutX="10.0" onMouseClicked="#trainerInfo_info_click" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
                            <image>
                               <Image url="@Resource/trainer_Profile.png" />
                            </image>
