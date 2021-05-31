@@ -1,7 +1,10 @@
 package ControlClass;
 
+import EntityClass.DAO.FavoriteVideoDAO;
+import EntityClass.DAO.impl.FavoriteVideoImpl;
 import EntityClass.DAO.impl.RecVideoDAOImpl;
 import EntityClass.DAO.impl.UserDAOImpl;
+import EntityClass.VO.FavoriteVideo;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -12,15 +15,17 @@ import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -29,6 +34,7 @@ import javafx.util.Duration;
 import javafx.fxml.Initializable;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -44,7 +50,7 @@ import java.util.ResourceBundle;
  * Description:
  */
 public class PlayerController_ref implements Initializable {
-Boolean flag = false;
+Boolean flag;
 //    @FXML Button playBT;
 //    @FXML Button stopBT;
 //    @FXML Button maxBT;
@@ -289,10 +295,12 @@ Boolean flag = false;
             System.out.println(courseid);
             UserDAO.queryByUserName(passValue.getValue()).favoriteVideo(courseid);
             JOptionPane.showMessageDialog(null, "Add favorite successfully", "Add favorite successfully", JOptionPane.INFORMATION_MESSAGE);
+            collectBT.setBackground(new Background(new BackgroundFill(Color.ORANGE, null, null)));
             flag=true;
         }else{
             UserDAO.queryByUserName(passValue.getValue()).unFavoriteVideo(courseid);
             JOptionPane.showMessageDialog(null, "Delete favorite successfully", "Delete favorite successfully", JOptionPane.INFORMATION_MESSAGE);
+            collectBT.setBackground(new Background(new BackgroundFill(Color.GRAY, null, null)));
             flag=false;
         }
 
@@ -709,7 +717,16 @@ Boolean flag = false;
         RecVideoDAOImpl RecVideoDAO = new RecVideoDAOImpl();
         video_view_times.setText(Integer.toString(RecVideoDAO.queryByCourseId(passValue.getCourseID()).getViewTime()));
         video_title.setText(RecVideoDAO.queryByCourseId(passValue.getCourseID()).getSubject()+"-Coach: "+RecVideoDAO.queryByCourseId(passValue.getCourseID()).getUserName());
-//        setIcon(maxBT,maxIcon,25);
+        FavoriteVideo favoriteVideo = new FavoriteVideo(passValue.getCourseID(),passValue.getValue());
+        FavoriteVideoImpl favoriteVideoDA0 = new FavoriteVideoImpl();
+        if(favoriteVideoDA0.searchSame(favoriteVideo)){
+            flag=true;
+            collectBT.setBackground(new Background(new BackgroundFill(Color.ORANGE, null, null)));
+        }else{
+            flag=false;
+            collectBT.setBackground(new Background(new BackgroundFill(Color.GRAY, null, null)));
+        }
+        //        setIcon(maxBT,maxIcon,25);
         //SimpleMediaPlayer_ref.newInstance("aa");
 
 
