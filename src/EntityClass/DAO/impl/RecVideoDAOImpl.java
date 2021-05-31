@@ -2,13 +2,12 @@ package EntityClass.DAO.impl;
 
 import EntityClass.DAO.RecVideoDAO;
 import EntityClass.DAO.ToolDAO;
+import EntityClass.VO.Course;
 import EntityClass.VO.RecVideo;
 import com.csvreader.CsvReader;
+import com.csvreader.CsvWriter;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -310,6 +309,34 @@ public class RecVideoDAOImpl implements ToolDAO, RecVideoDAO {
     public Boolean insertInfo(Object obj) {
         if(obj instanceof RecVideo) {
             RecVideo recVideo = (RecVideo) obj;
+            boolean flag = false;
+            File outFile = new File(filePath);
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(outFile, true));
+                CsvWriter csvWriter = new CsvWriter(writer,',');
+                csvWriter.writeRecord(recVideo.toStrArray());
+                csvWriter.close();
+                flag = true;
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            return flag;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * This method query a object record and delete the record
+     *
+     * @param obj A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean deleteInfo(Object obj) {
+        if(obj instanceof RecVideo) {
+            RecVideo recVideo = (RecVideo) obj;
             Boolean flag = false;
             File inFile = new File(filePath);
             try {
@@ -336,17 +363,6 @@ public class RecVideoDAOImpl implements ToolDAO, RecVideoDAO {
         else {
             return false;
         }
-    }
-
-    /**
-     * This method query a object record and delete the record
-     *
-     * @param object A Object class
-     * @return A boolean value indicating whether the operation is completed successfully
-     */
-    @Override
-    public Boolean deleteInfo(Object object) {
-        return null;
     }
 
     /**
