@@ -5,12 +5,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import EntityClass.DAO.impl.LiveSessionDAOImpl;
-import EntityClass.DAO.impl.PhyDataDAOImpl;
-import EntityClass.DAO.impl.TrainerDAOImpl;
-import EntityClass.DAO.impl.UserDAOImpl;
-import EntityClass.VO.LiveSession;
+import EntityClass.DAO.impl.*;
 
+import EntityClass.VO.RecVideo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -121,7 +118,7 @@ public class trainerInfoController {
 
 
     @FXML
-    void trainerInfo_portrait_click(ActionEvent event) throws IOException {
+    void trainerInfo_portrait_click(MouseEvent event) throws IOException {
         Stage stage = (Stage) trainerInfo_label.getScene().getWindow();
         new APP().jump(stage, "trainer_portrait");
     }
@@ -232,8 +229,8 @@ public class trainerInfoController {
         trainer_salary.setText(Double.toString(trainerDAO.queryByUserName(trainername).getSalary()));
         trainer_experience.setText(Integer.toString(phyDataDAO.queryByUserName(trainername).getExperience()));
         int i = 1;
-        LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
-        ArrayList<LiveSession> live = liveSessionDAO.queryByTrainerName(passValue.getValue());
+        RecVideoDAOImpl RecVideoDAO = new RecVideoDAOImpl();
+        ArrayList<RecVideo> rec = RecVideoDAO.queryByTrainerName(passValue.getValue());
         trainer_courses.add(trainer_course1);
         trainer_courses.add(trainer_course2);
         trainer_courses.add(trainer_course3);
@@ -246,8 +243,8 @@ public class trainerInfoController {
             if (trainer_courses.get(i) == null) {
                 break;
             } else {
-                trainer_courses.get(i).setText(live.get(i).getSubject());
-                trainer_stars.get(i).setText(Double.toString(live.get(i).getStar()));
+                trainer_courses.get(i).setText(rec.get(i).getSubject());
+                trainer_stars.get(i).setText(Integer.toString(rec.get(i).getViewTime()));
             }
 
         }

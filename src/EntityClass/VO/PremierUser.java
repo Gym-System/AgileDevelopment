@@ -103,8 +103,8 @@ public class PremierUser extends User {
             expend += order.getCost();
         }
 
-        if (expend < 50000) {
-            type = (int) (expend/10000);
+        if (expend < 5000) {
+            type = (int) (expend/1000);
             setUserType(type);
         }
         else {
@@ -137,6 +137,7 @@ public class PremierUser extends User {
         if(getBalance() > calDiscount(trainer.getPrice())) {
             flag = true;
             setBalance(getBalance() - calDiscount(trainer.getPrice()));
+            new PreUserDAOImpl().changePreUserBalance(super.getUserName(),getBalance());
 
             LiveSession liveSession = new LiveSession(null, 2, startTime, trainer.getUserName(), getUserName());
             LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
@@ -157,7 +158,10 @@ public class PremierUser extends User {
         LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
         liveSessionDAO.deleteLiveSession(liveSession);
 
-        new OrderDAOImpl().deleteOrder(new Order(liveSession.getCourseId(), null, 0.0));
+        setBalance(getBalance() + new OrderDAOImpl().queryByCourseId(liveSession.getCourseId()).getCost());
+        new PreUserDAOImpl().changePreUserBalance(super.getUserName(), getBalance());
+
+        new OrderDAOImpl().deleteOrder(new Order(liveSession.getCourseId()));
     }
 
     /**
@@ -196,7 +200,7 @@ public class PremierUser extends User {
     @Override
     public boolean recharge(double money) {
         setBalance(getBalance() + money);
-        new PreUserDAOImpl().changePreUserBalance(super.getUserName(),getBalance() + money);
+        new PreUserDAOImpl().changePreUserBalance(super.getUserName(),getBalance());
 
         return true;
     }

@@ -174,7 +174,11 @@ public class userInfoController {
         }else{
             level.setText(Integer.toString(preUserDAO.queryByUserName(username).getUserType()));
         }
-        balance.setText(Double.toString(userDAO.queryByUserName(username).getBalance()));
+        if(preUserDAO.queryByUserName(username)!=null){
+            balance.setText(Double.toString(preUserDAO.queryByUserName(username).getBalance()));
+        }else{
+            balance.setText("0.00");
+        }
         if(phyDataDAO.queryByUserName(username)==null){
             weight.setText(null);
         }else{
@@ -221,7 +225,7 @@ public class userInfoController {
 
     public void userInfo_favorates_click(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) level.getScene().getWindow();
-        new APP().jump(stage, "user_history");
+        new APP().jump(stage, "user_favorites");
     }
 
     public void userInfo_modify_click(ActionEvent actionEvent) throws IOException {
@@ -253,8 +257,6 @@ public class userInfoController {
         new APP().jump(stage, "userInfo");
     }
 
-    public void userinfo_vip_click(ActionEvent actionEvent) {
-    }
 
     public void user_logout_click(MouseEvent mouseEvent) throws IOException {
         Stage stage = (Stage) level.getScene().getWindow();
@@ -267,8 +269,9 @@ public class userInfoController {
     }
 
     @FXML
-    void user_logout_click(ActionEvent event) {
-
+    void user_logout_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) level.getScene().getWindow();
+        new APP().jump(stage, "login");
     }
 
     @FXML
@@ -286,9 +289,11 @@ public class userInfoController {
             JOptionPane.showInternalMessageDialog(null, "Please check the input!","Please check the input", JOptionPane.ERROR_MESSAGE);
         }
         if (preUserDAO.queryByUserName(passValue.getValue())==null){
+            System.out.println("ififififif"+user_info_recharge_money.getText());
             userDAO.queryByUserName(passValue.getValue()).recharge(Double.parseDouble(user_info_recharge_money.getText()));
             JOptionPane.showInternalMessageDialog(null, "Recharge successfully","Recharge successfully", JOptionPane.INFORMATION_MESSAGE);
         }else{
+            System.out.println("elseelseelse"+user_info_recharge_money.getText());
             preUserDAO.queryByUserName(passValue.getValue()).recharge(Double.parseDouble(user_info_recharge_money.getText()));
             JOptionPane.showInternalMessageDialog(null, "Recharge successfully","Recharge successfully", JOptionPane.INFORMATION_MESSAGE);
         }

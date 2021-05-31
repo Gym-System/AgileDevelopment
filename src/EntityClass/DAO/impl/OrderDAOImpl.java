@@ -62,7 +62,7 @@ public class OrderDAOImpl implements ToolDAO, OrderDAO {
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
                 if(courseId == Long.parseLong(record[0])) {
-                    order = new Order(Long.parseLong(record[0]), record[1], Double.parseDouble(record[3]));
+                    order = new Order(Long.parseLong(record[0]), record[1], Double.parseDouble(record[2]));
                     break;
                 }
             }

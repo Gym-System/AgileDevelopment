@@ -587,7 +587,7 @@ public class Test {
         }
         for (Course course:courses) {
             System.out.println(course.getSubject());
-        }*/
+        }
 
         Trainer trainer = null;
         try {
@@ -616,5 +616,31 @@ public class Test {
         }
 
         System.out.println(trainer.equals(trainer1));
+
+         */
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        Date startTime = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
+                new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
+        System.out.println(startTime);
+        calendar.add(Calendar.DATE, 1);
+        startTime = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
+            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
+        System.out.println(startTime);
+
+        String time = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime());
+        System.out.println(time);
+
+        String[] strings = time.split(" ");
+        time = "";
+        strings[3] = "00:00:00";
+        for (int i = 0; i < strings.length; i++) {
+            time += strings[i] + " ";
+        }
+        System.out.println(time);
+        startTime = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(time);
+        System.out.println(startTime);
     }
+
 }

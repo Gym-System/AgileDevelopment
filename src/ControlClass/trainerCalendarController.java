@@ -1372,14 +1372,12 @@ public class trainerCalendarController {
                 i = 0;
             } else if (liveSession.getStartTime().getHours() == 10) {
                 i = 1;
-            } else if (liveSession.getStartTime().getHours() == 12) {
-                i = 2;
             } else if (liveSession.getStartTime().getHours() == 14) {
-                i = 3;
+                i = 2;
             } else if (liveSession.getStartTime().getHours() == 16) {
-                i = 4;
+                i = 3;
             } else if (liveSession.getStartTime().getHours() == 18) {
-                i = 5;
+                i = 4;
             }
 
             int j = 0;

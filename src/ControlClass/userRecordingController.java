@@ -197,8 +197,9 @@ public class userRecordingController implements Initializable {
     }
 
     @FXML
-    void user_logout_click(MouseEvent event) {
-
+    void user_logout_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_history_hyper.getScene().getWindow();
+        new APP().jump(stage,"login");
     }
 
     @FXML
