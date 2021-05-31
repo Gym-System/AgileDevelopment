@@ -237,11 +237,11 @@
                   <TextField fx:id="text_find_mt" layoutX="112.0" layoutY="53.0" prefHeight="45.0" prefWidth="280.0" />
                   <Button fx:id="button_find_mt" layoutX="392.0" layoutY="53.0" mnemonicParsing="false" onMouseClicked="#click_find_mt" prefHeight="45.0" prefWidth="75.0" text="Find">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font></Button>
                   <Button fx:id="button_delete_mt" layoutX="699.0" layoutY="56.0" mnemonicParsing="false" onMouseClicked="#click_delete_mt" prefHeight="45.0" prefWidth="100.0" text="Delete">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font></Button>
                   <Pagination fx:id="turn_page_mt" layoutX="170.0" layoutY="587.0" maxPageIndicatorCount="7" onMouseClicked="#click_turn_page_mt" pageCount="100" prefHeight="100.0" prefWidth="660.0" />
                   <Separator layoutX="100.0" layoutY="220.0" prefHeight="0.0" prefWidth="800.0" />
