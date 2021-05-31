@@ -18,6 +18,14 @@ public class PremierUser extends User {
     private int userType = 1;
 
     /**
+     * This constructor contains major params needed to make a instance of Person class.
+     * @param userName The userName of a person
+     */
+    public PremierUser(String userName) {
+        super(userName);
+    }
+
+    /**
      * This constructor contains major params needed to make a instance of PremierUser class.
      * @param userName The userName of a user
      * @param password The password of a user
@@ -143,13 +151,13 @@ public class PremierUser extends User {
 
     /**
      * User cancel booked live session
-     * @param courseId The ID of a course
+     * @param liveSession A LiveSession class
      */
-    public void cancelLiveSession(long courseId) {
+    public void cancelLiveSession(LiveSession liveSession) {
         LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
-        liveSessionDAO.deleteLiveSession(courseId);
+        liveSessionDAO.deleteLiveSession(liveSession);
 
-        new OrderDAOImpl().deleteOrder(courseId);
+        new OrderDAOImpl().deleteOrder(new Order(liveSession.getCourseId(), null, 0.0));
     }
 
     /**

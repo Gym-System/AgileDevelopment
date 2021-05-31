@@ -1,13 +1,14 @@
 package EntityClass.DAO.impl;
 
 import EntityClass.DAO.CourseDAO;
+import EntityClass.DAO.ToolDAO;
 import EntityClass.VO.Course;
 import com.csvreader.CsvReader;
+import com.csvreader.CsvWriter;
 
 import java.io.*;
 import java.util.ArrayList;
 
-import static EntityClass.DAO.impl.PersonDAOImpl.insertInfo;
 import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
 
 /**
@@ -16,7 +17,7 @@ import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
  * @version 1.0
  * {@inheritDoc}
  */
-public class CourseDAOImpl implements CourseDAO {
+public class CourseDAOImpl implements ToolDAO, CourseDAO {
     private Course course = null;
     private final String fileName = "course.csv";
     private String filePath = PersonDAOImpl.fileFolder + fileName;
@@ -29,7 +30,7 @@ public class CourseDAOImpl implements CourseDAO {
     @Override
     public Boolean insertCourse(Course course) {
         if(!searchSame(course)) {
-            return insertInfo(filePath, course.toStrArray());
+            return insertInfo(course);
         }
         else {
             return false;
@@ -38,12 +39,12 @@ public class CourseDAOImpl implements CourseDAO {
 
     /**
      * This method query a course record by courseId and delete the record
-     * @param courseId The ID of a course
+     * @param course A Course class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean deleteCourse(long courseId) {
-        return deleteInfo(courseId, filePath);
+    public Boolean deleteCourse(Course course) {
+        return deleteInfo(course);
     }
 
     /**
@@ -189,34 +190,69 @@ public class CourseDAOImpl implements CourseDAO {
     }
 
     /**
-     * This method is a helper function of {@code deleteCourse}
-     * @param courseId The ID of a course
-     * @param fileName The name of the file which contains all information of {@code Course}
+     * This method insert a Object class into csv file
+     *
+     * @param obj A Object class
      * @return A boolean value indicating whether the operation is completed successfully
      */
-    static Boolean deleteInfo(long courseId, String fileName) {
-        Boolean flag = false;
-        File inFile = new File(fileName);
-        try {
-            String[] record;
-            ArrayList<String[]> records = new ArrayList<>();
-            BufferedReader reader = new BufferedReader(new FileReader(inFile));
-            CsvReader csvReader = new CsvReader(reader, ',');
-            while(csvReader.readRecord()){
-                record = csvReader.getRawRecord().split(",");
-                if(courseId == Long.parseLong(record[0])) {
-                    continue;
-                }
-                assert records != null;
-                records.add(record);
+    @Override
+    public Boolean insertInfo(Object obj) {
+        if(obj instanceof Course) {
+            Course course = (Course) obj;
+            boolean flag = false;
+            File outFile = new File(filePath);
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(outFile, true));
+                CsvWriter csvWriter = new CsvWriter(writer,',');
+                csvWriter.writeRecord(course.toStrArray());
+                csvWriter.close();
+                flag = true;
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
-            csvReader.close();
-            recordToCsv(records, fileName);
-            flag = true;
-        } catch (IOException ex) {
-            ex.printStackTrace();
+            return flag;
         }
-        return flag;
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * This method query a object record and delete the record
+     *
+     * @param obj A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean deleteInfo(Object obj) {
+        if(obj instanceof Course) {
+            Course course = (Course) obj;
+            Boolean flag = false;
+            File inFile = new File(filePath);
+            try {
+                String[] record;
+                ArrayList<String[]> records = new ArrayList<>();
+                BufferedReader reader = new BufferedReader(new FileReader(inFile));
+                CsvReader csvReader = new CsvReader(reader, ',');
+                while(csvReader.readRecord()){
+                    record = csvReader.getRawRecord().split(",");
+                    if(course.getCourseId() == Long.parseLong(record[0])) {
+                        continue;
+                    }
+                    assert records != null;
+                    records.add(record);
+                }
+                csvReader.close();
+                recordToCsv(records, filePath);
+                flag = true;
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            return flag;
+        }
+        else {
+            return false;
+        }
     }
 
     /**
@@ -236,7 +272,7 @@ public class CourseDAOImpl implements CourseDAO {
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
                 courseExist = new Course(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
-                            Integer.parseInt(record[3]), Double.parseDouble(record[4]));
+                        Integer.parseInt(record[3]), Double.parseDouble(record[4]));
                 if(course.equals(courseExist)) {
                     return true;
                 }

@@ -9,12 +9,20 @@ import java.util.Objects;
  * @version 1.0
  */
 public class Person {
-    private final String userName;
-    private String password;
-    private String email;
-    private String gender;
-    private String telNo;
-    private Date DoB;
+    private String userName;
+    private String password = null;
+    private String email = null;
+    private String gender = null;
+    private String telNo = null;
+    private Date DoB = null;
+
+    /**
+     * This constructor contains major params needed to make a instance of Person class.
+     * @param userName The userName of a person
+     */
+    public Person(String userName) {
+        this.userName = userName;
+    }
 
     /**
      * This constructor contains major params needed to make a instance of Person class.

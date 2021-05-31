@@ -298,7 +298,7 @@ Boolean flag;
             collectBT.setBackground(new Background(new BackgroundFill(Color.ORANGE, null, null)));
             flag=true;
         }else{
-            UserDAO.queryByUserName(passValue.getValue()).unFavoriteVideo(courseid);
+            UserDAO.queryByUserName(passValue.getValue()).unFavoriteVideo(new FavoriteVideo(courseid, passValue.getValue()));
             JOptionPane.showMessageDialog(null, "Delete favorite successfully", "Delete favorite successfully", JOptionPane.INFORMATION_MESSAGE);
             collectBT.setBackground(new Background(new BackgroundFill(Color.GRAY, null, null)));
             flag=false;

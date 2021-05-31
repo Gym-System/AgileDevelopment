@@ -19,6 +19,14 @@ public class Trainer extends Staff {
     private double price = 300.0;
 
     /**
+     * This constructor contains major params needed to make a instance of Person class.
+     * @param userName The userName of a person
+     */
+    public Trainer(String userName) {
+        super(userName);
+    }
+
+    /**
      * This constructor contains major params needed to make a instance of Trainer class.
      * @param userName The userName of a trainer
      * @param password The password of a trainer

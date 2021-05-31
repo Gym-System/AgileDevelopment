@@ -15,6 +15,14 @@ public class User extends Person {
     private double balance = 0.0;
 
     /**
+     * This constructor contains major params needed to make a instance of Person class.
+     * @param userName The userName of a person
+     */
+    public User(String userName) {
+        super(userName);
+    }
+
+    /**
      * This constructor contains major params needed to make a instance of User class.
      * @param userName The userName of a user
      * @param password The password of a user
@@ -96,11 +104,11 @@ public class User extends Person {
 
     /**
      * This method create delete favorite video record
-     * @param courseId The ID of a course
+     * @param favoriteVideo A FavoriteVideo class
      */
-    public void unFavoriteVideo(long courseId) {
+    public void unFavoriteVideo(FavoriteVideo favoriteVideo) {
         FavoriteVideoImpl favoriteVideoDAO = new FavoriteVideoImpl();
-        favoriteVideoDAO.deleteFavoriteVideo(courseId);
+        favoriteVideoDAO.deleteFavoriteVideo(favoriteVideo);
     }
 
     /**
@@ -111,11 +119,10 @@ public class User extends Person {
     public boolean recharge(double money) {
         if(money > 0) {
             UserDAOImpl userDAO = new UserDAOImpl();
-            userDAO.deleteUser(super.getUserName());
             PremierUser premierUser = new PremierUser(super.getUserName(), super.getPassword(), super.getEmail(), super.getGender(), super.getTelNo(), super.getDoB());
             premierUser.setBalance(money);
-            PersonDAOImpl personDAO = new PersonDAOImpl();
-            personDAO.insertPerson(premierUser);
+            PreUserDAOImpl preUserDAO = new PreUserDAOImpl();
+            preUserDAO.insertPreUser(premierUser);
 
             return true;
         }

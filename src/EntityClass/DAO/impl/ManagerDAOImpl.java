@@ -1,13 +1,13 @@
 package EntityClass.DAO.impl;
 
 import EntityClass.DAO.ManagerDAO;
+import EntityClass.DAO.ToolDAO;
 import EntityClass.VO.Manager;
+import EntityClass.VO.Person;
 import com.csvreader.CsvReader;
+import com.csvreader.CsvWriter;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ import static EntityClass.DAO.impl.PersonDAOImpl.*;
  * @version 1.0
  * {@inheritDoc}
  */
-public class ManagerDAOImpl implements ManagerDAO {
+public class ManagerDAOImpl implements ToolDAO, ManagerDAO {
     private Manager manager = null;
     private final String fileName = "manager.csv";
     private String filePath = PersonDAOImpl.fileFolder + fileName;
@@ -34,7 +34,7 @@ public class ManagerDAOImpl implements ManagerDAO {
     @Override
     public Boolean insertManager(Manager manager) {
         if(!searchSame(manager)) {
-            return insertInfo(filePath, manager.toStrArray());
+            return insertInfo(manager);
         }
         else {
             return false;
@@ -43,12 +43,12 @@ public class ManagerDAOImpl implements ManagerDAO {
 
     /**
      * This method query a manager record by userName and delete the record
-     * @param userName The userName of a manager
+     * @param manager A Manager class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean deleteManager(String userName) {
-        return deleteInfo(userName, filePath);
+    public Boolean deleteManager(Manager manager) {
+        return deleteInfo(manager);
     }
 
     /**
@@ -230,6 +230,72 @@ public class ManagerDAOImpl implements ManagerDAO {
             ex.printStackTrace();
         }
         return managers;
+    }
+
+    /**
+     * This method insert a Object class into csv file
+     *
+     * @param obj A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean insertInfo(Object obj) {
+        if(obj instanceof Manager) {
+            Manager manager = (Manager) obj;
+            boolean flag = false;
+            File outFile = new File(filePath);
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(outFile, true));
+                CsvWriter csvWriter = new CsvWriter(writer,',');
+                csvWriter.writeRecord(manager.toStrArray());
+                csvWriter.close();
+                flag = true;
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            return flag;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * This method query a object record and delete the record
+     *
+     * @param object A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean deleteInfo(Object object) {
+        if(object instanceof Manager) {
+            Manager manager = (Manager) object;
+            Boolean flag = false;
+            File inFile = new File(filePath);
+            try {
+                String[] record;
+                ArrayList<String[]> records = new ArrayList<>();
+                BufferedReader reader = new BufferedReader(new FileReader(inFile));
+                CsvReader csvReader = new CsvReader(reader, ',');
+                while(csvReader.readRecord()){
+                    record = csvReader.getRawRecord().split(",");
+                    if(manager.getUserName().equals(record[0])) {
+                        continue;
+                    }
+                    assert records != null;
+                    records.add(record);
+                }
+                csvReader.close();
+                recordToCsv(records, filePath);
+                flag = true;
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            return flag;
+        }
+        else {
+            return false;
+        }
     }
 
     /**

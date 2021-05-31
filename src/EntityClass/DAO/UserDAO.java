@@ -19,10 +19,10 @@ public interface UserDAO {
 
     /**
      * This method query a user record by userName and delete the record
-     * @param userName The userName of a user
+     * @param user A User class
      * @return A boolean value indicating whether the operation is completed successfully
      */
-    Boolean deleteUser(String userName);
+    Boolean deleteUser(User user);
 
     /**
      * This method query a user record by userName and change the password value of the record

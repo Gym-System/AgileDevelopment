@@ -9,8 +9,18 @@ import java.util.Objects;
  */
 public class WatchedVideo {
     private String userName;
-    private String type;
+    private String type = null;
     private long courseId;
+
+    /**
+     * This constructor contains all params needed to make a instance of Person WatchedVideo.
+     * @param userName The userName of a person
+     * @param courseId The ID of a course
+     */
+    public WatchedVideo(String userName, long courseId) {
+        this.userName = userName;
+        this.courseId = courseId;
+    }
 
     /**
      * This constructor contains all params needed to make a instance of Person WatchedVideo.

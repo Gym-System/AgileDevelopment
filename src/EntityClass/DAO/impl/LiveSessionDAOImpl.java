@@ -1,20 +1,18 @@
 package EntityClass.DAO.impl;
 
 import EntityClass.DAO.LiveSessionDAO;
+import EntityClass.DAO.ToolDAO;
+import EntityClass.VO.Course;
 import EntityClass.VO.LiveSession;
 import com.csvreader.CsvReader;
+import com.csvreader.CsvWriter;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import static EntityClass.DAO.impl.CourseDAOImpl.deleteInfo;
-import static EntityClass.DAO.impl.PersonDAOImpl.insertInfo;
 import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
 
 /**
@@ -23,7 +21,7 @@ import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
  * @version 1.0
  * {@inheritDoc}
  */
-public class LiveSessionDAOImpl implements LiveSessionDAO {
+public class LiveSessionDAOImpl implements ToolDAO, LiveSessionDAO {
     private LiveSession liveSession;
     private final String fileName = "liveSession.csv";
     private String filePath = PersonDAOImpl.fileFolder + fileName;
@@ -35,17 +33,17 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
      */
     @Override
     public Boolean insertLiveSession(LiveSession liveSession) {
-        return insertInfo(filePath, liveSession.toStrArray());
+        return insertInfo(liveSession);
     }
 
     /**
      * This method query a LiveSession record by courseId and delete the record
-     * @param courseId The ID of a LiveSession
+     * @param liveSession A LiveSession class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean deleteLiveSession(long courseId) {
-        return deleteInfo(courseId, filePath);
+    public Boolean deleteLiveSession(LiveSession liveSession) {
+        return deleteInfo(liveSession);
     }
 
     /**
@@ -261,6 +259,72 @@ public class LiveSessionDAOImpl implements LiveSessionDAO {
             ex.printStackTrace();
         }
         return liveSessions;
+    }
+
+    /**
+     * This method insert a Object class into csv file
+     *
+     * @param obj A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean insertInfo(Object obj) {
+        if(obj instanceof LiveSession) {
+            LiveSession liveSession = (LiveSession) obj;
+            boolean flag = false;
+            File outFile = new File(filePath);
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(outFile, true));
+                CsvWriter csvWriter = new CsvWriter(writer,',');
+                csvWriter.writeRecord(liveSession.toStrArray());
+                csvWriter.close();
+                flag = true;
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            return flag;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * This method query a object record and delete the record
+     *
+     * @param object A Object class
+     * @return A boolean value indicating whether the operation is completed successfully
+     */
+    @Override
+    public Boolean deleteInfo(Object object) {
+        if(object instanceof LiveSession) {
+            LiveSession liveSession = (LiveSession) object;
+            Boolean flag = false;
+            File inFile = new File(filePath);
+            try {
+                String[] record;
+                ArrayList<String[]> records = new ArrayList<>();
+                BufferedReader reader = new BufferedReader(new FileReader(inFile));
+                CsvReader csvReader = new CsvReader(reader, ',');
+                while(csvReader.readRecord()){
+                    record = csvReader.getRawRecord().split(",");
+                    if(liveSession.getCourseId() == Long.parseLong(record[0])) {
+                        continue;
+                    }
+                    assert records != null;
+                    records.add(record);
+                }
+                csvReader.close();
+                recordToCsv(records, filePath);
+                flag = true;
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            return flag;
+        }
+        else {
+            return false;
+        }
     }
 
     /**

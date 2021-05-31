@@ -19,10 +19,10 @@ public interface CourseDAO {
 
     /**
      * This method query a course record by courseId and delete the record
-     * @param courseId The ID of a course
+     * @param course A Course class
      * @return A boolean value indicating whether the operation is completed successfully
      */
-    Boolean deleteCourse(long courseId);
+    Boolean deleteCourse(Course course);
 
     /**
      * This method query a course record by courseId and change the gift value of the record
@@ -59,12 +59,4 @@ public interface CourseDAO {
      * @return A array list of course class
      */
     ArrayList<Course> queryAll();
-
-    /**
-     * This method search file for the same object
-     *
-     * @param course A Course class
-     * @return A boolean value indicating whether the operation is completed successfully
-     */
-    Boolean searchSame(Object course);
 }

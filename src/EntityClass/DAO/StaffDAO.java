@@ -19,10 +19,10 @@ public interface StaffDAO {
 
     /**
      * This method query a staff record by userName and delete the record
-     * @param userName The userName of a staff
+     * @param staff A Staff class
      * @return A boolean value indicating whether the operation is completed successfully
      */
-    Boolean deleteStaff(String userName);
+    Boolean deleteStaff(Staff staff);
 
     /**
      * This method query a staff record by userName and change the password value of the record
@@ -60,12 +60,4 @@ public interface StaffDAO {
      * @return A array list of Staff class
      */
     ArrayList<Staff> queryAll();
-
-    /**
-     * This method search file for the same object
-     *
-     * @param staff A Object class
-     * @return A boolean value indicating whether the operation is completed successfully
-     */
-    Boolean searchSame(Object staff);
 }

@@ -19,10 +19,10 @@ public interface PreUserDAO {
 
     /**
      * This method query a premierUser record by userName and delete the record
-     * @param userName The userName of a premierUser
+     * @param premierUser A PremierUser class
      * @return A boolean value indicating whether the operation is completed successfully
      */
-    Boolean deletePreUser(String userName);
+    Boolean deletePreUser(PremierUser premierUser);
 
     /**
      * This method query a premierUser record by userName and change the password value of the record
@@ -75,12 +75,4 @@ public interface PreUserDAO {
      * @return A array list of PremierUser class
      */
     ArrayList<PremierUser> queryAll();
-
-    /**
-     * This method search file for the same object
-     *
-     * @param preUser A Object class
-     * @return A boolean value indicating whether the operation is completed successfully
-     */
-    Boolean searchSame(Object preUser);
 }
