@@ -471,7 +471,7 @@ public class userFavoritesController implements Initializable {
             imageViews[2] = userFav3_pic;
             imageViews[3] = userFav4_pic;
 
-            ArrayList<FavoriteVideo> favoriteVideos = favoriteVideo.queryByUserName("kaiyi");
+            ArrayList<FavoriteVideo> favoriteVideos = favoriteVideo.queryByUserName(passValue.getValue());
             ArrayList<FavoriteVideo> favoriteVideos1 = new ArrayList<>();
             RecVideo recVideo;
             for (FavoriteVideo v:favoriteVideos) {
@@ -481,6 +481,8 @@ public class userFavoritesController implements Initializable {
                     favoriteVideos1.add(v);
                 }
             }
+
+            passValue.setRecFavoritelist(favoriteVideos1);
             turn_page.setPageCount((int) Math.ceil(favoriteVideos1.size()/4.0));
 
             turn_page.setPageFactory(new Callback<Integer, Node>() {
@@ -680,7 +682,7 @@ public class userFavoritesController implements Initializable {
             imageViews[1] = userFav2_pic;
             imageViews[2] = userFav3_pic;
             imageViews[3] = userFav4_pic;
-            ArrayList<FavoriteVideo> favoriteVideos = favoriteVideo.queryByUserName("kaiyi");
+            ArrayList<FavoriteVideo> favoriteVideos = favoriteVideo.queryByUserName(passValue.getValue());
             ArrayList<FavoriteVideo> favoriteVideos1 = new ArrayList<>();
             RecVideo recVideo;
             for (FavoriteVideo v:favoriteVideos) {
@@ -691,6 +693,7 @@ public class userFavoritesController implements Initializable {
                 }
             }
 
+            passValue.setRecFavoritelist(favoriteVideos1);
             turn_page.setPageCount((int) Math.ceil(favoriteVideos1.size()/4.0));
 
             turn_page.setPageFactory(new Callback<Integer, Node>() {
@@ -890,7 +893,7 @@ public class userFavoritesController implements Initializable {
             imageViews[1] = userFav2_pic;
             imageViews[2] = userFav3_pic;
             imageViews[3] = userFav4_pic;
-            ArrayList<FavoriteVideo> favoriteVideos = favoriteVideo.queryByUserName("kaiyi");
+            ArrayList<FavoriteVideo> favoriteVideos = favoriteVideo.queryByUserName(passValue.getValue());
             ArrayList<FavoriteVideo> favoriteVideos1 = new ArrayList<>();
             RecVideo recVideo;
             for (FavoriteVideo v:favoriteVideos) {
@@ -900,6 +903,8 @@ public class userFavoritesController implements Initializable {
                     favoriteVideos1.add(v);
                 }
             }
+
+            passValue.setRecFavoritelist(favoriteVideos1);
             turn_page.setPageCount((int) Math.ceil(favoriteVideos1.size()/4.0));
 
             turn_page.setPageFactory(new Callback<Integer, Node>() {
@@ -1069,18 +1074,26 @@ public class userFavoritesController implements Initializable {
     @FXML
     void click_enterrec1(MouseEvent event) throws IOException {
         Stage stage = (Stage) favTime1_label.getScene().getWindow();
+        passValue.setCourseID(Long.parseLong(String.valueOf(passValue.getRecFavoritelist().get(turn_page.getCurrentPageIndex() * 4 + 0).getCourseId())));
+        System.out.println(passValue.getCourseID());
         new APP().jump(stage,"user_recording_video");
     }
 
     @FXML
-    void click_enterrec2(ActionEvent event) {
-
+    void click_enterrec2(MouseEvent event) throws IOException {
+        Stage stage = (Stage) favTime1_label.getScene().getWindow();
+        passValue.setCourseID(Long.parseLong(String.valueOf(passValue.getRecFavoritelist().get(turn_page.getCurrentPageIndex() * 4 + 1).getCourseId())));
+        System.out.println(passValue.getCourseID());
+        new APP().jump(stage,"user_recording_video");
     }
 
 
     @FXML
-    void click_enterrec3(ActionEvent event) {
-
+    void click_enterrec3(MouseEvent event) throws IOException {
+        Stage stage = (Stage) favTime1_label.getScene().getWindow();
+        passValue.setCourseID(Long.parseLong(String.valueOf(passValue.getRecFavoritelist().get(turn_page.getCurrentPageIndex() * 4 + 2).getCourseId())));
+        System.out.println(passValue.getCourseID());
+        new APP().jump(stage,"user_recording_video");
     }
 
     @FXML
@@ -1089,8 +1102,11 @@ public class userFavoritesController implements Initializable {
     }
 
     @FXML
-    void click_enterrec4(ActionEvent event) {
-
+    void click_enterrec4(MouseEvent event) throws IOException {
+        Stage stage = (Stage) favTime1_label.getScene().getWindow();
+        passValue.setCourseID(Long.parseLong(String.valueOf(passValue.getRecFavoritelist().get(turn_page.getCurrentPageIndex() * 4 + 3).getCourseId())));
+        System.out.println(passValue.getCourseID());
+        new APP().jump(stage,"user_recording_video");
     }
 
     @FXML
@@ -1135,8 +1151,9 @@ public class userFavoritesController implements Initializable {
         imageViews[2] = userFav3_pic;
         imageViews[3] = userFav4_pic;
 
-        ArrayList<FavoriteVideo> favoriteVideos = favoriteVideo.queryByUserName("kaiyi");
+        ArrayList<FavoriteVideo> favoriteVideos = favoriteVideo.queryByUserName(passValue.getValue());
 
+        passValue.setRecFavoritelist(favoriteVideos);
         turn_page.setPageCount((int) Math.ceil(favoriteVideos.size()/4.0));
         turn_page.setPageFactory(new Callback<Integer, Node>() {
             @Override

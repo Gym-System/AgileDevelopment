@@ -295,5 +295,11 @@ public class trainerRecordingController implements Initializable {
 //        RecVideo recVideo = new RecVideo()
 
     }
+
+    @FXML
+    public void trainerinfo_hyperlink(MouseEvent event) throws IOException {
+        Stage stage = (Stage) trainer_portrait_hyper.getScene().getWindow();
+        new APP().jump(stage,"TrainerInfo");
+    }
 }
 

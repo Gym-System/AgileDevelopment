@@ -1,5 +1,6 @@
 package ControlClass;
 
+import EntityClass.VO.FavoriteVideo;
 import EntityClass.VO.RecVideo;
 import EntityClass.VO.Trainer;
 import javafx.stage.Stage;
@@ -40,7 +41,24 @@ public class passValue {
     private static ArrayList<Trainer> trainerlist;
     private static String uploadCourseID;
     private static ArrayList<RecVideo> recVideoslist;
+    private static ArrayList<FavoriteVideo> recFavoritelist;
+    private static String favCourseID;
 
+    public static String getFavCourseID() {
+        return favCourseID;
+    }
+
+    public static void setFavCourseID(String favCourseID) {
+        passValue.favCourseID = favCourseID;
+    }
+
+    public static ArrayList<FavoriteVideo> getRecFavoritelist() {
+        return recFavoritelist;
+    }
+
+    public static void setRecFavoritelist(ArrayList<FavoriteVideo> recFavoritelist) {
+        passValue.recFavoritelist = recFavoritelist;
+    }
 
     public static Stage getStage() {
         return stage;
