@@ -11,12 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
-import javafx.scene.control.Pagination;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -530,7 +525,7 @@ public class userHistoryController implements Initializable {
 
     @FXML
     void click_check_yoga(MouseEvent event) {
-        if (history_recording_check.isSelected()) {
+        if (history_recording_check.isSelected() && !history_live_check.isSelected()) {
             System.out.println("11111111");
             Label[] labelCategory = new Label[10];
             labelCategory[0] = history_category_type1;
@@ -632,13 +627,24 @@ public class userHistoryController implements Initializable {
                 }
             });
         }
+        else if(!history_recording_check.isSelected() && !history_live_check.isSelected()) {
+            click_find(event);
+        } else{
+            if (history_recording_check.isSelected()) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("WARN");
+                alert.setContentText("You can only choose one type");
+                alert.setHeaderText("WARN");
+                alert.showAndWait();
+            }
+        }
 
 
     }
 
     @FXML
     void click_check_strength(MouseEvent event) {
-        if (history_live_check.isSelected()) {
+        if (history_live_check.isSelected() && !history_recording_check.isSelected()) {
             System.out.println("2222222");
             Label[] labelCategory = new Label[10];
             labelCategory[0] = history_category_type1;
@@ -739,6 +745,19 @@ public class userHistoryController implements Initializable {
                     return vbox;
                 }
             });
+        }
+        else if (!history_recording_check.isSelected() && !history_live_check.isSelected()) {
+            click_find(event);
+        } else {
+            if (history_live_check.isSelected()) {
+                if (history_recording_check.isSelected()) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("WARN");
+                    alert.setContentText("You can only choose one type");
+                    alert.setHeaderText("WARN");
+                    alert.showAndWait();
+                }
+            }
         }
     }
 
