@@ -4,8 +4,8 @@ package ControlClass;
         import java.net.URL;
         import java.util.ResourceBundle;
 
-        import EntityClass.DAO.impl.PreUserDAOImpl;
-        import EntityClass.DAO.impl.TrainerDAOImpl;
+        import EntityClass.DAO.Impl.PreUserDAOImpl;
+        import EntityClass.DAO.Impl.TrainerDAOImpl;
         import javafx.event.ActionEvent;
         import javafx.fxml.FXML;
         import javafx.scene.control.Hyperlink;
@@ -21,7 +21,6 @@ package ControlClass;
         import javafx.scene.text.Font;
         import javafx.scene.text.Text;
         import javafx.stage.Stage;
-        import javafx.stage.Window;
 
         import javax.swing.*;
 
@@ -199,7 +198,7 @@ public class userTrainerPortraitController {
     }
 
     @FXML
-    void user_trainer_portrait_info_click(ActionEvent event) throws IOException {
+    void user_trainer_portrait_info_click(MouseEvent event) throws IOException {
         Stage stage = (Stage) user_recDur_hitt1_label.getScene().getWindow();
         new APP().jump(stage, "UserInfo");
     }

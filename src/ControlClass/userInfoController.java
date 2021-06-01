@@ -1,6 +1,6 @@
 package ControlClass;
 import EntityClass.DAO.LiveSessionDAO;
-import EntityClass.DAO.impl.*;
+import EntityClass.DAO.Impl.*;
 import EntityClass.VO.PhyData;
 import EntityClass.VO.WatchedVideo;
 import EntityClass.VO.LiveSession;
@@ -20,11 +20,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.Timer;
 
 public class userInfoController {
-
-
+    private ArrayList<Label> user_types = new ArrayList<>();
+    private ArrayList<Label> user_courses = new ArrayList<>();
+    private ArrayList<Label> user_trainer = new ArrayList<>();
+    private ArrayList<Label> user_time = new ArrayList<>();
     @FXML
     private ResourceBundle resources;
 
@@ -174,7 +175,11 @@ public class userInfoController {
         }else{
             level.setText(Integer.toString(preUserDAO.queryByUserName(username).getUserType()));
         }
-        balance.setText(Double.toString(userDAO.queryByUserName(username).getBalance()));
+        if(preUserDAO.queryByUserName(username)!=null){
+            balance.setText(Double.toString(preUserDAO.queryByUserName(username).getBalance()));
+        }else{
+            balance.setText("0.00");
+        }
         if(phyDataDAO.queryByUserName(username)==null){
             weight.setText(null);
         }else{
@@ -212,6 +217,35 @@ public class userInfoController {
         time2 = userDAO.queryByUserName(username).getExerciseTime(null,null,null);
         totalTime.setText(Integer.toString(time1+time2)+" min");
 
+        ArrayList<LiveSession> nearLiveSeesion = preUserDAO.queryByUserName(username).showCalender();
+        user_types.add(user_info_myOrder_live1);
+        user_types.add(user_info_myOrder_live2);
+        user_types.add(user_info_myOrder_live3);
+        user_types.add(user_info_myOrder_live4);
+        user_courses.add(user_info_myOrder_type1);
+        user_courses.add(user_info_myOrder_type2);
+        user_courses.add(user_info_myOrder_type3);
+        user_courses.add(user_info_myOrder_type4);
+        user_trainer.add(user_info_myOrder_trainer1);
+        user_trainer.add(user_info_myOrder_trainer2);
+        user_trainer.add(user_info_myOrder_trainer3);
+        user_trainer.add(user_info_myOrder_trainer4);
+        user_time.add(user_info_myOrder_time1);
+        user_time.add(user_info_myOrder_time2);
+        user_time.add(user_info_myOrder_time3);
+        user_time.add(user_info_myOrder_time4);
+        for (int i = 0; i <= 3; i++) {
+            if (nearLiveSeesion.get(i) == null) {
+                break;
+            } else {
+                user_types.get(i).setText("live");
+                user_courses.get(i).setText(nearLiveSeesion.get(i).getSubject());
+                user_trainer.get(i).setText(nearLiveSeesion.get(i).getTrainerName());
+                user_time.get(i).setText(String.valueOf(nearLiveSeesion.get(i).getStartTime()));
+            }
+
+        }
+
     }
 
     public void userInfo_live_click(javafx.event.ActionEvent actionEvent) throws IOException {
@@ -221,7 +255,7 @@ public class userInfoController {
 
     public void userInfo_favorates_click(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) level.getScene().getWindow();
-        new APP().jump(stage, "user_history");
+        new APP().jump(stage, "user_favorites");
     }
 
     public void userInfo_modify_click(ActionEvent actionEvent) throws IOException {
@@ -253,8 +287,6 @@ public class userInfoController {
         new APP().jump(stage, "userInfo");
     }
 
-    public void userinfo_vip_click(ActionEvent actionEvent) {
-    }
 
     public void user_logout_click(MouseEvent mouseEvent) throws IOException {
         Stage stage = (Stage) level.getScene().getWindow();
@@ -267,8 +299,9 @@ public class userInfoController {
     }
 
     @FXML
-    void user_logout_click(ActionEvent event) {
-
+    void user_logout_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) level.getScene().getWindow();
+        new APP().jump(stage, "login");
     }
 
     @FXML
@@ -286,9 +319,11 @@ public class userInfoController {
             JOptionPane.showInternalMessageDialog(null, "Please check the input!","Please check the input", JOptionPane.ERROR_MESSAGE);
         }
         if (preUserDAO.queryByUserName(passValue.getValue())==null){
+            System.out.println("ififififif"+user_info_recharge_money.getText());
             userDAO.queryByUserName(passValue.getValue()).recharge(Double.parseDouble(user_info_recharge_money.getText()));
             JOptionPane.showInternalMessageDialog(null, "Recharge successfully","Recharge successfully", JOptionPane.INFORMATION_MESSAGE);
         }else{
+            System.out.println("elseelseelse"+user_info_recharge_money.getText());
             preUserDAO.queryByUserName(passValue.getValue()).recharge(Double.parseDouble(user_info_recharge_money.getText()));
             JOptionPane.showInternalMessageDialog(null, "Recharge successfully","Recharge successfully", JOptionPane.INFORMATION_MESSAGE);
         }

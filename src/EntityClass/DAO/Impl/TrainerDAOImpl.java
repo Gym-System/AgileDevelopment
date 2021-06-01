@@ -1,4 +1,4 @@
-package EntityClass.DAO.impl;
+package EntityClass.DAO.Impl;
 
 import EntityClass.DAO.ToolDAO;
 import EntityClass.DAO.TrainerDAO;
@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
+import static EntityClass.DAO.Impl.PersonDAOImpl.recordToCsv;
 
 /**
  * javadoc of TrainerDAOImpl class

@@ -8,12 +8,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-import EntityClass.DAO.impl.PreUserDAOImpl;
-import EntityClass.DAO.impl.TrainerDAOImpl;
-import EntityClass.DAO.impl.UserDAOImpl;
+import EntityClass.DAO.Impl.PreUserDAOImpl;
+import EntityClass.DAO.Impl.TrainerDAOImpl;
 import EntityClass.VO.LiveSession;
 import EntityClass.VO.Trainer;
-import EntityClass.VO.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -350,7 +348,7 @@ public class trainerCalendarController {
     }
 
     @FXML
-    void userInfo_info_click(ActionEvent event) throws IOException {
+    void userInfo_info_click(MouseEvent event) throws IOException {
         Stage stage = (Stage) book61.getScene().getWindow();
         new APP().jump(stage, "UserInfo");
     }
@@ -1372,14 +1370,12 @@ public class trainerCalendarController {
                 i = 0;
             } else if (liveSession.getStartTime().getHours() == 10) {
                 i = 1;
-            } else if (liveSession.getStartTime().getHours() == 12) {
-                i = 2;
             } else if (liveSession.getStartTime().getHours() == 14) {
-                i = 3;
+                i = 2;
             } else if (liveSession.getStartTime().getHours() == 16) {
-                i = 4;
+                i = 3;
             } else if (liveSession.getStartTime().getHours() == 18) {
-                i = 5;
+                i = 4;
             }
 
             int j = 0;

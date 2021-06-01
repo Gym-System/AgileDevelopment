@@ -1,36 +1,39 @@
-package EntityClass.DAO.impl;
+package EntityClass.DAO.Impl;
 
-import EntityClass.DAO.CourseDAO;
+import EntityClass.DAO.StaffDAO;
 import EntityClass.DAO.ToolDAO;
-import EntityClass.VO.Course;
+import EntityClass.VO.Staff;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
 
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
-import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
+import static EntityClass.DAO.Impl.PersonDAOImpl.recordToCsv;
 
 /**
- * javadoc of CourseDAOImpl class
+ * javadoc of PersonDAOImpl class
  * @author Kaiyi Zhao
  * @version 1.0
  * {@inheritDoc}
  */
-public class CourseDAOImpl implements ToolDAO, CourseDAO {
-    private Course course = null;
-    private final String fileName = "course.csv";
+public class StaffDAOImpl implements ToolDAO, StaffDAO {
+    private Staff staff = null;
+    private final String fileName = "staff.csv";
     private String filePath = PersonDAOImpl.fileFolder + fileName;
 
     /**
-     * This method insert a Course class into course.sv
-     * @param course A Course class
+     * This method insert a Staff class into staff.sv
+     * @param staff A Staff class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean insertCourse(Course course) {
-        if(!searchSame(course)) {
-            return insertInfo(course);
+    public Boolean insertStaff(Staff staff) {
+        if(!searchSame(staff)) {
+            return insertInfo(staff);
         }
         else {
             return false;
@@ -38,23 +41,23 @@ public class CourseDAOImpl implements ToolDAO, CourseDAO {
     }
 
     /**
-     * This method query a course record by courseId and delete the record
-     * @param course A Course class
+     * This method query a staff record by userName and delete the record
+     * @param staff A Staff class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean deleteCourse(Course course) {
-        return deleteInfo(course);
+    public Boolean deleteStaff(Staff staff) {
+        return deleteInfo(staff);
     }
 
     /**
-     * This method query a course record by courseId and change the gift value of the record
-     * @param courseId The ID of a course
-     * @param gift The new gift value
-     * @return A Course class after changing
+     * This method query a staff record by userName and change the password value of the record
+     * @param userName The userName of a staff
+     * @param password The password value of a staff
+     * @return A Staff class after changing
      */
     @Override
-    public Course changeCourseGift(long courseId, int gift) {
+    public Staff changeStaffPassword(String userName, String password) {
         File inFile = new File(filePath);
         try {
             String[] record = null;
@@ -63,29 +66,30 @@ public class CourseDAOImpl implements ToolDAO, CourseDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getRawRecord().split(",");
-                if(courseId == Long.parseLong(record[0])) {
-                    record[3] = String.valueOf(gift);
-                    course = new Course(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
-                            Integer.parseInt(record[3]), Double.parseDouble(record[4]));
+                if(userName.equals(record[0])) {
+                    record[1] = password;
+                    staff = new Staff(record[0], record[1], record[2], record[3], record[4],
+                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                            record[6]);
                 }
                 records.add(record);
             }
             csvReader.close();
             recordToCsv(records, filePath);
-        } catch (IOException ex) {
+        } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return course;
+        return staff;
     }
 
     /**
-     * This method query a course record by courseId and change the star value of the record
-     * @param courseId The ID of a course
-     * @param star The new star value
-     * @return A Course class after changing
+     * This method query a staff record by userName and change the email value of the record
+     * @param userName The userName of a staff
+     * @param email The email value of a staff
+     * @return A Staff class after changing
      */
     @Override
-    public Course changeCourseStar(long courseId, double star) {
+    public Staff changeStaffEmail(String userName, String email) {
         File inFile = new File(filePath);
         try {
             String[] record = null;
@@ -94,28 +98,61 @@ public class CourseDAOImpl implements ToolDAO, CourseDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getRawRecord().split(",");
-                if(courseId == Long.parseLong(record[0])) {
-                    record[4] = String.valueOf(star);
-                    course = new Course(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
-                            Integer.parseInt(record[3]), Double.parseDouble(record[4]));
+                if(userName.equals(record[0])) {
+                    record[2] = email;
+                    staff = new Staff(record[0], record[1], record[2], record[3], record[4],
+                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                            record[6]);
                 }
                 records.add(record);
             }
             csvReader.close();
             recordToCsv(records, filePath);
-        } catch (IOException ex) {
+        } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return course;
+        return staff;
     }
 
     /**
-     * This method query a course record by courseId
-     * @param courseId The ID of a course
-     * @return A Course class
+     * This method query a staff record by userName and change the telephone number of the record
+     * @param userName The userName of a staff
+     * @param teleNo The telephone number of a staff
+     * @return A Staff class after changing
      */
     @Override
-    public Course queryByCourseId(long courseId) {
+    public Staff changeStaffTeleNo(String userName, String teleNo) {
+        File inFile = new File(filePath);
+        try {
+            String[] record = null;
+            ArrayList<String[]> records = new ArrayList<>();
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getRawRecord().split(",");
+                if(userName.equals(record[0])) {
+                    record[4] = teleNo;
+                    staff = new Staff(record[0], record[1], record[2], record[3], record[4],
+                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                            record[6]);
+                }
+                records.add(record);
+            }
+            csvReader.close();
+            recordToCsv(records, filePath);
+        } catch (IOException | ParseException ex) {
+            ex.printStackTrace();
+        }
+        return staff;
+    }
+
+    /**
+     * This method query a staff record by user name
+     * @param userName The userName of a staff
+     * @return A Staff class
+     */
+    @Override
+    public Staff queryByUserName(String userName) {
         File inFile = new File(filePath);
         try {
             String[] record;
@@ -123,70 +160,43 @@ public class CourseDAOImpl implements ToolDAO, CourseDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
-                if(courseId == Long.parseLong(record[0])) {
-                    course = new Course(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
-                            Integer.parseInt(record[3]), Double.parseDouble(record[4]));
-                    break;
+                if(userName.equals(record[0])) {
+                    staff = new Staff(record[0], record[1], record[2], record[3], record[4],
+                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                            record[6]);
                 }
             }
             csvReader.close();
-        } catch (IOException ex) {
+        } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return course;
+        return staff;
     }
 
     /**
-     * This method query course records by subject
-     * @param subject The subject of course
-     * @return A array list of course class
+     * This method query all the staff records
+     * @return A array list of Staff class
      */
     @Override
-    public ArrayList<Course> queryBySubject(String subject) {
-        ArrayList<Course> courses = new ArrayList<>();
+    public ArrayList<Staff> queryAll() {
         File inFile = new File(filePath);
+        ArrayList<Staff> staffs = new ArrayList<>();
         try {
             String[] record;
             BufferedReader reader = new BufferedReader(new FileReader(inFile));
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
-                if(subject.equals(record[1])) {
-                    course = new Course(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
-                            Integer.parseInt(record[3]), Double.parseDouble(record[4]));
-                    courses.add(course);
-                }
+                staff = new Staff(record[0], record[1], record[2], record[3], record[4],
+                        new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                        record[6]);
+                staffs.add(staff);
             }
             csvReader.close();
-        } catch (IOException ex) {
+        } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return courses;
-    }
-
-    /**
-     * This method query all the course records
-     * @return A array list of course class
-     */
-    @Override
-    public ArrayList<Course> queryAll() {
-        ArrayList<Course> courses = new ArrayList<>();
-        File inFile = new File(filePath);
-        try {
-            String[] record;
-            BufferedReader reader = new BufferedReader(new FileReader(inFile));
-            CsvReader csvReader = new CsvReader(reader, ',');
-            while(csvReader.readRecord()){
-                record = csvReader.getValues();
-                course = new Course(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
-                        Integer.parseInt(record[3]), Double.parseDouble(record[4]));
-                courses.add(course);
-            }
-            csvReader.close();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        return courses;
+        return staffs;
     }
 
     /**
@@ -197,14 +207,14 @@ public class CourseDAOImpl implements ToolDAO, CourseDAO {
      */
     @Override
     public Boolean insertInfo(Object obj) {
-        if(obj instanceof Course) {
-            Course course = (Course) obj;
+        if(obj instanceof Staff) {
+            Staff staff = (Staff) obj;
             boolean flag = false;
             File outFile = new File(filePath);
             try {
                 BufferedWriter writer = new BufferedWriter(new FileWriter(outFile, true));
                 CsvWriter csvWriter = new CsvWriter(writer,',');
-                csvWriter.writeRecord(course.toStrArray());
+                csvWriter.writeRecord(staff.toStrArray());
                 csvWriter.close();
                 flag = true;
             } catch (IOException ex) {
@@ -220,13 +230,13 @@ public class CourseDAOImpl implements ToolDAO, CourseDAO {
     /**
      * This method query a object record and delete the record
      *
-     * @param obj A Object class
+     * @param object A Object class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean deleteInfo(Object obj) {
-        if(obj instanceof Course) {
-            Course course = (Course) obj;
+    public Boolean deleteInfo(Object object) {
+        if(object instanceof Staff) {
+            Staff staff = (Staff) object;
             Boolean flag = false;
             File inFile = new File(filePath);
             try {
@@ -236,7 +246,7 @@ public class CourseDAOImpl implements ToolDAO, CourseDAO {
                 CsvReader csvReader = new CsvReader(reader, ',');
                 while(csvReader.readRecord()){
                     record = csvReader.getRawRecord().split(",");
-                    if(course.getCourseId() == Long.parseLong(record[0])) {
+                    if(staff.getUserName().equals(record[0])) {
                         continue;
                     }
                     assert records != null;
@@ -258,12 +268,12 @@ public class CourseDAOImpl implements ToolDAO, CourseDAO {
     /**
      * This method search file for the same object
      *
-     * @param course A Course class
+     * @param staff A Object class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean searchSame(Object course) {
-        Course courseExist = null;
+    public Boolean searchSame(Object staff) {
+        Staff staffExist = null;
         File inFile = new File(filePath);
         try {
             String[] record;
@@ -271,14 +281,15 @@ public class CourseDAOImpl implements ToolDAO, CourseDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
-                courseExist = new Course(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
-                        Integer.parseInt(record[3]), Double.parseDouble(record[4]));
-                if(course.equals(courseExist)) {
+                staffExist = new Staff(record[0], record[1], record[2], record[3], record[4],
+                        new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                        record[6]);
+                if(staff.equals(staffExist)) {
                     return true;
                 }
             }
             csvReader.close();
-        } catch (IOException ex) {
+        } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
         return false;

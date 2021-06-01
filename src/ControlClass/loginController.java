@@ -4,11 +4,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import EntityClass.DAO.impl.ManagerDAOImpl;
-import EntityClass.DAO.impl.PreUserDAOImpl;
-import EntityClass.DAO.impl.TrainerDAOImpl;
-import EntityClass.DAO.impl.UserDAOImpl;
-import EntityClass.VO.Manager;
+import EntityClass.DAO.Impl.ManagerDAOImpl;
+import EntityClass.DAO.Impl.PreUserDAOImpl;
+import EntityClass.DAO.Impl.TrainerDAOImpl;
+import EntityClass.DAO.Impl.UserDAOImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;

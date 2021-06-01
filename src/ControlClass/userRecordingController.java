@@ -5,7 +5,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import EntityClass.DAO.impl.RecVideoDAOImpl;
+import EntityClass.DAO.Impl.RecVideoDAOImpl;
 import EntityClass.VO.RecVideo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -197,8 +197,9 @@ public class userRecordingController implements Initializable {
     }
 
     @FXML
-    void user_logout_click(MouseEvent event) {
-
+    void user_logout_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) user_history_hyper.getScene().getWindow();
+        new APP().jump(stage,"login");
     }
 
     @FXML

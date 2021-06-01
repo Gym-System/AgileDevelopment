@@ -1,10 +1,9 @@
 package ControlClass;
 
-import EntityClass.DAO.impl.LiveSessionDAOImpl;
-import EntityClass.DAO.impl.RecVideoDAOImpl;
-import EntityClass.DAO.impl.WatchedVideoDAOImpl;
+import EntityClass.DAO.Impl.LiveSessionDAOImpl;
+import EntityClass.DAO.Impl.RecVideoDAOImpl;
+import EntityClass.DAO.Impl.WatchedVideoDAOImpl;
 
-import EntityClass.VO.FavoriteVideo;
 import EntityClass.VO.LiveSession;
 import EntityClass.VO.RecVideo;
 import EntityClass.VO.WatchedVideo;

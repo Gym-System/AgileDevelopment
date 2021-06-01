@@ -1,8 +1,7 @@
-package EntityClass.DAO.impl;
+package EntityClass.DAO.Impl;
 
 import EntityClass.DAO.RecVideoDAO;
 import EntityClass.DAO.ToolDAO;
-import EntityClass.VO.Course;
 import EntityClass.VO.RecVideo;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
@@ -13,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
+import static EntityClass.DAO.Impl.PersonDAOImpl.recordToCsv;
 
 /**
  * javadoc of RecVideoDAOImpl class

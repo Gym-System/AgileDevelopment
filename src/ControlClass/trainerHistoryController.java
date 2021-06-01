@@ -1,7 +1,7 @@
 package ControlClass;
 
-import EntityClass.DAO.impl.LiveSessionDAOImpl;
-import EntityClass.DAO.impl.RecVideoDAOImpl;
+import EntityClass.DAO.Impl.LiveSessionDAOImpl;
+import EntityClass.DAO.Impl.RecVideoDAOImpl;
 import EntityClass.VO.Course;
 import EntityClass.VO.LiveSession;
 import EntityClass.VO.RecVideo;

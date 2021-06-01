@@ -1,8 +1,8 @@
-package EntityClass.DAO.impl;
+package EntityClass.DAO.Impl;
 
-import EntityClass.DAO.StaffDAO;
+import EntityClass.DAO.PreUserDAO;
 import EntityClass.DAO.ToolDAO;
-import EntityClass.VO.Staff;
+import EntityClass.VO.PremierUser;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
 
@@ -12,28 +12,28 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
+import static EntityClass.DAO.Impl.PersonDAOImpl.recordToCsv;
 
 /**
- * javadoc of PersonDAOImpl class
+ * javadoc of PreUserDAOImpl class
  * @author Kaiyi Zhao
  * @version 1.0
  * {@inheritDoc}
  */
-public class StaffDAOImpl implements ToolDAO, StaffDAO {
-    private Staff staff = null;
-    private final String fileName = "staff.csv";
+public class PreUserDAOImpl implements ToolDAO, PreUserDAO {
+    private PremierUser premierUser = null;
+    private final String fileName = "preUser.csv";
     private String filePath = PersonDAOImpl.fileFolder + fileName;
 
     /**
-     * This method insert a Staff class into staff.sv
-     * @param staff A Staff class
+     * This method insert a PremierUser class into premierUser.sv
+     * @param premierUser A PremierUser class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean insertStaff(Staff staff) {
-        if(!searchSame(staff)) {
-            return insertInfo(staff);
+    public Boolean insertPreUser(PremierUser premierUser) {
+        if(!searchSame(premierUser)) {
+            return insertInfo(premierUser);
         }
         else {
             return false;
@@ -41,26 +41,26 @@ public class StaffDAOImpl implements ToolDAO, StaffDAO {
     }
 
     /**
-     * This method query a staff record by userName and delete the record
-     * @param staff A Staff class
+     * This method query a premierUser record by userName and delete the record
+     * @param premierUser A PremierUser class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean deleteStaff(Staff staff) {
-        return deleteInfo(staff);
+    public Boolean deletePreUser(PremierUser premierUser) {
+        return deleteInfo(premierUser);
     }
 
     /**
-     * This method query a staff record by userName and change the password value of the record
-     * @param userName The userName of a staff
-     * @param password The password value of a staff
-     * @return A Staff class after changing
+     * This method query a premierUser record by userName and change the password value of the record
+     * @param userName The userName of a premierUser
+     * @param password The password value of a premierUser
+     * @return A PremierUser class after changing
      */
     @Override
-    public Staff changeStaffPassword(String userName, String password) {
+    public PremierUser changePreUserPassword(String userName, String password) {
         File inFile = new File(filePath);
         try {
-            String[] record = null;
+            String[] record;
             ArrayList<String[]> records = new ArrayList<>();
             BufferedReader reader = new BufferedReader(new FileReader(inFile));
             CsvReader csvReader = new CsvReader(reader, ',');
@@ -68,9 +68,9 @@ public class StaffDAOImpl implements ToolDAO, StaffDAO {
                 record = csvReader.getRawRecord().split(",");
                 if(userName.equals(record[0])) {
                     record[1] = password;
-                    staff = new Staff(record[0], record[1], record[2], record[3], record[4],
+                    premierUser = new PremierUser(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6]);
+                            Double.parseDouble(record[6]), Integer.parseInt(record[7]));
                 }
                 records.add(record);
             }
@@ -79,20 +79,19 @@ public class StaffDAOImpl implements ToolDAO, StaffDAO {
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return staff;
+        return premierUser;
     }
 
-    /**
-     * This method query a staff record by userName and change the email value of the record
-     * @param userName The userName of a staff
-     * @param email The email value of a staff
-     * @return A Staff class after changing
+    /** This method query a premierUser record by userName and change the email value of the record
+     * @param userName The userName of a premierUser
+     * @param email The email value of a premierUser
+     * @return A PremierUser class after changing
      */
     @Override
-    public Staff changeStaffEmail(String userName, String email) {
+    public PremierUser changePreUserEmail(String userName, String email) {
         File inFile = new File(filePath);
         try {
-            String[] record = null;
+            String[] record;
             ArrayList<String[]> records = new ArrayList<>();
             BufferedReader reader = new BufferedReader(new FileReader(inFile));
             CsvReader csvReader = new CsvReader(reader, ',');
@@ -100,9 +99,9 @@ public class StaffDAOImpl implements ToolDAO, StaffDAO {
                 record = csvReader.getRawRecord().split(",");
                 if(userName.equals(record[0])) {
                     record[2] = email;
-                    staff = new Staff(record[0], record[1], record[2], record[3], record[4],
+                    premierUser = new PremierUser(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6]);
+                            Double.parseDouble(record[6]), Integer.parseInt(record[7]));
                 }
                 records.add(record);
             }
@@ -111,20 +110,20 @@ public class StaffDAOImpl implements ToolDAO, StaffDAO {
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return staff;
+        return premierUser;
     }
 
     /**
-     * This method query a staff record by userName and change the telephone number of the record
-     * @param userName The userName of a staff
-     * @param teleNo The telephone number of a staff
-     * @return A Staff class after changing
+     * This method query a premierUser record by userName and change the telephone number of the record
+     * @param userName The userName of a premierUser
+     * @param teleNo The telephone number of a premierUser
+     * @return A PremierUser class after changing
      */
     @Override
-    public Staff changeStaffTeleNo(String userName, String teleNo) {
+    public PremierUser changePreUserTeleNo(String userName, String teleNo) {
         File inFile = new File(filePath);
         try {
-            String[] record = null;
+            String[] record;
             ArrayList<String[]> records = new ArrayList<>();
             BufferedReader reader = new BufferedReader(new FileReader(inFile));
             CsvReader csvReader = new CsvReader(reader, ',');
@@ -132,9 +131,9 @@ public class StaffDAOImpl implements ToolDAO, StaffDAO {
                 record = csvReader.getRawRecord().split(",");
                 if(userName.equals(record[0])) {
                     record[4] = teleNo;
-                    staff = new Staff(record[0], record[1], record[2], record[3], record[4],
+                    premierUser = new PremierUser(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6]);
+                            Double.parseDouble(record[6]), Integer.parseInt(record[7]));
                 }
                 records.add(record);
             }
@@ -143,16 +142,80 @@ public class StaffDAOImpl implements ToolDAO, StaffDAO {
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return staff;
+        return premierUser;
     }
 
     /**
-     * This method query a staff record by user name
-     * @param userName The userName of a staff
-     * @return A Staff class
+     * This method query a premierUser record by userName and change the telephone number of the record
+     * @param userName The userName of a premierUser
+     * @param balance The balance of a premierUser
+     * @return A PremierUser class after changing
      */
     @Override
-    public Staff queryByUserName(String userName) {
+    public PremierUser changePreUserBalance(String userName, Double balance) {
+        File inFile = new File(filePath);
+        try {
+            String[] record;
+            ArrayList<String[]> records = new ArrayList<>();
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getRawRecord().split(",");
+                if(userName.equals(record[0])) {
+                    record[6] = balance.toString();
+                    premierUser = new PremierUser(record[0], record[1], record[2], record[3], record[4],
+                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                            Double.parseDouble(record[6]), Integer.parseInt(record[7]));
+                }
+                records.add(record);
+            }
+            csvReader.close();
+            recordToCsv(records, filePath);
+        } catch (IOException | ParseException ex) {
+            ex.printStackTrace();
+        }
+        return premierUser;
+    }
+
+    /**
+     * This method query a premierUser record by userName and change the telephone number of the record
+     * @param userName The userName of a premierUser
+     * @param userType The userType of a premierUser
+     * @return A PremierUser class after changing
+     */
+    @Override
+    public PremierUser changePreUserType(String userName, int userType) {
+        File inFile = new File(filePath);
+        try {
+            String[] record;
+            ArrayList<String[]> records = new ArrayList<>();
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getRawRecord().split(",");
+                if(userName.equals(record[0])) {
+                    record[7] = String.valueOf(userType);
+                    premierUser = new PremierUser(record[0], record[1], record[2], record[3], record[4],
+                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                            Double.parseDouble(record[6]), Integer.parseInt(record[7]));
+                }
+                records.add(record);
+            }
+            csvReader.close();
+            recordToCsv(records, filePath);
+        } catch (IOException | ParseException ex) {
+            ex.printStackTrace();
+        }
+        return premierUser;
+    }
+
+    /**
+     * This method query a premierUser record by user name
+     * @param userName The userName of a person
+     * @return A PremierUser class
+     */
+    @Override
+    public PremierUser queryByUserName(String userName) {
         File inFile = new File(filePath);
         try {
             String[] record;
@@ -161,42 +224,42 @@ public class StaffDAOImpl implements ToolDAO, StaffDAO {
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
                 if(userName.equals(record[0])) {
-                    staff = new Staff(record[0], record[1], record[2], record[3], record[4],
+                    premierUser = new PremierUser(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6]);
+                            Double.parseDouble(record[6]), Integer.parseInt(record[7]));
                 }
             }
             csvReader.close();
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return staff;
+        return premierUser;
     }
 
     /**
-     * This method query all the staff records
-     * @return A array list of Staff class
+     * This method query all the premierUser records
+     * @return A array list of PremierUser class
      */
     @Override
-    public ArrayList<Staff> queryAll() {
+    public ArrayList<PremierUser> queryAll() {
         File inFile = new File(filePath);
-        ArrayList<Staff> staffs = new ArrayList<>();
+        ArrayList<PremierUser> premierUsers = new ArrayList<>();
         try {
             String[] record;
             BufferedReader reader = new BufferedReader(new FileReader(inFile));
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
-                staff = new Staff(record[0], record[1], record[2], record[3], record[4],
+                premierUser = new PremierUser(record[0], record[1], record[2], record[3], record[4],
                         new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                        record[6]);
-                staffs.add(staff);
+                        Double.parseDouble(record[6]), Integer.parseInt(record[7]));
+                premierUsers.add(premierUser);
             }
             csvReader.close();
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return staffs;
+        return premierUsers;
     }
 
     /**
@@ -207,14 +270,14 @@ public class StaffDAOImpl implements ToolDAO, StaffDAO {
      */
     @Override
     public Boolean insertInfo(Object obj) {
-        if(obj instanceof Staff) {
-            Staff staff = (Staff) obj;
+        if(obj instanceof PremierUser) {
+            PremierUser premierUser = (PremierUser) obj;
             boolean flag = false;
             File outFile = new File(filePath);
             try {
                 BufferedWriter writer = new BufferedWriter(new FileWriter(outFile, true));
                 CsvWriter csvWriter = new CsvWriter(writer,',');
-                csvWriter.writeRecord(staff.toStrArray());
+                csvWriter.writeRecord(premierUser.toStrArray());
                 csvWriter.close();
                 flag = true;
             } catch (IOException ex) {
@@ -235,8 +298,8 @@ public class StaffDAOImpl implements ToolDAO, StaffDAO {
      */
     @Override
     public Boolean deleteInfo(Object object) {
-        if(object instanceof Staff) {
-            Staff staff = (Staff) object;
+        if(object instanceof PremierUser) {
+            PremierUser premierUser = (PremierUser) object;
             Boolean flag = false;
             File inFile = new File(filePath);
             try {
@@ -246,7 +309,7 @@ public class StaffDAOImpl implements ToolDAO, StaffDAO {
                 CsvReader csvReader = new CsvReader(reader, ',');
                 while(csvReader.readRecord()){
                     record = csvReader.getRawRecord().split(",");
-                    if(staff.getUserName().equals(record[0])) {
+                    if(premierUser.getUserName().equals(record[0])) {
                         continue;
                     }
                     assert records != null;
@@ -268,12 +331,12 @@ public class StaffDAOImpl implements ToolDAO, StaffDAO {
     /**
      * This method search file for the same object
      *
-     * @param staff A Object class
+     * @param preUser A Object class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean searchSame(Object staff) {
-        Staff staffExist = null;
+    public Boolean searchSame(Object preUser) {
+        PremierUser premierUserExist = null;
         File inFile = new File(filePath);
         try {
             String[] record;
@@ -281,10 +344,10 @@ public class StaffDAOImpl implements ToolDAO, StaffDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
-                staffExist = new Staff(record[0], record[1], record[2], record[3], record[4],
+                premierUserExist = new PremierUser(record[0], record[1], record[2], record[3], record[4],
                         new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                        record[6]);
-                if(staff.equals(staffExist)) {
+                        Double.parseDouble(record[6]), Integer.parseInt(record[7]));
+                if(preUser.equals(premierUserExist)) {
                     return true;
                 }
             }

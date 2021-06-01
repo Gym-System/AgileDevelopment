@@ -1,36 +1,37 @@
-package EntityClass.DAO.impl;
+package EntityClass.DAO.Impl;
 
-import EntityClass.DAO.OrderDAO;
+import EntityClass.DAO.FavoriteVideoDAO;
 import EntityClass.DAO.ToolDAO;
-import EntityClass.VO.Order;
+import EntityClass.VO.FavoriteVideo;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
 
 import java.io.*;
 import java.util.ArrayList;
 
-import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
+import static EntityClass.DAO.Impl.PersonDAOImpl.recordToCsv;
 
 /**
- * javadoc of OrderDAOImpl class
+ * javadoc of FavoriteVideoImpl class
  * @author Kaiyi Zhao
  * @version 1.0
  * {@inheritDoc}
  */
-public class OrderDAOImpl implements ToolDAO, OrderDAO {
-    private Order order = null;
-    private final String fileName = "order.csv";
-    private String filePath = PersonDAOImpl.fileFolder + fileName;
+public class FavoriteVideoImpl implements ToolDAO, FavoriteVideoDAO {
+    private FavoriteVideo favoriteVideo = null;
+    public static final String fileFolder = "./src/Data/";
+    private final String fileName = "favoriteVideo.csv";
+    private String filePath = fileFolder + fileName;
 
     /**
-     * This method insert a Order class into order.sv
-     * @param order A Order class
+     * This method insert a FavoriteVideo class into favoriteVideo.sv
+     * @param favoriteVideo A FavoriteVideo class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean insertOrder(Order order) {
-        if(!searchSame(order)) {
-            return insertInfo(order);
+    public Boolean insertFavoriteVideo(FavoriteVideo favoriteVideo) {
+        if(!searchSame(favoriteVideo)) {
+            return insertInfo(favoriteVideo);
         }
         else {
             return false;
@@ -38,50 +39,24 @@ public class OrderDAOImpl implements ToolDAO, OrderDAO {
     }
 
     /**
-     * This method query a Oder record by courseId and delete the record
-     * @param order A Order class
+     * This method query a FavoriteVideo record by courseId and delete the record
+     * @param favoriteVideo A FavoriteVideo class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean deleteOrder(Order order) {
-        return deleteInfo(order);
+    public Boolean deleteFavoriteVideo(FavoriteVideo favoriteVideo) {
+        return deleteInfo(favoriteVideo);
     }
 
     /**
-     * This method query a Order record by courseId
-     * @param courseId The ID of a Oder
-     * @return A Order class
+     * This method query a FavoriteVideo record by userName
+     * @param userName The userName in a record
+     * @return A array list of FavoriteVideo class
      */
     @Override
-    public Order queryByCourseId(long courseId) {
+    public ArrayList<FavoriteVideo> queryByUserName(String userName) {
         File inFile = new File(filePath);
-        try {
-            String[] record;
-            BufferedReader reader = new BufferedReader(new FileReader(inFile));
-            CsvReader csvReader = new CsvReader(reader, ',');
-            while(csvReader.readRecord()){
-                record = csvReader.getValues();
-                if(courseId == Long.parseLong(record[0])) {
-                    order = new Order(Long.parseLong(record[0]), record[1], Double.parseDouble(record[3]));
-                    break;
-                }
-            }
-            csvReader.close();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        return order;
-    }
-
-    /**
-     * This method query order records by user name
-     * @param userName The name of the user who make the order
-     * @return A array list of Order class
-     */
-    @Override
-    public ArrayList<Order> queryByUserName(String userName) {
-        ArrayList<Order> orders = new ArrayList<>();
-        File inFile = new File(filePath);
+        ArrayList<FavoriteVideo> favoriteVideos = new ArrayList<>();
         try {
             String[] record;
             BufferedReader reader = new BufferedReader(new FileReader(inFile));
@@ -89,15 +64,15 @@ public class OrderDAOImpl implements ToolDAO, OrderDAO {
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
                 if(userName.equals(record[1])) {
-                    order = new Order(Long.parseLong(record[0]), record[1], Double.parseDouble(record[2]));
-                    orders.add(order);
+                    favoriteVideo = new FavoriteVideo(Long.parseLong(record[0]), record[1]);
+                    favoriteVideos.add(favoriteVideo);
                 }
             }
             csvReader.close();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        return orders;
+        return favoriteVideos;
     }
 
     /**
@@ -108,14 +83,14 @@ public class OrderDAOImpl implements ToolDAO, OrderDAO {
      */
     @Override
     public Boolean insertInfo(Object obj) {
-        if(obj instanceof Order) {
-            Order order = (Order) obj;
+        if(obj instanceof FavoriteVideo) {
+            FavoriteVideo favoriteVideo = (FavoriteVideo) obj;
             boolean flag = false;
             File outFile = new File(filePath);
             try {
                 BufferedWriter writer = new BufferedWriter(new FileWriter(outFile, true));
                 CsvWriter csvWriter = new CsvWriter(writer,',');
-                csvWriter.writeRecord(order.toStrArray());
+                csvWriter.writeRecord(favoriteVideo.toStrArray());
                 csvWriter.close();
                 flag = true;
             } catch (IOException ex) {
@@ -136,8 +111,8 @@ public class OrderDAOImpl implements ToolDAO, OrderDAO {
      */
     @Override
     public Boolean deleteInfo(Object object) {
-        if(object instanceof Order) {
-            Order order = (Order) object;
+        if(object instanceof FavoriteVideo) {
+            FavoriteVideo favoriteVideo = (FavoriteVideo) object;
             Boolean flag = false;
             File inFile = new File(filePath);
             try {
@@ -147,7 +122,7 @@ public class OrderDAOImpl implements ToolDAO, OrderDAO {
                 CsvReader csvReader = new CsvReader(reader, ',');
                 while(csvReader.readRecord()){
                     record = csvReader.getRawRecord().split(",");
-                    if(order.getCourseId() == Long.parseLong(record[0])) {
+                    if(favoriteVideo.getCourseId() == Long.parseLong(record[0])) {
                         continue;
                     }
                     assert records != null;
@@ -168,12 +143,13 @@ public class OrderDAOImpl implements ToolDAO, OrderDAO {
 
     /**
      * This method search file for the same object
-     * @param order A Object class
+     *
+     * @param favoriteVideo A FavoriteVideo class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean searchSame(Object order) {
-        Order orderExist = null;
+    public Boolean searchSame(Object favoriteVideo) {
+        FavoriteVideo favoriteVideoExist = null;
         File inFile = new File(filePath);
         try {
             String[] record;
@@ -181,8 +157,8 @@ public class OrderDAOImpl implements ToolDAO, OrderDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
-                orderExist = new Order(Long.parseLong(record[0]), record[1], Double.parseDouble(record[2]));;
-                if(order.equals(orderExist)) {
+                favoriteVideoExist = new FavoriteVideo(Long.parseLong(record[0]), record[1]);
+                if(favoriteVideo.equals(favoriteVideoExist)) {
                     return true;
                 }
             }

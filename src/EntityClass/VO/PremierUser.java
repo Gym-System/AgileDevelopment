@@ -1,9 +1,9 @@
 package EntityClass.VO;
 
-import EntityClass.DAO.impl.OrderDAOImpl;
-import EntityClass.DAO.impl.PreUserDAOImpl;
-import EntityClass.DAO.impl.WatchedVideoDAOImpl;
-import EntityClass.DAO.impl.LiveSessionDAOImpl;
+import EntityClass.DAO.Impl.OrderDAOImpl;
+import EntityClass.DAO.Impl.PreUserDAOImpl;
+import EntityClass.DAO.Impl.WatchedVideoDAOImpl;
+import EntityClass.DAO.Impl.LiveSessionDAOImpl;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -86,10 +86,7 @@ public class PremierUser extends User {
      * @return The discount price according to the userType
      */
     public double calDiscount(double price) {
-        calUserType();
-        double discount = price * (1 - userType /10);
-
-        return discount;
+        return price * (1 - getUserType() /10.0);
     }
 
     /**
@@ -103,14 +100,13 @@ public class PremierUser extends User {
             expend += order.getCost();
         }
 
-        if (expend < 50000) {
-            type = (int) (expend/10000);
-            setUserType(type);
+        if (expend < 5000) {
+            type = (int) (expend/1000);
         }
         else {
             type = 5;
-            setUserType(type);
         }
+        setUserType(type);
         new PreUserDAOImpl().changePreUserType(super.getUserName(), type);
     }
 
@@ -132,17 +128,20 @@ public class PremierUser extends User {
      * @return A boolean value indicating whether the operation succeed
      */
     public boolean bookLiveSession(Trainer trainer, Date startTime) {
-        boolean flag = false;
+        calUserType();
 
-        if(getBalance() > calDiscount(trainer.getPrice())) {
+        boolean flag = false;
+        double cost = calDiscount(trainer.getPrice());
+        if(getBalance() > cost) {
             flag = true;
-            setBalance(getBalance() - calDiscount(trainer.getPrice()));
+            setBalance(getBalance() - cost);
+            new PreUserDAOImpl().changePreUserBalance(super.getUserName(), getBalance());
 
             LiveSession liveSession = new LiveSession(null, 2, startTime, trainer.getUserName(), getUserName());
             LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
             liveSessionDAO.insertLiveSession(liveSession);
 
-            Order order = new Order(liveSession.getCourseId(), super.getUserName(), calDiscount(trainer.getPrice()));
+            Order order = new Order(liveSession.getCourseId(), super.getUserName(), cost);
             new OrderDAOImpl().insertOrder(order);
         }
 
@@ -157,7 +156,10 @@ public class PremierUser extends User {
         LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
         liveSessionDAO.deleteLiveSession(liveSession);
 
-        new OrderDAOImpl().deleteOrder(new Order(liveSession.getCourseId(), null, 0.0));
+        setBalance(getBalance() + new OrderDAOImpl().queryByCourseId(liveSession.getCourseId()).getCost());
+        new PreUserDAOImpl().changePreUserBalance(super.getUserName(), getBalance());
+
+        new OrderDAOImpl().deleteOrder(new Order(liveSession.getCourseId()));
     }
 
     /**
@@ -196,7 +198,7 @@ public class PremierUser extends User {
     @Override
     public boolean recharge(double money) {
         setBalance(getBalance() + money);
-        new PreUserDAOImpl().changePreUserBalance(super.getUserName(),getBalance() + money);
+        new PreUserDAOImpl().changePreUserBalance(super.getUserName(),getBalance());
 
         return true;
     }

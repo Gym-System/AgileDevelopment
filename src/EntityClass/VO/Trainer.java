@@ -1,7 +1,7 @@
 package EntityClass.VO;
 
-import EntityClass.DAO.impl.LiveSessionDAOImpl;
-import EntityClass.DAO.impl.RecVideoDAOImpl;
+import EntityClass.DAO.Impl.LiveSessionDAOImpl;
+import EntityClass.DAO.Impl.RecVideoDAOImpl;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -168,8 +168,16 @@ public class Trainer extends Staff {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         calendar.add(Calendar.DATE, 1);
-        Date startTime = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
-                new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));
+        String time = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime());
+        String[] strings = time.split(" ");
+        time = "";
+        strings[3] = "00:00:00";
+        for (int i = 0; i < strings.length; i++) {
+            time += strings[i] + " ";
+        }
+        System.out.println(time);
+        Date startTime = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(time);
+
         calendar.add(Calendar.DATE, 7);
         Date endTime = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(
                 new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).format(calendar.getTime()));

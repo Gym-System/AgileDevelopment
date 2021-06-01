@@ -1,4 +1,4 @@
-package EntityClass.DAO.impl;
+package EntityClass.DAO.Impl;
 
 import EntityClass.DAO.PersonDAO;
 import EntityClass.DAO.ToolDAO;

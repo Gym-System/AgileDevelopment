@@ -1,11 +1,11 @@
-package EntityClass.DAO.impl;
+package EntityClass.DAO.Impl;
 
 import EntityClass.DAO.ToolDAO;
 import EntityClass.DAO.WatchedVideoDAO;
 import EntityClass.VO.WatchedVideo;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
-import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
+import static EntityClass.DAO.Impl.PersonDAOImpl.recordToCsv;
 
 import java.io.*;
 import java.util.ArrayList;

@@ -1,8 +1,7 @@
 package ControlClass;
 
-import EntityClass.DAO.impl.RecVideoDAOImpl;
+import EntityClass.DAO.Impl.RecVideoDAOImpl;
 import EntityClass.VO.RecVideo;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
