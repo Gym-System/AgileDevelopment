@@ -1,8 +1,10 @@
 package EntityClass.VO;
 
+import EntityClass.DAO.Impl.RegulationDAOImpl;
 import EntityClass.DAO.Impl.TrainerDAOImpl;
 import EntityClass.DAO.Impl.UserDAOImpl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
@@ -93,6 +95,16 @@ public class Manager extends Staff {
     public Trainer changeTrainerSalary(String userName, double salary) {
         TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
         return trainerDAO.changeTrainerSalary(userName, salary);
+    }
+
+    /**
+     * The method change regulation from regulation.csv
+     * @param regulations A array list of regulation
+     */
+    public void changeRegulation(ArrayList<Regulation> regulations) {
+        for(Regulation regulation:regulations) {
+            new RegulationDAOImpl().insertRegulation(regulation);
+        }
     }
 
     /**
