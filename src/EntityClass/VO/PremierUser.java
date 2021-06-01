@@ -83,7 +83,9 @@ public class PremierUser extends User {
      * @return The discount price according to the userType
      */
     public double calDiscount(double price) {
-        return price * (1 - getUserType() /10.0);
+        Regulation regulation = new RegulationDAOImpl().queryByUserType(getUserType());
+
+        return price * (100 - regulation.getPresentOff()) / 100;
     }
 
     /**
@@ -103,6 +105,14 @@ public class PremierUser extends User {
         else {
             type = 5;
         }
+
+        ArrayList<Regulation> regulations = new RegulationDAOImpl().queryAll();
+        for(Regulation regulation:regulations) {
+            if(expend >= regulation.getStartMoney() && expend < regulation.getEndMoney()) {
+                type = regulation.getUserType();
+            }
+        }
+
         setUserType(type);
         new PreUserDAOImpl().changePreUserType(super.getUserName(), type);
     }

@@ -161,7 +161,7 @@ public class manageTrainerController implements Initializable {
         if (add_name_mt.getText().equals("") || add_email_mt.getText().equals("") || add_password_mt.getText().equals("")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("WARN");
-            alert.setContentText("You can only choose one subject");
+            alert.setContentText("You can not leave one term blank");
             alert.setHeaderText("WARN");
             alert.showAndWait();
         } else {

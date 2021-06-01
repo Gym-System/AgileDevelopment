@@ -307,7 +307,7 @@ public class trainerPortraitController {
         assert trainer_portrait_history != null : "fx:id=\"trainer_portrait_history\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         assert user_recEnter_hyper611 != null : "fx:id=\"user_recEnter_hyper611\" was not injected: check your FXML file 'trainer_portrait.fxml'.";
         TrainerDAOImpl TrainerDAO = new TrainerDAOImpl();
-        trainer_portrait_name.setText(TrainerDAO.queryByUserName("kaiyi").getUserName());
+        trainer_portrait_name.setText(TrainerDAO.queryByUserName(passValue.getValue()).getUserName());
         passValue.setTrainerName(trainer_portrait_name.getText());
         String [] str = new String [5];
         str=TrainerDAO.queryByUserName(passValue.getValue()).getLabel();
