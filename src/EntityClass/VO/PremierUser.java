@@ -1,9 +1,6 @@
 package EntityClass.VO;
 
-import EntityClass.DAO.Impl.OrderDAOImpl;
-import EntityClass.DAO.Impl.PreUserDAOImpl;
-import EntityClass.DAO.Impl.WatchedVideoDAOImpl;
-import EntityClass.DAO.Impl.LiveSessionDAOImpl;
+import EntityClass.DAO.Impl.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -201,6 +198,32 @@ public class PremierUser extends User {
         new PreUserDAOImpl().changePreUserBalance(super.getUserName(),getBalance());
 
         return true;
+    }
+
+    /**
+     * User can send gift to a particular recorded video of a trainer
+     *
+     * @param amount   The amount of gift user would like to send
+     * @param courseId The ID of a course
+     */
+    @Override
+    public Boolean sendGift2RecVideo(int amount, long courseId) {
+        double cost = amount * 10;
+        if(getBalance() >= cost) {
+            RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
+            RecVideo recVideo = recVideoDAO.queryByCourseId(courseId);
+            int gift = recVideo.getGift() + amount;
+            recVideoDAO.changeRecVideoGift(courseId, gift);
+
+            PreUserDAOImpl preUserDAO = new PreUserDAOImpl();
+            setBalance(getBalance() - cost);
+            preUserDAO.changePreUserBalance(getUserName(), getBalance());
+
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     /**
