@@ -104,30 +104,10 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TextField fx:id="user_find_text" layoutX="60.0" layoutY="53.0" prefHeight="56.0" prefWidth="332.0" />
-                  <Button fx:id="user_find_button" layoutX="392.0" layoutY="53.0" mnemonicParsing="false" onMouseClicked="#click_find" prefHeight="56.0" prefWidth="89.0" text="Find">
-                     <font>
-                        <Font name="Comic Sans MS Bold" size="18.0" />
-                     </font></Button>
                   <Pagination fx:id="turn_page" layoutX="192.0" layoutY="601.0" onMouseClicked="#click_turn_page" pageCount="100" prefHeight="100.0" prefWidth="660.0">
                      <cursor>
                         <Cursor fx:constant="NW_RESIZE" />
                      </cursor></Pagination>
-                  <CheckBox fx:id="user_yoga_check" layoutX="543.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#click_check_yoga" text="Yoga">
-                     <font>
-                        <Font name="Comic Sans MS Bold" size="18.0" />
-                     </font>
-                  </CheckBox>
-                  <CheckBox fx:id="user_strength_check" layoutX="771.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#click_check_strength" text="Strength">
-                     <font>
-                        <Font name="Comic Sans MS Bold" size="18.0" />
-                     </font>
-                  </CheckBox>
-                  <CheckBox fx:id="user_hitt_check" layoutX="658.0" layoutY="69.0" mnemonicParsing="false" onMouseClicked="#click_check_hitt" text="Hitt">
-                     <font>
-                        <Font name="Comic Sans MS Bold" size="18.0" />
-                     </font>
-                  </CheckBox>
                   <ToolBar fx:id="toolbar1" layoutX="60.0" layoutY="147.0" prefHeight="44.0" prefWidth="856.0">
                     <items>
                       <Button fx:id="trainer_enterLive_button1" mnemonicParsing="false" onMouseClicked="#trainer_startLive_click1" text="Start My Live Broadcast" textFill="#4ebfbe" visible="false">

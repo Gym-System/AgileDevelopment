@@ -240,7 +240,13 @@ public class userInfoController {
             if(nearLiveSeesion.isEmpty()){
 
             }else{
-                for (int i = 0; i < nearLiveSeesion.size(); i++) {
+                int num = 0;
+                if (nearLiveSeesion.size()>=4){
+                    num=4;
+                }else{
+                    num=nearLiveSeesion.size();
+                }
+                for (int i = 0; i < num; i++) {
                     user_types.get(i).setText("live");
                     user_courses.get(i).setText(nearLiveSeesion.get(i).getSubject());
                     user_trainer.get(i).setText(nearLiveSeesion.get(i).getTrainerName());
