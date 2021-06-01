@@ -84,8 +84,13 @@ public class PremierUser extends User {
      */
     public double calDiscount(double price) {
         Regulation regulation = new RegulationDAOImpl().queryByUserType(getUserType());
+        if (regulation != null) {
+            return price * (100 - regulation.getPresentOff()) / 100;
+        }
+        else {
+            return price;
+        }
 
-        return price * (100 - regulation.getPresentOff()) / 100;
     }
 
     /**
@@ -150,6 +155,8 @@ public class PremierUser extends User {
 
             Order order = new Order(liveSession.getCourseId(), super.getUserName(), cost);
             new OrderDAOImpl().insertOrder(order);
+
+            watchLiveSession(liveSession.getCourseId());
         }
 
         return flag;
@@ -167,6 +174,7 @@ public class PremierUser extends User {
         new PreUserDAOImpl().changePreUserBalance(super.getUserName(), getBalance());
 
         new OrderDAOImpl().deleteOrder(new Order(liveSession.getCourseId()));
+        new WatchedVideoDAOImpl().deleteHistoryData(new WatchedVideo(getUserName(), liveSession.getCourseId()));
     }
 
     /**

@@ -121,7 +121,7 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="Gender:" GridPane.rowIndex="6">
+                        <Label text="Price:" GridPane.rowIndex="6">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
@@ -136,7 +136,7 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label fx:id="trainer_gender" text="M" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <Label fx:id="trainer_price" text="M" GridPane.columnIndex="1" GridPane.rowIndex="6">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>

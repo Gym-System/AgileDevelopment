@@ -19,6 +19,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+
 
 public class trainerInfoController {
 
@@ -78,7 +80,7 @@ public class trainerInfoController {
     private Hyperlink trainerInfo_modify;
 
     @FXML
-    private Label trainer_gender;
+    private Label trainer_price;
 
     @FXML
     private Label trainer_star4;
@@ -154,7 +156,9 @@ public class trainerInfoController {
     }
 
     @FXML
-    void trainerInfo_modify_click(ActionEvent event) {
+    void trainerInfo_modify_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) trainerInfo_label.getScene().getWindow();
+        new APP().jump(stage, "trainerEditInfo");
 
     }
 
@@ -182,8 +186,13 @@ public class trainerInfoController {
         System.out.println("Save successfully");
         String trainername = passValue.getValue();
         TrainerDAOImpl TrainerDAO = new TrainerDAOImpl();
-        TrainerDAO.changeTrainerLabel(trainername,trainerInfo_label.getText());
-        TrainerDAO.changeTrainerCV(trainername,trainerInfo_cv.getText());
+        if(!trainerInfo_label.equals("")){
+            TrainerDAO.changeTrainerLabel(trainername,trainerInfo_label.getText());
+        }
+        if(!trainerInfo_cv.equals("")){
+            TrainerDAO.changeTrainerCV(trainername,trainerInfo_cv.getText());
+        }
+        JOptionPane.showInternalMessageDialog(null, "Change successfully","Change successfully!", JOptionPane.INFORMATION_MESSAGE);
 
     }
 
@@ -203,7 +212,7 @@ public class trainerInfoController {
         assert trainerInfo_calendar != null : "fx:id=\"trainerInfo_calendar\" was not injected: check your FXML file 'TrainerInfo.fxml'.";
         assert trainerInfo_history != null : "fx:id=\"trainerInfo_history\" was not injected: check your FXML file 'TrainerInfo.fxml'.";
         assert trainerInfo_modify != null : "fx:id=\"trainerInfo_modify\" was not injected: check your FXML file 'TrainerInfo.fxml'.";
-        assert trainer_gender != null : "fx:id=\"trainer_gender\" was not injected: check your FXML file 'TrainerInfo.fxml'.";
+        assert trainer_price != null : "fx:id=\"trainer_gender\" was not injected: check your FXML file 'TrainerInfo.fxml'.";
         assert trainer_star4 != null : "fx:id=\"trainer_star4\" was not injected: check your FXML file 'TrainerInfo.fxml'.";
         assert trainer_email != null : "fx:id=\"trainer_email\" was not injected: check your FXML file 'TrainerInfo.fxml'.";
         assert trainerInfo_portrait != null : "fx:id=\"trainerInfo_portrait\" was not injected: check your FXML file 'TrainerInfo.fxml'.";
@@ -222,7 +231,7 @@ public class trainerInfoController {
         TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
         PhyDataDAOImpl phyDataDAO = new PhyDataDAOImpl();
         trainer_name.setText(trainerDAO.queryByUserName(trainername).getUserName());
-        trainer_gender.setText(trainerDAO.queryByUserName(trainername).getGender());
+        trainer_price.setText(Double.toString(trainerDAO.queryByUserName(trainername).getPrice()));
         trainer_tel.setText(trainerDAO.queryByUserName(trainername).getTelNo());
         trainer_major.setText(phyDataDAO.queryByUserName(trainername).getInterest());
         trainer_email.setText(trainerDAO.queryByUserName(trainername).getEmail());
@@ -230,24 +239,27 @@ public class trainerInfoController {
         trainer_experience.setText(Integer.toString(phyDataDAO.queryByUserName(trainername).getExperience()));
         int i = 1;
         RecVideoDAOImpl RecVideoDAO = new RecVideoDAOImpl();
-        ArrayList<RecVideo> rec = RecVideoDAO.queryByTrainerName(passValue.getValue());
-        trainer_courses.add(trainer_course1);
-        trainer_courses.add(trainer_course2);
-        trainer_courses.add(trainer_course3);
-        trainer_courses.add(trainer_course4);
-        trainer_stars.add(trainer_star1);
-        trainer_stars.add(trainer_star2);
-        trainer_stars.add(trainer_star3);
-        trainer_stars.add(trainer_star4);
-        for (i = 0; i <= 3; i++) {
-            if (rec.get(i) == null) {
-                break;
-            } else {
-                trainer_courses.get(i).setText(rec.get(i).getSubject());
-                trainer_stars.get(i).setText(Integer.toString(rec.get(i).getViewTime()));
-            }
+        if (RecVideoDAO.queryByTrainerName(passValue.getValue()).isEmpty()) {
 
+        } else {
+            ArrayList<RecVideo> rec = RecVideoDAO.queryByTrainerName(passValue.getValue());
+            trainer_courses.add(trainer_course1);
+            trainer_courses.add(trainer_course2);
+            trainer_courses.add(trainer_course3);
+            trainer_courses.add(trainer_course4);
+            trainer_stars.add(trainer_star1);
+            trainer_stars.add(trainer_star2);
+            trainer_stars.add(trainer_star3);
+            trainer_stars.add(trainer_star4);
+            for (i = 0; i <= 3; i++) {
+                if (rec.get(i) == null) {
+                    break;
+                } else {
+                    trainer_courses.get(i).setText(rec.get(i).getSubject());
+                    trainer_stars.get(i).setText(Integer.toString(rec.get(i).getViewTime()));
+                }
+
+            }
         }
     }
-
 }

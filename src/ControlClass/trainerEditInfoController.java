@@ -1,8 +1,11 @@
 package ControlClass;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import EntityClass.DAO.Impl.PhyDataDAOImpl;
+import EntityClass.DAO.Impl.TrainerDAOImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,6 +14,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
+import javax.swing.*;
 
 public class trainerEditInfoController {
 
@@ -63,7 +70,7 @@ public class trainerEditInfoController {
     private Hyperlink trainerInfo_modify;
 
     @FXML
-    private TextField trainer_gender;
+    private TextField trainer_price;
 
     @FXML
     private Label trainer_star4;
@@ -102,38 +109,63 @@ public class trainerEditInfoController {
     private Label trainer_course2;
 
     @FXML
-    void trainerInfo_portrait_click(ActionEvent event) {
-
+    void trainerInfo_portrait_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) trainerInfo_label.getScene().getWindow();
+        new APP().jump(stage, "trainer_portrait");
     }
 
     @FXML
-    void trainerInfo_upload_click(ActionEvent event) {
-
+    void trainerInfo_upload_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) trainerInfo_label.getScene().getWindow();
+        new APP().jump(stage, "trainer_recording");
     }
 
     @FXML
-    void trainerInfo_live_click(ActionEvent event) {
-
+    void trainerInfo_live_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) trainerInfo_label.getScene().getWindow();
+        new APP().jump(stage, "trainer_live");
     }
 
     @FXML
-    void trainerInfo_calendar_click(ActionEvent event) {
-
+    void trainerInfo_calendar_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) trainerInfo_label.getScene().getWindow();
+        new APP().jump(stage, "tra_trainer_calendar");
     }
 
     @FXML
-    void trainerInfo_history_click(ActionEvent event) {
-
+    void trainerInfo_history_click(ActionEvent event) throws IOException {
+        Stage stage = (Stage) trainerInfo_label.getScene().getWindow();
+        new APP().jump(stage, "trainer_history");
     }
 
     @FXML
-    void trainerInfo_info_click(ActionEvent event) {
-
+    void trainerInfo_info_click(MouseEvent event) throws IOException {
+        Stage stage = (Stage) trainerInfo_label.getScene().getWindow();
+        new APP().jump(stage, "TrainerInfo");
     }
 
     @FXML
-    void trainerInfo_modify_click(ActionEvent event) {
-
+    void trainerInfo_modify_click(ActionEvent event) throws IOException {
+        TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
+        if (!trainer_price.getText().equals("")){
+            trainerDAO.changeTrainerPrice(passValue.getValue(),Double.parseDouble(trainer_price.getText()));
+        }
+        PhyDataDAOImpl phyDataDAO = new PhyDataDAOImpl();
+        if(!trainer_major.getText().equals("")){
+            phyDataDAO.changePhyDataInterest(passValue.getValue(),trainer_major.getText());
+        }
+        if(!trainer_tel.getText().equals("")){
+            trainerDAO.changeTrainerTeleNo(passValue.getValue(),trainer_tel.getText());
+        }
+        if(!trainer_email.getText().equals("")){
+            trainerDAO.changeTrainerEmail(passValue.getValue(),trainer_email.getText());
+        }
+        if(!trainer_experience.getText().equals("")){
+            phyDataDAO.changePhyDataExperience(passValue.getValue(),Integer.parseInt(trainer_experience.getText()));
+        }
+        JOptionPane.showInternalMessageDialog(null, "Change successfully","Change successfully!", JOptionPane.INFORMATION_MESSAGE);
+        Stage stage = (Stage) trainerInfo_label.getScene().getWindow();
+        new APP().jump(stage, "TrainerInfo");
     }
 
     @FXML
@@ -153,7 +185,16 @@ public class trainerEditInfoController {
 
     @FXML
     void Info_save(ActionEvent event) {
-
+        System.out.println("Save successfully");
+        String trainername = passValue.getValue();
+        TrainerDAOImpl TrainerDAO = new TrainerDAOImpl();
+        if(!trainerInfo_label.equals("")){
+            TrainerDAO.changeTrainerLabel(trainername,trainerInfo_label.getText());
+        }
+        if(!trainerInfo_cv.equals("")){
+            TrainerDAO.changeTrainerCV(trainername,trainerInfo_cv.getText());
+        }
+        JOptionPane.showInternalMessageDialog(null, "Change successfully","Change successfully!", JOptionPane.INFORMATION_MESSAGE);
     }
 
     @FXML
@@ -172,7 +213,7 @@ public class trainerEditInfoController {
         assert trainerInfo_calendar != null : "fx:id=\"trainerInfo_calendar\" was not injected: check your FXML file 'TrainerEditInfo.fxml'.";
         assert trainerInfo_history != null : "fx:id=\"trainerInfo_history\" was not injected: check your FXML file 'TrainerEditInfo.fxml'.";
         assert trainerInfo_modify != null : "fx:id=\"trainerInfo_modify\" was not injected: check your FXML file 'TrainerEditInfo.fxml'.";
-        assert trainer_gender != null : "fx:id=\"trainer_gender\" was not injected: check your FXML file 'TrainerEditInfo.fxml'.";
+        assert trainer_price != null : "fx:id=\"trainer_gender\" was not injected: check your FXML file 'TrainerEditInfo.fxml'.";
         assert trainer_star4 != null : "fx:id=\"trainer_star4\" was not injected: check your FXML file 'TrainerEditInfo.fxml'.";
         assert trainer_email != null : "fx:id=\"trainer_email\" was not injected: check your FXML file 'TrainerEditInfo.fxml'.";
         assert trainerInfo_portrait != null : "fx:id=\"trainerInfo_portrait\" was not injected: check your FXML file 'TrainerEditInfo.fxml'.";
