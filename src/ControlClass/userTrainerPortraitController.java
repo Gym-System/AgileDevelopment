@@ -4,8 +4,8 @@ package ControlClass;
         import java.net.URL;
         import java.util.ResourceBundle;
 
-        import EntityClass.DAO.impl.PreUserDAOImpl;
-        import EntityClass.DAO.impl.TrainerDAOImpl;
+        import EntityClass.DAO.Impl.PreUserDAOImpl;
+        import EntityClass.DAO.Impl.TrainerDAOImpl;
         import javafx.event.ActionEvent;
         import javafx.fxml.FXML;
         import javafx.scene.control.Hyperlink;

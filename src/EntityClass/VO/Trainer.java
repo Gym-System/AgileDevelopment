@@ -1,7 +1,7 @@
 package EntityClass.VO;
 
-import EntityClass.DAO.impl.LiveSessionDAOImpl;
-import EntityClass.DAO.impl.RecVideoDAOImpl;
+import EntityClass.DAO.Impl.LiveSessionDAOImpl;
+import EntityClass.DAO.Impl.RecVideoDAOImpl;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

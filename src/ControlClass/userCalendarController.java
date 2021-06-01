@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-import EntityClass.DAO.impl.PreUserDAOImpl;
+import EntityClass.DAO.Impl.PreUserDAOImpl;
 import EntityClass.VO.LiveSession;
 import EntityClass.VO.PremierUser;
 import javafx.event.ActionEvent;

@@ -1,7 +1,7 @@
 package ControlClass;
 
-import EntityClass.DAO.impl.LiveSessionDAOImpl;
-import EntityClass.DAO.impl.TrainerDAOImpl;
+import EntityClass.DAO.Impl.LiveSessionDAOImpl;
+import EntityClass.DAO.Impl.TrainerDAOImpl;
 import EntityClass.VO.LiveSession;
 import EntityClass.VO.Trainer;
 import javafx.fxml.FXML;

@@ -6,7 +6,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import EntityClass.DAO.impl.TrainerDAOImpl;
+import EntityClass.DAO.Impl.TrainerDAOImpl;
 import EntityClass.VO.Trainer;
 import javafx.fxml.FXML;
 import javafx.scene.Node;

@@ -1,9 +1,9 @@
 package EntityClass.VO;
 
-import EntityClass.DAO.impl.OrderDAOImpl;
-import EntityClass.DAO.impl.PreUserDAOImpl;
-import EntityClass.DAO.impl.WatchedVideoDAOImpl;
-import EntityClass.DAO.impl.LiveSessionDAOImpl;
+import EntityClass.DAO.Impl.OrderDAOImpl;
+import EntityClass.DAO.Impl.PreUserDAOImpl;
+import EntityClass.DAO.Impl.WatchedVideoDAOImpl;
+import EntityClass.DAO.Impl.LiveSessionDAOImpl;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

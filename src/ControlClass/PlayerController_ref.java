@@ -1,9 +1,8 @@
 package ControlClass;
 
-import EntityClass.DAO.FavoriteVideoDAO;
-import EntityClass.DAO.impl.FavoriteVideoImpl;
-import EntityClass.DAO.impl.RecVideoDAOImpl;
-import EntityClass.DAO.impl.UserDAOImpl;
+import EntityClass.DAO.Impl.FavoriteVideoImpl;
+import EntityClass.DAO.Impl.RecVideoDAOImpl;
+import EntityClass.DAO.Impl.UserDAOImpl;
 import EntityClass.VO.FavoriteVideo;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -34,7 +33,6 @@ import javafx.util.Duration;
 import javafx.fxml.Initializable;
 
 import javax.swing.*;
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;

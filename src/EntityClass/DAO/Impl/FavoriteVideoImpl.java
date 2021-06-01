@@ -1,36 +1,37 @@
-package EntityClass.DAO.impl;
+package EntityClass.DAO.Impl;
 
+import EntityClass.DAO.FavoriteVideoDAO;
 import EntityClass.DAO.ToolDAO;
-import EntityClass.DAO.WatchedVideoDAO;
-import EntityClass.VO.WatchedVideo;
+import EntityClass.VO.FavoriteVideo;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
-import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
 
 import java.io.*;
 import java.util.ArrayList;
 
+import static EntityClass.DAO.Impl.PersonDAOImpl.recordToCsv;
+
 /**
- * javadoc of PreUserDAOImpl class
+ * javadoc of FavoriteVideoImpl class
  * @author Kaiyi Zhao
  * @version 1.0
  * {@inheritDoc}
  */
-public class WatchedVideoDAOImpl implements ToolDAO, WatchedVideoDAO {
-    private WatchedVideo watchedVideo = null;
+public class FavoriteVideoImpl implements ToolDAO, FavoriteVideoDAO {
+    private FavoriteVideo favoriteVideo = null;
     public static final String fileFolder = "./src/Data/";
-    private final String fileName = "watchedVideo.csv";
+    private final String fileName = "favoriteVideo.csv";
     private String filePath = fileFolder + fileName;
 
     /**
-     * This method insert a WatchedVideo class into watchedVideo.sv
-     * @param watchedVideo A WatchedVideo class
+     * This method insert a FavoriteVideo class into favoriteVideo.sv
+     * @param favoriteVideo A FavoriteVideo class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean insertHistoryData(WatchedVideo watchedVideo) {
-        if(!searchSame(watchedVideo)) {
-            return insertInfo(watchedVideo);
+    public Boolean insertFavoriteVideo(FavoriteVideo favoriteVideo) {
+        if(!searchSame(favoriteVideo)) {
+            return insertInfo(favoriteVideo);
         }
         else {
             return false;
@@ -38,40 +39,40 @@ public class WatchedVideoDAOImpl implements ToolDAO, WatchedVideoDAO {
     }
 
     /**
-     * This method query a watchedVideo record by courseId and delete the record
-     * @param watchedVideo A WatchedVideo class
+     * This method query a FavoriteVideo record by courseId and delete the record
+     * @param favoriteVideo A FavoriteVideo class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean deleteHistoryData(WatchedVideo watchedVideo) {
-        return deleteInfo(watchedVideo);
+    public Boolean deleteFavoriteVideo(FavoriteVideo favoriteVideo) {
+        return deleteInfo(favoriteVideo);
     }
 
     /**
-     * This method query a course record by userName
-     * @param userName The name of a user
-     * @return A array list of WatchedVideo classes
+     * This method query a FavoriteVideo record by userName
+     * @param userName The userName in a record
+     * @return A array list of FavoriteVideo class
      */
     @Override
-    public ArrayList<WatchedVideo> queryByUserName(String userName) {
+    public ArrayList<FavoriteVideo> queryByUserName(String userName) {
         File inFile = new File(filePath);
-        ArrayList<WatchedVideo> watchedVideos = new ArrayList<>();
+        ArrayList<FavoriteVideo> favoriteVideos = new ArrayList<>();
         try {
             String[] record;
             BufferedReader reader = new BufferedReader(new FileReader(inFile));
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
-                if(userName.equals(record[0])) {
-                    watchedVideo = new WatchedVideo(record[0], record[1], Long.parseLong(record[2]));
-                    watchedVideos.add(watchedVideo);
+                if(userName.equals(record[1])) {
+                    favoriteVideo = new FavoriteVideo(Long.parseLong(record[0]), record[1]);
+                    favoriteVideos.add(favoriteVideo);
                 }
             }
             csvReader.close();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        return watchedVideos;
+        return favoriteVideos;
     }
 
     /**
@@ -82,14 +83,14 @@ public class WatchedVideoDAOImpl implements ToolDAO, WatchedVideoDAO {
      */
     @Override
     public Boolean insertInfo(Object obj) {
-        if(obj instanceof WatchedVideo) {
-            WatchedVideo watchedVideo = (WatchedVideo) obj;
+        if(obj instanceof FavoriteVideo) {
+            FavoriteVideo favoriteVideo = (FavoriteVideo) obj;
             boolean flag = false;
             File outFile = new File(filePath);
             try {
                 BufferedWriter writer = new BufferedWriter(new FileWriter(outFile, true));
                 CsvWriter csvWriter = new CsvWriter(writer,',');
-                csvWriter.writeRecord(watchedVideo.toStrArray());
+                csvWriter.writeRecord(favoriteVideo.toStrArray());
                 csvWriter.close();
                 flag = true;
             } catch (IOException ex) {
@@ -110,8 +111,8 @@ public class WatchedVideoDAOImpl implements ToolDAO, WatchedVideoDAO {
      */
     @Override
     public Boolean deleteInfo(Object object) {
-        if(object instanceof WatchedVideo) {
-            WatchedVideo watchedVideo = (WatchedVideo) object;
+        if(object instanceof FavoriteVideo) {
+            FavoriteVideo favoriteVideo = (FavoriteVideo) object;
             Boolean flag = false;
             File inFile = new File(filePath);
             try {
@@ -121,7 +122,7 @@ public class WatchedVideoDAOImpl implements ToolDAO, WatchedVideoDAO {
                 CsvReader csvReader = new CsvReader(reader, ',');
                 while(csvReader.readRecord()){
                     record = csvReader.getRawRecord().split(",");
-                    if(watchedVideo.getUserName().equals(record[0])) {
+                    if(favoriteVideo.getCourseId() == Long.parseLong(record[0])) {
                         continue;
                     }
                     assert records != null;
@@ -143,12 +144,12 @@ public class WatchedVideoDAOImpl implements ToolDAO, WatchedVideoDAO {
     /**
      * This method search file for the same object
      *
-     * @param watchVideo A Object class
+     * @param favoriteVideo A FavoriteVideo class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean searchSame(Object watchVideo) {
-        WatchedVideo watchedVideoExist = null;
+    public Boolean searchSame(Object favoriteVideo) {
+        FavoriteVideo favoriteVideoExist = null;
         File inFile = new File(filePath);
         try {
             String[] record;
@@ -156,8 +157,8 @@ public class WatchedVideoDAOImpl implements ToolDAO, WatchedVideoDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
-                watchedVideoExist = new WatchedVideo(record[0], record[1], Long.parseLong(record[2]));
-                if(watchVideo.equals(watchedVideoExist)) {
+                favoriteVideoExist = new FavoriteVideo(Long.parseLong(record[0]), record[1]);
+                if(favoriteVideo.equals(favoriteVideoExist)) {
                     return true;
                 }
             }

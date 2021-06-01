@@ -1,6 +1,5 @@
 package ControlClass;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
@@ -8,8 +7,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-import EntityClass.DAO.impl.UserDAOImpl;
-import EntityClass.VO.Person;
+import EntityClass.DAO.Impl.UserDAOImpl;
 import EntityClass.VO.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -17,7 +15,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class registerController {

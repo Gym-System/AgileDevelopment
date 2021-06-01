@@ -1,6 +1,6 @@
 package Test;
 
-import EntityClass.DAO.impl.UserDAOImpl;
+import EntityClass.DAO.Impl.UserDAOImpl;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

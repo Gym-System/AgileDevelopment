@@ -5,8 +5,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import EntityClass.DAO.impl.FavoriteVideoImpl;
-import EntityClass.DAO.impl.RecVideoDAOImpl;
+import EntityClass.DAO.Impl.FavoriteVideoImpl;
+import EntityClass.DAO.Impl.RecVideoDAOImpl;
 import EntityClass.VO.FavoriteVideo;
 import EntityClass.VO.RecVideo;
 import javafx.event.ActionEvent;

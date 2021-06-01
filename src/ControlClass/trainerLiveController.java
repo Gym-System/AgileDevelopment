@@ -5,7 +5,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import EntityClass.DAO.impl.LiveSessionDAOImpl;
+import EntityClass.DAO.Impl.LiveSessionDAOImpl;
 import EntityClass.VO.LiveSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

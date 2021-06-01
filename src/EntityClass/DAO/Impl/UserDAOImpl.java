@@ -1,9 +1,8 @@
-package EntityClass.DAO.impl;
+package EntityClass.DAO.Impl;
 
-import EntityClass.DAO.ManagerDAO;
 import EntityClass.DAO.ToolDAO;
-import EntityClass.VO.Manager;
-import EntityClass.VO.Person;
+import EntityClass.DAO.UserDAO;
+import EntityClass.VO.User;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
 
@@ -13,28 +12,28 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import static EntityClass.DAO.impl.PersonDAOImpl.*;
+import static EntityClass.DAO.Impl.PersonDAOImpl.recordToCsv;
 
 /**
- * javadoc of ManagerDAOImpl class
+ * javadoc of PreUserDAOImpl class
  * @author Kaiyi Zhao
  * @version 1.0
  * {@inheritDoc}
  */
-public class ManagerDAOImpl implements ToolDAO, ManagerDAO {
-    private Manager manager = null;
-    private final String fileName = "manager.csv";
+public class UserDAOImpl implements ToolDAO, UserDAO {
+    private User user = null;
+    private final String fileName = "user.csv";
     private String filePath = PersonDAOImpl.fileFolder + fileName;
 
     /**
-     * This method insert a Manager class into manager.sv
-     * @param manager A Manager class
+     * This method insert a User class into user.sv
+     * @param user A User class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean insertManager(Manager manager) {
-        if(!searchSame(manager)) {
-            return insertInfo(manager);
+    public Boolean insertUser(User user) {
+        if(!searchSame(user)) {
+            return insertInfo(user);
         }
         else {
             return false;
@@ -42,23 +41,23 @@ public class ManagerDAOImpl implements ToolDAO, ManagerDAO {
     }
 
     /**
-     * This method query a manager record by userName and delete the record
-     * @param manager A Manager class
+     * This method query a user record by userName and delete the record
+     * @param user A User class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean deleteManager(Manager manager) {
-        return deleteInfo(manager);
+    public Boolean deleteUser(User user) {
+        return deleteInfo(user);
     }
 
     /**
-     * This method query a manager record by userName and change the password value of the record
-     * @param userName The userName of a manager
-     * @param password The password value of a manager
-     * @return A Manager class after changing
+     * This method query a user record by userName and change the password value of the record
+     * @param userName The userName of a user
+     * @param password The password value of a user
+     * @return A User class after changing
      */
     @Override
-    public Manager changeManagerPassword(String userName, String password) {
+    public User changeUserPassword(String userName, String password) {
         File inFile = new File(filePath);
         try {
             String[] record = null;
@@ -69,28 +68,26 @@ public class ManagerDAOImpl implements ToolDAO, ManagerDAO {
                 record = csvReader.getRawRecord().split(",");
                 if(userName.equals(record[0])) {
                     record[1] = password;
-                    manager = new Manager(record[0], record[1], record[2], record[3], record[4],
+                    user = new User(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6], Integer.parseInt(record[7]));
+                            Double.parseDouble(record[6]));
                 }
                 records.add(record);
             }
-            csvReader.close();
-            recordToCsv(records, fileName);
+            recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return manager;
+        return user;
     }
 
-    /**
-     * This method query a manager record by userName and change the email value of the record
-     * @param userName The userName of a manager
-     * @param email The email value of a manager
-     * @return A Manager class after changing
+    /** This method query a user record by userName and change the email value of the record
+     * @param userName The userName of a user
+     * @param email The email value of a user
+     * @return A User class after changing
      */
     @Override
-    public Manager changeManagerEmail(String userName, String email) {
+    public User changeUserEmail(String userName, String email) {
         File inFile = new File(filePath);
         try {
             String[] record = null;
@@ -101,28 +98,27 @@ public class ManagerDAOImpl implements ToolDAO, ManagerDAO {
                 record = csvReader.getRawRecord().split(",");
                 if(userName.equals(record[0])) {
                     record[2] = email;
-                    manager = new Manager(record[0], record[1], record[2], record[3], record[4],
+                    user = new User(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6], Integer.parseInt(record[7]));
+                            Double.parseDouble(record[6]));
                 }
                 records.add(record);
             }
-            csvReader.close();
             recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return manager;
+        return user;
     }
 
     /**
-     * This method query a manager record by userName and change the telephone number of the record
-     * @param userName The userName of a manager
-     * @param teleNo The telephone number of a manager
-     * @return A Manager class after changing
+     * This method query a user record by userName and change the telephone number of the record
+     * @param userName The userName of a user
+     * @param teleNo The telephone number of a user
+     * @return A User class after changing
      */
     @Override
-    public Manager changeManagerTeleNo(String userName, String teleNo) {
+    public User changeUserTeleNo(String userName, String teleNo) {
         File inFile = new File(filePath);
         try {
             String[] record = null;
@@ -133,28 +129,27 @@ public class ManagerDAOImpl implements ToolDAO, ManagerDAO {
                 record = csvReader.getRawRecord().split(",");
                 if(userName.equals(record[0])) {
                     record[4] = teleNo;
-                    manager = new Manager(record[0], record[1], record[2], record[3], record[4],
+                    user = new User(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6], Integer.parseInt(record[7]));
+                            Double.parseDouble(record[6]));
                 }
                 records.add(record);
             }
-            csvReader.close();
             recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return manager;
+        return user;
     }
 
     /**
-     * This method query a manager record by userName and change the manager type of the record
-     * @param userName The userName of a manager
-     * @param managerType The manager type of a manager
-     * @return A Manager class after changing
+     * This method query a user record by userName and change the telephone number of the record
+     * @param userName The userName of a user
+     * @param balance The balance of a user
+     * @return A User class after changing
      */
     @Override
-    public Manager changeManagerType(String userName, int managerType) {
+    public User changeUserBalance(String userName, Double balance) {
         File inFile = new File(filePath);
         try {
             String[] record = null;
@@ -164,28 +159,27 @@ public class ManagerDAOImpl implements ToolDAO, ManagerDAO {
             while(csvReader.readRecord()){
                 record = csvReader.getRawRecord().split(",");
                 if(userName.equals(record[0])) {
-                    record[7] = String.valueOf(managerType);
-                    manager = new Manager(record[0], record[1], record[2], record[3], record[4],
+                    record[6] = balance.toString();
+                    user = new User(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6], Integer.parseInt(record[7]));
+                            Double.parseDouble(record[6]));
                 }
                 records.add(record);
             }
-            csvReader.close();
             recordToCsv(records, filePath);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return manager;
+        return user;
     }
 
     /**
-     * This method query a manager record by user name
-     * @param userName The userName of a manager
-     * @return A Manager class
+     * This method query a user record by user name
+     * @param userName The userName of a user
+     * @return A User class
      */
     @Override
-    public Manager queryByUserName(String userName) {
+    public User queryByUserName(String userName) {
         File inFile = new File(filePath);
         try {
             String[] record;
@@ -194,42 +188,42 @@ public class ManagerDAOImpl implements ToolDAO, ManagerDAO {
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
                 if(userName.equals(record[0])) {
-                    manager = new Manager(record[0], record[1], record[2], record[3], record[4],
+                    user = new User(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6], Integer.parseInt(record[7]));
+                            Double.parseDouble(record[6]));
                 }
             }
             csvReader.close();
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return manager;
+        return user;
     }
 
     /**
-     * This method query all the manager records
-     * @return A array list of manager class
+     * This method query all the user records
+     * @return A array list of user class
      */
     @Override
-    public ArrayList<Manager> queryAll() {
+    public ArrayList<User> queryAll() {
         File inFile = new File(filePath);
-        ArrayList<Manager> managers = new ArrayList<>();
+        ArrayList<User> users = new ArrayList<>();
         try {
             String[] record;
             BufferedReader reader = new BufferedReader(new FileReader(inFile));
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
-                manager = new Manager(record[0], record[1], record[2], record[3], record[4],
+                user = new User(record[0], record[1], record[2], record[3], record[4],
                         new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                        record[6], Integer.parseInt(record[7]));
-                managers.add(manager);
+                        Double.parseDouble(record[6]));
+                users.add(user);
             }
             csvReader.close();
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return managers;
+        return users;
     }
 
     /**
@@ -240,14 +234,14 @@ public class ManagerDAOImpl implements ToolDAO, ManagerDAO {
      */
     @Override
     public Boolean insertInfo(Object obj) {
-        if(obj instanceof Manager) {
-            Manager manager = (Manager) obj;
+        if(obj instanceof User) {
+            User user = (User) obj;
             boolean flag = false;
             File outFile = new File(filePath);
             try {
                 BufferedWriter writer = new BufferedWriter(new FileWriter(outFile, true));
                 CsvWriter csvWriter = new CsvWriter(writer,',');
-                csvWriter.writeRecord(manager.toStrArray());
+                csvWriter.writeRecord(user.toStrArray());
                 csvWriter.close();
                 flag = true;
             } catch (IOException ex) {
@@ -268,8 +262,8 @@ public class ManagerDAOImpl implements ToolDAO, ManagerDAO {
      */
     @Override
     public Boolean deleteInfo(Object object) {
-        if(object instanceof Manager) {
-            Manager manager = (Manager) object;
+        if(object instanceof User) {
+            User user = (User) object;
             Boolean flag = false;
             File inFile = new File(filePath);
             try {
@@ -279,7 +273,7 @@ public class ManagerDAOImpl implements ToolDAO, ManagerDAO {
                 CsvReader csvReader = new CsvReader(reader, ',');
                 while(csvReader.readRecord()){
                     record = csvReader.getRawRecord().split(",");
-                    if(manager.getUserName().equals(record[0])) {
+                    if(user.getUserName().equals(record[0])) {
                         continue;
                     }
                     assert records != null;
@@ -301,12 +295,12 @@ public class ManagerDAOImpl implements ToolDAO, ManagerDAO {
     /**
      * This method search file for the same object
      *
-     * @param manager A Object class
+     * @param user A Object class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean searchSame(Object manager) {
-        Manager managerExist = null;
+    public Boolean searchSame(Object user) {
+        User userExist = null;
         File inFile = new File(filePath);
         try {
             String[] record;
@@ -314,10 +308,10 @@ public class ManagerDAOImpl implements ToolDAO, ManagerDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
-                managerExist = new Manager(record[0], record[1], record[2], record[3], record[4],
+                userExist = new User(record[0], record[1], record[2], record[3], record[4],
                         new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                        record[6], Integer.parseInt(record[7]));
-                if(manager.equals(managerExist)) {
+                        Double.parseDouble(record[6]));
+                if(user.equals(userExist)) {
                     return true;
                 }
             }

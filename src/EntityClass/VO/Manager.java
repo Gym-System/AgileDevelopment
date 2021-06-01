@@ -1,7 +1,7 @@
 package EntityClass.VO;
 
-import EntityClass.DAO.impl.TrainerDAOImpl;
-import EntityClass.DAO.impl.UserDAOImpl;
+import EntityClass.DAO.Impl.TrainerDAOImpl;
+import EntityClass.DAO.Impl.UserDAOImpl;
 
 import java.util.Date;
 import java.util.Objects;

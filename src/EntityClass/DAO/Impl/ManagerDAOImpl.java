@@ -1,9 +1,8 @@
-package EntityClass.DAO.impl;
+package EntityClass.DAO.Impl;
 
-import EntityClass.DAO.LiveSessionDAO;
+import EntityClass.DAO.ManagerDAO;
 import EntityClass.DAO.ToolDAO;
-import EntityClass.VO.Course;
-import EntityClass.VO.LiveSession;
+import EntityClass.VO.Manager;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
 
@@ -13,47 +12,52 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
+import static EntityClass.DAO.Impl.PersonDAOImpl.*;
 
 /**
- * javadoc of LiveSessionDAOImpl class
+ * javadoc of ManagerDAOImpl class
  * @author Kaiyi Zhao
  * @version 1.0
  * {@inheritDoc}
  */
-public class LiveSessionDAOImpl implements ToolDAO, LiveSessionDAO {
-    private LiveSession liveSession;
-    private final String fileName = "liveSession.csv";
+public class ManagerDAOImpl implements ToolDAO, ManagerDAO {
+    private Manager manager = null;
+    private final String fileName = "manager.csv";
     private String filePath = PersonDAOImpl.fileFolder + fileName;
 
     /**
-     * This method insert a LiveSession class into liveSession.sv
-     * @param liveSession A LiveSession class
+     * This method insert a Manager class into manager.sv
+     * @param manager A Manager class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean insertLiveSession(LiveSession liveSession) {
-        return insertInfo(liveSession);
+    public Boolean insertManager(Manager manager) {
+        if(!searchSame(manager)) {
+            return insertInfo(manager);
+        }
+        else {
+            return false;
+        }
     }
 
     /**
-     * This method query a LiveSession record by courseId and delete the record
-     * @param liveSession A LiveSession class
+     * This method query a manager record by userName and delete the record
+     * @param manager A Manager class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean deleteLiveSession(LiveSession liveSession) {
-        return deleteInfo(liveSession);
+    public Boolean deleteManager(Manager manager) {
+        return deleteInfo(manager);
     }
 
     /**
-     * This method query a LiveSession record by courseId and change the gift value of the record
-     * @param courseId The ID of a LiveSession
-     * @param gift The new gift value
-     * @return A LiveSession class after changing
+     * This method query a manager record by userName and change the password value of the record
+     * @param userName The userName of a manager
+     * @param password The password value of a manager
+     * @return A Manager class after changing
      */
     @Override
-    public LiveSession changeLiveSessionGift(long courseId, int gift) {
+    public Manager changeManagerPassword(String userName, String password) {
         File inFile = new File(filePath);
         try {
             String[] record = null;
@@ -62,31 +66,30 @@ public class LiveSessionDAOImpl implements ToolDAO, LiveSessionDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getRawRecord().split(",");
-                if(courseId == Long.parseLong(record[0])) {
-                    record[3] = String.valueOf(gift);
-                    liveSession = new LiveSession(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
-                            Integer.parseInt(record[3]), Double.parseDouble(record[4]),
+                if(userName.equals(record[0])) {
+                    record[1] = password;
+                    manager = new Manager(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6], record[7]);
+                            record[6], Integer.parseInt(record[7]));
                 }
                 records.add(record);
             }
             csvReader.close();
-            recordToCsv(records, filePath);
+            recordToCsv(records, fileName);
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return liveSession;
+        return manager;
     }
 
     /**
-     * This method query a LiveSession record by courseId and change the star value of the record
-     * @param courseId The ID of a LiveSession
-     * @param star The new star value
-     * @return A LiveSession class after changing
+     * This method query a manager record by userName and change the email value of the record
+     * @param userName The userName of a manager
+     * @param email The email value of a manager
+     * @return A Manager class after changing
      */
     @Override
-    public LiveSession changeLiveSessionStar(long courseId, double star) {
+    public Manager changeManagerEmail(String userName, String email) {
         File inFile = new File(filePath);
         try {
             String[] record = null;
@@ -95,12 +98,11 @@ public class LiveSessionDAOImpl implements ToolDAO, LiveSessionDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getRawRecord().split(",");
-                if(courseId == Long.parseLong(record[0])) {
-                    record[4] = String.valueOf(star);
-                    liveSession = new LiveSession(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
-                            Integer.parseInt(record[3]), Double.parseDouble(record[4]),
+                if(userName.equals(record[0])) {
+                    record[2] = email;
+                    manager = new Manager(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6], record[7]);
+                            record[6], Integer.parseInt(record[7]));
                 }
                 records.add(record);
             }
@@ -109,17 +111,17 @@ public class LiveSessionDAOImpl implements ToolDAO, LiveSessionDAO {
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return liveSession;
+        return manager;
     }
 
     /**
-     * This method query a LiveSession record by courseId and change the startTime value of the record
-     * @param courseId The ID of a LiveSession
-     * @param startTime The new startTime value
-     * @return A LiveSession class after changing
+     * This method query a manager record by userName and change the telephone number of the record
+     * @param userName The userName of a manager
+     * @param teleNo The telephone number of a manager
+     * @return A Manager class after changing
      */
     @Override
-    public LiveSession changeLiveSessionStartTime(long courseId, String startTime) {
+    public Manager changeManagerTeleNo(String userName, String teleNo) {
         File inFile = new File(filePath);
         try {
             String[] record = null;
@@ -128,12 +130,11 @@ public class LiveSessionDAOImpl implements ToolDAO, LiveSessionDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getRawRecord().split(",");
-                if(courseId == Long.parseLong(record[0])) {
-                    record[5] = String.valueOf(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(startTime));
-                    liveSession = new LiveSession(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
-                            Integer.parseInt(record[3]), Double.parseDouble(record[4]),
+                if(userName.equals(record[0])) {
+                    record[4] = teleNo;
+                    manager = new Manager(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6], record[7]);
+                            record[6], Integer.parseInt(record[7]));
                 }
                 records.add(record);
             }
@@ -142,16 +143,48 @@ public class LiveSessionDAOImpl implements ToolDAO, LiveSessionDAO {
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return liveSession;
+        return manager;
     }
 
     /**
-     * This method query a LiveSession record by courseId
-     * @param courseId The ID of a LiveSession
-     * @return A LiveSession class
+     * This method query a manager record by userName and change the manager type of the record
+     * @param userName The userName of a manager
+     * @param managerType The manager type of a manager
+     * @return A Manager class after changing
      */
     @Override
-    public LiveSession queryByCourseId(long courseId) {
+    public Manager changeManagerType(String userName, int managerType) {
+        File inFile = new File(filePath);
+        try {
+            String[] record = null;
+            ArrayList<String[]> records = new ArrayList<>();
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getRawRecord().split(",");
+                if(userName.equals(record[0])) {
+                    record[7] = String.valueOf(managerType);
+                    manager = new Manager(record[0], record[1], record[2], record[3], record[4],
+                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
+                            record[6], Integer.parseInt(record[7]));
+                }
+                records.add(record);
+            }
+            csvReader.close();
+            recordToCsv(records, filePath);
+        } catch (IOException | ParseException ex) {
+            ex.printStackTrace();
+        }
+        return manager;
+    }
+
+    /**
+     * This method query a manager record by user name
+     * @param userName The userName of a manager
+     * @return A Manager class
+     */
+    @Override
+    public Manager queryByUserName(String userName) {
         File inFile = new File(filePath);
         try {
             String[] record;
@@ -159,106 +192,43 @@ public class LiveSessionDAOImpl implements ToolDAO, LiveSessionDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
-                if(courseId == Long.parseLong(record[0])) {
-                    liveSession = new LiveSession(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
-                            Integer.parseInt(record[3]), Double.parseDouble(record[4]),
+                if(userName.equals(record[0])) {
+                    manager = new Manager(record[0], record[1], record[2], record[3], record[4],
                             new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6], record[7]);
-                    break;
+                            record[6], Integer.parseInt(record[7]));
                 }
             }
             csvReader.close();
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return liveSession;
+        return manager;
     }
 
     /**
-     * This method query LiveSession records by trainer name
-     * @param trainerName The trainer name of LiveSession
-     * @return A array list of LiveSession class
+     * This method query all the manager records
+     * @return A array list of manager class
      */
     @Override
-    public ArrayList<LiveSession> queryByTrainerName(String trainerName) {
-        ArrayList<LiveSession> liveSessions = new ArrayList<>();
+    public ArrayList<Manager> queryAll() {
         File inFile = new File(filePath);
+        ArrayList<Manager> managers = new ArrayList<>();
         try {
             String[] record;
             BufferedReader reader = new BufferedReader(new FileReader(inFile));
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
-                if(trainerName.equals(record[6])) {
-                    liveSession = new LiveSession(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
-                            Integer.parseInt(record[3]), Double.parseDouble(record[4]),
-                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6], record[7]);
-                    liveSessions.add(liveSession);
-                }
-            }
-            csvReader.close();
-        } catch (IOException | ParseException ex) {
-            ex.printStackTrace();
-        }
-        return liveSessions;
-    }
-
-    /**
-     * This method query LiveSession records by user name
-     * @param userName The user name of LiveSession
-     * @return A array list of LiveSession class
-     */
-    @Override
-    public ArrayList<LiveSession> queryByUserName(String userName) {
-        ArrayList<LiveSession> liveSessions = new ArrayList<>();
-        File inFile = new File(filePath);
-        try {
-            String[] record;
-            BufferedReader reader = new BufferedReader(new FileReader(inFile));
-            CsvReader csvReader = new CsvReader(reader, ',');
-            while(csvReader.readRecord()){
-                record = csvReader.getValues();
-                if(userName.equals(record[7])) {
-                    liveSession = new LiveSession(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
-                            Integer.parseInt(record[3]), Double.parseDouble(record[4]),
-                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            record[6], record[7]);
-                    liveSessions.add(liveSession);
-                }
-            }
-            csvReader.close();
-        } catch (IOException | ParseException ex) {
-            ex.printStackTrace();
-        }
-        return liveSessions;
-    }
-
-    /**
-     * This method query all LiveSession records
-     * @return A array list of LiveSession class
-     */
-    @Override
-    public ArrayList<LiveSession> queryAll() {
-        ArrayList<LiveSession> liveSessions = new ArrayList<>();
-        File inFile = new File(filePath);
-        try {
-            String[] record;
-            BufferedReader reader = new BufferedReader(new FileReader(inFile));
-            CsvReader csvReader = new CsvReader(reader, ',');
-            while(csvReader.readRecord()){
-                record = csvReader.getValues();
-                liveSession = new LiveSession(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
-                        Integer.parseInt(record[3]), Double.parseDouble(record[4]),
+                manager = new Manager(record[0], record[1], record[2], record[3], record[4],
                         new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                        record[6], record[7]);
-                liveSessions.add(liveSession);
+                        record[6], Integer.parseInt(record[7]));
+                managers.add(manager);
             }
             csvReader.close();
         } catch (IOException | ParseException ex) {
             ex.printStackTrace();
         }
-        return liveSessions;
+        return managers;
     }
 
     /**
@@ -269,14 +239,14 @@ public class LiveSessionDAOImpl implements ToolDAO, LiveSessionDAO {
      */
     @Override
     public Boolean insertInfo(Object obj) {
-        if(obj instanceof LiveSession) {
-            LiveSession liveSession = (LiveSession) obj;
+        if(obj instanceof Manager) {
+            Manager manager = (Manager) obj;
             boolean flag = false;
             File outFile = new File(filePath);
             try {
                 BufferedWriter writer = new BufferedWriter(new FileWriter(outFile, true));
                 CsvWriter csvWriter = new CsvWriter(writer,',');
-                csvWriter.writeRecord(liveSession.toStrArray());
+                csvWriter.writeRecord(manager.toStrArray());
                 csvWriter.close();
                 flag = true;
             } catch (IOException ex) {
@@ -297,8 +267,8 @@ public class LiveSessionDAOImpl implements ToolDAO, LiveSessionDAO {
      */
     @Override
     public Boolean deleteInfo(Object object) {
-        if(object instanceof LiveSession) {
-            LiveSession liveSession = (LiveSession) object;
+        if(object instanceof Manager) {
+            Manager manager = (Manager) object;
             Boolean flag = false;
             File inFile = new File(filePath);
             try {
@@ -308,7 +278,7 @@ public class LiveSessionDAOImpl implements ToolDAO, LiveSessionDAO {
                 CsvReader csvReader = new CsvReader(reader, ',');
                 while(csvReader.readRecord()){
                     record = csvReader.getRawRecord().split(",");
-                    if(liveSession.getCourseId() == Long.parseLong(record[0])) {
+                    if(manager.getUserName().equals(record[0])) {
                         continue;
                     }
                     assert records != null;
@@ -330,12 +300,12 @@ public class LiveSessionDAOImpl implements ToolDAO, LiveSessionDAO {
     /**
      * This method search file for the same object
      *
-     * @param liveSession A Object class
+     * @param manager A Object class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean searchSame(Object liveSession) {
-        LiveSession liveSessionExist = null;
+    public Boolean searchSame(Object manager) {
+        Manager managerExist = null;
         File inFile = new File(filePath);
         try {
             String[] record;
@@ -343,11 +313,10 @@ public class LiveSessionDAOImpl implements ToolDAO, LiveSessionDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
-                liveSessionExist = new LiveSession(Long.parseLong(record[0]), record[1], Integer.parseInt(record[2]),
-                        Integer.parseInt(record[3]), Double.parseDouble(record[4]),
+                managerExist = new Manager(record[0], record[1], record[2], record[3], record[4],
                         new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                        record[6], record[7]);
-                if(liveSession.equals(liveSessionExist)) {
+                        record[6], Integer.parseInt(record[7]));
+                if(manager.equals(managerExist)) {
                     return true;
                 }
             }

@@ -5,7 +5,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import EntityClass.DAO.impl.RecVideoDAOImpl;
+import EntityClass.DAO.Impl.RecVideoDAOImpl;
 import EntityClass.VO.RecVideo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

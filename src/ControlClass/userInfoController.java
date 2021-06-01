@@ -1,6 +1,6 @@
 package ControlClass;
 import EntityClass.DAO.LiveSessionDAO;
-import EntityClass.DAO.impl.*;
+import EntityClass.DAO.Impl.*;
 import EntityClass.VO.PhyData;
 import EntityClass.VO.WatchedVideo;
 import EntityClass.VO.LiveSession;
@@ -20,7 +20,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.Timer;
 
 public class userInfoController {
     private ArrayList<Label> user_types = new ArrayList<>();

@@ -1,39 +1,36 @@
-package EntityClass.DAO.impl;
+package EntityClass.DAO.Impl;
 
+import EntityClass.DAO.PhyDataDAO;
 import EntityClass.DAO.ToolDAO;
-import EntityClass.DAO.UserDAO;
-import EntityClass.VO.User;
+import EntityClass.VO.PhyData;
 import com.csvreader.CsvReader;
 import com.csvreader.CsvWriter;
 
 import java.io.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Locale;
 
-import static EntityClass.DAO.impl.PersonDAOImpl.recordToCsv;
+import static EntityClass.DAO.Impl.PersonDAOImpl.recordToCsv;
 
 /**
- * javadoc of PreUserDAOImpl class
+ * javadoc of PhyDataDAOImpl class
  * @author Kaiyi Zhao
  * @version 1.0
  * {@inheritDoc}
  */
-public class UserDAOImpl implements ToolDAO, UserDAO {
-    private User user = null;
-    private final String fileName = "user.csv";
+public class PhyDataDAOImpl implements ToolDAO, PhyDataDAO {
+    private PhyData phyData;
+    private String fileName = "phyData.csv";
     private String filePath = PersonDAOImpl.fileFolder + fileName;
 
     /**
-     * This method insert a User class into user.sv
-     * @param user A User class
+     * This method insert a PhyData class into phyData.sv
+     * @param phyData A PhyData class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean insertUser(User user) {
-        if(!searchSame(user)) {
-            return insertInfo(user);
+    public Boolean insertPhyData(PhyData phyData) {
+        if(!searchSame(phyData)) {
+            return insertInfo(phyData);
         }
         else {
             return false;
@@ -41,23 +38,23 @@ public class UserDAOImpl implements ToolDAO, UserDAO {
     }
 
     /**
-     * This method query a user record by userName and delete the record
-     * @param user A User class
+     * This method query a phyData record by userName and delete the record
+     * @param phyData A PhyData class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean deleteUser(User user) {
-        return deleteInfo(user);
+    public Boolean deletePhyData(PhyData phyData) {
+        return deleteInfo(phyData);
     }
 
     /**
-     * This method query a user record by userName and change the password value of the record
-     * @param userName The userName of a user
-     * @param password The password value of a user
-     * @return A User class after changing
+     * This method query a person record by userName and change the height value of the record
+     * @param userName The userName of a person
+     * @param height The height value of a person
+     * @return A PhyData class after changing
      */
     @Override
-    public User changeUserPassword(String userName, String password) {
+    public PhyData changePhyDataHeight(String userName, double height) {
         File inFile = new File(filePath);
         try {
             String[] record = null;
@@ -67,27 +64,28 @@ public class UserDAOImpl implements ToolDAO, UserDAO {
             while(csvReader.readRecord()){
                 record = csvReader.getRawRecord().split(",");
                 if(userName.equals(record[0])) {
-                    record[1] = password;
-                    user = new User(record[0], record[1], record[2], record[3], record[4],
-                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            Double.parseDouble(record[6]));
+                    record[1] = String.valueOf(height);
+                    phyData = new PhyData(record[0], Double.parseDouble(record[1]), Double.parseDouble(record[2]),
+                            Integer.parseInt(record[3]), record[4], Double.parseDouble(record[5]));
                 }
                 records.add(record);
             }
+            csvReader.close();
             recordToCsv(records, filePath);
-        } catch (IOException | ParseException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
-        return user;
+        return phyData;
     }
 
-    /** This method query a user record by userName and change the email value of the record
-     * @param userName The userName of a user
-     * @param email The email value of a user
-     * @return A User class after changing
+    /**
+     * This method query a person record by userName and change the weight value of the record
+     * @param userName The userName of a person
+     * @param weight The weight value of a person
+     * @return A PhyData class after changing
      */
     @Override
-    public User changeUserEmail(String userName, String email) {
+    public PhyData changePhyDataWeight(String userName, double weight) {
         File inFile = new File(filePath);
         try {
             String[] record = null;
@@ -97,28 +95,28 @@ public class UserDAOImpl implements ToolDAO, UserDAO {
             while(csvReader.readRecord()){
                 record = csvReader.getRawRecord().split(",");
                 if(userName.equals(record[0])) {
-                    record[2] = email;
-                    user = new User(record[0], record[1], record[2], record[3], record[4],
-                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            Double.parseDouble(record[6]));
+                    record[2] = String.valueOf(weight);
+                    phyData = new PhyData(record[0], Double.parseDouble(record[1]), Double.parseDouble(record[2]),
+                            Integer.parseInt(record[3]), record[4], Double.parseDouble(record[5]));
                 }
                 records.add(record);
             }
+            csvReader.close();
             recordToCsv(records, filePath);
-        } catch (IOException | ParseException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
-        return user;
+        return phyData;
     }
 
     /**
-     * This method query a user record by userName and change the telephone number of the record
-     * @param userName The userName of a user
-     * @param teleNo The telephone number of a user
-     * @return A User class after changing
+     * This method query a person record by userName and change the experience value of the record
+     * @param userName The userName of a person
+     * @param experience The experience value of a person
+     * @return A PhyData class after changing
      */
     @Override
-    public User changeUserTeleNo(String userName, String teleNo) {
+    public PhyData changePhyDataExperience(String userName, int experience) {
         File inFile = new File(filePath);
         try {
             String[] record = null;
@@ -128,28 +126,28 @@ public class UserDAOImpl implements ToolDAO, UserDAO {
             while(csvReader.readRecord()){
                 record = csvReader.getRawRecord().split(",");
                 if(userName.equals(record[0])) {
-                    record[4] = teleNo;
-                    user = new User(record[0], record[1], record[2], record[3], record[4],
-                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            Double.parseDouble(record[6]));
+                    record[3] = String.valueOf(experience);
+                    phyData = new PhyData(record[0], Double.parseDouble(record[1]), Double.parseDouble(record[2]),
+                            Integer.parseInt(record[3]), record[4], Double.parseDouble(record[5]));
                 }
                 records.add(record);
             }
+            csvReader.close();
             recordToCsv(records, filePath);
-        } catch (IOException | ParseException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
-        return user;
+        return phyData;
     }
 
     /**
-     * This method query a user record by userName and change the telephone number of the record
-     * @param userName The userName of a user
-     * @param balance The balance of a user
-     * @return A User class after changing
+     * This method query a person record by userName and change the interest value of the record
+     * @param userName The userName of a person
+     * @param interest The interest value of a person
+     * @return A PhyData class after changing
      */
     @Override
-    public User changeUserBalance(String userName, Double balance) {
+    public PhyData changePhyDataInterest(String userName, String interest) {
         File inFile = new File(filePath);
         try {
             String[] record = null;
@@ -159,27 +157,58 @@ public class UserDAOImpl implements ToolDAO, UserDAO {
             while(csvReader.readRecord()){
                 record = csvReader.getRawRecord().split(",");
                 if(userName.equals(record[0])) {
-                    record[6] = balance.toString();
-                    user = new User(record[0], record[1], record[2], record[3], record[4],
-                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            Double.parseDouble(record[6]));
+                    record[4] = interest;
+                    phyData = new PhyData(record[0], Double.parseDouble(record[1]), Double.parseDouble(record[2]),
+                            Integer.parseInt(record[3]), record[4], Double.parseDouble(record[5]));
                 }
                 records.add(record);
             }
+            csvReader.close();
             recordToCsv(records, filePath);
-        } catch (IOException | ParseException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
-        return user;
+        return phyData;
     }
 
     /**
-     * This method query a user record by user name
-     * @param userName The userName of a user
-     * @return A User class
+     * This method query a person record by userName and change the BRF value of the record
+     * @param userName The userName of a person
+     * @param BRF The BRF value of a person
+     * @return A PhyData class after changing
      */
     @Override
-    public User queryByUserName(String userName) {
+    public PhyData changePhyDataBFR(String userName, double BRF) {
+        File inFile = new File(filePath);
+        try {
+            String[] record = null;
+            ArrayList<String[]> records = new ArrayList<>();
+            BufferedReader reader = new BufferedReader(new FileReader(inFile));
+            CsvReader csvReader = new CsvReader(reader, ',');
+            while(csvReader.readRecord()){
+                record = csvReader.getRawRecord().split(",");
+                if(userName.equals(record[0])) {
+                    record[5] = String.valueOf(BRF);
+                    phyData = new PhyData(record[0], Double.parseDouble(record[1]), Double.parseDouble(record[2]),
+                            Integer.parseInt(record[3]), record[4], Double.parseDouble(record[5]));
+                }
+                records.add(record);
+            }
+            csvReader.close();
+            recordToCsv(records, filePath);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return phyData;
+    }
+
+    /**
+     * This method query a PhyData record by user name
+     * @param userName The userName of a person
+     * @return A PhyData class
+     */
+    @Override
+    public PhyData queryByUserName(String userName) {
         File inFile = new File(filePath);
         try {
             String[] record;
@@ -188,42 +217,40 @@ public class UserDAOImpl implements ToolDAO, UserDAO {
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
                 if(userName.equals(record[0])) {
-                    user = new User(record[0], record[1], record[2], record[3], record[4],
-                            new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                            Double.parseDouble(record[6]));
+                    phyData = new PhyData(record[0], Double.parseDouble(record[1]), Double.parseDouble(record[2]),
+                            Integer.parseInt(record[3]), record[4], Double.parseDouble(record[5]));
                 }
             }
             csvReader.close();
-        } catch (IOException | ParseException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
-        return user;
+        return phyData;
     }
 
     /**
-     * This method query all the user records
-     * @return A array list of user class
+     * This method query all the PhyData records
+     * @return A array list of PhyData class
      */
     @Override
-    public ArrayList<User> queryAll() {
+    public ArrayList<PhyData> queryAll() {
         File inFile = new File(filePath);
-        ArrayList<User> users = new ArrayList<>();
+        ArrayList<PhyData> phyDatas = new ArrayList<>();
         try {
             String[] record;
             BufferedReader reader = new BufferedReader(new FileReader(inFile));
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
-                user = new User(record[0], record[1], record[2], record[3], record[4],
-                        new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                        Double.parseDouble(record[6]));
-                users.add(user);
+                phyData = new PhyData(record[0], Double.parseDouble(record[1]), Double.parseDouble(record[2]),
+                        Integer.parseInt(record[3]), record[4], Double.parseDouble(record[5]));
+                phyDatas.add(phyData);
             }
             csvReader.close();
-        } catch (IOException | ParseException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
-        return users;
+        return phyDatas;
     }
 
     /**
@@ -234,14 +261,14 @@ public class UserDAOImpl implements ToolDAO, UserDAO {
      */
     @Override
     public Boolean insertInfo(Object obj) {
-        if(obj instanceof User) {
-            User user = (User) obj;
+        if(obj instanceof PhyData) {
+            PhyData phyData = (PhyData) obj;
             boolean flag = false;
             File outFile = new File(filePath);
             try {
                 BufferedWriter writer = new BufferedWriter(new FileWriter(outFile, true));
                 CsvWriter csvWriter = new CsvWriter(writer,',');
-                csvWriter.writeRecord(user.toStrArray());
+                csvWriter.writeRecord(phyData.toStrArray());
                 csvWriter.close();
                 flag = true;
             } catch (IOException ex) {
@@ -262,8 +289,8 @@ public class UserDAOImpl implements ToolDAO, UserDAO {
      */
     @Override
     public Boolean deleteInfo(Object object) {
-        if(object instanceof User) {
-            User user = (User) object;
+        if(object instanceof PhyData) {
+            PhyData phyData = (PhyData) object;
             Boolean flag = false;
             File inFile = new File(filePath);
             try {
@@ -273,7 +300,7 @@ public class UserDAOImpl implements ToolDAO, UserDAO {
                 CsvReader csvReader = new CsvReader(reader, ',');
                 while(csvReader.readRecord()){
                     record = csvReader.getRawRecord().split(",");
-                    if(user.getUserName().equals(record[0])) {
+                    if(phyData.getUserName().equals(record[0])) {
                         continue;
                     }
                     assert records != null;
@@ -295,12 +322,12 @@ public class UserDAOImpl implements ToolDAO, UserDAO {
     /**
      * This method search file for the same object
      *
-     * @param user A Object class
+     * @param phyData A Course class
      * @return A boolean value indicating whether the operation is completed successfully
      */
     @Override
-    public Boolean searchSame(Object user) {
-        User userExist = null;
+    public Boolean searchSame(Object phyData) {
+        PhyData phyDataExist = null;
         File inFile = new File(filePath);
         try {
             String[] record;
@@ -308,15 +335,14 @@ public class UserDAOImpl implements ToolDAO, UserDAO {
             CsvReader csvReader = new CsvReader(reader, ',');
             while(csvReader.readRecord()){
                 record = csvReader.getValues();
-                userExist = new User(record[0], record[1], record[2], record[3], record[4],
-                        new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(record[5]),
-                        Double.parseDouble(record[6]));
-                if(user.equals(userExist)) {
+                phyDataExist = new PhyData(record[0], Double.parseDouble(record[1]), Double.parseDouble(record[2]),
+                        Integer.parseInt(record[3]), record[4], Double.parseDouble(record[5]));
+                if(phyData.equals(phyDataExist)) {
                     return true;
                 }
             }
             csvReader.close();
-        } catch (IOException | ParseException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
         return false;

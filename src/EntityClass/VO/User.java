@@ -1,6 +1,6 @@
 package EntityClass.VO;
 
-import EntityClass.DAO.impl.*;
+import EntityClass.DAO.Impl.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
