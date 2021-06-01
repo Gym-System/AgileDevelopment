@@ -251,14 +251,9 @@ public class trainerInfoController {
             trainer_stars.add(trainer_star2);
             trainer_stars.add(trainer_star3);
             trainer_stars.add(trainer_star4);
-            for (i = 0; i <= 3; i++) {
-                if (rec.get(i) == null) {
-                    break;
-                } else {
-                    trainer_courses.get(i).setText(rec.get(i).getSubject());
-                    trainer_stars.get(i).setText(Integer.toString(rec.get(i).getViewTime()));
-                }
-
+            for (i = 0; i < rec.size(); i++) {
+                trainer_courses.get(i).setText(rec.get(i).getSubject());
+                trainer_stars.get(i).setText(Integer.toString(rec.get(i).getViewTime()));
             }
         }
     }
