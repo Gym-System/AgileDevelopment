@@ -130,6 +130,7 @@
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 </columnConstraints>
                                 <rowConstraints>
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -137,17 +138,22 @@
                                  <children>
                                     <ImageView fx:id="trainer_portrait_pic1" fitHeight="200.0" fitWidth="556.0" onDragDetected="#trainer_portrait_info_click1" pickOnBounds="true" preserveRatio="true" x="10.0">
                                        <image>
-                                          <Image url="@Resource/trainer_Portrait_PhotoWall_1.jpg" />
+                                          <Image url="@Resource/trainer_Portrait_PhotoWall_4.jpg" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fx:id="trainer_portrait_pic2" fitHeight="200.0" fitWidth="345.0" onDragDetected="#trainer_portrait_info_click2" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
+                                    <ImageView fx:id="trainer_portrait_pic3" fitHeight="200.0" fitWidth="345.0" onDragDetected="#trainer_portrait_info_click3" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="2">
                                        <image>
-                                          <Image url="@Resource/trainer_Portrait_PhotoWall_2.jpg" />
+                                          <Image url="@Resource/trainer_Portrait_PhotoWall_8.jpg" />
                                        </image>
                                     </ImageView>
-                                    <ImageView fx:id="trainer_portrait_pic3" fitHeight="200.0" fitWidth="556.0" onDragDetected="#trainer_portrait_info_click3" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="2">
+                                    <ImageView fx:id="trainer_portrait_pic21" fitHeight="200.0" fitWidth="345.0" onDragDetected="#trainer_portrait_info_click2" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="1">
                                        <image>
-                                          <Image url="@Resource/trainer_Portrait_PhotoWall_3.jpg" />
+                                          <Image url="@Resource/trainer_Portrait_PhotoWall_7.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="trainer_portrait_pic2" fitHeight="200.0" fitWidth="345.0" onDragDetected="#trainer_portrait_info_click2" pickOnBounds="true" preserveRatio="true" x="10.0" GridPane.columnIndex="3">
+                                       <image>
+                                          <Image url="@Resource/trainer_Portrait_PhotoWall_9.jpg" />
                                        </image>
                                     </ImageView>
                                  </children>
