@@ -191,12 +191,12 @@
                            <font>
                               <Font size="18.0" />
                            </font></Label>
-                        <Label fx:id="live_hour_mi" text="Live hour" GridPane.columnIndex="1">
+                        <Label fx:id="live_hour_mi" text="Live minutes" GridPane.columnIndex="1">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="record_hour_mi" text="recording minutes" GridPane.columnIndex="2">
+                        <Label fx:id="record_hour_mi" text="Recording minutes" GridPane.columnIndex="2">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
@@ -246,7 +246,12 @@
                   <Separator layoutX="80.0" layoutY="390.0" prefHeight="0.0" prefWidth="862.0" />
                   <Separator layoutX="80.0" layoutY="475.0" prefHeight="0.0" prefWidth="862.0" />
                   <Separator layoutX="80.0" layoutY="560.0" prefHeight="0.0" prefWidth="862.0" />
-                  <Label layoutX="80.0" layoutY="581.0" opacity="0.6" text="* Income = 300*Live/hour + 25-*Recording/hour + award">
+                  <Label layoutX="80.0" layoutY="581.0" opacity="0.6" text="* Income = 300 * Live/hour + 25 * Recording/hour + award">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="76.0" layoutY="613.0" opacity="0.6" text="* Award = 5 * flower">
                      <font>
                         <Font size="15.0" />
                      </font>
