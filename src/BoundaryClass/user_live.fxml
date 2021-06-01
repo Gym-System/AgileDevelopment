@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="807.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControlClass.userLiveController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="807.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControlClass.userLiveController">
    <children>
       <ImageView fx:id="logo" fitHeight="73.0" fitWidth="294.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -127,14 +124,14 @@
                         <Image url="@Resource/strength1.jpg" />
                      </image>
                   </ImageView>
-                  <Label fx:id="LiveName_trainer1_label" layoutX="84.0" layoutY="456.0" prefHeight="28.0" prefWidth="223.0" text="Yoga, Hitt, Strenght...     ">
+                  <Label fx:id="LiveName_trainer1_label" layoutX="84.0" layoutY="456.0" prefHeight="28.0" prefWidth="223.0">
                      <font>
                         <Font name="Comic Sans MS" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="Live_trainer1_label" layoutX="84.0" layoutY="484.0" prefHeight="25.0" prefWidth="215.0" text="Coach: Dexter ">
+                  <Label fx:id="Live_trainer1_label" layoutX="81.0" layoutY="461.0" prefHeight="25.0" prefWidth="215.0" text="Coach: Dexter ">
                      <font>
-                        <Font name="Comic Sans MS" size="18.0" />
+                        <Font name="Comic Sans MS" size="22.0" />
                      </font>
                   </Label>
                   <Hyperlink fx:id="user_BookLive_hyper1" layoutX="147.0" layoutY="548.0" onMouseClicked="#click_BookLive1" text="Book Live Session">
@@ -145,22 +142,22 @@
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebebeb" height="313.0" layoutX="359.0" layoutY="283.0" stroke="#94717142" strokeType="INSIDE" strokeWidth="5.0" width="258.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0d0d0" height="135.0" layoutX="371.0" layoutY="305.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="5.0" width="234.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebebeb" height="313.0" layoutX="658.0" layoutY="282.0" stroke="#94717142" strokeType="INSIDE" strokeWidth="5.0" width="258.0" />
-                  <Label fx:id="LiveName_trainer2_label1" layoutX="383.0" layoutY="457.0" prefHeight="28.0" prefWidth="223.0" text="Yoga, StrenYoga, Hitt, Strenght...     gth   ">
+                  <Label fx:id="LiveName_trainer2_label1" layoutX="383.0" layoutY="457.0" prefHeight="28.0" prefWidth="223.0">
                      <font>
                         <Font name="Comic Sans MS" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="Live_trainer2_label" layoutX="383.0" layoutY="485.0" prefHeight="25.0" prefWidth="208.0" text="Coach: Lila     ">
+                  <Label fx:id="Live_trainer2_label" layoutX="384.0" layoutY="461.0" prefHeight="25.0" prefWidth="208.0" text="Coach: Lila     ">
                      <font>
-                        <Font name="Comic Sans MS" size="18.0" />
+                        <Font name="Comic Sans MS" size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="Live_trainer3_label" layoutX="682.0" layoutY="484.0" prefHeight="25.0" prefWidth="223.0" text="Coach: Rita ">
+                  <Label fx:id="Live_trainer3_label" layoutX="682.0" layoutY="461.0" prefHeight="25.0" prefWidth="223.0" text="Coach: Rita ">
                      <font>
-                        <Font name="Comic Sans MS" size="18.0" />
+                        <Font name="Comic Sans MS" size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id="LiveName_trainer3_label2" layoutX="682.0" layoutY="456.0" prefHeight="28.0" prefWidth="223.0" text="Yoga, Hitt, Strenght...     ">
+                  <Label fx:id="LiveName_trainer3_label2" layoutX="682.0" layoutY="456.0" prefHeight="28.0" prefWidth="223.0">
                      <font>
                         <Font name="Comic Sans MS" size="18.0" />
                      </font>

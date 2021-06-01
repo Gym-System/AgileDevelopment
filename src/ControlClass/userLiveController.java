@@ -124,8 +124,11 @@ public class userLiveController implements Initializable {
         @FXML
         private Hyperlink user_BookLive_hyper1;
 
-        LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
-        ArrayList<LiveSession> liveSessions = liveSessionDAO.queryAll();
+//        LiveSessionDAOImpl liveSessionDAO = new LiveSessionDAOImpl();
+//        ArrayList<LiveSession> liveSessions = liveSessionDAO.queryAll();
+
+        TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
+        ArrayList<Trainer> trainers = trainerDAO.queryAll();
 
 
     @FXML
@@ -190,46 +193,55 @@ public class userLiveController implements Initializable {
         hyperlinks[1] = user_BookLive_hyper2;
         hyperlinks[2] = user_BookLive_hyper3;
 
+        Label[] labelCost = new Label[3];
+        labelCost[0] = cost1;
+        labelCost[1] = cost2;
+        labelCost[2] = cost3;
+        
         //nothing enters, return whole list
         if (user_find_text.getText().equals("")) {
-            turn_page.setPageCount((int) Math.ceil(liveSessions.size()/3.0));
+            turn_page.setPageCount((int) Math.ceil(trainers.size()/3.0));
             turn_page.setPageFactory(new Callback<Integer, Node>() {
                 @Override
                 public Node call(Integer param) {
                     VBox box = new VBox();
                     Trainer trainer;
-                    TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
-                    ArrayList<Trainer> trainers = new ArrayList<>();
-                    for(LiveSession liveSession:liveSessions) {
-                        trainer = trainerDAO.queryByUserName(liveSession.getTrainerName());
-                        trainers.add(trainer);
-                    }
+//                    TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
+//                    ArrayList<Trainer> trainers = new ArrayList<>();
+//                    for(LiveSession liveSession:liveSessions) {
+//                        trainer = trainerDAO.queryByUserName(liveSession.getTrainerName());
+//                        trainers.add(trainer);
+//                    }
                     passValue.setTrainernamelist(trainers);
+
                     int limit = 3;
-                    if (param.intValue() == liveSessions.size()/3) {
-                        limit = liveSessions.size()%3;
+                    if (param.intValue() == trainers.size()/3) {
+                        limit = trainers.size()%3;
                     }
 
-                    if(param.intValue() < liveSessions.size()/3){
+                    if(param.intValue() < trainers.size()/3){
                         for (int i =0; i <limit; i++){
-                            labelLive[i].setText(liveSessions.get(3 * param.intValue() + i).getSubject());
-                            labelTrainer[i].setText("Coach: " + liveSessions.get(3 * param.intValue() + i).getTrainerName());
+//                            labelLive[i].setText(liveSessions.get(3 * param.intValue() + i).getSubject());
+                            labelTrainer[i].setText("Coach: " + trainers.get(3 * param.intValue() + i).getUserName());
                             hyperlinks[i].setText("Book Live Session");
-                            imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga2.jpg"));
+                            imageViews[i].setImage(new Image("BoundaryClass/Resource/"+trainers.get(3 * param.intValue() + i).getUserName()+".jpg"));
+                            labelCost[i].setText("$"+String.valueOf(trainers.get(3 * param.intValue() + i).getPrice()) + "/h");
                         }
 
                     } else {
                         for (int i =0; i <limit; i++){
-                            labelLive[i].setText(liveSessions.get(3 * param.intValue() + i).getSubject());
-                            labelTrainer[i].setText("Coach" + liveSessions.get(3 * param.intValue() + i).getTrainerName());
+//                            labelLive[i].setText(liveSessions.get(3 * param.intValue() + i).getSubject());
+                            labelTrainer[i].setText("Coach" + trainers.get(3 * param.intValue() + i).getUserName());
                             hyperlinks[i].setText("Book Live Session");
-                            imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga3.jpg"));
+                            imageViews[i].setImage(new Image("BoundaryClass/Resource/"+trainers.get(3 * param.intValue() + i).getUserName()+".jpg"));
+                            labelCost[i].setText("$"+String.valueOf(trainers.get(3 * param.intValue() + i).getPrice()) + "/h");
                         }
                         for (int i = limit; i<3; i++){
-                            labelLive[i].setText("");
+//                            labelLive[i].setText("");
                             labelTrainer[i].setText("");
                             hyperlinks[i].setText("");
                             imageViews[i].setImage(null);
+                            labelCost[i].setText("$"+String.valueOf(trainers.get(3 * param.intValue() + i).getPrice()) + "/h");
                             System.out.println(i+" test");
                         }
 
@@ -240,25 +252,20 @@ public class userLiveController implements Initializable {
         }
 
         //if it doesn't type of viddeos, return nothing
-        if (!user_find_text.getText().equals("") && liveSessionDAO.queryByTrainerName(user_find_text.getText()).size() ==0){
+        if (!user_find_text.getText().equals("") && trainerDAO.queryByUserName(user_find_text.getText()) == null){
             turn_page.setPageCount(1);
             turn_page.setPageFactory(new Callback<Integer, Node>() {
                 @Override
                 public Node call(Integer param) {
                     VBox box = new VBox();
-                    Trainer trainer;
-                    TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
-                    ArrayList<Trainer> trainers = new ArrayList<>();
-                    for(LiveSession liveSession:liveSessions) {
-                        trainer = trainerDAO.queryByUserName(liveSession.getTrainerName());
-                        trainers.add(trainer);
-                    }
+
                     passValue.setTrainernamelist(trainers);
                     for (int i = 0; i < 3;i++){
-                        labelLive[i].setText("");
+//                        labelLive[i].setText("");
                         labelTrainer[i].setText("");
                         hyperlinks[i].setText("");
                         imageViews[i].setImage(null);
+                        labelCost[i].setText("");
                     }
 
                     return box;
@@ -267,47 +274,43 @@ public class userLiveController implements Initializable {
         }
 
         //if it has type, then return this type of the video
-        if (!user_find_text.getText().equals("") && liveSessionDAO.queryByTrainerName(user_find_text.getText()).size() >0) {
+        if (!user_find_text.getText().equals("") && trainerDAO.queryByUserName(user_find_text.getText()) != null) {
 
-            ArrayList<LiveSession> liveSessionArrayList = liveSessionDAO.queryByTrainerName(user_find_text.getText());
-            turn_page.setPageCount((int) Math.ceil(liveSessionArrayList.size()/3.0));
-            System.out.println(liveSessionArrayList.size());
+//            ArrayList<LiveSession> liveSessionArrayList = liveSessionDAO.queryByTrainerName(user_find_text.getText());
+            turn_page.setPageCount((int) Math.ceil(trainers.size()/3.0));
+            System.out.println(trainers.size());
             turn_page.setPageFactory(new Callback<Integer, Node>() {
                 @Override
                 public Node call(Integer param) {
                     VBox box = new VBox();
-                    Trainer trainer;
-                    TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
-                    ArrayList<Trainer> trainers = new ArrayList<>();
-                    for(LiveSession liveSession:liveSessions) {
-                        trainer = trainerDAO.queryByUserName(user_find_text.getText());
-                        trainers.add(trainer);
-                    }
+
                     passValue.setTrainernamelist(trainers);
 
                     int limit = 3;
-                    if (param.intValue() == liveSessionArrayList.size()/3) {
-                        limit = liveSessionArrayList.size()%3;
+                    if (param.intValue() == trainers.size()/3) {
+                        limit = trainers.size()%3;
                     }
 
-                    if(param.intValue() < liveSessionArrayList.size()/3){
+                    if(param.intValue() < trainers.size()/3){
                         for (int i =0; i <limit; i++){
-                            labelLive[i].setText(liveSessionArrayList.get(3 * param.intValue() + i).getSubject());
-                            labelTrainer[i].setText("Coach: " + liveSessionArrayList.get(3 * param.intValue() + i).getTrainerName());
+//                            labelLive[i].setText(liveSessionArrayList.get(3 * param.intValue() + i).getSubject());
+                            labelTrainer[i].setText("Coach: " + trainers.get(3 * param.intValue() + i).getUserName());
                             hyperlinks[i].setText("Book Live Session");
-                            imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga2.jpg"));
+                            imageViews[i].setImage(new Image("BoundaryClass/Resource/"+trainers.get(3 * param.intValue() + i).getUserName()+".jpg"));
+                            labelCost[i].setText("$"+String.valueOf(trainers.get(3 * param.intValue() + i).getPrice()) + "/h");
                         }
 
                     } else {
                         for (int i =0; i <limit; i++){
-                            labelLive[i].setText(liveSessionArrayList.get(3 * param.intValue() + i).getSubject());
-                            labelTrainer[i].setText("Coach: " + liveSessionArrayList.get(3 * param.intValue() + i).getTrainerName());
+//                            labelLive[i].setText(liveSessionArrayList.get(3 * param.intValue() + i).getSubject());
+                            labelTrainer[i].setText("Coach: " + trainers.get(3 * param.intValue() + i).getUserName());
                             hyperlinks[i].setText("Book Live Session");
-                            imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga2.jpg"));
+                            imageViews[i].setImage(new Image("BoundaryClass/Resource/"+ trainers.get(3 * param.intValue() + i).getUserName()+".jpg"));
+                            labelCost[i].setText("$"+String.valueOf(trainers.get(3 * param.intValue() + i).getPrice()) + "/h");
                             System.out.println("test");
                         }
                         for (int i = limit; i<3; i++){
-                            labelLive[i].setText("");
+//                            labelLive[i].setText("");
                             labelTrainer[i].setText("");
                             hyperlinks[i].setText("");
                             imageViews[i].setImage(null);
@@ -409,55 +412,49 @@ public class userLiveController implements Initializable {
 
         ArrayList<Trainer> trainerArrayList = new ArrayList<>();
 
-        turn_page.setPageCount((int) Math.ceil(liveSessions.size()/3.0));
+        turn_page.setPageCount((int) Math.ceil(trainers.size()/3.0));
 
         turn_page.setPageFactory(new Callback<Integer, Node>() {
             @Override
             public Node call(Integer param) {
                 VBox box = new VBox();
-                Trainer trainer;
-                TrainerDAOImpl trainerDAO = new TrainerDAOImpl();
-                ArrayList<Trainer> trainers = new ArrayList<>();
-                for(LiveSession liveSession:liveSessions) {
-                    trainer = trainerDAO.queryByUserName(liveSession.getTrainerName());
-                    trainers.add(trainer);
-                }
+
                 passValue.setTrainernamelist(trainers);
                 System.out.println(passValue.getTrainernamelist().size());
 
                 int limit = 3;
-                if (param.intValue() == liveSessions.size()/3) {
-                    limit = liveSessions.size()%3;
+                if (param.intValue() == trainers.size()/3) {
+                    limit = trainers.size()%3;
                 }
 
-                if(param.intValue() < liveSessions.size()/3){
+                if(param.intValue() < trainers.size()/3){
                     for (int i =0; i <limit; i++){
-                        trainer = trainerDAO.queryByUserName(liveSessions.get(3 * param.intValue() + i).getTrainerName());
-                        trainerArrayList.add(trainer);
+//                        trainer = trainerDAO.queryByUserName(liveSessions.get(3 * param.intValue() + i).getTrainerName());
+//                        trainerArrayList.add(trainer);
 
-                        labelLive[i].setText(liveSessions.get(3 * param.intValue() + i).getSubject());
-                        labelTrainer[i].setText("Coach: " + liveSessions.get(3 * param.intValue() + i).getTrainerName());
+//                        labelLive[i].setText(liveSessions.get(3 * param.intValue() + i).getSubject());
+                        labelTrainer[i].setText("Coach: " + trainers.get(3 * param.intValue() + i).getUserName());
                         hyperlinks[i].setText("Book Live Session");
-                        imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga2.jpg"));
-                        labelCost[i].setText(String.valueOf(trainer.getPrice()));
+                        imageViews[i].setImage(new Image("BoundaryClass/Resource/"+ trainers.get(3 * param.intValue() + i).getUserName()+".jpg"));
+                        labelCost[i].setText("$"+String.valueOf(trainers.get(3 * param.intValue() + i).getPrice()) + "/h");
                     }
 
                 } else {
                     for (int i =0; i <limit; i++){
-                        trainer = trainerDAO.queryByUserName(liveSessions.get(3 * param.intValue() + i).getTrainerName());
-                        trainerArrayList.add(trainer);
-                        labelLive[i].setText(liveSessions.get(3 * param.intValue() + i).getSubject());
-                        labelTrainer[i].setText("Coach: " + liveSessions.get(3 * param.intValue() + i).getTrainerName());
+//                        trainer = trainerDAO.queryByUserName(liveSessions.get(3 * param.intValue() + i).getTrainerName());
+//                        trainerArrayList.add(trainer);
+//                        labelLive[i].setText(liveSessions.get(3 * param.intValue() + i).getSubject());
+                        labelTrainer[i].setText("Coach: " + trainers.get(3 * param.intValue() + i).getUserName());
                         hyperlinks[i].setText("Book Live Session");
-                        imageViews[i].setImage(new Image("BoundaryClass/Resource/yoga3.jpg"));
-                        labelCost[i].setText(String.valueOf(trainer.getPrice()));
+                        imageViews[i].setImage(new Image("BoundaryClass/Resource/"+trainers.get(3 * param.intValue() + i).getUserName()+".jpg"));
+                        labelCost[i].setText("$"+String.valueOf(trainers.get(3 * param.intValue() + i).getPrice()) + "/h");
                         System.out.println(param.intValue() + "索引");
                     }
 
 
 
                     for (int i = limit; i<3; i++){
-                        labelLive[i].setText("");
+//                        labelLive[i].setText("");
                         labelTrainer[i].setText("");
                         hyperlinks[i].setText("");
                         imageViews[i].setImage(null);
