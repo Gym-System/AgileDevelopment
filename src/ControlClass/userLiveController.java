@@ -197,7 +197,7 @@ public class userLiveController implements Initializable {
         labelCost[0] = cost1;
         labelCost[1] = cost2;
         labelCost[2] = cost3;
-        
+
         //nothing enters, return whole list
         if (user_find_text.getText().equals("")) {
             turn_page.setPageCount((int) Math.ceil(trainers.size()/3.0));
