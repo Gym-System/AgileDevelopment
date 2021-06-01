@@ -136,7 +136,7 @@ public class User extends Person {
      * @param amount The amount of gift user would like to send
      * @param courseId The ID of a course
      */
-    public void sendGift2RecVideo(int amount, long courseId) {
+    public Boolean sendGift2RecVideo(int amount, long courseId) {
         RecVideoDAOImpl recVideoDAO = new RecVideoDAOImpl();
         RecVideo recVideo = recVideoDAO.queryByCourseId(courseId);
         int gift = recVideo.getGift() + amount;
@@ -145,6 +145,8 @@ public class User extends Person {
         UserDAOImpl userDAO = new UserDAOImpl();
         balance -= amount;
         userDAO.changeUserBalance(getUserName(), balance);
+
+        return false;
     }
 
     /**
