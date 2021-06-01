@@ -1,6 +1,7 @@
 package ControlClass;
 
 import EntityClass.DAO.Impl.FavoriteVideoImpl;
+import EntityClass.DAO.Impl.PreUserDAOImpl;
 import EntityClass.DAO.Impl.RecVideoDAOImpl;
 import EntityClass.DAO.Impl.UserDAOImpl;
 import EntityClass.VO.FavoriteVideo;
@@ -322,14 +323,27 @@ Boolean flag;
     @FXML
     void click_send_flower(MouseEvent event) {
         UserDAOImpl userDAO = new UserDAOImpl();
+        PreUserDAOImpl preUserDAO = new PreUserDAOImpl();
         try{
             int flowernumber = Integer.parseInt(flower_num_urs.getText());
         }catch (Exception E){
             JOptionPane.showMessageDialog(null, "Please check the input", "Please check the input", JOptionPane.ERROR_MESSAGE);
         }
         if (Integer.parseInt(flower_num_urs.getText())>=0){
-            userDAO.queryByUserName(passValue.getValue()).sendGift2RecVideo(Integer.parseInt(flower_num_urs.getText()),passValue.getCourseID());
-            JOptionPane.showMessageDialog(null, "send "+flower_num_urs.getText()+" flowers successfully", "send flowers successfully", JOptionPane.INFORMATION_MESSAGE);
+            if(preUserDAO.queryByUserName(passValue.getValue())==null){
+                JOptionPane.showMessageDialog(null, "Out of balance", "Please check the balance", JOptionPane.ERROR_MESSAGE);
+            }
+            else{
+                Boolean state;
+                state=preUserDAO.queryByUserName(passValue.getValue()).sendGift2RecVideo(Integer.parseInt(flower_num_urs.getText()),passValue.getCourseID());
+                if(state){
+                    JOptionPane.showMessageDialog(null, "send "+flower_num_urs.getText()+" flowers successfully", "send flowers successfully", JOptionPane.INFORMATION_MESSAGE);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Out of balance", "Please check the balance", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+
+
         }
 
 

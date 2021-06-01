@@ -310,7 +310,7 @@ public class userInfoController {
     }
 
     @FXML
-    void user_info_recharge_ok_click(ActionEvent event) {
+    void user_info_recharge_ok_click(ActionEvent event) throws IOException {
         UserDAOImpl userDAO = new UserDAOImpl();
         PreUserDAOImpl preUserDAO = new PreUserDAOImpl();
         try{
@@ -327,6 +327,8 @@ public class userInfoController {
             preUserDAO.queryByUserName(passValue.getValue()).recharge(Double.parseDouble(user_info_recharge_money.getText()));
             JOptionPane.showInternalMessageDialog(null, "Recharge successfully","Recharge successfully", JOptionPane.INFORMATION_MESSAGE);
         }
+        Stage stage = (Stage) level.getScene().getWindow();
+        new APP().jump(stage, "UserInfo");
 
     }
 

@@ -2,9 +2,11 @@ package ControlClass;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import javafx.event.ActionEvent;
+import EntityClass.DAO.Impl.ManagerDAOImpl;
+import EntityClass.VO.Regulation;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
@@ -14,6 +16,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class manageRegulationController {
+    private ArrayList<TextField> vip_min = new ArrayList<>();
+    private ArrayList<TextField> vip_max = new ArrayList<>();
+    private ArrayList<TextField> vip_discount = new ArrayList<>();
+    private ArrayList<Regulation> regulations = new ArrayList<>();
 
     @FXML
     private ResourceBundle resources;
@@ -145,7 +151,32 @@ public class manageRegulationController {
     }
 
     @FXML
-    void click_save_regulation(ActionEvent event) {
+    void click_save_regulation(MouseEvent event) {
+        vip_min.add(vip1_min);
+        vip_min.add(vip2_min);
+        vip_min.add(vip3_min);
+        vip_min.add(vip4_min);
+        vip_min.add(vip5_min);
+        vip_max.add(vip1_max);
+        vip_max.add(vip2_max);
+        vip_max.add(vip3_max);
+        vip_max.add(vip4_max);
+        vip_max.add(vip5_max);
+        vip_discount.add(vip1_discount);
+        vip_discount.add(vip2_discount);
+        vip_discount.add(vip3_discount);
+        vip_discount.add(vip4_discount);
+        vip_discount.add(vip5_discount);
+        for (int i = 0; i <= 4; i++) {
+            if (vip_max.get(i).getText().equals("MAX")) {
+                regulations.add(new Regulation((i + 1), Double.parseDouble(vip_min.get(i).getText()), Double.POSITIVE_INFINITY, Double.parseDouble(vip_discount.get(i).getText())));
+            }
+            else {
+                regulations.add(new Regulation((i + 1), Double.parseDouble(vip_min.get(i).getText()), Double.parseDouble(vip_max.get(i).getText()), Double.parseDouble(vip_discount.get(i).getText())));
+            }
+        }
+
+        new ManagerDAOImpl().queryByUserName(passValue.getValue()).changeRegulation(regulations);
 
     }
 
