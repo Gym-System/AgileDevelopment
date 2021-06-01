@@ -8,9 +8,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+import EntityClass.DAO.Impl.LiveSessionDAOImpl;
 import EntityClass.DAO.Impl.PreUserDAOImpl;
 import EntityClass.DAO.Impl.TrainerDAOImpl;
+import EntityClass.DAO.PreUserDAO;
 import EntityClass.VO.LiveSession;
+import EntityClass.VO.PremierUser;
 import EntityClass.VO.Trainer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -370,7 +373,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 08:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -386,7 +389,8 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 16:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
+
     }
 
     @FXML
@@ -402,7 +406,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 10:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
 
@@ -419,7 +423,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 10:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -435,7 +439,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 10:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -451,7 +455,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 16:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -467,7 +471,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 14:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -483,8 +487,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 10:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
-
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -500,7 +503,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 16:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -516,7 +519,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 10:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -532,7 +535,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 14:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -548,7 +551,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 18:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -564,7 +567,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 08:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
 
@@ -581,7 +584,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 14:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -597,7 +600,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 18:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -613,7 +616,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 16:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -629,7 +632,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 08:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -645,7 +648,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 18:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -661,7 +664,8 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 14:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
+
     }
 
     @FXML
@@ -677,7 +681,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 16:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -693,7 +697,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 08:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -709,7 +713,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 18:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -725,7 +729,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 08:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -741,7 +745,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 10:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -757,7 +761,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 16:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -773,7 +777,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 10:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -789,7 +793,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 14:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -805,7 +809,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 14:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -821,7 +825,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 18:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -837,7 +841,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 14:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -853,7 +857,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 16:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -869,7 +873,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 18:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -885,7 +889,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 08:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -901,7 +905,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 08:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
     @FXML
@@ -917,7 +921,7 @@ public class tra_trainerCalendarController {
         SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
         String time = day + " 18:00:00:000";
         Date bookDate = df2.parse(time);
-        preUserDAO.queryByUserName("test").bookLiveSession(trainerDAO.queryByUserName(passValue.getTrainerName()),bookDate);
+        new LiveSessionDAOImpl().insertLiveSession(new LiveSession(null, 0, bookDate, passValue.getTrainerName(), "test"));
     }
 
 
@@ -1151,10 +1155,19 @@ public class tra_trainerCalendarController {
                 j = 7;
             }
             int count = 7*i+j-1;
-            status[count].setText("Not Available");
-            status[count].setTextFill(Color.RED);
-            status[count].setFont(Font.font("Comic Sans MS"));
-            book[count].setVisible(false);
+            if(liveSession.getUserName().equals("test")){
+                status[count].setText("Not Available");
+                status[count].setTextFill(Color.RED);
+                status[count].setFont(Font.font("Comic Sans MS"));
+                book[count].setVisible(false);
+            }else{
+                status[count].setText("Book with "+liveSession.getUserName());
+                status[count].setTextFill(Color.ORANGE);
+                status[count].setFont(Font.font("Comic Sans MS"));
+                book[count].setVisible(false);
+
+            }
+
 
         }
     }

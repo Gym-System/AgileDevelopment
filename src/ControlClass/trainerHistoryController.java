@@ -251,7 +251,10 @@ public class trainerHistoryController implements Initializable {
         System.out.println(passValue.getTrainerName());
         ArrayList<Course> courses = new ArrayList<>();
         for (LiveSession l: liveSessions) {
-            courses.add(l);
+            if (!l.getUserName().equals("test")) {
+                courses.add(l);
+            }
+
         }
         for (RecVideo r: recVideos) {
             courses.add(r);
@@ -353,23 +356,32 @@ public class trainerHistoryController implements Initializable {
             });
         }
         if (!trainer_find_text.getText().equals("") && trainer_find_text.getText().equals("live")) {
-            turn_page.setPageCount((int) Math.ceil(liveSessions.size() / 8.0));
+            ArrayList<Course> courses1 = new ArrayList<>();
+            for (LiveSession l: liveSessions) {
+                if (!l.getUserName().equals("test")){
+                    courses1.add(l);
+                }
+            }
+            turn_page.setPageCount((int) Math.ceil(courses.size() / 8.0));
             turn_page.setPageFactory(new Callback<Integer, Node>() {
                 @Override
                 public Node call(Integer param) {
                     VBox vbox = new VBox();
                     int limit = 8;
-                    if (param.intValue() == liveSessions.size() / 8) {
-                        limit = liveSessions.size() % 8;
+                    if (param.intValue() == courses1.size() / 8) {
+                        limit = courses1.size() % 8;
                     }
 
-                    if (param.intValue() < liveSessions.size() / 8) {
+                    if (param.intValue() < courses1.size() / 8) {
 
                         for (int i = 0; i < limit; i++) {
-                        labelType[i].setText("live");
-                        labelSubject[i].setText(liveSessions.get(8 * param.intValue() + i).getSubject());
-                        labelUser[i].setText("User: "+liveSessions.get(8 * param.intValue() + i).getUserName());
-                        labelTime[i].setText(String.valueOf(liveSessions.get(8 * param.intValue() + i).getStartTime()));
+                            if (courses1.get(8 * param.intValue() + i) instanceof LiveSession) {
+                                LiveSession liveSession = (LiveSession) courses1.get(8 * param.intValue() + i);
+                                labelType[i].setText("live");
+                                labelSubject[i].setText(liveSession.getSubject());
+                                labelUser[i].setText("User: "+liveSession.getUserName());
+                                labelTime[i].setText(String.valueOf(liveSession.getStartTime()));
+                            }
 
                         }
 
@@ -377,10 +389,13 @@ public class trainerHistoryController implements Initializable {
 
                     } else {
                         for (int i = 0; i < limit; i++) {
-                            labelType[i].setText("live");
-                            labelSubject[i].setText(liveSessions.get(8 * param.intValue() + i).getSubject());
-                            labelUser[i].setText("User: "+liveSessions.get(8 * param.intValue() + i).getUserName());
-                            labelTime[i].setText(String.valueOf(liveSessions.get(8 * param.intValue() + i).getStartTime()));
+                            if (courses1.get(8 * param.intValue() + i) instanceof LiveSession) {
+                                LiveSession liveSession = (LiveSession) courses1.get(8 * param.intValue() + i);
+                                labelType[i].setText("live");
+                                labelSubject[i].setText(liveSession.getSubject());
+                                labelUser[i].setText("User: "+liveSession.getUserName());
+                                labelTime[i].setText(String.valueOf(liveSession.getStartTime()));
+                            }
                         }
                         for (int i = limit; i < 8; i++) {
                             labelType[i].setText("");
@@ -488,7 +503,9 @@ public class trainerHistoryController implements Initializable {
         System.out.println(passValue.getTrainerName());
         ArrayList<Course> courses = new ArrayList<>();
         for (LiveSession l: liveSessions) {
-            courses.add(l);
+            if (!l.getUserName().equals("test")) {
+                courses.add(l);
+            }
         }
         for (RecVideo r: recVideos) {
             courses.add(r);

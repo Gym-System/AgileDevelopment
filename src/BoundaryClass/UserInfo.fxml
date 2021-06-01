@@ -287,22 +287,22 @@
                               </ImageView>
                               <ToolBar layoutX="50.0" layoutY="632.0" prefHeight="44.0" prefWidth="940.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="640.0">
                                  <items>
-                                    <Label fx:id="user_info_myOrder_live1" prefHeight="23.0" prefWidth="269.0" text="Live" textAlignment="RIGHT" textFill="#6d6aa3">
+                                    <Label fx:id="user_info_myOrder_live1" prefHeight="23.0" prefWidth="269.0" textAlignment="RIGHT" textFill="#6d6aa3">
                                        <font>
                                           <Font name="Comic Sans MS Bold Italic" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="user_info_myOrder_type1" prefHeight="23.0" prefWidth="120.0" text="Yoga" textAlignment="RIGHT" textFill="#6d6aa3">
+                                    <Label fx:id="user_info_myOrder_type1" prefHeight="23.0" prefWidth="120.0" textAlignment="RIGHT" textFill="#6d6aa3">
                                        <font>
                                           <Font name="Comic Sans MS Bold Italic" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="user_info_myOrder_trainer1" prefHeight="23.0" prefWidth="184.0" text="Trainer: Lee" textFill="#6d6aa3">
+                                    <Label fx:id="user_info_myOrder_trainer1" prefHeight="23.0" prefWidth="184.0" textFill="#6d6aa3">
                                        <font>
                                           <Font name="Comic Sans MS Bold Italic" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="user_info_myOrder_time1" prefHeight="23.0" prefWidth="272.0" text="8:00-10:00   2021-03-25" textFill="#6d6aa3" underline="true">
+                                    <Label fx:id="user_info_myOrder_time1" prefHeight="23.0" prefWidth="272.0" textFill="#6d6aa3" underline="true">
                                        <font>
                                           <Font name="Comic Sans MS Bold Italic" size="16.0" />
                                        </font>
@@ -311,22 +311,22 @@
                               </ToolBar>
                               <ToolBar layoutX="52.0" layoutY="705.0" prefHeight="44.0" prefWidth="940.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="680.0">
                                  <items>
-                                    <Label fx:id="user_info_myOrder_live2" prefHeight="23.0" prefWidth="269.0" text="Live" textAlignment="RIGHT" textFill="#6d6aa3">
+                                    <Label fx:id="user_info_myOrder_live2" prefHeight="23.0" prefWidth="269.0" textAlignment="RIGHT" textFill="#6d6aa3">
                                        <font>
                                           <Font name="Comic Sans MS Bold Italic" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="user_info_myOrder_type2" prefHeight="23.0" prefWidth="120.0" text="Yoga" textAlignment="RIGHT" textFill="#6d6aa3">
+                                    <Label fx:id="user_info_myOrder_type2" prefHeight="23.0" prefWidth="120.0" textAlignment="RIGHT" textFill="#6d6aa3">
                                        <font>
                                           <Font name="Comic Sans MS Bold Italic" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="user_info_myOrder_trainer2" prefHeight="23.0" prefWidth="184.0" text="Trainer: Lee" textFill="#6d6aa3">
+                                    <Label fx:id="user_info_myOrder_trainer2" prefHeight="23.0" prefWidth="184.0" textFill="#6d6aa3">
                                        <font>
                                           <Font name="Comic Sans MS Bold Italic" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="user_info_myOrder_time2" prefHeight="23.0" prefWidth="272.0" text="8:00-10:00   2021-03-25" textFill="#6d6aa3" underline="true">
+                                    <Label fx:id="user_info_myOrder_time2" prefHeight="23.0" prefWidth="272.0" textFill="#6d6aa3" underline="true">
                                        <font>
                                           <Font name="Comic Sans MS Bold Italic" size="16.0" />
                                        </font>
@@ -335,22 +335,22 @@
                               </ToolBar>
                               <ToolBar layoutX="62.0" layoutY="715.0" prefHeight="44.0" prefWidth="940.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="720.0">
                                  <items>
-                                    <Label fx:id="user_info_myOrder_live3" prefHeight="23.0" prefWidth="269.0" text="Live" textAlignment="RIGHT" textFill="#6d6aa3">
+                                    <Label fx:id="user_info_myOrder_live3" prefHeight="23.0" prefWidth="269.0" textAlignment="RIGHT" textFill="#6d6aa3">
                                        <font>
                                           <Font name="Comic Sans MS Bold Italic" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="user_info_myOrder_type3" prefHeight="23.0" prefWidth="120.0" text="Yoga" textAlignment="RIGHT" textFill="#6d6aa3">
+                                    <Label fx:id="user_info_myOrder_type3" prefHeight="23.0" prefWidth="120.0" textAlignment="RIGHT" textFill="#6d6aa3">
                                        <font>
                                           <Font name="Comic Sans MS Bold Italic" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="user_info_myOrder_trainer3" prefHeight="23.0" prefWidth="184.0" text="Trainer: Lee" textFill="#6d6aa3">
+                                    <Label fx:id="user_info_myOrder_trainer3" prefHeight="23.0" prefWidth="184.0" textFill="#6d6aa3">
                                        <font>
                                           <Font name="Comic Sans MS Bold Italic" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="user_info_myOrder_time3" prefHeight="23.0" prefWidth="272.0" text="8:00-10:00   2021-03-25" textFill="#6d6aa3" underline="true">
+                                    <Label fx:id="user_info_myOrder_time3" prefHeight="23.0" prefWidth="272.0" textFill="#6d6aa3" underline="true">
                                        <font>
                                           <Font name="Comic Sans MS Bold Italic" size="16.0" />
                                        </font>
@@ -359,22 +359,22 @@
                               </ToolBar>
                               <ToolBar layoutX="72.0" layoutY="725.0" prefHeight="44.0" prefWidth="940.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="760.0">
                                  <items>
-                                    <Label fx:id="user_info_myOrder_live4" prefHeight="23.0" prefWidth="269.0" text="Live" textAlignment="RIGHT" textFill="#6d6aa3">
+                                    <Label fx:id="user_info_myOrder_live4" prefHeight="23.0" prefWidth="269.0" textAlignment="RIGHT" textFill="#6d6aa3">
                                        <font>
                                           <Font name="Comic Sans MS Bold Italic" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="user_info_myOrder_type4" prefHeight="23.0" prefWidth="120.0" text="Yoga" textAlignment="RIGHT" textFill="#6d6aa3">
+                                    <Label fx:id="user_info_myOrder_type4" prefHeight="23.0" prefWidth="120.0" textAlignment="RIGHT" textFill="#6d6aa3">
                                        <font>
                                           <Font name="Comic Sans MS Bold Italic" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="user_info_myOrder_trainer4" prefHeight="23.0" prefWidth="184.0" text="Trainer: Lee" textFill="#6d6aa3">
+                                    <Label fx:id="user_info_myOrder_trainer4" prefHeight="23.0" prefWidth="184.0" textFill="#6d6aa3">
                                        <font>
                                           <Font name="Comic Sans MS Bold Italic" size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="user_info_myOrder_time4" prefHeight="23.0" prefWidth="272.0" text="8:00-10:00   2021-03-25" textFill="#6d6aa3" underline="true">
+                                    <Label fx:id="user_info_myOrder_time4" prefHeight="23.0" prefWidth="272.0" textFill="#6d6aa3" underline="true">
                                        <font>
                                           <Font name="Comic Sans MS Bold Italic" size="16.0" />
                                        </font>

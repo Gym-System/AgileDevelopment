@@ -121,7 +121,7 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="Gender:" GridPane.rowIndex="6">
+                        <Label text="Price:" GridPane.rowIndex="6">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
@@ -136,7 +136,7 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label fx:id="trainer_gender" text="M" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <Label fx:id="trainer_price" text="M" GridPane.columnIndex="1" GridPane.rowIndex="6">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
@@ -316,22 +316,22 @@
                      </rowConstraints>
                   </GridPane>
                   <TextArea fx:id="trainerInfo_cv" layoutX="550.0" layoutY="243.0" onDragDetected="#trainerInfo_cv_click" prefHeight="187.0" prefWidth="400.0" />
-                  <ImageView fitHeight="100.0" fitWidth="156.0" layoutX="736.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="730.0">
+                  <ImageView fitHeight="100.0" fitWidth="156.0" layoutX="756.0" layoutY="501.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="756.0">
                      <image>
-                        <Image url="@Resource/trainer_Portrait_PhotoWall_1.jpg" />
+                        <Image url="@Resource/trainer_Portrait_PhotoWall_7.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="100.0" fitWidth="156.0" layoutX="735.0" layoutY="603.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="730.0">
+                  <ImageView fitHeight="106.0" fitWidth="100.0" layoutX="756.0" layoutY="600.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="756.0">
                      <image>
-                        <Image url="@Resource/trainer_Portrait_PhotoWall_2.jpg" />
+                        <Image url="@Resource/trainer_Portrait_PhotoWall_8.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="197.0" fitWidth="177.0" layoutX="550.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="197.0" fitWidth="200.0" layoutX="550.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Resource/trainer_Portrait_PhotoWall_3.jpg" />
+                        <Image url="@Resource/trainer_Portrait_PhotoWall_4.jpg" />
                      </image>
                   </ImageView>
-                  <Button fx:id="trainerInfo_photoWall_add" layoutX="896.0" layoutY="501.0" mnemonicParsing="false" onAction="#trainerInfo_photoWall_add_click" prefHeight="197.0" prefWidth="54.0" text="➕ ">
+                  <Button fx:id="trainerInfo_photoWall_add" layoutX="879.0" layoutY="501.0" mnemonicParsing="false" onAction="#trainerInfo_photoWall_add_click" prefHeight="197.0" prefWidth="54.0" text="➕ ">
                      <font>
                         <Font size="18.0" />
                      </font>

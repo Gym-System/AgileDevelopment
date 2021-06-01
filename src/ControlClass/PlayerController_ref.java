@@ -789,6 +789,7 @@ Boolean flag;
 
 
         //测试嵌入式调用
+        System.out.println(passValue.getCourseID());
         SimpleMediaPlayer_ref player = SimpleMediaPlayer_ref.newInstance(getClass().getResource("/BoundaryClass/Resource/Video/"+passValue.getCourseID()+".mp4").toString());
         pane.setCenter(player);
         pane.setAlignment(player,Pos.CENTER);

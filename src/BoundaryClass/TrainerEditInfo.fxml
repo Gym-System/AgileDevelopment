@@ -121,7 +121,7 @@
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
                         </Label>
-                        <Label text="Gender:" GridPane.rowIndex="6">
+                        <Label text="Price:" GridPane.rowIndex="6">
                            <font>
                               <Font name="Baskerville Old Face" size="24.0" />
                            </font>
@@ -163,7 +163,7 @@
                            </font>
                         </Label>
                         <TextField fx:id="trainer_name" minHeight="1.0" prefHeight="30.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <TextField fx:id="trainer_gender" minHeight="1.0" prefHeight="30.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField fx:id="trainer_price" minHeight="1.0" prefHeight="30.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <TextField fx:id="trainer_major" minHeight="1.0" prefHeight="30.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                         <TextField fx:id="trainer_tel" minHeight="1.0" prefHeight="30.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                         <TextField fx:id="trainer_email" minHeight="1.0" prefHeight="30.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
