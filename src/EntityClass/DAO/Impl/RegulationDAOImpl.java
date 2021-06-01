@@ -24,7 +24,7 @@ public class RegulationDAOImpl implements ToolDAO, RegulationDAO {
      */
     @Override
     public Boolean insertRegulation(Regulation regulation) {
-        if(searchSame(regulation)) {
+        if(queryByUserType(regulation.getUserType()) != null) {
             deleteRegulation(regulation);
         }
         return insertInfo(regulation);

@@ -1,5 +1,8 @@
 package ControlClass;
 
+import EntityClass.DAO.Impl.RegulationDAOImpl;
+import EntityClass.VO.Regulation;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -610,7 +613,7 @@ public class Test {
 
         System.out.println(trainer.equals(trainer1));
 
-         */
+
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
@@ -634,6 +637,11 @@ public class Test {
         System.out.println(time);
         startTime = new SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy", Locale.UK).parse(time);
         System.out.println(startTime);
+
+         */
+
+        Regulation regulation = new Regulation(1, 1000, 2000, 10);
+        System.out.println(new RegulationDAOImpl().searchSame(regulation));
     }
 
 }
