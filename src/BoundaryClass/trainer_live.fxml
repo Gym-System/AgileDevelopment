@@ -130,7 +130,7 @@
                   </CheckBox>
                   <ToolBar fx:id="toolbar1" layoutX="60.0" layoutY="147.0" prefHeight="44.0" prefWidth="856.0">
                     <items>
-                      <Button fx:id="trainer_enterLive_button1" mnemonicParsing="false" onMouseClicked="#trainer_startLive_click1" text="Start My Live Broadcast" textFill="#4ebfbe">
+                      <Button fx:id="trainer_enterLive_button1" mnemonicParsing="false" onMouseClicked="#trainer_startLive_click1" text="Start My Live Broadcast" textFill="#4ebfbe" visible="false">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="18.0" />
                            </font>
@@ -149,7 +149,7 @@
                   </ToolBar>
                   <ToolBar fx:id="toolbar2" layoutX="60.0" layoutY="203.0" prefHeight="44.0" prefWidth="856.0">
                      <items>
-                        <Button fx:id="trainer_enterLive_button2" mnemonicParsing="false" onMouseClicked="#trainer_startLive_click2" text="Start My Live Broadcast" textFill="#4ebfbe">
+                        <Button fx:id="trainer_enterLive_button2" mnemonicParsing="false" onMouseClicked="#trainer_startLive_click2" text="Start My Live Broadcast" textFill="#4ebfbe" visible="false">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="18.0" />
                            </font>
@@ -168,7 +168,7 @@
                   </ToolBar>
                   <ToolBar fx:id="toolbar3" layoutX="60.0" layoutY="260.0" prefHeight="44.0" prefWidth="856.0">
                      <items>
-                        <Button fx:id="trainer_enterLive_button3" mnemonicParsing="false" onMouseClicked="#trainer_startLive_click3" text="Start My Live Broadcast" textFill="#4ebfbe">
+                        <Button fx:id="trainer_enterLive_button3" mnemonicParsing="false" onMouseClicked="#trainer_startLive_click3" text="Start My Live Broadcast" textFill="#4ebfbe" visible="false">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="18.0" />
                            </font>
@@ -187,7 +187,7 @@
                   </ToolBar>
                   <ToolBar fx:id="toolbar4" layoutX="60.0" layoutY="315.0" prefHeight="44.0" prefWidth="856.0">
                      <items>
-                        <Button fx:id="trainer_enterLive_button4" mnemonicParsing="false" onMouseClicked="#trainer_startLive_click4" text="Start My Live Broadcast" textFill="#4ebfbe">
+                        <Button fx:id="trainer_enterLive_button4" mnemonicParsing="false" onMouseClicked="#trainer_startLive_click4" text="Start My Live Broadcast" textFill="#4ebfbe" visible="false">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="18.0" />
                            </font>
@@ -206,7 +206,7 @@
                   </ToolBar>
                   <ToolBar fx:id="toolbar5" layoutX="60.0" layoutY="372.0" prefHeight="44.0" prefWidth="856.0">
                      <items>
-                        <Button fx:id="trainer_enterLive_button5" mnemonicParsing="false" onMouseClicked="#trainer_startLive_click5" text="Start My Live Broadcast" textFill="#4ebfbe">
+                        <Button fx:id="trainer_enterLive_button5" mnemonicParsing="false" onMouseClicked="#trainer_startLive_click5" text="Start My Live Broadcast" textFill="#4ebfbe" visible="false">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="18.0" />
                            </font>
@@ -225,7 +225,7 @@
                   </ToolBar>
                   <ToolBar fx:id="toolbar6" layoutX="60.0" layoutY="429.0" prefHeight="44.0" prefWidth="856.0">
                      <items>
-                        <Button fx:id="trainer_enterLive_button6" mnemonicParsing="false" onMouseClicked="#trainer_startLive_click6" text="Start My Live Broadcast" textFill="#4ebfbe">
+                        <Button fx:id="trainer_enterLive_button6" mnemonicParsing="false" onMouseClicked="#trainer_startLive_click6" text="Start My Live Broadcast" textFill="#4ebfbe" visible="false">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="18.0" />
                            </font>
@@ -244,7 +244,7 @@
                   </ToolBar>
                   <ToolBar fx:id="toolbar7" layoutX="60.0" layoutY="486.0" prefHeight="44.0" prefWidth="856.0">
                      <items>
-                        <Button fx:id="trainer_enterLive_button7" mnemonicParsing="false" onMouseClicked="#trainer_startLive_click7" text="Start My Live Broadcast" textFill="#4ebfbe">
+                        <Button fx:id="trainer_enterLive_button7" mnemonicParsing="false" onMouseClicked="#trainer_startLive_click7" text="Start My Live Broadcast" textFill="#4ebfbe" visible="false">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="18.0" />
                            </font>
@@ -263,7 +263,7 @@
                   </ToolBar>
                   <ToolBar fx:id="toolbar8" layoutX="60.0" layoutY="543.0" prefHeight="44.0" prefWidth="856.0">
                      <items>
-                        <Button fx:id="trainer_enterLive_button8" mnemonicParsing="false" onMouseClicked="#trainer_startLive_click8" text="Start My Live Broadcast" textFill="#4ebfbe">
+                        <Button fx:id="trainer_enterLive_button8" mnemonicParsing="false" onMouseClicked="#trainer_startLive_click8" text="Start My Live Broadcast" textFill="#4ebfbe" visible="false">
                            <font>
                               <Font name="Comic Sans MS Bold Italic" size="18.0" />
                            </font>

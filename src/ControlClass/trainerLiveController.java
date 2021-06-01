@@ -215,7 +215,125 @@ public class trainerLiveController implements Initializable {
 
     @FXML
     void click_find(ActionEvent event) {
+        Label[] labelType = new Label[8];
+        labelType[0] = trainer_enterLive_name1;
+        labelType[1] = trainer_enterLive_name2;
+        labelType[2] = trainer_enterLive_name3;
+        labelType[3] = trainer_enterLive_name4;
+        labelType[4] = trainer_enterLive_name5;
+        labelType[5] = trainer_enterLive_name6;
+        labelType[6] = trainer_enterLive_name7;
+        labelType[7] = trainer_enterLive_name8;
 
+        Label[] labelTime = new Label[8];
+        labelTime[0] =trainer_enterLive_time1;
+        labelTime[1] =trainer_enterLive_time2;
+        labelTime[2] =trainer_enterLive_time3;
+        labelTime[3] =trainer_enterLive_time4;
+        labelTime[4] =trainer_enterLive_time5;
+        labelTime[5] =trainer_enterLive_time6;
+        labelTime[6] =trainer_enterLive_time7;
+        labelTime[7] =trainer_enterLive_time8;
+
+        Button[] buttons = new Button[8];
+        buttons[0] = trainer_enterLive_button1;
+        buttons[1] = trainer_enterLive_button2;
+        buttons[2] = trainer_enterLive_button3;
+        buttons[3] = trainer_enterLive_button4;
+        buttons[4] = trainer_enterLive_button5;
+        buttons[5] = trainer_enterLive_button6;
+        buttons[6] = trainer_enterLive_button7;
+        buttons[7] = trainer_enterLive_button8;
+
+        ArrayList<LiveSession> liveSessions = liveSessionDAO.queryByTrainerName(passValue.getTrainerName());
+        if (user_find_text.equals("")) {
+            turn_page.setPageCount((int) Math.ceil(liveSessions.size()/8.0));
+            turn_page.setPageFactory(new Callback<Integer, Node>() {
+                @Override
+                public Node call(Integer param) {
+                    VBox vBox = new VBox();
+                    int limit = 8;
+                    if (param.intValue() == liveSessions.size()/8) {
+                        limit = liveSessions.size()%8;
+                    }
+
+                    if(param.intValue() < liveSessions.size()/8){
+                        for (int i =0; i <limit; i++){
+                            labelType[i].setText(liveSessions.get(8 * param.intValue() + i).getSubject());
+                            labelTime[i].setText(String.valueOf(liveSessions.get(8 * param.intValue() + i).getStartTime()));
+                            buttons[i].setVisible(true);
+                        }
+
+                    } else {
+                        for (int i =0; i <limit; i++){
+                            labelType[i].setText(liveSessions.get(8 * param.intValue() + i).getSubject());
+                            labelTime[i].setText(String.valueOf(liveSessions.get(8 * param.intValue() + i).getStartTime()));
+                            buttons[i].setVisible(true);
+                        }
+                        for (int i = limit; i<8; i++){
+                            labelType[i].setText("");
+                            labelTime[i].setText("");
+                            buttons[i].setVisible(false);
+                        }
+
+                    }
+                    return vBox;
+                }
+            });
+        }
+        if (!user_find_text.equals("") && liveSessionDAO.queryByTrainerName(passValue.getTrainerName()) == null){
+            turn_page.setPageCount(1);
+            turn_page.setPageFactory(new Callback<Integer, Node>() {
+                @Override
+                public Node call(Integer param) {
+                    VBox box = new VBox();
+
+                    for (int i = 0; i < 8;i++){
+                        labelType[i].setText("");
+                        labelTime[i].setText("");
+                        buttons[i].setVisible(false);
+                    }
+
+                    return box;
+                }
+            });
+        }
+        if (!user_find_text.equals("") && liveSessionDAO.queryByTrainerName(passValue.getTrainerName()) != null) {
+            turn_page.setPageCount((int) Math.ceil(liveSessions.size()/8.0));
+            turn_page.setPageFactory(new Callback<Integer, Node>() {
+                @Override
+                public Node call(Integer param) {
+                    VBox box = new VBox();
+                    int limit = 8;
+                    if (param.intValue() == liveSessions.size()/8) {
+                        limit = liveSessions.size()%8;
+                    }
+
+                    if(param.intValue() < liveSessions.size()/8){
+                        for (int i =0; i <limit; i++){
+                            labelType[i].setText(liveSessions.get(8 * param.intValue() + i).getSubject());
+                            labelTime[i].setText(String.valueOf(liveSessions.get(8 * param.intValue() + i).getStartTime()));
+                            buttons[i].setVisible(true);
+                        }
+
+                    } else {
+                        for (int i =0; i <limit; i++){
+                            labelType[i].setText(liveSessions.get(8 * param.intValue() + i).getSubject());
+                            labelTime[i].setText(String.valueOf(liveSessions.get(8 * param.intValue() + i).getStartTime()));
+                            buttons[i].setVisible(true);
+                        }
+                        for (int i = limit; i<8; i++){
+                            labelType[i].setText("");
+                            labelTime[i].setText("");
+                            buttons[i].setVisible(false);
+                        }
+
+                    }
+
+                    return box;
+                }
+            });
+        }
     }
 
     @FXML
@@ -305,7 +423,17 @@ public class trainerLiveController implements Initializable {
         labelTime[6] =trainer_enterLive_time7;
         labelTime[7] =trainer_enterLive_time8;
 
-        ArrayList<LiveSession> liveSessions = liveSessionDAO.queryByTrainerName("kaiyi");
+        Button[] buttons = new Button[8];
+        buttons[0] = trainer_enterLive_button1;
+        buttons[1] = trainer_enterLive_button2;
+        buttons[2] = trainer_enterLive_button3;
+        buttons[3] = trainer_enterLive_button4;
+        buttons[4] = trainer_enterLive_button5;
+        buttons[5] = trainer_enterLive_button6;
+        buttons[6] = trainer_enterLive_button7;
+        buttons[7] = trainer_enterLive_button8;
+
+        ArrayList<LiveSession> liveSessions = liveSessionDAO.queryByTrainerName(passValue.getTrainerName());
         turn_page.setPageCount((int) Math.ceil(liveSessions.size()/8.0));
         turn_page.setPageFactory(new Callback<Integer, Node>() {
             @Override
@@ -320,17 +448,19 @@ public class trainerLiveController implements Initializable {
                     for (int i =0; i <limit; i++){
                         labelType[i].setText(liveSessions.get(8 * param.intValue() + i).getSubject());
                         labelTime[i].setText(String.valueOf(liveSessions.get(8 * param.intValue() + i).getStartTime()));
-
+                        buttons[i].setVisible(true);
                     }
 
                 } else {
                     for (int i =0; i <limit; i++){
                         labelType[i].setText(liveSessions.get(8 * param.intValue() + i).getSubject());
                         labelTime[i].setText(String.valueOf(liveSessions.get(8 * param.intValue() + i).getStartTime()));
+                        buttons[i].setVisible(true);
                     }
                     for (int i = limit; i<8; i++){
                         labelType[i].setText("");
                         labelTime[i].setText("");
+                        buttons[i].setVisible(false);
                     }
 
                 }
